@@ -1,0 +1,56 @@
+
+/*=============================================
+=            scroll top            =
+=============================================*/
+
+#scroll-top{
+    position: fixed;
+    bottom: 210px;
+    right: 5%;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #ebebeb;
+    color: #292929;
+    transform: rotate(-90deg);
+    padding: 18px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.9);
+    z-index: 9;
+    display: none;
+
+    @media #{$desktop-device}{
+        bottom: 130px;
+    }
+
+    @media #{$laptop-device}{
+        bottom: 130px;
+    }
+
+    @media #{$tablet-device}{
+        bottom: 130px;
+    }
+
+    @media #{$large-mobile}{
+        bottom: 50px;
+    }
+
+    @media #{$extra-small-mobile}{
+        padding: 10px 15px;
+    }
+
+    span{
+        margin-right: 15px;
+        @media #{$large-mobile}{
+            display: none;
+        }
+    }
+
+    &:hover{
+        color: $theme-color--red;
+        border-color: $theme-color--red;
+    }
+}
+
+/*=====  End of scroll top  ======*/
+

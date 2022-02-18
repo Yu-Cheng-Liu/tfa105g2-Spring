@@ -1,0 +1,38 @@
+.passwordInput.active{
+
+    font-size: 14px;
+    visibility: visible;
+    background-color: #ffffff;
+    padding: 30px;
+    -webkit-box-shadow: 0px 5px 4px 0px rgb(0 0 0 / 10%);
+    box-shadow: 0px 5px 4px 0px rgb(0 0 0 / 10%);
+ 
+}
+.login-data-section.hidden{
+    visibility: hidden;
+}
+
+.passwordInput{
+    visibility: hidden;
+}
+.PasswordChange{
+    padding: 30px;
+    padding-bottom: 0;
+    margin-top: -130px;
+    background-color: #ffffff;
+    margin-left: -30px;
+    margin-right: -30px;
+}
+
+.editCompName{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #999999;
+    border-radius: 0;
+    line-height: 23px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #707070;
+    height:200px;
+    margin-bottom: 15px;
+}

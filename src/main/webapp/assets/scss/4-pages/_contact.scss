@@ -1,0 +1,158 @@
+
+/*=============================================
+=           Contact             =
+=============================================*/
+
+#google-map{
+    height: 400px;
+    margin-bottom: 40px;
+
+    @media #{$large-mobile}{
+        height: 300px;
+    }
+    @media #{$small-mobile}{
+        height: 250px;
+    }
+    @media #{$extra-small-mobile}{
+        height: 200px;
+    }
+}
+
+h3.contact-page-title{
+    font-size: 25px;
+    line-height: 32px;
+    color: $heading-text-color;
+    font-weight: 500;
+    margin-bottom: 25px; 
+
+    @media #{$small-mobile}{
+        font-size: 20px;
+    }
+}
+
+
+
+.single-contact-block{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+
+    @media #{$small-mobile}{
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    &:last-child{
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    h4{
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 500;
+        color: #222222;
+
+      
+        img{
+            margin: 5px 20px 20px 0;
+        }
+    }
+
+    p{
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 29px;
+        color: #666666; 
+    }
+}
+
+
+
+span.required{
+    color: red;
+}
+
+
+/*----------  contact form  ----------*/
+
+.contact-form-content{
+    .form-messege{
+        display: none;
+        &.success, &.error{
+            display: block;
+            margin-top: 15px;
+        }
+    }
+}
+
+.contact-form{
+    .form-group{
+        margin-bottom: 20px;
+    } 
+
+    label{
+        display: block;
+        font-size: 12px;
+        line-height: 29px;
+        font-weight: 400;
+        color: #888888;
+        margin-bottom: 0;
+    }
+
+    input{
+        background-color: #ffffff;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        outline: none;
+        border: 1px solid #e0e0e0;
+        padding-left: 20px;
+    }
+    textarea{
+        background-color: #ffffff;
+        width: 100%;
+        outline: none;
+        border: 1px solid #e0e0e0;
+        padding-left: 20px;
+        line-height: 50px;
+        height: 200px;
+    }
+
+   
+}
+
+
+/*----------  contact page side content  ----------*/
+
+.contact-page-side-content{
+    background-color: #F2F2F2;
+    padding: 30px;
+
+    @media #{$tablet-device, $large-mobile}{
+        margin-bottom: 50px;
+    }
+}
+
+.contact-page-message{
+    line-height: 20px;
+}
+
+.contact-button{
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: 1px solid #292929;
+    background-color: $heading-text-color;
+    border-color: $heading-text-color;
+    width: 140px;
+    padding: 10px 20px;
+
+    
+    &:hover{
+        background-color: $theme-color--red;
+        border-color: $theme-color--red;
+    }
+}
+/*=====  End of Contact   ======*/
+

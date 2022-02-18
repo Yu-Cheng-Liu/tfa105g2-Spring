@@ -1,0 +1,284 @@
+
+/*=============================================
+=            slider            =
+=============================================*/
+
+
+/*----------  default style  ----------*/
+
+.single-row-slider-wrapper, .double-row-slider-wrapper{
+    position: relative;
+    .slick-arrow{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 9;
+        width: 50px;
+        height: 50px;
+        line-height: 46px;
+        color: #9e9e9e;
+        background: #f7f7f9;
+        border: 2px solid #e1e1e1;
+        text-align: center;
+        border-radius: 100%;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s;
+        &:hover{
+            background-color: #292929;
+            border-color: #292929;
+            color: $white;
+        }
+        &.slick-prev{
+            left: -20px;
+        }
+        &.slick-next{
+            right: -20px;
+        }
+    }
+
+    &:hover{
+        .slick-arrow{
+            visibility: visible;
+            opacity: 1;
+            &.slick-prev{
+                left: -25px;
+            }
+            &.slick-next{
+                right: -25px;
+            }
+        }
+    }
+
+    .slick-list{
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+
+        .slick-active{
+            .single-grid-product{
+                animation: customZoomIn 500ms ease-in-out;
+            }
+        }
+    }
+
+    .slick-slide{
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+}
+
+.double-row-slider-wrapper{
+    margin-bottom: -55px;
+    .single-grid-product{
+        margin-bottom: 50px;
+        min-height: 450px;
+
+        @media #{$desktop-device}{
+            min-height: 390px;
+        }
+
+        @media #{$tablet-device}{
+            min-height: 390px;
+        }
+
+        @media #{$large-mobile}{
+            min-height: 430px;
+        }
+
+        @media #{$small-mobile}{
+            min-height: 390px;
+        }
+    }
+}
+
+.tab-slider-wrapper{
+    .tab-product-navigation{
+        margin-bottom: 60px;
+        .nav{
+            border-bottom: 0;
+            @media #{$small-mobile}{
+                margin-bottom: -15px;
+            }
+            .nav-item{
+                &.nav-link{
+                    border: none;
+
+                    @media #{$small-mobile}{
+                        margin-bottom: 15px;
+                    }
+                }
+                margin-right: 10px;
+                color: #707070;
+                line-height: 41px;
+                padding: 0 30px;
+                background: #f1f1f1;
+                text-transform: capitalize;
+                font-weight: 400;
+                cursor: pointer;
+                position: relative;
+                display: block;
+                border-radius: 3px;
+
+                &:last-child{
+                    margin-right: 0;
+                }
+                &.active{
+                    color: #fff;
+                    background: #292929;
+                    border: none;
+                    position: relative;
+
+                    &:after{
+                        content: "";
+                        border-top: 5px solid #292929;
+                        border-bottom: 5px solid transparent;
+                        border-left: 7px solid transparent;
+                        border-right: 7px solid transparent;
+                        width: 14px;
+                        margin: auto;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* blog post slider */
+
+.blog-post-slider-border-wrapper{
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+
+    &--bottom{
+        border-bottom: 1px solid #ebebeb; 
+    }
+}
+
+.blog-post-slider-wrapper{
+    .slick-list{
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+    }
+    .slick-slide{
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+}
+
+.single-slider-post{
+    &__image{
+        position: relative;
+        a{
+            display: block;
+            width: 100%;
+
+            img{
+                width: 100%;
+            }
+
+            &:hover{
+                img{
+                    opacity: 0.85;
+                }
+            }
+        }
+    }
+
+    &__date-sticker{
+        width: 62px;
+        height: 70px;
+        background: #fff;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+        @media #{$extra-small-mobile}{
+            width: 50px;
+            height: 60px;
+        }
+
+        span{
+            display: block;
+
+            &.month{
+                @include font-prop(null, #929292, 500, 12px);
+                margin-bottom: 10px;
+
+                @media #{$extra-small-mobile}{
+                    margin-bottom: 5px;
+                }
+            }
+
+            &.day{
+                @include font-prop(20px, #292929, 700, 20px);
+                @media #{$extra-small-mobile}{
+                    font-size: 15px; 
+                    line-height: 15px;
+                }
+            }
+        }
+    }
+
+    &__content{
+        .title{
+            margin-top: 20px;
+            margin-bottom: 15px;
+            line-height: 1;
+            @include font-prop(16px, null, null, 18px);
+            a{
+                &:hover{
+                    color: $theme-color--red;
+                }
+            }
+        }
+
+        .post-meta{
+            @include font-prop(null, #9d9d9d, 400, 17px);
+            margin-bottom: 10px;
+            a{
+                color: #292929;
+                padding-left: 5px;
+            }
+        }
+
+        .short-desc{
+            @include font-prop(null, null, null, 24px);
+            margin-bottom: 0;
+        }
+
+        .blog-post-link{
+            @include font-prop(14px, #292929, 500, 25px);
+            border-bottom: 2px solid #e8e8e8;
+            margin-top: 30px;
+
+            &:hover{
+                color: $theme-color--red;
+            }
+        }
+    }
+}
+
+/*----------  custom zoom in animation  ----------*/
+
+@keyframes customZoomIn {
+from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.8, 0.8, 0.8);
+    transform: scale3d(0.8, 0.8, 0.8); }
+50% {
+    opacity: 1; 
+} 
+}
+
+/*=====  End of slider  ======*/
+

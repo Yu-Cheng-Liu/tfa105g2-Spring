@@ -1,0 +1,216 @@
+
+/*=============================================
+=            About            =
+=============================================*/
+
+
+.about-top-content-wrapper{
+    margin-bottom: 50px;
+}
+
+.single-banner{
+    margin-bottom: 15px;
+}
+
+/*-- About Image --*/
+.about-image {
+    // Image
+    & img {
+        width: 100%;
+    }
+
+    @media #{$tablet-device}{
+        margin-bottom: 15px;
+    }
+
+    @media #{$large-mobile}{
+        margin-bottom: 15px;
+    }
+}
+
+/*-- About Content --*/
+.about-content {
+    & h1 {
+        font-size: 36px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 23px;
+        & span {   
+            color: $theme-color--red;
+        }
+
+        // Responsive
+        @media #{$large-mobile}{
+            font-size: 24px;
+            line-height: 30px;
+        }
+    }
+    & h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 14px;
+    }
+    & p {
+        font-size: 12px;
+        line-height: 20px;
+    } 
+}
+
+/*-- About Mission Vission Goal --*/
+.about-mission-vission-goal {
+    margin-bottom: 30px;
+    & h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 5px;
+
+    }
+    & p {
+        font-size: 12px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+/*-- About Section Title --*/
+.about-section-title {
+    margin-bottom: 30px;
+    & h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 23px;
+
+        // Responsive
+        @media #{$large-mobile}{
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+    & p {
+        font-size: 12px;
+        line-height: 20px;
+        max-width: 600px;
+    }
+}
+
+/*-- About Feature --*/
+.about-feature {
+    & h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+    & p {
+        font-size: 12px;
+        line-height: 20px;
+        max-width: 265px;
+
+        // Responsive
+        @media #{$large-mobile}{
+            max-width: 350px;
+        }
+    }
+}
+
+/*-- About Feature Banner --*/
+.about-feature-banner {
+    & .banner {
+        margin-left: 70px;
+
+        // Responsive
+        @media #{$tablet-device}{
+            margin-left: 0;
+        }
+        @media #{$large-mobile}{
+            margin-left: 0;
+        }
+    }
+
+    .single-banner{
+        a{
+            @media #{$large-mobile}{
+                display: block;
+                width: 100%;
+            }
+            img{
+                @media #{$large-mobile}{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+/*-- Feature Content --*/
+.feature-content {
+    & h2 {
+        font-size: 30px;
+        max-width: 470px;
+        margin-bottom: 0;
+        & span {
+            font-weight: 700;
+        }
+    }
+    & h1 {
+        font-size: 36px;
+        max-width: 470px;
+        & span {
+            font-weight: 700;
+        }
+    }
+    & p {
+        line-height: 23px;
+        max-width: 520px;
+        margin-bottom: 0;
+        margin-top: 30px;
+    }
+}
+
+/*-- Feature Image --*/
+.feature-image {
+    position: relative;
+    z-index: 2;
+    
+    // Before & After Element
+    &::before {
+        position: absolute;
+        right: 0;
+        bottom: -40px;
+        content: "";
+        width: 380px;
+        height: 360px;
+        background-color: $white;
+        z-index: -1;
+
+        // Responsive
+        @media #{$tablet-device}{
+            display: none;
+        }
+        @media #{$large-mobile}{
+            display: none;
+        }
+    }
+    
+    // Image
+    & img {
+        width: 100%;
+        margin-left: -40px;
+
+        // Responsive
+        @media #{$tablet-device}{
+            margin-left: 0;
+        }
+        @media #{$large-mobile}{
+            margin-left: 0;
+        }
+    }  
+}
+ 
+
+.about-feature{
+    p{
+        margin-bottom: 15px;
+    }
+}
+/*=====  End of About  ======*/
+

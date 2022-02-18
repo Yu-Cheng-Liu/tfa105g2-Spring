@@ -1,0 +1,52 @@
+
+/*=============================================
+=            pagination            =
+=============================================*/
+
+
+.pagination-area{
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media #{$small-mobile}{
+        flex-direction: column;
+    }
+    &__left{
+        flex-basis: 50%;
+        @media #{$small-mobile}{
+            flex-basis: 100%;
+            margin-bottom: 15px;
+        }
+    }
+
+    &__right{
+        flex-basis: 50%;
+        @media #{$small-mobile}{
+            flex-basis: 100%;
+        }
+        .pagination-section{
+            text-align: right;
+            @media #{$small-mobile}{
+                text-align: center;
+            }
+            li{
+                display: inline-block;
+                margin-right: 30px;
+                &:last-child{
+                    margin-right: 0;
+                }
+                a{
+                    &:hover, &.active{
+                        color: $theme-color--red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*=====  End of pagination  ======*/
+

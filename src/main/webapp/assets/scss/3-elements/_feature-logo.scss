@@ -1,0 +1,40 @@
+
+/*=============================================
+=            feature logo            =
+=============================================*/
+
+.feature-logo-wrapper{
+    
+    
+    @media #{$large-mobile}{
+        padding-bottom: 10px !important;
+    }
+    
+    &--bottom-border{
+        border-bottom: 1px solid #ebebeb;
+    }
+}
+.single-feature-logo{
+    text-align: center;
+    @media #{$large-mobile}{
+        margin-bottom: 60px;
+    }
+    &__image{
+        margin-bottom: 30px;
+    }
+
+    &__content{
+        .title{
+            @include font-prop(12px, #292929, 600, 15px);
+            margin-bottom: 24px;
+        }
+
+        .short-desc{
+            @include font-prop(null, #929292, 400, 19px);
+
+        }
+    }
+}
+
+/*=====  End of feature logo  ======*/
+

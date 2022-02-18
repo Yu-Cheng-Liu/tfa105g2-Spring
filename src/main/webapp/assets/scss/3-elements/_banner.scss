@@ -1,0 +1,220 @@
+
+/*=============================================
+=            banner            =
+=============================================*/
+
+.banner-hover-area{
+    &--no-gutter{
+        overflow: hidden; 
+    }
+}
+
+.banner-hover-wrapper{
+    margin-bottom: -30px;
+}
+
+.single-hover-banner{
+    margin-bottom: 30px;
+    &__image{
+        position: relative;
+        a{
+            &:hover{
+                img{
+                    opacity: 0.85;
+                }
+            }
+            display: block;
+            width: 100%;
+            img{    
+                width: 100%;
+            }
+        }
+    }
+
+    &__content{
+        position: absolute;
+        max-width: 200px;
+        left: 8%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .small-text{
+            @include font-prop(14px, #292929, 600, 18px);
+            margin-bottom: 14px;
+        }
+
+        .big-text{
+            @include font-prop(28px, #292929, 400, 30px);
+            margin-bottom: 0;
+
+            @media #{$tablet-device}{
+                font-size: 22px;
+                line-height: 25px;
+            }
+
+            @media #{$large-mobile}{
+                font-size: 22px;
+                line-height: 30px;
+            }
+
+            @media #{$extra-small-mobile}{
+                font-size: 15px;
+                line-height: 20px;
+            }
+        }
+
+        .banner-link{
+            @include font-prop(null, #292929, 600, 23px);
+            border-bottom: 2px solid #292929;
+            display: inline-block;
+            margin-top: 70px;
+            width: auto;
+
+            @media #{$desktop-device}{
+                margin-top: 50px;
+            }
+
+            @media #{$tablet-device}{
+                margin-top: 20px;
+            }
+
+            @media #{$large-mobile}{
+                margin-top: 30px;
+            }
+
+            @media #{$extra-small-mobile}{
+                margin-top: 10px;
+                font-size: 10px;
+            }
+
+            &:hover{
+                color: $theme-color--red;
+                border-color: $theme-color--red;
+            }
+        }
+    }
+
+    &--middlesize-text{
+        &__content{
+            position: absolute;
+            max-width: 280px;
+            left: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+
+            @media #{$laptop-device}{
+                width: 200px;
+            }
+
+            @media #{$desktop-device}{
+                width: 200px;
+            }
+
+            @media #{$tablet-device}{
+                width: 200px;
+            }
+
+            @media #{$large-mobile}{
+                width: 200px;
+            }
+
+            @media #{$extra-small-mobile}{
+                max-width: 130px;
+            }
+            .small-text{
+                @include font-prop(20px, #292929, 600, 26px);
+
+                @media #{$laptop-device}{
+                    @include font-prop(14px, #292929, 600, 18px);
+                    margin-bottom: 14px;
+                }
+
+                @media #{$desktop-device}{
+                    @include font-prop(14px, #292929, 600, 18px);
+                    margin-bottom: 14px;
+                }
+
+                @media #{$tablet-device}{
+                    @include font-prop(14px, #292929, 600, 18px);
+                    margin-bottom: 14px;
+                }
+
+                @media #{$large-mobile}{
+                    @include font-prop(14px, #292929, 600, 18px);
+                    margin-bottom: 14px;
+                }
+            }
+
+            .big-text{
+                @include font-prop(40px, #292929, 400, 45px);
+                margin-bottom: 0;
+
+                @media #{$laptop-device}{
+                    @include font-prop(28px, #292929, 400, 30px);
+                }
+
+                @media #{$desktop-device}{
+                    @include font-prop(28px, #292929, 400, 30px);
+                }
+
+                @media #{$tablet-device}{
+                    font-size: 22px;
+                    line-height: 25px;
+                }
+
+                @media #{$large-mobile}{
+                    font-size: 22px;
+                    line-height: 30px;
+                }
+
+                @media #{$extra-small-mobile}{
+                    font-size: 15px;
+                    line-height: 20px;
+                }
+            }
+
+            .banner-link{
+                @include font-prop(17px, #292929, 600, 23px);
+                border-bottom: 2px solid #292929;
+                display: inline-block;
+                margin-top: 105px;
+                width: auto;
+                &:hover{
+                    color: $theme-color--red;
+                    border-color: $theme-color--red;
+                }
+
+                @media #{$laptop-device}{
+                    @include font-prop(12px, #292929, 600, 23px);
+                    margin-top: 70px;
+
+                }
+
+                @media #{$desktop-device}{
+                    @include font-prop(12px, #292929, 600, 23px);
+                    margin-top: 30px;
+                }
+
+                @media #{$tablet-device}{
+                    @include font-prop(12px, #292929, 600, 23px);
+                    margin-top: 20px;
+                }
+
+                @media #{$large-mobile}{
+                    @include font-prop(12px, #292929, 600, 23px);
+                    margin-top: 20px;
+                }
+
+                
+                @media #{$extra-small-mobile}{
+                    font-size: 10px;
+                    margin-top: 10px;
+                }
+            }
+
+        }
+    }
+}
+
+/*=====  End of banner  ======*/
+

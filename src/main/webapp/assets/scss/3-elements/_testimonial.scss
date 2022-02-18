@@ -1,0 +1,83 @@
+
+/*=============================================
+=            testimonial            =
+=============================================*/
+
+.testimonial-bg{
+    background-image: url('../img/backgrounds/bkg_testimonials.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.single-testimonial-item{
+    text-align: center;
+    &__image{
+        margin-bottom: 40px;
+        img{
+            margin: 0 auto;
+        }
+    }
+
+    &__content {
+        .testimonial-text{
+            @include font-prop(null, null, null, 30px);
+            @media #{$small-mobile}{
+                line-height: 25px;
+            }
+        }
+        img{
+            display: inline-block;
+            margin: 0 auto;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-author{
+            @include font-prop(null, #292929, 600, 17px);
+            letter-spacing: 6px;
+        }
+    }
+}
+
+.full-testimonial-wrapper{
+
+    .testimonial-wrapper{
+        .slick-arrow{
+            background: none;
+            border: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 9;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+            font-size: 36px;
+
+            &:hover{
+                color: #292929;
+            }
+    
+            &.slick-prev{
+                left: 0;
+            }
+    
+            &.slick-next{
+                right: 0;
+            }
+        }
+    
+    }
+    &:hover{
+        .testimonial-wrapper{
+            .slick-arrow{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+/*=====  End of testimonial  ======*/
+

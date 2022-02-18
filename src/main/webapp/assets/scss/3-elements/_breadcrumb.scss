@@ -1,0 +1,75 @@
+
+/*=============================================
+=            breadcrumb            =
+=============================================*/
+
+.breadcrumb-content{
+    text-align: center;
+    &__title{
+        @include font-prop( 36px,#333, null, 36px);
+        margin-bottom: 15px;
+        @media #{$large-mobile}{
+            font-size: 30px;
+            line-height: 30px;
+        }
+
+        @media #{$extra-small-mobile}{
+            font-size: 25px;
+            line-height: 25px;
+        }
+    }
+
+    &__page-map{
+        li{
+            @include font-prop(null, #707070, null, 25px);
+            display: inline-block;
+            &:after{
+                content: ">";
+                margin: 0 5px;
+            }
+            &:last-child{
+                &:after{
+                    display: none;
+                }
+            }
+            a{
+                
+                &:hover{
+                    color: $theme-color--red;
+                }
+            }
+
+            &.active{
+                color: $theme-color--red;
+            }
+        }
+    }
+}
+
+.breadcrumb-wrapper{
+    padding-top: 130px;
+    padding-bottom: 210px;
+    @media #{$laptop-device}{
+        padding: 100px 0;
+    }
+    @media #{$desktop-device}{
+        padding: 100px 0;
+    }
+    @media #{$tablet-device}{
+        padding: 80px 0;
+    }
+    @media #{$large-mobile}{
+        padding: 70px 0;
+    }
+
+}
+
+.breadcrumb-bg{
+    background-image: url('../img/backgrounds/category-image-1820x400.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/*=====  End of breadcrumb  ======*/
+

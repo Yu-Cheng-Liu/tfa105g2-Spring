@@ -1,0 +1,42 @@
+
+/*=============================================
+=            section title            =
+=============================================*/
+
+.section-title-wrapper{
+    .section-title{
+        @include font-prop(30px, null, null, 30px);
+        margin-bottom: 20px;
+
+        @media #{$small-mobile}{
+            font-size: 25px;
+            line-height: 25px;
+        }
+    }
+}
+
+.widget-product-title-wrapper{
+    margin-bottom: 40px;
+    position: relative;
+    margin-top: -5px;
+    .widget-product-title{
+        @include font-prop(20px, null, null, 30px);
+        padding-right: 20px;
+        background: #fff;
+        display: inline-block;
+        margin-bottom: 0;
+        &:before{
+            content: "";
+            width: 100%;
+            left: 0;
+            height: 1px;
+            background: #f0f0f0;
+            position: absolute;
+            top: 50%;
+            z-index: -1;
+        }
+    }
+}
+
+
+/*=====  End of section title  ======*/

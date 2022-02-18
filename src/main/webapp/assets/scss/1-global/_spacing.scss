@@ -1,0 +1,68 @@
+
+/*=============================================
+=            spacing            =
+=============================================*/
+
+.section-space{
+    margin-bottom: 100px !important;
+
+    @media #{$tablet-device}{
+        margin-bottom: 80px !important;
+    }
+
+    @media #{$large-mobile}{
+        margin-bottom: 70px !important;
+    }
+
+    &--half{
+        margin-bottom: 50px !important;
+        
+    }
+
+    &--30{
+        margin-bottom: 30px !important;
+    }
+
+    &--inner{
+        padding-top: 100px !important;
+        padding-bottom: 100px !important;
+
+        @media #{$large-mobile}{
+            padding-top: 70px !important;
+            padding-bottom: 70px !important;
+        }
+
+        @media #{$tablet-device}{
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+        }
+
+    }
+
+    &--inner-top{
+        padding-top: 100px !important;
+
+        @media #{$tablet-device}{
+            padding-top: 80px !important;
+        }
+
+        @media #{$large-mobile}{
+            padding-top: 70px !important;
+        }
+
+    }
+
+    &--inner-bottom{
+        padding-bottom: 100px !important;
+        @media #{$tablet-device}{
+            padding-bottom: 80px !important;
+        }
+        @media #{$large-mobile}{
+            padding-bottom: 70px !important;
+        }
+
+    }
+}
+
+/*=====  End of spacing  ======*/
+
