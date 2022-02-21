@@ -14,23 +14,26 @@ import web.compdata.entity.CompData;
 import web.compdata.service.CompDataServiceInterface;
 
 @Controller
-public class TestController {
+public class LoginController {
 	@Autowired
 	private CompDataServiceInterface service;
 
 	@RequestMapping(value="/secure/login.controller" , method= {RequestMethod.POST})
 	public String compData(String compAccount, String password, Model model, HttpSession session) {
 
-		Map<String, String> errors = service.getErrors();	
 
 		CompData cd = service.login(compAccount, password);
-		model.addAttribute("errors", errors);
+		Map<String, String> errors = service.getErrors();	
+		System.out.println(cd);
 		
-		if (errors.size() != 0) {
+		
+		if (cd==null) {
 				model.addAttribute("errors", errors);
 				model.addAttribute("username", compAccount);
 				model.addAttribute("password", password);
-			return "/login-failed.jsp";
+				
+				System.out.println(errors);
+			return "/front-end/compData/login-failed.jsp";
 		}
 
 		else {
@@ -43,7 +46,8 @@ public class TestController {
 			session.setAttribute("compNo", cd.getCompNO());
 			session.setAttribute("Address", cd.getAddress());
 
-			return "redirect:/comp-login-register.jsp";
+			return "redirect:/front-end/compData/loginSuccess.jsp";
+			
 		}
 
 	}

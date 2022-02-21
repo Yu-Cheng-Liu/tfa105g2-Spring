@@ -14,14 +14,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-
+ 
 // @Configuration = <context:annotation-config></context:annotation-config>
 // @ComponentScan(basePackages = {"model"}) = <context:component-scan base-package="model"></context:component-scan>
 // @EnableTransactionManagement = <tx:annotation-driven />
 @Configuration
 @ComponentScan(basePackages = {"web.*.*.impl"})
 @EnableTransactionManagement
-public class SpringJavaConfig {
+public class SpringJavaConfig  {
 	/*
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
 		<constructor-arg>

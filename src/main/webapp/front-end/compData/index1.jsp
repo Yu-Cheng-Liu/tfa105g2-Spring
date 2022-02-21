@@ -1,15 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Eposi - Multipurpose eCommerce Bootstrap5 Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="icon" href="assets/img/favicon.ico">
+    <link rel="icon" href="<%=request.getContextPath() %>/assets/img/favicon.ico">
 
     <!--=============================================
     =            CSS  files       =
@@ -21,10 +23,26 @@
 
     
 
-    <!-- Vendor CSS -->
-    <link href="../assets/css/vendors.css" rel="stylesheet">
-    <!-- Main CSS -->
-    <link href="../assets/css/style.css" rel="stylesheet">
+    
+          <!-- Vendor CSS -->
+          <link href="<%=request.getContextPath() %>/assets/css/vendors.css" rel="stylesheet">
+          <!-- Main CSS -->
+          <link href="<%=request.getContextPath() %>/assets/css/style.css" rel="stylesheet">
+
+          <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/comp.css">
+          
+          
+            <!-- Vendor JS -->
+            <script src="<%=request.getContextPath() %>/assets/js/vendors.js"></script>
+
+            <!-- Active JS -->
+            <script src="<%=request.getContextPath() %>/assets/js/active.js"></script>
+
+            <script src="<%=request.getContextPath() %>/assets/js/company.js"></script>
+
+
+            <!--=====  End of JS files ======-->
+            
 </head>
 
 <body>
@@ -38,7 +56,7 @@
                         <!-- logo -->
                         <div class="logo">
                             <a href="index.html">
-                                <img width="93" height="25" src="../assets/img/logo.webp" class="img-fluid" alt="">
+                                <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
                             </a>
                         </div>
                         <!-- menu wrapper -->
@@ -85,7 +103,7 @@
                         <!-- header icon -->
                         <div class="header-icon-wrapper">
                             <ul class="icon-list">
-                            
+                               
                                 <li>
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
@@ -100,7 +118,7 @@
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
                                                         <a href="single-product.html">
-                                                            <img width="80" height="106" src="../assets/img/products/product-1-80x106.webp"
+                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-1-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
@@ -115,7 +133,7 @@
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
                                                         <a href="single-product.html">
-                                                            <img width="80" height="106" src="../assets/img/products/product-2-80x106.webp"
+                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-2-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
@@ -130,7 +148,7 @@
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
                                                         <a href="single-product.html">
-                                                            <img width="80" height="106" src="../assets/img/products/product-3-80x106.webp"
+                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-3-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
@@ -193,8 +211,8 @@
                                             <div class="single-settings-block">
                                                 <h4 class="title">廠商專區</h4>
                                                 <ul>
-                                                    <li><a href="comp-login-register.html">廠商登入</a></li>
-                                                    <li><a href="comp-login-register.html">廠商註冊</a></li>
+                                                    <li><a href="<%=request.getContextPath() %>/secure/comp-login-register.html">廠商登入</a></li>
+                                                    <li><a href="<%=request.getContextPath() %>/secure/comp-login-register.html">廠商註冊</a></li>
                                                 </ul>
                                             </div>
                                            </div>
@@ -212,7 +230,7 @@
                             <div class="col-6 col-md-6">
                                 <div class="header-logo">
                                     <a href="index.html">
-                                        <img width="93" height="25" src="../assets/img/logo.webp" class="img-fluid" alt="">
+                                        <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -246,131 +264,21 @@
         </div>
     </div>
     <!--====================  End of header area  ====================-->
-
-    <!--====================  breadcrumb area ====================-->
-    <div class="breadcrumb-area section-space--half">
-        <div class="container wide">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  breadcrumb wrpapper  =======-->
-                    <div class="breadcrumb-wrapper breadcrumb-bg">
-                        <!--=======  breadcrumb content  =======-->
-                        <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Login - Register</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Login - Register</li>
-                            </ul>
-                        </div>
-                        <!--=======  End of breadcrumb content  =======-->
-                    </div>
-                    <!--=======  End of breadcrumb wrpapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--====================  End of breadcrumb area  ====================-->
-    <!--====================  page content area ====================-->
-    <div class="page-content-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  page wrapper  =======-->
-                    <div class="page-wrapper">
-                        <div class="page-content-wrapper">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
-                                    <!-- Login Form s-->
-                                    <form action="login.controller" method="POST">
-
-                                        <div class="login-form">
-                                            <h4 class="login-title">Login</h4>
-
-                                            <div class="row">
-                                                <div class="col-md-12 col-12">
-                                                    <label>Company Account*</label>
-                                                    <input name="compAccount" type="text" placeholder="Company Account*">
-                                                </div>
-                                                <div class="col-12">
-                                                    <label>Password*</label>
-                                                    <input name="password" type="password" placeholder="Password*">
-                                                </div>
-                                                <div class="col-sm-6">
-
-                                                    <div class="check-box d-inline-block ml-0 ml-md-2">
-                                                        <input type="checkbox" id="remember_me">
-                                                        <label for="remember_me">Remember me</label>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-sm-6 text-start text-sm-end">
-                                                    <a href="#" class="forget-pass-link"> Forgotten pasward?</a>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <button type="submit" class="register-button" value="Login">Login</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                                <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                                    <form action="register.controller" method="POST">
-
-                                        <div class="login-form">
-                                            <h4 class="login-title">Register</h4>
-
-                                            <div class="row">
-                                                <div class="col-md-6 col-12 mb-20">
-                                                    <label>Company Account*</label>
-                                                    <input name="compAccount" type="text" placeholder="Company Account*">
-                                                </div>
-                                                <div class="col-md-6 col-12 mb-20">
-                                                    <label>Company Name*</label>
-                                                    <input name="compName" type="text" placeholder="Company Name">
-                                                </div>
-                                                <div class="col-md-12 mb-20">
-                                                    <label>Email Address*</label>
-                                                    <input name="email" type="email" placeholder="Email Address">
-                                                </div>
-                                                <div class="chargePerson">
-                                                    <label>Charge Person</label>
-                                                    <input name="chargePerson" type="text" placeholder="Charge Person">
-                                                </div>
-                                                <div class="compPhone">
-                                                    <label>Company Phone</label>
-                                                    <input name="compPhone" type="text" placeholder="Company Phone">
-                                                </div>
-                                                <div class="col-md-6 mb-20">
-                                                    <label>Password*</label>
-                                                    <input name="password" type="password" placeholder="Password">
-                                                </div>
-                                                <div class="col-md-6 mb-20">
-                                                    <label>Confirm Password*</label>
-                                                    <input name="confirmPassword" type="password" placeholder="Confirm Password">
-                                                </div>
-                                                <div class="col-12">
-                                                    <button type="submit" class="register-button mt-0">Register</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--=======  End of page wrapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--====================  End of page content area  ====================-->
     
-   <!--====================  footer area ====================-->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <!--====================  footer area ====================-->
     <div class="footer-area">
         <div class="footer-copyright">
             <div class="container wide">
@@ -381,7 +289,7 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="93" height="25" src="../assets/img/logo.webp" class="img-fluid" alt=""></a>
+                                            <a href="#"><img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
 
@@ -435,7 +343,7 @@
                                 
                             </ul>
                         </li>
-                        <li class="menu-item-has-children"><a href="#">廠商登入</a>
+                        <li class="menu-item-has-children"><a href="<%=request.getContextPath() %>/secure/comp-login-register.html">廠商登入</a>
                             <ul class="sub-menu">
                                 <li><a href="login-register.html">Register</a></li>
                                 <li><a href="login-register.html">Login</a></li>
@@ -462,7 +370,26 @@
     </div>
 
     <!--=======  End of offcanvas mobile menu  =======-->
-   
+    <!--====================  search overlay ====================-->
+
+    <div class="search-overlay" id="search-overlay">
+        <a href="javascript:void(0)" class="close-search-overlay" id="close-search-overlay">
+            <i class="ion-ios-close-empty"></i>
+        </a>
+
+        <!--=======  search form  =======-->
+
+        <div class="search-form">
+            <form action="#">
+                <input type="search" placeholder="Search entire store here ...">
+                <button type="submit"><i class="ion-android-search"></i></button>
+            </form>
+        </div>
+
+        <!--=======  End of search form  =======-->
+    </div>
+
+    <!--====================  End of search overlay  ====================-->
     <!--====================  quick view ====================-->
 
     <div class="modal fade quick-view-modal-container" id="quick-view-modal-container" tabindex="-1" role="dialog"
@@ -505,19 +432,19 @@
                 {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
             ]'>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-1.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-1.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-2.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-2.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-3.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-3.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-4.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-4.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-5.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-5.webp" class="img-fluid" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -545,19 +472,19 @@
             {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
         ]'>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-1.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-1.webp" class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-2.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-2.webp" class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-3.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-3.webp" class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-4.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-4.webp" class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-5.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-5.webp" class="img-fluid" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -635,16 +562,10 @@
     =            JS files        =
     =============================================-->
 
-    <!-- Vendor JS -->
-    <script src="../assets/js/vendors.js"></script>
-
-    <!-- Active JS -->
-    <script src="../assets/js/active.js"></script>
-    
-    <script src="../assets/js/company.js"></script>
+  
 
     <!--=====  End of JS files ======-->
 
 </body>
 
-</html></html>
+</html>

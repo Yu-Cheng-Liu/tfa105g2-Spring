@@ -33,7 +33,6 @@ public class CompDataDAO implements CompDataDAOInterface {
 
 	@Override
 	public CompData select(String compAccount) {
-		System.out.println("DAO: " + compAccount);
 		String hql = "From CompData where compAccount = :compAccount";
 		CompData cd = (CompData) session.createQuery(hql, CompData.class).setParameter("compAccount", compAccount)
 				.uniqueResult();

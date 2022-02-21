@@ -11,7 +11,7 @@
     <meta name="description" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="icon" href="../assets/img/favicon.ico">
+    <link rel="icon" href="<%=request.getContextPath() %>/assets/img/favicon.ico">
 
     
     <!--=============================================
@@ -23,14 +23,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     
 
-            <!-- Vendor CSS -->
-            <link href="../assets/css/vendors.css" rel="stylesheet">
-            <!-- Main CSS -->
-            <link href="../assets/css/style.css" rel="stylesheet">
+      
+          <!-- Vendor CSS -->
+          <link href="<%=request.getContextPath() %>/assets/css/vendors.css" rel="stylesheet">
+          <!-- Main CSS -->
+          <link href="<%=request.getContextPath() %>/assets/css/style.css" rel="stylesheet">
 
-            <link rel="stylesheet" href="../assets/css/comp.css">
+          <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/comp.css">
+          
+          
+            <!-- Vendor JS -->
+            <script src="<%=request.getContextPath() %>/assets/js/vendors.js"></script>
+
+            <!-- Active JS -->
+            <script src="<%=request.getContextPath() %>/assets/js/active.js"></script>
+
+            <script src="<%=request.getContextPath() %>/assets/js/company.js"></script>
 
 
+            <!--=====  End of JS files ======-->
 
 
 
@@ -48,7 +59,7 @@
                         <!-- logo -->
                         <div class="logo">
                             <a href="index.html">
-                                <img width="93" height="25" src="../assets/img/logo.webp" class="img-fluid" alt="">
+                                <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
                             </a>
                         </div>
                         <!-- menu wrapper -->
@@ -138,7 +149,7 @@
                                             </li>
                                             <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
                                                 <a href="shop-left-sidebar.html" class="mb-0">
-                                                    <img width="920" height="183" src="../assets/img/banners/img-bottom-menu.webp" class="img-fluid"
+                                                    <img width="920" height="183" src="<%=request.getContextPath() %>/assets/img/banners/img-bottom-menu.webp" class="img-fluid"
                                                         alt="">
                                                 </a>
                                             </li>
@@ -184,7 +195,7 @@
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
                                                         <a href="single-product.html">
-                                                            <img width="80" height="106" src="../assets/img/products/product-1-80x106.webp"
+                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-1-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
@@ -199,7 +210,7 @@
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
                                                         <a href="single-product.html">
-                                                            <img width="80" height="106" src="../assets/img/products/product-2-80x106.webp"
+                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-2-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
@@ -214,7 +225,7 @@
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
                                                         <a href="single-product.html">
-                                                            <img width="80" height="106" src="../assets/img/products/product-3-80x106.webp"
+                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-3-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
@@ -277,8 +288,8 @@
                                             <div class="single-settings-block">
                                                 <h4 class="title">廠商專區</h4>
                                                 <ul>
-                                                    <li><a href="comp-login-register.html">廠商登入</a></li>
-                                                    <li><a href="comp-login-register.html">廠商註冊</a></li>
+                                                    <li><a href="<%=request.getContextPath() %>/front-end/compData/comp-login-register.html">廠商登入</a></li>
+                                                    <li><a href="<%=request.getContextPath() %>/front-end/compData/comp-login-register.html">廠商註冊</a></li>
                                                 </ul>
                                             </div>
                                             <!-- <div class="single-settings-block">
@@ -307,7 +318,7 @@
                             <div class="col-6 col-md-6">
                                 <div class="header-logo">
                                     <a href="index.html">
-                                        <img width="93" height="25" src="../assets/img/logo.webp" class="img-fluid" alt="">
+                                        <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -376,7 +387,7 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
                                     <!-- Login Form s-->
-                                    <form action="login.controller" method="get">
+                                    <form action="<%=request.getContextPath() %>/secure/login.controller" method="POST">
 
                                         <div class="login-form">
                                             <h4 class="login-title">Login</h4>
@@ -415,7 +426,7 @@
                                     </form>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                                    <form action="register.controller">
+                                    <form action="<%=request.getContextPath() %>/secure/register.controller">
 
                                         <div class="login-form">
                                             <h4 class="login-title">Register</h4>
@@ -508,7 +519,7 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="93" height="25" src="../assets/img/logo.webp" class="img-fluid" alt=""></a>
+                                            <a href="#"><img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
 
@@ -665,9 +676,9 @@
                             </li>
                             <li class="menu-item-has-children"><a href="#">LANGUAGE: EN-GB </a>
                                 <ul class="sub-menu">
-                                    <li><a href="javascript:void(0)"><img width="16" height="11" src="../assets/img/icons/en-gb.webp" alt="">
+                                    <li><a href="javascript:void(0)"><img width="16" height="11" src="<%=request.getContextPath() %>/assets/img/icons/en-gb.webp" alt="">
                                             English</a></li>
-                                    <li><a href="javascript:void(0)"><img width="16" height="11" src="../assets/img/icons/de-de.webp" alt="">
+                                    <li><a href="javascript:void(0)"><img width="16" height="11" src="<%=request.getContextPath() %>/assets/img/icons/de-de.webp" alt="">
                                             Germany</a></li>
                                 </ul>
                             </li>
@@ -731,15 +742,6 @@
     =            JS files        =
     =============================================-->
 
-
-
-            <!-- Vendor JS -->
-            <script src="../assets/js/vendors.js"></script>
-
-            <!-- Active JS -->
-            <script src="../assets/js/active.js"></script>
-
-            <script src="../assets/js/company.js"></script>
 
 
     <!--=====  End of JS files ======-->

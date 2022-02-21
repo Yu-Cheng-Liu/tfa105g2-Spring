@@ -10,7 +10,7 @@
             <meta name="description" content="text/html">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <!-- Favicon -->
-            <link rel="icon" href="../webapp/assets/img/favicon.ico">
+            <link rel="icon" href="<%=request.getContextPath() %>/assets/img/favicon.ico">
 
             <!--=============================================
     =            CSS  files       =
@@ -22,13 +22,21 @@
                 href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
                 rel="stylesheet">
 
+          <!-- Vendor CSS -->
+          <link href="<%=request.getContextPath() %>/assets/css/vendors.css" rel="stylesheet">
+          <!-- Main CSS -->
+          <link href="<%=request.getContextPath() %>/assets/css/style.css" rel="stylesheet">
 
-            <!-- Vendor CSS -->
-            <link href="assets/css/vendors.css" rel="stylesheet">
-            <link rel="stylesheet" href="assets/css/comp.css">
-            <!-- Main CSS -->
-            <link href="assets/css/style.css" rel="stylesheet">
+          <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/comp.css">
+          
+          
+            <!-- Vendor JS -->
+            <script src="<%=request.getContextPath() %>/assets/js/vendors.js"></script>
 
+            <!-- Active JS -->
+            <script src="<%=request.getContextPath() %>/assets/js/active.js"></script>
+
+            <script src="<%=request.getContextPath() %>/assets/js/company.js"></script>
 
         </head>
 
@@ -43,14 +51,14 @@
                                 <!-- logo -->
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img width="93" height="25" src="assets/img/logo.webp" class="img-fluid" alt="">
+                                        <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
                                     </a>
                                 </div>
                                 <!-- menu wrapper -->
                                 <div class="navigation-menu-wrapper">
                                     <nav>
                                         <ul>
-                                            <li class="menu-item-has-children"><a href="index.html">商城管理</a>
+                                            <li class="menu-item-has-children"><a href="index.html">祭祖商城</a>
                                                 <ul class="sub-menu">
                                                     <li><a href="index.html">Home Shop 1</a></li>
                                                     <li><a href="index-2.html">Home Shop 2</a></li>
@@ -63,7 +71,7 @@
                                                 </ul>
                                             </li>
 
-                                            <li class="menu-item-has-children"><a href="#">訂單管理</a>
+                                            <li class="menu-item-has-children"><a href="#">預約服務</a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item-has-children"><a href="#">Page List One</a>
                                                         <ul class="sub-menu">
@@ -90,7 +98,7 @@
                                             </li>
 
                                             <li class="menu-item-has-children"><a
-                                                    href="shop-left-sidebar.html">客服中心</a>
+                                                    href="shop-left-sidebar.html">客服小天使</a>
                                                 <ul class="mega-menu four-column">
                                                     <li><a href="#">Shop Grid</a>
                                                         <ul>
@@ -146,13 +154,31 @@
                                                     <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
                                                         <a href="shop-left-sidebar.html" class="mb-0">
                                                             <img width="920" height="183"
-                                                                src="assets/img/banners/img-bottom-menu.webp"
+                                                                src="<%=request.getContextPath() %>/assets/img/banners/img-bottom-menu.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </li>
 
+                                            <li class="menu-item-has-children"><a href="blog-left-sidebar.html">關於我們</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                                                    <li><a href="blog-post-left-sidebar.html">Blog Post Left Sidebar</a>
+                                                    </li>
+                                                    <li><a href="blog-post-right-sidebar.html">Blog Post Right
+                                                            Sidebar</a></li>
+                                                    <li><a href="blog-post-image-format.html">Blog Post Image Format</a>
+                                                    </li>
+                                                    <li><a href="blog-post-image-gallery.html">Blog Post Image
+                                                            Gallery</a></li>
+                                                    <li><a href="blog-post-audio-format.html">Blog Post Audio Format</a>
+                                                    </li>
+                                                    <li><a href="blog-post-video-format.html">Blog Post Video Format</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
 
                                             <li><a href="contact.html">常見問題</a></li>
                                         </ul>
@@ -181,7 +207,7 @@
                                                             <div class="image">
                                                                 <a href="single-product.html">
                                                                     <img width="80" height="106"
-                                                                        src="assets/img/products/product-1-80x106.webp"
+                                                                        src="<%=request.getContextPath() %>/assets/img/products/product-1-80x106.webp"
                                                                         class="img-fluid" alt="">
                                                                 </a>
                                                             </div>
@@ -198,7 +224,7 @@
                                                             <div class="image">
                                                                 <a href="single-product.html">
                                                                     <img width="80" height="106"
-                                                                        src="assets/img/products/product-2-80x106.webp"
+                                                                        src="<%=request.getContextPath() %>/assets/img/products/product-2-80x106.webp"
                                                                         class="img-fluid" alt="">
                                                                 </a>
                                                             </div>
@@ -215,7 +241,7 @@
                                                             <div class="image">
                                                                 <a href="single-product.html">
                                                                     <img width="80" height="106"
-                                                                        src="assets/img/products/product-3-80x106.webp"
+                                                                        src="<%=request.getContextPath() %>/assets/img/products/product-3-80x106.webp"
                                                                         class="img-fluid" alt="">
                                                                 </a>
                                                             </div>
@@ -309,7 +335,7 @@
                                     <div class="col-6 col-md-6">
                                         <div class="header-logo">
                                             <a href="index.html">
-                                                <img width="93" height="25" src="assets/img/logo.webp" class="img-fluid"
+                                                <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid"
                                                     alt="">
                                             </a>
                                         </div>
@@ -378,62 +404,15 @@
                                 <div class="page-content-wrapper">
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
-											<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
-	                						   <form action="secure/update.controller" method="post">
-	                                                <div class="passwordInput">
-	                                                    <br>
-	                                                    <input class="oldP" name="oldPass" type="password" placeholder="舊密碼">
-	                                                    <br>
-	                                                    <input class="newP" name="newPass" type="password" placeholder="新密碼">
-	                                                    <br>
-	                                                    <input class="confirmP" name="confirm" type="password" placeholder="確認密碼">
-	                                                    <br>
-	                                                    <button class="sendNewPass" type="submit">確認送出</button>
-	                                                    <br>
-	                                                </div>                                           
-	                                            </form>
-	                                       </div>
-										   <div>
-                                            <form action="secure/editprofile.controller" method="post">
-                                                <div class="login-data-section">
-                                                	<div class="col-md-12 col-12">
-	                                                	<label>公司名稱 :</label>
-	                                                    <input name="editCompName" class="editCompName" type="text" disabled value=" ${CompName}">
-	                                                </div>
-	                                                    <br>
-	               
-	                                                <div class="col-md-12 col-12">
-	                                                    <label>負責人 :</label>
-	                                                    <input name="editChargePerson" class="editChargePerson" type="text" disabled value=" ${ChargePerson}">
-	                                                </div>	                                                    
-	                                                    <br>
-	                                                <div class="col-md-12 col-12">
-	                                                    <label>電子郵件 :</label>
-	                                                    <input name="editEmail" class="editEmail" type="text" disabled value=" ${email}">
-	                                                </div>
-	                                                    <br>
-	                                                <div class="col-md-12 col-12">
-	                                                    <label>公司電話 :</label>
-	                                                    <input name="editCompPhone" class="editCompPhone" type="text" disabled value=" ${CompPhone}">
-	                                                </div> 
-	                                                    <br>
-	                                                <div class="col-md-12 col-12">
-	                                                    <label>公司帳號 : </label>                                           
-	                                                    <input name="editCompAccount" class="editCompAccount" type="text" disabled value="${compAccount}">
-	                                                </div>
-	                                                    <br>
-	                                                <div class="col-md-12 col-12">
-	                                                    <label>公司地址 :</label>
-	                                                    <input name="editAddress" class="editAddress" type="text" disabled value=" ${Address}" >
-	                                                </div>
-	                                                    <br>
 
-                                                    <button type="button" class="changePassword" id="changePassword">更改密碼</button>
-                                                    <button type="button" class="changePersonalProfile">修改個人資料</button>
-                                                    <button type="submit" class="Edit">送出</button>
-                                                </div>
-                                            </form>
-                                                                                      
+                   							<h1>${changePasswordSucceed}</h1>
+
+                                            <li href="http://localhost:7080/tfa105g2-web/secure/comp-login-register.html">
+                                                回首頁</li>
+                   							
+                   							
+                   							
+                                            
 
                                             <!-- Login Form s-->
                                             <!-- <form action="login.controller" method="get">
@@ -472,7 +451,49 @@
 
                                     </form> -->
                                         </div>
-                                        
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                                            <!-- <form action="register.controller"> -->
+
+                                            <!-- <div class="login-form">
+                                            <h4 class="login-title">Register</h4>
+
+                                            <div class="row">
+                                                <div class="col-md-6 col-12 mb-20">
+                                                    <label>Company Account*</label>
+                                                    <input name="compAccount" type="text" placeholder="Company Account*">
+                                                </div>
+                                                <div class="col-md-6 col-12 mb-20">
+                                                    <label>Company Name</label>
+                                                    <input name="compName" type="text" placeholder="Company Name">
+                                                </div>
+                                                <div class="col-md-12 mb-20">
+                                                    <label>Email Address*</label>
+                                                    <input name="email" type="email" placeholder="Email Address">
+                                                </div>
+                                                <div class="chargePerson">
+                                                    <label>Charge Person</label>
+                                                    <input name="chargePerson" type="text" placeholder="Charge Person">
+                                                </div>
+                                                <div class="compPhone">
+                                                    <label>Company Phone</label>
+                                                    <input name="compPhone" type="text" placeholder="Company Phone">
+                                                </div>
+                                                <div class="col-md-6 mb-20">
+                                                    <label>Password*</label>
+                                                    <input name="password" type="password" placeholder="Password">
+                                                </div>
+                                                <div class="col-md-6 mb-20">
+                                                    <label>Confirm Password*</label>
+                                                    <input type="password" placeholder="Confirm Password">
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="register-button mt-0">Register</button>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                            <!-- </form> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -525,7 +546,7 @@
                                         <div class="row align-items-center no-gutters">
                                             <div class="col-lg-2 col-md-2">
                                                 <div class="footer-logo">
-                                                    <a href="#"><img width="93" height="25" src="assets/img/logo.webp"
+                                                    <a href="#"><img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp"
                                                             class="img-fluid" alt=""></a>
                                                 </div>
                                             </div>
@@ -688,10 +709,10 @@
                                     <li class="menu-item-has-children"><a href="#">LANGUAGE: EN-GB </a>
                                         <ul class="sub-menu">
                                             <li><a href="javascript:void(0)"><img width="16" height="11"
-                                                        src="assets/img/icons/en-gb.webp" alt="">
+                                                        src="<%=request.getContextPath() %>/assets/img/icons/en-gb.webp" alt="">
                                                     English</a></li>
                                             <li><a href="javascript:void(0)"><img width="16" height="11"
-                                                        src="assets/img/icons/de-de.webp" alt="">
+                                                        src="<%=request.getContextPath() %>/assets/img/icons/de-de.webp" alt="">
                                                     Germany</a></li>
                                         </ul>
                                     </li>
@@ -756,16 +777,7 @@
     =            JS files        =
     =============================================-->
 
-            <!-- Vendor JS -->
-            <script src="assets/js/vendors.js"></script>
-
-            <!-- Active JS -->
-            <script src="assets/js/active.js"></script>
-
-            <script src="assets/js/company.js"></script>
-
-
-            <!--=====  End of JS files ======-->
+       
         </body>
 
         </html>
