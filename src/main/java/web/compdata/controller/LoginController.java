@@ -46,7 +46,7 @@ public class LoginController {
 			session.setAttribute("compNo", cd.getCompNO());
 			session.setAttribute("Address", cd.getAddress());
 
-			return "redirect:/front-end/compData/loginSuccess.jsp";
+			return "redirect:/front-end/compData/comp-index.jsp";
 			
 		}
 

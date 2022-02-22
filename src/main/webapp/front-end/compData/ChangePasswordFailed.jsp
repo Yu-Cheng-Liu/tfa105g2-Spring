@@ -11,7 +11,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <!-- Favicon -->
             <link rel="icon" href="<%=request.getContextPath() %>/assets/img/favicon.ico">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
             <!--=============================================
     =            CSS  files       =
     =============================================-->
