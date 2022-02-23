@@ -19,8 +19,8 @@ public class OrderDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="order_no")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderNo;
+	@Id
 	@Column(name="prod_no")
 	private Integer prodNo ;
 	@Column(name="comp_no")

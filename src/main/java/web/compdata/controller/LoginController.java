@@ -31,7 +31,6 @@ public class LoginController {
 				model.addAttribute("errors", errors);
 				model.addAttribute("username", compAccount);
 				model.addAttribute("password", password);
-				
 				System.out.println(errors);
 			return "/front-end/compData/login-failed.jsp";
 		}
@@ -45,8 +44,11 @@ public class LoginController {
 			session.setAttribute("password", cd.getPassword());
 			session.setAttribute("compNo", cd.getCompNO());
 			session.setAttribute("address", cd.getAddress());
-
-			return "redirect:/front-end/compData/comp-index.jsp";
+			String classes = "show active";
+			model.addAttribute("classes1",classes);
+			String active = "class=\"active\"";
+			model.addAttribute("attrs2", active);
+			return "/front-end/compData/comp-index.jsp";
 			
 		}
 
