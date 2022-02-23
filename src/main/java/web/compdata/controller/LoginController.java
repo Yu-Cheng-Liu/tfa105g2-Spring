@@ -14,36 +14,40 @@ import web.compdata.entity.CompData;
 import web.compdata.service.CompDataServiceInterface;
 
 @Controller
-public class TestController {
+public class LoginController {
 	@Autowired
 	private CompDataServiceInterface service;
 
 	@RequestMapping(value="/secure/login.controller" , method= {RequestMethod.POST})
 	public String compData(String compAccount, String password, Model model, HttpSession session) {
 
-		Map<String, String> errors = service.getErrors();	
 
 		CompData cd = service.login(compAccount, password);
-		model.addAttribute("errors", errors);
+		Map<String, String> errors = service.getErrors();	
+		System.out.println(cd);
 		
-		if (errors.size() != 0) {
+		
+		if (cd==null) {
 				model.addAttribute("errors", errors);
 				model.addAttribute("username", compAccount);
 				model.addAttribute("password", password);
-			return "/login-failed.jsp";
+				
+				System.out.println(errors);
+			return "/front-end/compData/login-failed.jsp";
 		}
 
 		else {
-			session.setAttribute("CompName", cd.getCompName());
-			session.setAttribute("ChargePerson", cd.getChargePerson());
-			session.setAttribute("CompPhone", cd.getCompPhone());
+			session.setAttribute("compName", cd.getCompName());
+			session.setAttribute("chargePerson", cd.getChargePerson());
+			session.setAttribute("compPhone", cd.getCompPhone());
 			session.setAttribute("email", cd.getEmail());
 			session.setAttribute("compAccount", cd.getCompAccount());
 			session.setAttribute("password", cd.getPassword());
 			session.setAttribute("compNo", cd.getCompNO());
-			session.setAttribute("Address", cd.getAddress());
+			session.setAttribute("address", cd.getAddress());
 
-			return "redirect:/comp-login-register.jsp";
+			return "redirect:/front-end/compData/comp-index.jsp";
+			
 		}
 
 	}

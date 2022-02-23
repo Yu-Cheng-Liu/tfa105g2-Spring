@@ -6,12 +6,12 @@ $(function(){
         // $('.changePassword').toggleClass("hidden");
 	});
 
-    $('.changePersonalProfile').on('click',function(){
-        $('.editCompName').prop('disabled', false);
-        $('.editChargePerson').prop('disabled', false);
-        $('.editEmail').prop('disabled', false);
-        $('.editCompPhone').prop('disabled', false);
-        $('.editAddress').prop('disabled', false);
+    $('#changePersonalProfile').on('click',function(){
+        $('#compName').prop('disabled', false);
+        $('#chargePerson').prop('disabled', false);
+        $('#email').prop('disabled', false);
+        $('#compPhone').prop('disabled', false);
+        $('#address').prop('disabled', false);
     })
 
     $("input").on({
