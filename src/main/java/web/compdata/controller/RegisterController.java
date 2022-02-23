@@ -66,14 +66,14 @@ public class RegisterController {
 			return "/front-end/compData/register-failed.jsp";
 		}else {
 			session.setAttribute("RegisterSucceed", "註冊成功");
-			session.setAttribute("CompName",  cd.getCompName());
-			session.setAttribute("ChargePerson", cd.getChargePerson());
+			session.setAttribute("compName",  cd.getCompName());
+			session.setAttribute("chargePerson", cd.getChargePerson());
 			session.setAttribute("email", cd.getEmail());
-			session.setAttribute("CompPhone", cd.getCompPhone());
+			session.setAttribute("compPhone", cd.getCompPhone());
 			session.setAttribute("compAccount", cd.getCompAccount());
 			session.setAttribute("address", address);
 			
-			return "redirect:/front-end/compData/loginSuccess.jsp";
+			return "redirect:/front-end/compData/comp-index.jsp";
 		}
 	}
 }

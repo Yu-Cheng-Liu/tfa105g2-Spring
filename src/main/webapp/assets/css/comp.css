@@ -24,8 +24,7 @@
     margin-right: -30px;
 }
 
-.editCompName{
-    width: 100%;
+.editCompName , .editChargePerson , .editEmail , .editCompPhone, .editAddress , .editCompAccount {
     background-color: transparent;
     border: 1px solid #999999;
     border-radius: 0;
@@ -34,4 +33,13 @@
     font-size: 14px;
     color: #707070;
     margin-bottom: 15px;
+}
+
+.data-show-section{
+    flex: 0 0 auto;
+    width: 100%;
+}
+.fa-user:before{
+    font-size: 18px;
+    content:"\f007"
 }

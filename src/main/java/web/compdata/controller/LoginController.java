@@ -37,16 +37,16 @@ public class LoginController {
 		}
 
 		else {
-			session.setAttribute("CompName", cd.getCompName());
-			session.setAttribute("ChargePerson", cd.getChargePerson());
-			session.setAttribute("CompPhone", cd.getCompPhone());
+			session.setAttribute("compName", cd.getCompName());
+			session.setAttribute("chargePerson", cd.getChargePerson());
+			session.setAttribute("compPhone", cd.getCompPhone());
 			session.setAttribute("email", cd.getEmail());
 			session.setAttribute("compAccount", cd.getCompAccount());
 			session.setAttribute("password", cd.getPassword());
 			session.setAttribute("compNo", cd.getCompNO());
-			session.setAttribute("Address", cd.getAddress());
+			session.setAttribute("address", cd.getAddress());
 
-			return "redirect:/front-end/compData/loginSuccess.jsp";
+			return "redirect:/front-end/compData/comp-index.jsp";
 			
 		}
 

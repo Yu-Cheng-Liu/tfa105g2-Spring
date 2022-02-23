@@ -41,6 +41,7 @@
 <script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
 
 <script src="<%=request.getContextPath()%>/assets/js/company.js"></script>
+
 </head>
 
 <body>
@@ -62,7 +63,7 @@
 						<div class="navigation-menu-wrapper">
 							<nav>
 								<ul>
-									<li class="menu-item-has-children"><a href="index.html">祭祖商城</a>
+									<li class="menu-item-has-children"><a href="index.html">商城管理</a>
 										<ul class="sub-menu">
 											<li><a href="index.html">Home Shop 1</a></li>
 											<li><a href="index-2.html">Home Shop 2</a></li>
@@ -74,7 +75,7 @@
 											<li><a href="index-8.html">Home Shop 8</a></li>
 										</ul></li>
 
-									<li class="menu-item-has-children"><a href="#">預約服務</a>
+									<li class="menu-item-has-children"><a href="#">訂單管理</a>
 										<ul class="sub-menu">
 											<li class="menu-item-has-children"><a href="#">Page
 													List One</a>
@@ -100,7 +101,7 @@
 										</ul></li>
 
 									<li class="menu-item-has-children"><a
-										href="shop-left-sidebar.html">客服小天使</a>
+										href="shop-left-sidebar.html">客服中心</a>
 										<ul class="mega-menu four-column">
 											<li><a href="#">Shop Grid</a>
 												<ul>
@@ -155,26 +156,6 @@
 											</li>
 										</ul></li>
 
-									<li class="menu-item-has-children"><a
-										href="blog-left-sidebar.html">關於我們</a>
-										<ul class="sub-menu">
-											<li><a href="blog-left-sidebar.html">Blog Left
-													Sidebar</a></li>
-											<li><a href="blog-right-sidebar.html">Blog Right
-													Sidebar</a></li>
-											<li><a href="blog-post-left-sidebar.html">Blog Post
-													Left Sidebar</a></li>
-											<li><a href="blog-post-right-sidebar.html">Blog Post
-													Right Sidebar</a></li>
-											<li><a href="blog-post-image-format.html">Blog Post
-													Image Format</a></li>
-											<li><a href="blog-post-image-gallery.html">Blog Post
-													Image Gallery</a></li>
-											<li><a href="blog-post-audio-format.html">Blog Post
-													Audio Format</a></li>
-											<li><a href="blog-post-video-format.html">Blog Post
-													Video Format</a></li>
-										</ul></li>
 
 									<li><a href="contact.html">常見問題</a></li>
 								</ul>
@@ -398,12 +379,11 @@
 					<div class="page-wrapper">
 						<div class="page-content-wrapper">
 							<div class="row">
-								<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
-
+								<div class="data-show-section">
 									<form
 										action="<%=request.getContextPath()%>/secure/update.controller"
 										method="post">
-										<div class="passwordInput" hidden>
+										<div class="passwordInput">
 											<br> <input class="oldP" name="oldPass" type="password"
 												placeholder="舊密碼"> <br> <input class="newP"
 												name="newPass" type="password" placeholder="新密碼"> <br>
@@ -413,28 +393,47 @@
 											<br>
 										</div>
 									</form>
-
+								</div>
+								<div class="data-show-section">
 									<form
-										action="<%=request.getContextPath()%>/secure/editprofile.controller"
+										action="<%=request.getContextPath()%>/secure/editProfile.controller"
 										method="post">
 										<div class="login-data-section">
-											<label>公司名稱 :</label> <input name="editCompName"
-												class="editCompName" type="text" value=" ${CompName}">
-											<span style="color: red;">${errors.compName}</span> <br>
-											<br> <label>負責人 :</label> <input name="editChargePerson"
-												class="editChargePerson" type="text"
-												value=" ${ChargePerson}"> <span style="color: red;">${errors.chargePerson}</span>
-											<br> <br> <label>電子郵件 :</label> <input
-												name="editEmail" class="editEmail" type="text"
-												value=" ${email}"> <span style="color: red;">${errors.email}</span>
-											<br> <br> <label>公司電話 :</label> <input
-												name="editCompPhone" class="editCompPhone" type="text"
-												value=" ${CompPhone}"> <br> <br> <label>公司帳號
-												: </label> <input name="editCompAccount" class="editCompAccount"
-												type="text" value="${compAccount}"> <br> <br>
-											<label>公司地址 :</label> <input name="editAddress"
-												class="editAddress" type="text" value=" ${Address}">
-											<br> <br>
+											<div class="col-md-12 col-12">
+												<label>公司名稱 :</label> <input name="editCompName"
+													class="editCompName" type="text" disabled
+													value=" ${CompName}">
+											</div>
+											<br>
+
+											<div class="col-md-12 col-12">
+												<label>負責人 :</label> <input name="editChargePerson"
+													class="editChargePerson" type="text" disabled
+													value=" ${ChargePerson}">
+											</div>
+											<br>
+											<div class="col-md-12 col-12">
+												<label>電子郵件 :</label> <input name="editEmail"
+													class="editEmail" type="text" disabled value=" ${email}">
+											</div>
+											<br>
+											<div class="col-md-12 col-12">
+												<label>公司電話 :</label> <input name="editCompPhone"
+													class="editCompPhone" type="text" disabled
+													value=" ${CompPhone}">
+											</div>
+											<br>
+											<div class="col-md-12 col-12">
+												<label>公司帳號 : </label> <input name="editCompAccount"
+													class="editCompAccount" type="text" disabled
+													value="${compAccount}">
+											</div>
+											<br>
+											<div class="col-md-12 col-12">
+												<label>公司地址 :</label> <input name="editAddress"
+													class="editAddress" type="text" disabled value="${Address}">
+											</div>
+											<br>
 
 											<button type="button" class="changePassword"
 												id="changePassword">更改密碼</button>
@@ -442,7 +441,6 @@
 											<button type="submit" class="Edit">送出</button>
 										</div>
 									</form>
-
 
 
 									<!-- Login Form s-->
@@ -482,49 +480,7 @@
 
                                     </form> -->
 								</div>
-								<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-									<!-- <form action="register.controller"> -->
 
-									<!-- <div class="login-form">
-                                            <h4 class="login-title">Register</h4>
-
-                                            <div class="row">
-                                                <div class="col-md-6 col-12 mb-20">
-                                                    <label>Company Account*</label>
-                                                    <input name="compAccount" type="text" placeholder="Company Account*">
-                                                </div>
-                                                <div class="col-md-6 col-12 mb-20">
-                                                    <label>Company Name</label>
-                                                    <input name="compName" type="text" placeholder="Company Name">
-                                                </div>
-                                                <div class="col-md-12 mb-20">
-                                                    <label>Email Address*</label>
-                                                    <input name="email" type="email" placeholder="Email Address">
-                                                </div>
-                                                <div class="chargePerson">
-                                                    <label>Charge Person</label>
-                                                    <input name="chargePerson" type="text" placeholder="Charge Person">
-                                                </div>
-                                                <div class="compPhone">
-                                                    <label>Company Phone</label>
-                                                    <input name="compPhone" type="text" placeholder="Company Phone">
-                                                </div>
-                                                <div class="col-md-6 mb-20">
-                                                    <label>Password*</label>
-                                                    <input name="password" type="password" placeholder="Password">
-                                                </div>
-                                                <div class="col-md-6 mb-20">
-                                                    <label>Confirm Password*</label>
-                                                    <input type="password" placeholder="Confirm Password">
-                                                </div>
-                                                <div class="col-12">
-                                                    <button class="register-button mt-0">Register</button>
-                                                </div>
-                                            </div>
-                                        </div> -->
-
-									<!-- </form> -->
-								</div>
 							</div>
 						</div>
 					</div>

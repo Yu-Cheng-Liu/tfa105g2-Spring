@@ -21,7 +21,7 @@ public class CompDataDAO implements CompDataDAOInterface {
 		List<CompData> compData = (List<CompData>) session.createQuery(hql, CompData.class).list();
 
 		if (compData != null) {
-			System.out.println(compData);
+//			System.out.println(compData);
 			System.out.println("A ton of compDatas have been selected");
 		} else {
 			System.out.println("Failed to select");
@@ -37,7 +37,7 @@ public class CompDataDAO implements CompDataDAOInterface {
 		CompData cd = (CompData) session.createQuery(hql, CompData.class).setParameter("compAccount", compAccount)
 				.uniqueResult();
 		if (!compAccount.trim().equals("") && cd != null) {
-			System.out.println(cd);
+//			System.out.println(cd);
 			System.out.println("Select success");
 		} else {
 			System.out.println("Failed to select");
