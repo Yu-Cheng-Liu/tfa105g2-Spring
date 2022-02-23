@@ -103,21 +103,18 @@
 								</ul>
 							</nav>
 						</div>
+<%-- 								<li><a href="<%=request.getContextPath()%>/front-end/compData/comp-index.jsp" --%>
+<!-- 									id="comp-user-icon">  -->
+<!-- 									<i class="fa-solid fa-user"></i> -->
+<!-- 									</a></li> -->
 						<!-- header icon -->
 						<div class="header-icon-wrapper">
 							<ul class="icon-list">
-								<li><a
-									href="<%=request.getContextPath()%>/front-end/compData/loginSuccess.jsp"
-									id="comp-user-icon"> <i class="fa-solid fa-user">
-											<ul class="dropdown-menu">
-												<li><h6 class="dropdown-header">Dropdown header</h6></li>
-												<li><a class="dropdown-item" href="request.getContextPath()%>/front-end/compData/loginSuccess.jsp">密碼變更</a></li>
-												<li><a class="dropdown-item" href="#">個人資訊管理</a></li>
-											</ul>
-
-									</i>
-								</a></li>
-
+							
+<!-- 									<i class="fa-solid fa-user"	id="comp-user-icon"></i> -->
+										<a href="<%=request.getContextPath()%>/front-end/compData/comp-index.jsp" id="comp-user-icon">
+										<i class="fa-solid fa-user"></i>
+										</a>
 								<li>
 									<div class="header-cart-icon">
 										<a href="#" id="minicart-trigger"> <i class="ion-bag"></i>
@@ -287,43 +284,349 @@
 		</div>
 	</div>
 	<!--====================  End of header area  ====================-->
-	<!--====================  hero slider area ====================-->
 
+    <!--====================  breadcrumb area ====================-->
+    <div class="breadcrumb-area section-space--half">
+        <div class="container wide">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=======  breadcrumb wrpapper  =======-->
+                    <div class="breadcrumb-wrapper breadcrumb-bg">
+                        <!--=======  breadcrumb content  =======-->
+                        <div class="breadcrumb-content">
+                            <h2 class="breadcrumb-content__title">My Account</h2>
+                            <ul class="breadcrumb-content__page-map">
+                                <li><a href="index.html">Home</a></li>
+                                <li class="active">My Account</li>
+                            </ul>
+                        </div>
+                        <!--=======  End of breadcrumb content  =======-->
+                    </div>
+                    <!--=======  End of breadcrumb wrpapper  =======-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====================  End of breadcrumb area  ====================-->
+    <!--====================  page content area ====================-->
+    <div class="page-content-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=======  page wrapper  =======-->
+                    <div class="page-wrapper">
+                        <div class="page-content-wrapper">
+                            <div class="row">
+                                <!-- My Account Tab Menu Start -->
+                                <div class="col-lg-3 col-12">
+                                    <div class="myaccount-tab-menu nav" role="tablist">
+                                    
+                                        <a href="#account-info"  data-bs-toggle="tab"><i class="fa fa-user"></i>公司資訊管理</a>
+                                            
+                                        <a href="#dashboad" class="active" data-bs-toggle="tab"><i
+                                                class="fa fa-dashboard"></i>
+                                            帳戶大廳</a>
 
+                                        <a href="#orders" data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
+                                            訂單管理</a>
 
+                                        <a href="#download" data-bs-toggle="tab"><i class="fa fa-cloud-download"></i>
+                                            Download</a>
 
+                                        <a href="#payment-method" data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
+                                            Payment
+                                            Method</a>
 
+                                        <a href="#address-edit" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
+                                            address</a>
 
+                                        <a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp"><i class="fa fa-sign-out"></i> Logout</a>
+                                    </div>
+                                </div>
+                                <!-- My Account Tab Menu End -->
 
+                                <!-- My Account Tab Content Start -->
+                                <div class="col-lg-9 col-12">
+                                    <div class="tab-content" id="myaccountContent">
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>Dashboard</h3>
 
+                                                <div class="welcome mb-20">
+                                                    <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni
+                                                            !</strong><a href="login-register.html" class="logout">
+                                                            Logout</a>)</p>
+                                                </div>
 
+                                                <p class="mb-0">From your account dashboard. you can easily check &amp;
+                                                    view your
+                                                    recent orders, manage your shipping and billing addresses and edit
+                                                    your
+                                                    password and account details.</p>
+                                            </div>
+                                        </div>
+                                        <!-- Single Tab Content End -->
 
+                                        <!-- Single Tab Content Start -->
+												<!--  Order Details -->
+                                        <div class="tab-pane fade" id="orders" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>Orders</h3>
 
+                                                <div class="myaccount-table table-responsive text-center">
+                                                    <table class="table table-bordered">
+                                                    <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get">
+                                                        <thead class="thead-light">
+                                                            <tr>
+                                                                <th>訂單編號</th>
+                                                                <th>產品編號</th>
+                                                                <th>廠商編號</th>
+                                                                <th>產品名稱</th>
+                                                                <th>產品數量</th>
+                                                                <th>價格</th>
+                                                            </tr>
+                                                        </thead>
 
+                                                        <tbody>
+                                                        	<c:forEach var="orderDetail" items="${list}">
+                                                        		 <td>1</td> -->
+	                                                                <td>${orderNo}</td>
+	                                                                <td>${prodNo}</td>
+	                                                                <td>${compNo}</td>
+	                                                                <td>${prodName}</td>
+	                                                                <td>${prodAmount}</td>
+	                                                                <td>${prodPrice}</td>
+	                                                                <td><a href="cart.html" class="btn">View</a></td>
+                                                        	</c:forEach>
+                                                        
+                                                        </tbody>
+                                                       
+                                                    </table>
+                                                    
+                                                    		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢
+                                                    			<input type="hidden" value="getListByCompNo"></input>	
+                                                    	</form>
+                                                    		</button>
+                                                    		
+<!--                                                             <tr> -->
+<!--                                                                 <td>1</td> -->
+<!--                                                                 <td>Mostarizing Oil</td> -->
+<!--                                                                 <td>Aug 22, 2018</td> -->
+<!--                                                                 <td>Pending</td> -->
+<!--                                                                 <td>$45</td> -->
+<!--                                                                 <td><a href="cart.html" class="btn">View</a></td> -->
+<!--                                                             </tr> -->
+<!--                                                             <tr> -->
+<!--                                                                 <td>2</td> -->
+<!--                                                                 <td>Katopeno Altuni</td> -->
+<!--                                                                 <td>July 22, 2018</td> -->
+<!--                                                                 <td>Approved</td> -->
+<!--                                                                 <td>$100</td> -->
+<!--                                                                 <td><a href="cart.html" class="btn">View</a></td> -->
+<!--                                                             </tr> -->
+<!--                                                             <tr> -->
+<!--                                                                 <td>3</td> -->
+<!--                                                                 <td>Murikhete Paris</td> -->
+<!--                                                                 <td>June 12, 2017</td> -->
+<!--                                                                 <td>On Hold</td> -->
+<!--                                                                 <td>$99</td> -->
+<!--                                                                 <td><a href="cart.html" class="btn">View</a></td> -->
+<!--                                                             </tr> -->
+                                                        
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Single Tab Content End -->
 
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade" id="download" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>Downloads</h3>
 
+                                                <div class="myaccount-table table-responsive text-center">
+                                                    <table class="table table-bordered">
+                                                        <thead class="thead-light">
+                                                            <tr>
+                                                                <th>Product</th>
+                                                                <th>Date</th>
+                                                                <th>Expire</th>
+                                                                <th>Download</th>
+                                                            </tr>
+                                                        </thead>
 
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Mostarizing Oil</td>
+                                                                <td>Aug 22, 2018</td>
+                                                                <td>Yes</td>
+                                                                <td><a href="#" class="btn">Download File</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Katopeno Altuni</td>
+                                                                <td>Sep 12, 2018</td>
+                                                                <td>Never</td>
+                                                                <td><a href="#" class="btn">Download File</a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Single Tab Content End -->
 
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade" id="payment-method" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>Payment Method</h3>
 
+                                                <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
+                                            </div>
+                                        </div>
+                                        <!-- Single Tab Content End -->
 
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade" id="address-edit" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>Billing Address</h3>
 
+                                                <address>
+                                                    <p><strong>Alex Tuntuni</strong></p>
+                                                    <p>1355 Market St, Suite 900 <br>
+                                                        San Francisco, CA 94103</p>
+                                                    <p>Mobile: (123) 456-7890</p>
+                                                </address>
 
+                                                <a href="#" class="btn d-inline-block edit-address-btn"><i
+                                                        class="fa fa-edit"></i>Edit Address</a>
+                                            </div>
+                                        </div>
+                                        <!-- Single Tab Content End -->
 
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>帳戶資訊</h3>
 
+                                                <div class="account-details-form">
+                                                        <div class="row">
+                                                        <form action = "<%=request.getContextPath()%>/secure/editProfile.controller" method="POST">
+                                                        <h2>${EditPersonalProfileSucceed}</h2>
+                                                        
+	                                                            <div class="col-lg-6 col-12"> 公司名稱
+	                                                                <input id="compName" placeholder="公司名稱" name="compName"
+	                                                                    value="${compName}" type="text" disabled>
+	                                                                    <span style="color: red;">${errors.compName}</span> <br>
+	                                                            </div>
+	
+	                                                            <div class="col-lg-6 col-12"> 公司負責人
+	                                                                <input id="chargePerson" placeholder="公司負責人" name="chargePerson"
+	                                                                     value="${chargePerson}" type="text" disabled>
+	                                                                      <span style="color: red;">${errors.chargePerson}</span>
+	                                                            </div>
+	                                                            
+	                                                            <div class="col-12"> 電子郵件
+	                                                                <input id="email" placeholder="電子郵件" name="email"
+	                                                                     value="${email}" type="email" disabled>
+	                                                                     <span style="color: red;">${errors.email}</span>
+	                                                            </div>
+	
+	                                                           <div class="col-12"> 公司地址
+	                                                                <input id="address" placeholder="公司地址" name="address"
+	                                                                     value="${address}" type="text" disabled>
+	                                                            </div>
+	                                                            
+	                                                           <div class="col-12"> 公司電話
+	                                                                <input id="compPhone" placeholder="公司電話" name="compPhone"
+	                                                                     value="${compPhone}" type="text" disabled>
+	                                                            </div>
+	                                                            
+	                                                           <div class="col-12"> 公司統編
+	                                                                <input id="compAccount" placeholder="公司統編" name="compAccount"
+	                                                                     value="${compAccount}" type="text" disabled> 
+	                                                            </div>
+	                                                            
+	                                                            <button type = "button" id="changePersonalProfile" class="save-change-btn"> 變更資料 </button>
+	                                                            <button type = "submit" id="compAccountSubmit" class="save-change-btn"> 送出 </button>
+														</form>
+														<form action="<%=request.getContextPath()%>/secure/changePass.controller">
+                                                            <div class="col-12 mb-2">
+                                                                <h4>密碼變更</h4>
+                                                                <span style="color: red;">${changePasswordSucceed}</span>
+                                                            </div>
 
+                                                            <div class="col-12">
+                                                                <input id="oldPass" placeholder="目前密碼" name="oldPass"
+                                                                    type="password">
+                                                                  <span style="color: red;">${errors.oldPass}</span>  
+                                                            </div>
 
+                                                            <div class="col-lg-6 col-12">
+                                                                <input id="newPass" placeholder="新密碼" name="newPass"
+                                                                    type="password">
+                                                                    <span style="color: red;">${errors.newPass}</span>
+                                                            </div>
 
+                                                            <div class="col-lg-6 col-12">
+                                                                <input id="confirm" placeholder="確認密碼" name="confirm"
+                                                                    type="password">
+                                                                    <span style="color: red;">${errors.samePass}</span>
+                                                            </div>
 
+                                                            <div class="col-12">
+                                                                <button class="save-change-btn">送出</button>
+                                                            </div>
 
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Single Tab Content End -->
+                                    </div>
+                                </div>
+                                <!-- My Account Tab Content End -->
+                            </div>
+                        </div>
+                    </div>
+                    <!--=======  End of page wrapper  =======-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====================  End of page content area  ====================-->
+    <!--====================  newsletter area ====================-->
+    <div class="newsletter-area section-space--inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="newsletter-wrapper">
+                        <p class="small-text">Special Ofers For Subscribers</p>
+                        <h3 class="title">Ten Percent Member Discount</h3>
+                        <p class="short-desc">Subscribe to our newsletters now and stay up to date with new collections,
+                            the latest lookbooks and exclusive offers.</p>
 
+                        <div class="newsletter-form">
+                            <form id="mc-form" class="mc-form">
+                                <input type="email" placeholder="Enter Your Email Address Here..." required>
+                                <button type="submit" value="submit">SUBSCRIBE</button>
+                            </form>
 
-
-
-
-
-
-
-	<!--====================  End of newsletter area  ====================-->
+                        </div>
+                        <!-- mailchimp-alerts Start -->
+                        <div class="mailchimp-alerts">
+                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                        </div>
+                        <!-- mailchimp-alerts end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====================  End of newsletter area  ====================-->
 	<!--====================  footer area ====================-->
 	<div class="footer-area">
 		<div class="footer-copyright">

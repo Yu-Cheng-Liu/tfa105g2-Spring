@@ -107,14 +107,17 @@ public class OrderDetailService implements OrderDetailServiceInterface {
 	public List <OrderDetail> selectByProdNo(Integer prodNo) {
 		if(prodNo==null) {
 			errors.put("prodNo", "商品編號不可為空值");
+			System.out.println("商品編號不可為空值");
 			return null;
 		}
 		List<OrderDetail>odList = oddaoi.selectByProdNo(prodNo);
 		
 		if(odList.size()==0) {
 			errors.put("prodNo", "查無資料");
+			System.out.println("查無資料");
 			return null;
 		}else {
+			System.out.println(odList);
 			return odList;
 		}	
 	}

@@ -38,7 +38,7 @@ public class CompDataService implements CompDataServiceInterface {
 //			System.out.println("input pass :" +password);
 //			System.out.println("original Pass" + pass);
 			if (password.equals(pass)) {
-				System.out.println("Login succeed");
+//				System.out.println("Login succeed");
 				return cd;
 			} else {
 				errors.put("password", "密碼錯誤");
@@ -49,8 +49,8 @@ public class CompDataService implements CompDataServiceInterface {
 			errors.put("password", "登入失敗請檢查輸入內容");
 			return null;
 		}
-		System.out.println(cd);
-		System.out.println(errors);
+//		System.out.println(cd);
+//		System.out.println(errors);
 		return null;
 
 	}
@@ -136,8 +136,8 @@ public class CompDataService implements CompDataServiceInterface {
 		errors= new HashMap<String, String>();
 
 		CompData check = compDataDAOi.select(cd.getCompAccount());
-		System.out.println(check);
-		System.out.println(errors);
+//		System.out.println(check);
+//		System.out.println(errors);
 		if (check != null) {
 			errors.put("compAccount", "帳號已被使用");
 		}else {
