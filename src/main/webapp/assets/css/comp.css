@@ -43,3 +43,12 @@
     font-size: 18px;
     content:"\f007"
 }
+
+select{
+	height: 44px;
+    margin: 3%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
