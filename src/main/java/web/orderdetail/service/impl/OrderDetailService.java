@@ -14,9 +14,7 @@ import web.orderdetail.service.OrderDetailServiceInterface;
 
 
 
-//import model.DAO.CompDataDAO;
-//import model.hibernate.HibernateUtil;
-//import model.service.CompDataService;
+
 @Service
 @Transactional
 public class OrderDetailService implements OrderDetailServiceInterface {

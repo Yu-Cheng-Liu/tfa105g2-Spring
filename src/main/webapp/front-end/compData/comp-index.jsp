@@ -109,15 +109,10 @@
 								</ul>
 							</nav>
 						</div>
-<%-- 								<li><a href="<%=request.getContextPath()%>/front-end/compData/comp-index.jsp" --%>
-<!-- 									id="comp-user-icon">  -->
-<!-- 									<i class="fa-solid fa-user"></i> -->
-<!-- 									</a></li> -->
 						<!-- header icon -->
 						<div class="header-icon-wrapper">
 							<ul class="icon-list">
 							
-<!-- 									<i class="fa-solid fa-user"	id="comp-user-icon"></i> -->
 										<a href="<%=request.getContextPath()%>/front-end/compData/comp-index.jsp" id="comp-user-icon">
 										<i class="fa-solid fa-user"></i>
 										</a>
@@ -327,23 +322,23 @@
                                 <div class="col-lg-3 col-12">
                                     <div class="myaccount-tab-menu nav" role="tablist">
                                     
-                                        <a href="#account-info"  data-bs-toggle="tab"><i class="fa fa-user"></i>公司資訊管理</a>
+                                        <a href="#account-info" ${attrs1} data-bs-toggle="tab"><i class="fa fa-user"></i>公司資訊管理</a>
                                             
-                                        <a href="#dashboad" class="active" data-bs-toggle="tab"><i
+                                        <a href="#dashboad" ${attrs2}  data-bs-toggle="tab"><i
                                                 class="fa fa-dashboard"></i>
                                             帳戶大廳</a>
 
-                                        <a href="#orders" data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
-                                            訂單管理</a>
+                                        <a href="#orders" ${attrs3} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
+                                            訂單總覽</a>
+                                            
+                                        <a href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
+                                            商品管理</a>
 
-                                        <a href="#download" data-bs-toggle="tab"><i class="fa fa-cloud-download"></i>
-                                            Download</a>
-
-                                        <a href="#payment-method" data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
+                                        <a href="#payment-method" ${attrs5} data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
                                             Payment
                                             Method</a>
 
-                                        <a href="#address-edit" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
+                                        <a href="#address-edit" ${attrs6} data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
                                             address</a>
 
                                         <a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp"><i class="fa fa-sign-out"></i> Logout</a>
@@ -355,7 +350,7 @@
                                 <div class="col-lg-9 col-12">
                                     <div class="tab-content" id="myaccountContent">
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                        <div class="tab-pane fade ${classes1}" id="dashboad" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>Dashboard</h3>
 
@@ -376,13 +371,13 @@
 
                                         <!-- Single Tab Content Start -->
 												<!--  Order Details -->
-                                        <div class="tab-pane fade" id="orders" role="tabpanel">
+                                        <div class="tab-pane fade ${classes2} " id="orders" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>Orders</h3>
+                                                <h3>訂單總覽</h3>
 
                                                 <div class="myaccount-table table-responsive text-center">
-                                                    <table class="table table-bordered">
                                                     <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get">
+                                                    <table class="table table-bordered">
                                                         <thead class="thead-light">
                                                             <tr>
                                                                 <th>訂單編號</th>
@@ -394,96 +389,79 @@
                                                             </tr>
                                                         </thead>
 
+                                                        	<c:forEach var="OrderDetail" items="${list}">
                                                         <tbody>
-                                                        	<c:forEach var="orderDetail" items="${list}">
-                                                        		 <td>1</td> -->
-	                                                                <td>${orderNo}</td>
-	                                                                <td>${prodNo}</td>
-	                                                                <td>${compNo}</td>
-	                                                                <td>${prodName}</td>
-	                                                                <td>${prodAmount}</td>
-	                                                                <td>${prodPrice}</td>
-	                                                                <td><a href="cart.html" class="btn">View</a></td>
-                                                        	</c:forEach>
+	                                                                <td>${OrderDetail.orderNo}</td>
+	                                                                <td>${OrderDetail.prodNo}</td>
+	                                                                <td>${OrderDetail.compNO}</td>
+	                                                                <td>${OrderDetail.prodName}</td>
+	                                                                <td>${OrderDetail.prodAmount}</td>
+	                                                                <td>${OrderDetail.prodPrice}</td>
                                                         
                                                         </tbody>
+                                                        	</c:forEach>
                                                        
                                                     </table>
                                                     
                                                     		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢
-                                                    			<input type="hidden" value="getListByCompNo"></input>	
-                                                    	</form>
+                                                    			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	
                                                     		</button>
-                                                    		
-<!--                                                             <tr> -->
-<!--                                                                 <td>1</td> -->
-<!--                                                                 <td>Mostarizing Oil</td> -->
-<!--                                                                 <td>Aug 22, 2018</td> -->
-<!--                                                                 <td>Pending</td> -->
-<!--                                                                 <td>$45</td> -->
-<!--                                                                 <td><a href="cart.html" class="btn">View</a></td> -->
-<!--                                                             </tr> -->
-<!--                                                             <tr> -->
-<!--                                                                 <td>2</td> -->
-<!--                                                                 <td>Katopeno Altuni</td> -->
-<!--                                                                 <td>July 22, 2018</td> -->
-<!--                                                                 <td>Approved</td> -->
-<!--                                                                 <td>$100</td> -->
-<!--                                                                 <td><a href="cart.html" class="btn">View</a></td> -->
-<!--                                                             </tr> -->
-<!--                                                             <tr> -->
-<!--                                                                 <td>3</td> -->
-<!--                                                                 <td>Murikhete Paris</td> -->
-<!--                                                                 <td>June 12, 2017</td> -->
-<!--                                                                 <td>On Hold</td> -->
-<!--                                                                 <td>$99</td> -->
-<!--                                                                 <td><a href="cart.html" class="btn">View</a></td> -->
-<!--                                                             </tr> -->
-                                                        
+                                                    	</form>
                                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
+                                        
+                                        
+                                        
+<!--                                         Single Tab Content Start -->
+<!-- 												 Order Details -->
+<%--                                         <div class="tab-pane fade ${classes3} " id="product-management" role="tabpanel"> --%>
+<!--                                             <div class="myaccount-content"> -->
+<!--                                                 <h3>訂單總覽</h3> -->
+
+<!--                                                 <div class="myaccount-table table-responsive text-center"> -->
+<%--                                                     <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get"> --%>
+<!--                                                     <table class="table table-bordered"> -->
+<!--                                                         <thead class="thead-light"> -->
+<!--                                                             <tr> -->
+<!--                                                                 <th>訂單編號</th> -->
+<!--                                                                 <th>產品編號</th> -->
+<!--                                                                 <th>廠商編號</th> -->
+<!--                                                                 <th>產品名稱</th> -->
+<!--                                                                 <th>產品數量</th> -->
+<!--                                                                 <th>價格</th> -->
+<!--                                                             </tr> -->
+<!--                                                         </thead> -->
+
+<%--                                                         	<c:forEach var="OrderDetail" items="${list}"> --%>
+<!--                                                         <tbody> -->
+<%-- 	                                                                <td>${OrderDetail.orderNo}</td> --%>
+<%-- 	                                                                <td>${OrderDetail.prodNo}</td> --%>
+<%-- 	                                                                <td>${OrderDetail.compNO}</td> --%>
+<%-- 	                                                                <td>${OrderDetail.prodName}</td> --%>
+<%-- 	                                                                <td>${OrderDetail.prodAmount}</td> --%>
+<%-- 	                                                                <td>${OrderDetail.prodPrice}</td> --%>
+                                                        
+<!--                                                         </tbody> -->
+<%--                                                         	</c:forEach> --%>
+                                                       
+<!--                                                     </table> -->
+                                                    
+<!--                                                     		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢 -->
+<!--                                                     			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	 -->
+<!--                                                     		</button> -->
+<!--                                                     	</form> -->
+                                                   
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                         Single Tab Content End -->
+
 
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade" id="download" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>Downloads</h3>
-
-                                                <div class="myaccount-table table-responsive text-center">
-                                                    <table class="table table-bordered">
-                                                        <thead class="thead-light">
-                                                            <tr>
-                                                                <th>Product</th>
-                                                                <th>Date</th>
-                                                                <th>Expire</th>
-                                                                <th>Download</th>
-                                                            </tr>
-                                                        </thead>
-
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Mostarizing Oil</td>
-                                                                <td>Aug 22, 2018</td>
-                                                                <td>Yes</td>
-                                                                <td><a href="#" class="btn">Download File</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Katopeno Altuni</td>
-                                                                <td>Sep 12, 2018</td>
-                                                                <td>Never</td>
-                                                                <td><a href="#" class="btn">Download File</a></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single Tab Content End -->
-
-                                        <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade" id="payment-method" role="tabpanel">
+                                        <div class="tab-pane fade ${classes4}" id="payment-method" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>Payment Method</h3>
 
@@ -493,7 +471,7 @@
                                         <!-- Single Tab Content End -->
 
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade" id="address-edit" role="tabpanel">
+                                        <div class="tab-pane fade ${classes5}" id="address-edit" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>Billing Address</h3>
 
@@ -511,7 +489,7 @@
                                         <!-- Single Tab Content End -->
 
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                        <div class="tab-pane fade ${classes6}" id="account-info" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>帳戶資訊</h3>
 

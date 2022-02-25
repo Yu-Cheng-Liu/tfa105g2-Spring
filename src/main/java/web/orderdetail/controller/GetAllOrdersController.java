@@ -19,22 +19,32 @@ public class GetAllOrdersController {
 	private OrderDetailServiceInterface odsi;
 
 	@GetMapping("/secure/getAllOrders.controller")
-	public String OrderDetails(String getListByCompNo, String select, Model model, HttpSession session) {
+	public String OrderDetails(String getListByCompNo, Model model, HttpSession session) {
 		
 		System.out.println(getListByCompNo);
-		if ("getListByCompNo".equals(getListByCompNo)) {
-			String attribute = (String) session.getAttribute("compNo");
+		if (",getListByCompNo".equals(getListByCompNo)) {
+			Integer attribute = (Integer) session.getAttribute("compNo");
+			System.out.println(attribute);
+			
+			String classes = "show active";
+//			Integer compNo = Integer.parseInt(attribute);
 
-			Integer compNo = Integer.parseInt(attribute);
-
-			List<OrderDetail> selects = (List<OrderDetail>) odsi.selectWithCompNo(compNo);
+			List<OrderDetail> selects = (List<OrderDetail>) odsi.selectWithCompNo(attribute);
 			Map<String, String> errors = odsi.getErrors();
+			
+			System.out.println(selects);
 
 			if (errors.size() != 0) {
 				model.addAttribute("errors", errors);
+				model.addAttribute("classes2",classes);
+				String active = "class=\"active\"";
+				model.addAttribute("attrs3", active);
 				return "/front-end/compData/comp-index.jsp";
 			} else {
 				model.addAttribute("list", selects);
+				model.addAttribute("classes2",classes);
+				String active = "class=\"active\"";
+				model.addAttribute("attrs3", active);
 				return "/front-end/compData/comp-index.jsp";
 			}
 

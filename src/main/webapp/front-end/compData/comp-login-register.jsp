@@ -24,6 +24,8 @@
 	href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
 	rel="stylesheet">
 
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js"></script>
 
 <!-- Vendor CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/vendors.css"
@@ -31,12 +33,21 @@
 <!-- Main CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/style.css"
 	rel="stylesheet">
+	
+<script src="<%=request.getContextPath()%>/assets/js/company.js"></script>
 
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/comp.css">
+	
 
 
+<<<<<<< HEAD
+=======
+
+  
+  
+>>>>>>> Michael
 <style>
  *{
     color: black;
@@ -311,33 +322,32 @@
 										method="POST">
 
 										<div class="login-form">
-											<h4 class="login-title">Login</h4>
+											<h4 class="login-title">廠商登入</h4>
 
 											<div class="row">
 												<div class="col-md-12 col-12">
-													<label>Company Account*</label> <input name="compAccount"
-														type="text" placeholder="Company Account*">
+													<label>廠商統編*</label> <input name="compAccount"
+														type="text" placeholder="廠商統編*">
 												</div>
 												<div class="col-12">
-													<label>Password*</label> <input name="password"
-														type="password" placeholder="Password*">
+													<label>密碼*</label> <input name="password"
+														type="password" placeholder="密碼">
 												</div>
 												<div class="col-sm-6">
 
 													<div class="check-box d-inline-block ml-0 ml-md-2">
 														<input type="checkbox" id="remember_me"> <label
-															for="remember_me">Remember me</label>
+															for="remember_me">記住我</label>
 													</div>
 
 												</div>
 
 												<div class="col-sm-6 text-start text-sm-end">
-													<a href="#" class="forget-pass-link"> Forgotten
-														pasward?</a>
+													<a href="#" class="forget-pass-link">忘記密碼?</a>
 												</div>
 
 												<div class="col-md-12">
-													<button type="submit" class="register-button" value="Login">Login</button>
+													<button type="submit" class="register-button" value="Login">登入</button>
 												</div>
 
 											</div>
@@ -351,44 +361,66 @@
 										method="POST">
 
 										<div class="login-form">
-											<h4 class="login-title">Register</h4>
+											<h4 class="login-title">廠商註冊</h4>
 
 											<div class="row">
 												<div class="col-md-6 col-12 mb-20">
-													<label>Company Account*</label> <input name="compAccount"
-														type="text" placeholder="Company Account*">
+													<label>廠商統編*</label> <input name="compAccount"
+														type="text" placeholder="廠商統編*" value="${RcompAccount}">
+														<span style="color: red;">${errors.compAccount}</span>
 												</div>
 												<div class="col-md-6 col-12 mb-20">
-													<label>Company Name*</label> <input name="compName"
-														type="text" placeholder="Company Name">
+													<label>廠商名稱*</label> <input name="compName" value="${RcompName}"
+														type="text" placeholder="廠商名稱" >
+														<span style="color: red;">${errors.compName}</span>
 												</div>
 												<div class="col-md-12 mb-20">
-													<label>Email Address*</label> <input name="email"
-														type="email" placeholder="Email Address">
+													<label>電子郵件*</label> <input name="email" value="${Remail}"
+														type="email" placeholder="電子郵件">
+														<span style="color: red;">${errors.email}</span>
 												</div>
-												<div class="chargePerson">
-													<label>Charge Person</label> <input name="chargePerson"
-														type="text" placeholder="Charge Person">
+												<div class="col-md-6 col-12 mb-20">
+													<label>負責人</label> <input name="chargePerson" value="${RchargePerson}"
+														type="text" placeholder="負責人">
+												</div>
+<!-- 												<div class="col-md-12 mb-20"> -->
+<%-- 													<label>地址</label> <input name="address" type="text" value="${Raddress}" --%>
+<!-- 														placeholder="地址"> -->
+<!-- 												</div> -->
+												<div class="col-md-6 col-12 mb-20">
+													<label>地址</label>
+														<div  id="twzipcode_ADV">
+														<script>
+														$("#twzipcode_ADV").twzipcode({
+															zipcodeIntoDistrict: true, // 郵遞區號自動顯示在地區
+															css: ["city form-control", "town form-control"], // 自訂 "城市"、"地區" class 名稱 
+															countyName: "city", // 自訂城市 select 標籤的 name 值
+															districtName: "town" // 自訂地區 select 標籤的 name 值
+														});
+														</script>	
+														</div>
 												</div>
 												<div class="col-md-12 mb-20">
-													<label>Address</label> <input name="address" type="text"
-														placeholder="Address">
+													<label>地址</label> <input name="address" type="text" value="${Raddress}"
+														placeholder="地址">
 												</div>
-												<div class="compPhone">
-													<label>Company Phone</label> <input name="compPhone"
-														type="text" placeholder="Company Phone">
-												</div>
-												<div class="col-md-6 mb-20">
-													<label>Password*</label> <input name="password"
-														type="password" placeholder="Password">
+												
+												
+												<div class="col-md-12 mb-20">
+													<label>廠商電話</label> <input name="compPhone" value="${RcompPhone}" type="text" placeholder="廠商電話">
 												</div>
 												<div class="col-md-6 mb-20">
-													<label>Confirm Password*</label> <input
+													<label>密碼*</label> <input name="password" 
+														type="password" placeholder="密碼">
+														<span style="color: red;">${errors.password}</span>
+												</div>
+												<div class="col-md-6 mb-20">
+													<label>確認密碼*</label> <input
 														name="confirmPassword" type="password"
-														placeholder="Confirm Password">
+														placeholder="確認密碼">
 												</div>
 												<div class="col-12">
-													<button type="submit" class="register-button mt-0">Register</button>
+													<button type="submit" class="register-button mt-0">註冊</button>
 												</div>
 											</div>
 										</div>
@@ -717,7 +749,6 @@
 	<!-- Active JS -->
 	<script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
 
-	<script src="<%=request.getContextPath()%>/assets/js/company.js"></script>
 
 
 	<!--=====  End of JS files ======-->

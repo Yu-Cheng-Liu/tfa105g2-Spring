@@ -28,21 +28,16 @@ public class RegisterController {
 						String compPhone ,
 						String password , 
 						String confirmPassword ,
+						String city,
+						String town,
 						String address,
 						Model model ,
 						HttpSession session) {
 		
-		System.out.println(compAccount);
-		System.out.println(compName);
-		System.out.println(chargePerson);
-		System.out.println(compPhone);
-		System.out.println(password);
-		System.out.println(confirmPassword);
-		System.out.println(address);
-		
+		String Address = city+town+address;
 		
 		CompData attrs  = new CompData();
-		attrs.setAddress(address);
+		attrs.setAddress(Address);
 		attrs.setChargePerson(chargePerson);
 		attrs.setCompAccount(compAccount);
 		attrs.setCompName(compName);
@@ -58,13 +53,13 @@ public class RegisterController {
 			System.out.println(cd);
 			System.out.println(errors);
 			model.addAttribute("errors",errors);
-			model.addAttribute("compAccount",compAccount);
-			model.addAttribute("compName",compName);
-			model.addAttribute("email",email);
-			model.addAttribute("chargePerson",chargePerson);
-			model.addAttribute("compPhone",compPhone);
-			model.addAttribute("address",address);
-			return "/front-end/compData/register-failed.jsp";
+			model.addAttribute("RcompAccount",compAccount);
+			model.addAttribute("RcompName",compName);
+			model.addAttribute("Remail",email);
+			model.addAttribute("RchargePerson",chargePerson);
+			model.addAttribute("RcompPhone",compPhone);
+			model.addAttribute("Raddress",address);
+			return "/front-end/compData/comp-login-register.jsp";
 		}else {
 			session.setAttribute("RegisterSucceed", "註冊成功");
 			session.setAttribute("compName",  cd.getCompName());
@@ -72,7 +67,7 @@ public class RegisterController {
 			session.setAttribute("email", cd.getEmail());
 			session.setAttribute("compPhone", cd.getCompPhone());
 			session.setAttribute("compAccount", cd.getCompAccount());
-			session.setAttribute("address", address);
+			session.setAttribute("address", cd.getAddress());
 			
 			SendMail sendMail = new SendMail(cd.getEmail(),"安安你好","請在頁面上輸入驗證碼");
 			
