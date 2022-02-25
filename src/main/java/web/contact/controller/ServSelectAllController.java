@@ -32,8 +32,8 @@ public class ServSelectAllController {
 				return session;
 			} else {
 				session.setAttribute("successful", true);
-				session.setAttribute("errors", null);
 				session.setAttribute("result", list);
+				session.setAttribute("errors", null);
 				return session;
 			}
 		}

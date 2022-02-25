@@ -10,13 +10,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class CommonUtil {
-	private static final Logger logger = LogManager.getLogger(CommonUtil.class);
 	
 	public static <T> T getBean(ServletContext sc, Class<T> clazz) {
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(sc);
@@ -27,7 +24,7 @@ public class CommonUtil {
 		try (BufferedReader br = request.getReader()) {
 			return GSON.fromJson(br, classOfPojo);
 		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -37,7 +34,7 @@ public class CommonUtil {
 		try (PrintWriter pw = response.getWriter()) {
 			pw.print(GSON.toJson(pojo));
 		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
+			e.printStackTrace();
 		}
 	}
 }

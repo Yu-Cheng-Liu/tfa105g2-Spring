@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import web.compdata.entity.CompData;
 import web.compdata.service.CompDataServiceInterface;
+import web.tools.SendMail;
 
 @Controller
 public class RegisterController {
@@ -72,6 +73,9 @@ public class RegisterController {
 			session.setAttribute("compPhone", cd.getCompPhone());
 			session.setAttribute("compAccount", cd.getCompAccount());
 			session.setAttribute("address", address);
+			
+			SendMail sendMail = new SendMail(cd.getEmail(),"安安你好","請在頁面上輸入驗證碼");
+			
 			
 			return "redirect:/front-end/compData/comp-index.jsp";
 		}

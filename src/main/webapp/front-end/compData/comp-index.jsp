@@ -48,6 +48,12 @@
 	href="<%=request.getContextPath()%>/assets/css/comp.css">
 
 
+<style>
+ *{
+    color: black;
+ }
+</style>
+
 </head>
 
 <body>
