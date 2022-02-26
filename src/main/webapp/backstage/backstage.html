@@ -10,16 +10,25 @@
     <!-- FontAwesome 連結-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- BookStrap 連結-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- axios 連結 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- 表格套件 -->
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" href=" https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap.min.js"></script>
     <!-- js 連結-->
     <script src="js/backstage.js"></script>
     <!-- css 連結-->
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -37,7 +46,6 @@
                 </div>
                 <!-- List 列表 -->
                 <ul class="list-unstyled">
-
                     <li>
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#member"
                             aria-selected="false">會員管理<i class="fas fa-user"></i></a>
@@ -61,7 +69,8 @@
                         <ul id="sublist" class="list-unstyled collapse">
                             <li>
                                 <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#service"
-                                    aria-selected="false">表單回覆<i class="fas fa-reply"></i></a>
+                                    aria-selected="false" onclick="selectAllServiceData();">表單回覆<i
+                                        class="fas fa-reply"></i></a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#chat"
@@ -99,8 +108,8 @@
                     </div>
                     <!-- 管理員登入按鈕 -->
                     <div class="login">
-                        <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><i
-                                class="fas fa-user"> 管理員登入</i></a>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-user">
+                                管理員登入</i></a>
                     </div>
                     <!-- 管理員頭像 -->
                     <!-- <div class="manager dropdown">
@@ -136,10 +145,7 @@
                         <h3>測試4</h3>
                         <img src="img/Rick.png" alt="">
                     </div>
-                    <div class="tab-pane fade" id="service" role="tabpanel">
-                        <h3>測試5</h3>
-                        <img src="img/Rick.png" alt="">
-                    </div>
+                    <div class="tab-pane fade" id="service" role="tabpanel"></div>
                     <div class="tab-pane fade" id="chat" role="tabpanel">
                         <h3>測試6</h3>
                         <img src="img/Rick.png" alt="">
@@ -194,6 +200,63 @@
             </div>
         </div>
     </div>
+
+    <!-- 意見內容彈窗 -->
+    <div class="modal fade" id="content">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <h3>意見內容</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" style="padding-top: 10px;"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body" height="400px">
+                    <form>
+                        <div class="form-group">
+                            <textarea style="height:180px; width:100%; resize:none;" readonly></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 寄信彈窗 -->
+    <div class="modal fade" id="sendMail">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <h3>意見回覆</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body">
+                    <form id="sendMailForm" method="post" onsubmit="sendMail(); return false;">
+                        <input type="hidden" id="taskNoForMail">
+                        <div class="form-group">
+                            收件人：<input type="text" id="recipient" name="recipient" class="email form-control">
+                        </div>
+
+                        <div class="form-group">
+                            主旨：<input type="text" id="subject" class="subject form-control">
+                        </div>
+
+                        <div class="form-group">
+                            內文：<textarea type="text" id="replyContent" class="content form-control"
+                                style="height: 200px;"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info" style="margin-top: 10px;">送出</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
