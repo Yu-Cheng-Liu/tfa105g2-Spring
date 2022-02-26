@@ -46,7 +46,7 @@ public class ServiceDAO implements ServiceDAOInterface {
 			ServiceBean temp = session.get(ServiceBean.class, serviceBean.getTaskNo());
 			if (temp != null) {
 				temp.setReplyCode(2);
-				temp.setReplyDateTime(serviceBean.getReplyDateTime());
+				temp.setReplyDateTime(new Date());
 				return (ServiceBean) session.merge(temp);
 			}
 		}
