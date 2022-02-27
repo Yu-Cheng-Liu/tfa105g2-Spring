@@ -278,21 +278,18 @@
     <h1>預約資訊</h1>
   <table>
 	<tr>
-		<th>預約編號</th>
+		
 		<th>塔位編號</th>
 		<th>使用者編號</th>
-		<th>預約日期</th>
-		<th>訂單編號</th>
-		<th>備註</th>
+		<th>往者姓名</th>
+		
 	</tr>
 
 		<tr>
-			<td>${bookingNo}</td>
 			<td>${towerNo}</td>
 			<td>${userNo}</td>
-		<td><fmt:formatDate value="${reserveDate}" pattern="yyyy-MM-dd"/></td>
-			<td>${orderNo}</td>
-			<td>${remark}</td> 
+			<td>${deadName}</td>
+		
 		</tr>
 </table>
     <!--====================  End of page content area  ====================-->
