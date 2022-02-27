@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="icon" href="../webapp/assets/img/favicon.ico">
+    <link rel="icon" href="<%=request.getContextPath() %>/webapp/assets/img/favicon.ico">
 
     <!--=============================================
     =            CSS  files       =
@@ -215,7 +215,7 @@
                             <div class="col-6 col-md-6">
                                 <div class="header-logo">
                                     <a href="index.html">
-                                        <img width="93" height="25" src="../assets/img/logo.webp" class="img-fluid" alt="">
+                                        <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -455,19 +455,19 @@
                 {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
             ]'>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-1.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-1.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-2.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-2.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-3.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-3.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-4.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-4.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="../assets/img/products/big1-5.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-5.webp" class="img-fluid" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -495,19 +495,19 @@
             {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
         ]'>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-1.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-1.webp" class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-2.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-2.webp" class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-3.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-3.webp" class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-4.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-4.webp" class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="../assets/img/products/big1-5.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-5.webp" class="img-fluid" alt="">
                                             </div>
                                         </div>
                                     </div>

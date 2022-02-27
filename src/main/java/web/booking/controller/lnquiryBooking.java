@@ -1,7 +1,7 @@
 package web.booking.controller;
 
 import java.text.DateFormat;
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -22,10 +22,7 @@ import web.booking.service.BookingService;
 public class lnquiryBooking{
 	@Autowired
 	private BookingService service;
-	
-	
-	
-
+		
 	@RequestMapping(value="/front-end/booking/inquirybooking.controller",method= {RequestMethod.GET})
 	public String lnquirybooking(String bookingion,String reserveDate,String towerNo,Model model,HttpSession session) {
 		

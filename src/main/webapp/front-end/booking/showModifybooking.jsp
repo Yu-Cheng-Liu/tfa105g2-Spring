@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -278,7 +279,6 @@
     <h1>預約成功</h1>
      <form action="modifybooking.controller">
   <table>
-<%--   	<c:forEach var="bookingVO" items="${select}"> --%>
 	<tr>
 		<th>預約編號</th>
 		<th>塔位編號</th>
@@ -296,7 +296,6 @@
 			<td>${select.orderNo}</td>
 			<td>${select.remark}</td> 
 		</tr>
-<!-- 		</c:forEach> -->
 </table>
 <!--   <button name="cancelbookingion" type="submit" class="cancelbookingion" value="delect">送出資料</button>  -->
     </form>
