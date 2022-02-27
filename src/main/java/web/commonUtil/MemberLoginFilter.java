@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = { "/front-end/memberData/*" }) //待確認
+@WebFilter(urlPatterns = { "/front-end/memberData/my-account-member.jsp" }) //待確認
 public class MemberLoginFilter implements Filter {
 
 	@Override

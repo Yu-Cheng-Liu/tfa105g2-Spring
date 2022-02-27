@@ -298,10 +298,7 @@
                                                     <label>userNo*</label>
                                                     <input name="userNo" type="text" placeholder="userNo*">
                                                 </div>
-                                                <div class="col-12">
-                                                    <label>userNo*</label>
-                                                    <input name="userNo" type="text" placeholder="userNo*">
-                                                </div>
+                                                
                                                <div class="col-12">
                                                     <label>deadName*</label>
                                                     <input name="deadName" type="text" placeholder="deadName*">
