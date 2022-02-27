@@ -41,21 +41,23 @@
 }
 
 .breadcrumb-bg {
-	background-image: url("./assets/img/backgrounds/test4.jpg");
+	background-image: url("<%=request.getContextPath()%>/images/test4.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
-}
+} 
 
-<!--
-Login Title -->.login-title {
+
+
+<!-- Login Title -->
+.login-title {
 	font-size: 18px;
 	line-height: 0px;
 	text-decoration: none;
 }
 
-<!--
-Login Form -->.login-form label {
+<!-- Login Form -->
+.login-form label {
 	margin-bottom: 5px;
 	font-weight: 550;
 }
