@@ -22,9 +22,9 @@ public class BookingServiceImpl implements BookingService {
 //		
 //		BookingService bookingService=
 //			new BookingService(session);
-//////		BookingVO bv = new BookingVO();
-//////		bv.setTowerNo(100);
-//////		bv.setReserveDate(Date.valueOf(LocalDate.now()));
+////		BookingVO bv = new BookingVO();
+////		bv.setTowerNo(100);
+////		bv.setReserveDate(Date.valueOf(LocalDate.now()));
 //		List <BookingVO> select = bookingService.selectAll(100);
 //		System.out.println("selects="+select);
 //		
@@ -58,9 +58,7 @@ public class BookingServiceImpl implements BookingService {
 			if(result!=null) {
 				return result;
 			}
-		}else {
-//			result=bookingDao.select();
-			System.out.println("eo4");
+		} else {
 			return null;
 		}
 		return null;

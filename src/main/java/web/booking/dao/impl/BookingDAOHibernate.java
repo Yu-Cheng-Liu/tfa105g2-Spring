@@ -85,15 +85,7 @@ public  class BookingDAOHibernate implements BookingDAO{
 		}else {
 			System.out.println("select failed");
 		}
-//		if(bean.getTowerNo()!=null) {
-//			BookingVO temp=bkdao.select(bean.getTowerNo()) ;
-//			if(temp!=null) {
-//				temp.setReserveDate(bean.getReserveDate());
-//				temp.setRemark(bean.getRemark());
-//				getSession().save(temp);
-//				return temp;
-//			}
-//		}
+
 		return null;
 	}
 

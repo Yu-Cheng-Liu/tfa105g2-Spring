@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
         <!DOCTYPE html>
         <html class="no-js" lang="zxx">
 <head>
@@ -11,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
+    <link rel="icon" href="../webapp/assets/img/favicon.ico">
 
     <!--=============================================
     =            CSS  files       =
@@ -28,6 +27,7 @@
     <!-- Main CSS -->
     <link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
      <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/booking.css">
+     
 </head>
 
 <body>
@@ -103,7 +103,7 @@
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
                                                         <a href="single-product.html">
-                                                            <img width="80" height="106" src="<%=request.getContextPath()%>/assets/img/products/product-1-80x106.webp"
+                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-1-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
@@ -274,27 +274,57 @@
     </div>
     <!--====================  End of breadcrumb area  ====================-->
     <!--====================  page content area ====================-->
-    
-    <h1>預約資訊</h1>
-  <table>
-	<tr>
-		<th>預約編號</th>
-		<th>塔位編號</th>
-		<th>使用者編號</th>
-		<th>預約日期</th>
-		<th>訂單編號</th>
-		<th>備註</th>
-	</tr>
+    <div class="page-content-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=======  page wrapper  =======-->
+                    <div class="page-wrapper">
+                        <div class="page-content-wrapper">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
+                                    <!-- Login Form s-->
+                                    <form action="tower.controller" method="GET">
 
-		<tr>
-			<td>${bookingNo}</td>
-			<td>${towerNo}</td>
-			<td>${userNo}</td>
-		<td><fmt:formatDate value="${reserveDate}" pattern="yyyy-MM-dd"/></td>
-			<td>${orderNo}</td>
-			<td>${remark}</td> 
-		</tr>
-</table>
+                                        <div class="login-form">
+                                            <h4 class="login-title">查詢預約</h4>
+
+                                            <div class="row">
+                                                <div class="col-md-12 col-12">
+                                                    <label>towerNo*</label>
+                                                    <input name="towerNo" type="text" placeholder="towerNo*">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label>userNo*</label>
+                                                    <input name="userNo" type="text" placeholder="userNo*">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label>userNo*</label>
+                                                    <input name="userNo" type="text" placeholder="userNo*">
+                                                </div>
+                                               <div class="col-12">
+                                                    <label>deadName*</label>
+                                                    <input name="deadName" type="text" placeholder="deadName*">
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <button name = "towerion" type="submit" class="towerion" value="insert">查詢預約</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </form>
+                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--=======  End of page wrapper  =======-->
+                </div>
+            </div>
+        </div>
+    </div>
     <!--====================  End of page content area  ====================-->
     
    <!--====================  footer area ====================-->
@@ -432,19 +462,19 @@
                 {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
             ]'>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-1.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="../assets/img/products/big1-1.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-2.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="../assets/img/products/big1-2.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-3.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="../assets/img/products/big1-3.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-4.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="../assets/img/products/big1-4.webp" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-5.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="../assets/img/products/big1-5.webp" class="img-fluid" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -567,7 +597,8 @@
 
     <!-- Active JS -->
     <script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
-  <script src="<%=request.getContextPath()%>/assets/js/booking.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/booking.js"></script>
+
     <!--=====  End of JS files ======-->
 
 </body>
