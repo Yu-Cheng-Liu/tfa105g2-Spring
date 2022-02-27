@@ -26,7 +26,8 @@ function sendMail() {
         "subject": $("#subject").val(),
         "replyContent": $("#replyContent").val()
     };
-
+    $("#subject").val("");
+    $("#replyContent").val("");
     send = JSON.stringify(send);
 
     axios({
@@ -35,7 +36,8 @@ function sendMail() {
         data: send,
         headers: { "Content-Type": "application/json" },
     }).then(res => {
-        selectAllServiceData();
+            alert("信件已成功寄出!!");
+            selectAllServiceData();
     }).catch((error) => console.log(error));
 
 }
@@ -77,13 +79,37 @@ function selectAllServiceData() {
                             <input type="hidden" value="${data}">`
                         }
                     },
-                    { data: 'replyCode', title: "回覆狀態" },
-                    { data: 'replyDateTime', title: "回覆時間", defaultContent: "" },
+                    { 
+                        data: 'replyCode', title: "回覆狀態" ,
+                        render: function (data){
+                            if("1" ==  data){
+                                return "待回覆"
+                            }else{
+                                return "已回覆"
+                            }
+                        }
+                    },
+                    { 
+                        data: 'replyDateTime', title: "回覆時間", defaultContent: "",
+                        render: function (data){
+                            if(data == null || data == ""){
+                                return ""
+                            }else{
+                                let date = new Date(data);
+                                moment.locale("zh-tw"); 
+                                return moment(date).format('L LT');
+                            }
+                        }
+                    },
                     {
                         data: `email`, title: "操作功能",
-                        render: function (data) {
+                        render: function (data, type,  row) {
+                            if(Object.values(row)[4] == "1"){
                             return `<a href="" data-bs-toggle="modal" data-bs-target="#sendMail" style="color: black;">回覆</a>
                             <input type="hidden" value="${data}">`
+                            }else{
+                                return `<a href="javascript:return false;" style="color: gray;">已回覆</a>`
+                            }
                         }
                     }
                 ]
