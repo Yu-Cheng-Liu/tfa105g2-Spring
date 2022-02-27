@@ -29,9 +29,9 @@ public class ChangePasswordController {
 		if (trueOrFalse == false) {
 			model.addAttribute("errors", errors);
 			
-			model.addAttribute("classes1", classes);
+			model.addAttribute("classes6", classes);
 			
-			model.addAttribute("attrs2", active);
+			model.addAttribute("attrs1", active);
 			return "/front-end/compData/comp-index.jsp";
 		} else {
 			model.addAttribute("changePasswordSucceed", "更改密碼成功");

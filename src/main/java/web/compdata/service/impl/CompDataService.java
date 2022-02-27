@@ -19,6 +19,8 @@ public class CompDataService implements CompDataServiceInterface {
 
 	@Autowired
 	private CompDataDAOInterface compDataDAOi;
+	
+	String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{8,}";
 
 	public Map<String, String> getErrors() {
 		return errors;
@@ -71,6 +73,9 @@ public class CompDataService implements CompDataServiceInterface {
 			}
 			if (newpass.equals(oldpass.trim())) {
 				errors.put("samePass", "密碼未更改");
+			}
+			if(!newpass.equals(passwordRegex)) {
+				errors.put("newpass", "密碼至少8個字,並包含小寫及數字");
 			}
 			if ("".equals(oldpass.trim())) {
 				errors.put("oldPass", "舊密碼不可為空白");
@@ -131,7 +136,7 @@ public class CompDataService implements CompDataServiceInterface {
 
 //==================================================Register=========================================================	
 	public CompData Register(CompData cd) {
-		String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{8,}";
+		
 		
 		errors= new HashMap<String, String>();
 
