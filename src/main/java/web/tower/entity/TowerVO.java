@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "TOWER_DATA")
+@Table(name = "tower_data")
 public class TowerVO {
 	@Id
 	@Column(name="tower_no")
