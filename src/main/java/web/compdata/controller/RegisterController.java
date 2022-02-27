@@ -45,7 +45,6 @@ public class RegisterController {
 		attrs.setEmail(email);
 		attrs.setPassword(password);
 		
-		
 		CompData cd = service.Register(attrs);
 		Map<String , String > errors = service.getErrors();
 		
@@ -68,6 +67,7 @@ public class RegisterController {
 			session.setAttribute("compPhone", cd.getCompPhone());
 			session.setAttribute("compAccount", cd.getCompAccount());
 			session.setAttribute("address", cd.getAddress());
+		
 			
 			SendMail sendMail = new SendMail(cd.getEmail(),"安安你好","請在頁面上輸入驗證碼");
 			

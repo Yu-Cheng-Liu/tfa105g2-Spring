@@ -46,7 +46,8 @@ public class EditPersonalDataController {
 		System.out.println(attrs);
 		boolean succeedOrNot = service.editPersonalProfile(attrs);
 		Map<String,String> errors = service.getErrors();
-		
+		String classes = "show active";
+		String active = "class=\"active\"";
 		if(succeedOrNot == false) {
 			
 			model.addAttribute("CompName",compName);
@@ -55,10 +56,13 @@ public class EditPersonalDataController {
 			model.addAttribute("CompPhone" , compPhone);
 			model.addAttribute("Address" , address);
 			model.addAttribute("errors",errors);
-			
+			model.addAttribute("classes1",classes);
+			model.addAttribute("attrs2", active);
 			return "/front-end/compData/comp-index.jsp";
 		}else {
 			model.addAttribute("EditPersonalProfileSucceed", "編輯帳戶資料成功");
+			model.addAttribute("classes1",classes);
+			model.addAttribute("attrs2", active);			
 			return "/front-end/compData/comp-index.jsp";
 		}
 		

@@ -17,33 +17,29 @@ import web.compdata.service.CompDataServiceInterface;
 public class ChangePasswordController {
 	@Autowired
 	private CompDataServiceInterface service;
-	
-	@RequestMapping(value="/secure/changePass.controller" , method= {RequestMethod.POST , RequestMethod.GET})
-	public String changePassword(
-								 String oldPass,
-								 String newPass,
-								 String confirm,
-								 Model model,
-								 HttpSession session) {
-		
+
+	@RequestMapping(value = "/secure/changePass.controller", method = { RequestMethod.POST, RequestMethod.GET })
+	public String changePassword(String oldPass, String newPass, String confirm, Model model, HttpSession session) {
+
 		String compAccount = (String) session.getAttribute("compAccount");
 		boolean trueOrFalse = service.changePassword(compAccount, oldPass, newPass, confirm);
-		Map<String,String> errors = service.getErrors();
-		
-		if(trueOrFalse == false) {
+		Map<String, String> errors = service.getErrors();
+		String classes = "show active";
+		String active = "class=\"active\"";
+		if (trueOrFalse == false) {
 			model.addAttribute("errors", errors);
+			
+			model.addAttribute("classes1", classes);
+			
+			model.addAttribute("attrs2", active);
 			return "/front-end/compData/comp-index.jsp";
-		}else {			 
-			 model.addAttribute("changePasswordSucceed", "更改密碼成功");
-			 return "/front-end/compData/comp-index.jsp";
+		} else {
+			model.addAttribute("changePasswordSucceed", "更改密碼成功");
+			model.addAttribute("classes1", classes);
+			model.addAttribute("attrs2", active);
+			return "/front-end/compData/comp-index.jsp";
 		}
-		
-		
-		
-		
-		
-		
-		
+
 	}
 
 }
