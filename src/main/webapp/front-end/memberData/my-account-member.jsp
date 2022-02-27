@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Eposi - Multipurpose eCommerce Bootstrap5 Template</title>
+<title>會員中心 | 龘虤</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -28,9 +28,15 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS -->
-<link href="assets/css/vendors.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/vendors.css"
+	rel="stylesheet">
 <!-- Main CSS -->
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/style.css"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/assets/css/member.css">
+	
 <style>
 .account-details-form h4 {
 	margin-top: 30px;
