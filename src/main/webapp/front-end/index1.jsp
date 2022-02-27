@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -11,7 +13,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="icon" href="<%=request.getContextPath() %>/assets/img/favicon.ico">
+    <link rel="icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 
     <!--=============================================
     =            CSS  files       =
@@ -19,15 +21,22 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <link href="<%=request.getContextPath() %>/assets/css/vendors.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/assets/css/vendors.css" rel="stylesheet">
     <!-- Main CSS -->
-    <link href="<%=request.getContextPath() %>/assets/css/style.css" rel="stylesheet">
-    
-    
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/comp.css">
+    <link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
+
+    <!-- JQuery 連結-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/chat.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/chatStyle.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/typing.css">
 
 
 </head>
@@ -42,55 +51,43 @@
                     <div class="header-wrapper d-none d-lg-flex">
                         <!-- logo -->
                         <div class="logo">
-                            <a href="index.html">
-                                <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
+                            <a href="index.jsp">
+                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <!-- menu wrapper -->
                         <div class="navigation-menu-wrapper">
                             <nav>
                                 <ul>
-                                    <li class="menu-item-has-children"><a href="index.html">祭祖商城</a>
+                                    <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
-                                            <li><a href="shop-list-left-sidebar.html">shop List Left Sidebar</a>
-                                            </li>
-                                            <li><a href="single-product-affiliate.html">Single Product
-                                                affiliate</a></li>
-                                          
+                                            <li><a href="${pageContext.request.contextPath}/AllProductServlet?action=selectAll">商品總覽</a></li>
+                                            <li><a href="cart.jsp">購物車</a></li>
                                         </ul>
                                     </li>
 
                                     <li class="menu-item-has-children"><a href="#">預約服務</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog-post-video-format.html">法會直播</a></li>
-                                               
-                                            </li>
-                                            <li><a href="blog-post-audio-format.html">預約祭祀</a></li>
-                                               
-                                            </li>
+                                            <li><a href="blog-post-video-format.jsp">法會直播</a></li>
+                                            <li><a href="blog-post-audio-format.jsp">預約祭祀</a></li>
                                             <li><a href="menu-item-has-children">線上祭祀</a></li>
-                                          
-                                               
-                                            </li>
                                         </ul>
                                     </li>
 
-
-                                    <li class="menu-item-has-children"><a href="blog-left-sidebar.html">客服中心</a>
+                                    <li class="menu-item-has-children"><a href="#">客服中心</a>
                                         <ul class="sub-menu">
-                                            <li><a href="contact.html">Contact</a></li>
-                                          
+                                            <li><a href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
                                         </ul>
                                     </li>
 
-                                    <li><a href="faq.html">常見問題</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
                                 </ul>
                             </nav>
                         </div>
                         <!-- header icon -->
                         <div class="header-icon-wrapper">
                             <ul class="icon-list">
-                                
                                 <li>
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
@@ -104,13 +101,14 @@
                                                     <a href="javascript:void(0)" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
-                                                        <a href="single-product.html">
-                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-1-80x106.webp"
+                                                        <a href="single-product.jsp">
+                                                            <img width="80" height="106"
+                                                                src="<%=request.getContextPath()%>/assets/img/products/product-1-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="content">
-                                                        <p class="product-title"><a href="single-product.html">Cillum
+                                                        <p class="product-title"><a href="single-product.jsp">Cillum
                                                                 dolore furniture</a></p>
                                                         <p class="count"><span>1 x </span> $402</p>
                                                     </div>
@@ -119,13 +117,14 @@
                                                     <a href="javascript:void(0)" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
-                                                        <a href="single-product.html">
-                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-2-80x106.webp"
+                                                        <a href="single-product.jsp">
+                                                            <img width="80" height="106"
+                                                                src="<%=request.getContextPath()%>/assets/img/products/product-2-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="content">
-                                                        <p class="product-title"><a href="single-product.html">Lorem
+                                                        <p class="product-title"><a href="single-product.jsp">Lorem
                                                                 ipsum furniture</a></p>
                                                         <p class="count"><span>1 x </span> $500</p>
                                                     </div>
@@ -134,13 +133,14 @@
                                                     <a href="javascript:void(0)" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
-                                                        <a href="single-product.html">
-                                                            <img width="80" height="106" src="<%=request.getContextPath() %>/assets/img/products/product-3-80x106.webp"
+                                                        <a href="single-product.jsp">
+                                                            <img width="80" height="106"
+                                                                src="<%=request.getContextPath()%>/assets/img/products/product-3-80x106.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="content">
-                                                        <p class="product-title"><a href="single-product.html">Cillum
+                                                        <p class="product-title"><a href="single-product.jsp">Cillum
                                                                 dolore tool</a></p>
                                                         <p class="count"><span>1 x </span> $607</p>
                                                     </div>
@@ -169,8 +169,8 @@
                                                 </table>
                                             </div>
                                             <div class="cart-buttons">
-                                                <a href="cart.html">VIEW CART</a>
-                                                <a href="checkout.html">CHECKOUT</a>
+                                                <a href="cart.jsp">VIEW CART</a>
+                                                <a href="checkout.jsp">CHECKOUT</a>
                                             </div>
                                         </div>
                                     </div>
@@ -189,27 +189,133 @@
                                         <!-- settings menu -->
                                         <div class="settings-menu-wrapper" id="settings-menu-wrapper">
                                             <div class="single-settings-block">
-                                                <h4 class="title">會員專區</h4>
+                                                <h4 class="title">一般用戶 </h4>
                                                 <ul>
-                                                    <li><a href="login-register.html">會員登入</a></li>
-                                                    <li><a href="login-register.html">會員註冊</a></li>
+                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
+                                                  
                                                 </ul>
                                             </div>
                                             <div class="single-settings-block">
-                                                <h4 class="title">廠商專區</h4>
+                                                <h4 class="title">廠商專區 </h4>
                                                 <ul>
-                                                    <li><a href="<%=request.getContextPath() %>/front-end/compData/comp-login-register.jsp">廠商登入</a></li>
-                                                    <li><a href="<%=request.getContextPath() %>/front-end/compData/comp-login-register.jsp">廠商註冊</a></li>
+                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
+                                                    
                                                 </ul>
                                             </div>
-                                           </div>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <!--=======  End of header wrapper  =======-->
-
+                    <div class="hero-slider-area section-space">
+                        <div class="container wide">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <!--=======  hero slider wrapper  =======-->
+                
+                                    <div class="hero-slider-wrapper">
+                                        <div class="ht-slick-slider" data-slick-setting='{
+                                        "slidesToShow": 1,
+                                        "slidesToScroll": 1,
+                                        "arrows": true,
+                                        "dots": true,
+                                        "autoplay": true,
+                                        "autoplaySpeed": 5000,
+                                        "speed": 1000,
+                                        "fade": true,
+                                        "infinite": true,
+                                        "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
+                                        "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
+                                    }' data-slick-responsive='[
+                                        {"breakpoint":1501, "settings": {"slidesToShow": 1} },
+                                        {"breakpoint":1199, "settings": {"slidesToShow": 1, "arrows": false} },
+                                        {"breakpoint":991, "settings": {"slidesToShow": 1, "arrows": false} },
+                                        {"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false} },
+                                        {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false} },
+                                        {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
+                                    ]'>
+                
+                                            <!--=======  single slider item  =======-->
+                
+                                            <div class="single-slider-item">
+                                                <div class="hero-slider-item-wrapper hero-slider-bg-1">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="hero-slider-content hero-slider-content--left-space">
+                                                                    <p class="slider-title slider-title--big-light">歡迎光臨
+                                                                    </p>
+                                                                    <p class="slider-title slider-title--big-bold">龘虤</p>
+                                                                    <p class="slider-title slider-title--small">生命禮儀服務</p>
+                                                                    <a class="hero-slider-button" href="shop-left-sidebar.jsp"> <i
+                                                                            class="ion-ios-plus-empty"></i> SHOP NOW</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <!--=======  End of single slider item  =======-->
+                
+                                            <!--=======  single slider item  =======-->
+                
+                                            <div class="single-slider-item">
+                                                <div class="hero-slider-item-wrapper hero-slider-bg-2">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="hero-slider-content hero-slider-content--left-space">
+                                                                    <p class="slider-title slider-title--big-light">歡迎光臨
+                                                                    </p>
+                                                                    <p class="slider-title slider-title--big-bold">龘虤</p>
+                                                                    <p class="slider-title slider-title--small">生命禮儀服務</p>
+                                                                    <a class="hero-slider-button" href="shop-left-sidebar.jsp"> <i
+                                                                            class="ion-ios-plus-empty"></i> SHOP NOW</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <!--=======  End of single slider item  =======-->
+                
+                                            <!--=======  single slider item  =======-->
+                
+                                            <div class="single-slider-item">
+                                                <div class="hero-slider-item-wrapper hero-slider-bg-3">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="hero-slider-content hero-slider-content--left-space">
+                                                                    <p class="slider-title slider-title--big-light">歡迎蒞臨
+                                                                    </p>
+                                                                    <p class="slider-title slider-title--big-bold">龘虤生命事業</p>
+                                                                    <p class="slider-title slider-title--small">專業誠信為您服務</p>
+                                                                    <a class="theme-button hero-slider-button"
+                                                                        href="shop-left-sidebar.jsp"> <i class="ion-ios-plus-empty"></i>
+                                                                        SHOP NOW</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <!--=======  End of single slider item  =======-->
+                
+                                        </div>
+                                    </div>
+                
+                                    <!--=======  End of hero slider wrapper  =======-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
                     <!--=======  mobile navigation area  =======-->
 
                     <div class="header-mobile-navigation d-block d-lg-none">
@@ -217,7 +323,7 @@
                             <div class="col-6 col-md-6">
                                 <div class="header-logo">
                                     <a href="index.html">
-                                        <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
+                                        <img width="93" height="25" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg" class="img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -227,7 +333,7 @@
                                         <ul class="icon-list justify-content-end">
                                             <li>
                                                 <div class="header-cart-icon">
-                                                    <a href="cart.html">
+                                                    <a href="cart.jsp">
                                                         <i class="ion-bag"></i>
                                                         <span class="counter">3</span>
                                                     </a>
@@ -251,9 +357,8 @@
         </div>
     </div>
     <!--====================  End of header area  ====================-->
-    <!--====================  hero slider area ====================-->
-
-    
+  
+                              
     <!--====================  End of newsletter area  ====================-->
     <!--====================  footer area ====================-->
     <div class="footer-area">
@@ -266,13 +371,15 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt=""></a>
+                                            <a href="#"><img width="100" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg"
+                                                    class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-7 col-md-5">
 
                                         <div class="copyright-text">
+
                                             Copyright &copy; 2021 <a href="#">Eposi</a>. All Rights Reserved.
                                         </div>
                                     </div>
@@ -305,29 +412,53 @@
         <div class="offcanvas-wrapper">
 
             <div class="offcanvas-inner-content">
-             
-
                 <nav class="offcanvas-navigation">
                     <ul>
-                        <li class="menu-item-has-children"><a href="#">會員登入</a>
+                        <li class="menu-item-has-children"><a href="index.html">祭祖商城</a>
                             <ul class="sub-menu">
-                                <li><a href="login-register.html">Register</a></li>
-                                <li><a href="login-register.html">Login</a></li>
-                                
+                                <li><a href="shop-list-left-sidebar.jsp">商品總攬</a></li>
+                                <li><a href="cart.jsp">購物車</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children"><a href="#">廠商登入</a>
-                            <ul class="sub-menu">
-                                <li><a href="login-register.html">Register</a></li>
-                                <li><a href="login-register.html">Login</a></li>
-                                   
-                                    </ul>
-                                </li>
-                                
 
+                        <li class="menu-item-has-children"><a href="#">預約服務</a>
+                            <ul class="sub-menu">
+                                <li><a href="blog-post-video-format.jsp">法會直播</a></li>
+                                <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+                                <li><a href="menu-item-has-children">線上祭祀</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item-has-children"><a href="#">客服中心</a>
+                            <ul class="sub-menu">
+                                <li><a href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
+                                <li><a href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
                     </ul>
                 </nav>
 
+                <div class="offcanvas-settings">
+                    <nav class="offcanvas-navigation">
+                        <ul>
+                            <li class="menu-item-has-children"><a href="#">會員登入 </a>
+                                <ul class="sub-menu">
+                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><a href="#">廠商登入 </a>
+                                <ul class="sub-menu">
+                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="offcanvas-widget-area">
+                    <!--Off Canvas Widget Social Start-->
                     <div class="off-canvas-widget-social">
                         <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
                         <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
@@ -405,19 +536,24 @@
                 {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
             ]'>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-1.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-1.webp"
+                                                        class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-2.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-2.webp"
+                                                        class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-3.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-3.webp"
+                                                        class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-4.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-4.webp"
+                                                        class="img-fluid" alt="">
                                                 </div>
                                                 <div class="single-image">
-                                                    <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-5.webp" class="img-fluid" alt="">
+                                                    <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-5.webp"
+                                                        class="img-fluid" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -445,19 +581,24 @@
             {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
         ]'>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-1.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-1.webp"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-2.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-2.webp"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-3.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-3.webp"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-4.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-4.webp"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div class="single-image">
-                                                <img width="600" height="800" src="<%=request.getContextPath() %>/assets/img/products/big1-5.webp" class="img-fluid" alt="">
+                                                <img width="600" height="800" src="<%=request.getContextPath()%>/assets/img/products/big1-5.webp"
+                                                    class="img-fluid" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -467,7 +608,8 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <!--=======  single product content description  =======-->
                                     <div class="single-product-content-description">
-                                        <p class="single-info">Brands <a href="shop-left-sidebar.html">Dolor</a> </p>
+                                        <p class="single-info">Brands <a href="shop-left-sidebar.jsp">Dolor</a>
+                                        </p>
                                         <h4 class="product-title">Lorem ipsum dolor set amet decor</h4>
                                         <div class="product-rating">
                                             <span class="rating">
@@ -488,11 +630,14 @@
 
                                         <p class="single-info">Product Code: <span class="value">CODE123</span> </p>
                                         <p class="single-info">Reward Points: <span class="value">200</span> </p>
-                                        <p class="single-info">Availability: <span class="value">In Stock</span> </p>
+                                        <p class="single-info">Availability: <span class="value">In Stock</span>
+                                        </p>
 
                                         <p class="product-description">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. At, delectus. Voluptates omnis distinctio vitae quo quia
-                                            veniam minima dolorem hic necessitatibus pariatur, quae fuga similique optio
+                                            adipisicing elit. At, delectus. Voluptates omnis distinctio vitae quo
+                                            quia
+                                            veniam minima dolorem hic necessitatibus pariatur, quae fuga similique
+                                            optio
                                             laboriosam assumenda voluptatum aperiam.</p>
 
                                         <div class="product-actions product-actions--quick-view">
@@ -502,7 +647,8 @@
                                             </div>
 
                                             <div class="product-buttons">
-                                                <a class="cart-btn" href="#"> <i class="ion-bag"></i> ADD TO CART</a>
+                                                <a class="cart-btn" href="#"> <i class="ion-bag"></i> ADD TO
+                                                    CART</a>
                                                 <span class="wishlist-compare-btn">
                                                     <a> <i class="ion-heart"></i></a>
                                                     <a> <i class="ion-android-options"></i></a>
@@ -527,24 +673,67 @@
     <!--====================  End of quick view  ====================-->
 
     <!-- scroll to top  -->
-    <div id="scroll-top">
-        <span>Back to top</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
+    <!-- <div id="scroll-top">
+        <span>線上客服</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
+    </div> -->
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header">
+                        <!-- <img src="./images/image.png" alt="image"> -->
+                        <img src="https://github.com/mdo.png" alt="image" width="50" height="50"
+                            class="rounded-circle me-2">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">小天使</h4>
+                        <p class="chatbox__description--header">有話快說，有屁快放，小天使很忙的</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                    <div>
+                        <!-- 小天使對話框 -->
+                        <div class="messages__item messages__item--visitor">
+                            嗨
+                        </div>
+                        <!-- 客戶對話框 -->
+                        <div class="messages__item messages__item--operator">
+                            嗨
+                        </div>
+                        <!-- 等待條 -->
+                        <div class="messages__item messages__item--typing">
+                            <span class="messages__dot"></span>
+                            <span class="messages__dot"></span>
+                            <span class="messages__dot"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 輸入對話框 -->
+                <div class="chatbox__footer">
+                    <textarea name="con_message" id="con_message" placeholder="請輸入訊息"
+                        onkeydown="if (event.keyCode == 13) sendMessage();"></textarea>
+                    <button class="chatbox__send--footer">傳送</button>
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button>button</button>
+            </div>
+        </div>
     </div>
+    <script src="<%=request.getContextPath()%>/assets/js/Chat.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/app.js"></script>
     <!-- end of scroll to top -->
     <!--=============================================
     =            JS files        =
     =============================================-->
 
-     <!-- Vendor JS -->
-            <script src="<%=request.getContextPath() %>/assets/js/vendors.js"></script>
+    <!-- Vendor JS -->
+    <script src="<%=request.getContextPath()%>/assets/js/vendors.js"></script>
 
-            <!-- Active JS -->
-            <script src="<%=request.getContextPath() %>/assets/js/active.js"></script>
+    <!-- Active JS -->
+    <script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
 
-            <script src="<%=request.getContextPath() %>/assets/js/company.js"></script>
-
-
-            <!--=====  End of JS files ======-->
+    <!--=====  End of JS files ======-->
 
 </body>
 
