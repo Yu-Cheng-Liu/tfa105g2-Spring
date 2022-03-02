@@ -53,7 +53,9 @@
                                         <ul class="sub-menu">
                                         
                                             <li>
-                                            	<a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a>
+                                            	<form METHOD="post" action="" enctype="multipart/form-data">
+                                            		<a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a>
+                                            	</form>
                                             </li>
                                             
                                             <li><a href="cart.jsp">購物車</a></li>
@@ -263,9 +265,9 @@
                                                     class="active list-view"></button>
                                             </div>
 
-                                            <div class="shop-header__left__message">
+                                            <!-- <div class="shop-header__left__message">
                                                  商品總筆數  <c:out value="${selectAllCount}"/>
-                                            </div>
+                                            </div> -->
                                         </div>
 
                                         <div class="shop-header__right">
@@ -300,28 +302,18 @@
                                         <div class="single-sidebar-widget">
 											
 											<!-- 左邊欄商品分類 -->
+											
 
                                             <h4 class="single-sidebar-widget__title">商品分類</h4>
                                             
                                             <ul class="single-sidebar-widget__category-list">
-                                            	<c:forEach var="prodTypeVO" items="${selectAllType}">
-                                                <li class="has-children"><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectByType&prodTypeCode=${prodTypeVO.prodTypeCode}" class="active">${prodTypeVO.prodTypeDesc}
-                                                <%-- <span class="counter"><c:out value="${typeCount}"/></span> --%></a>
+                                                 
+                                                <c:forEach var="prodTypeVO" items="${selectAllType}">
+                                                <li class="has-children"><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectByType&prodTypeCode=${prodTypeVO.prodTypeCode}" class="active">${prodTypeVO.prodTypeDesc}<span
+                                                            class="counter"><c:out value="${typeCount}"/></span></a>
                                                 </li>
+                                                
 												</c:forEach>
-                                            
-                                                <%-- <li class="has-children"><a href="${pageContext.request.contextPath}/ProductCategoryServlet?prodTypeCode=1" class="active">水果<span
-                                                            class="counter">${type1}</span></a>
-                                                </li>
-                                                <li class="has-children"><a href="${pageContext.request.contextPath}/ProductCategoryServlet?prodTypeCode=2" class="active">鮮花<span
-                                                            class="counter"><c:out value="${type2}"/></span></a>
-                                                </li>
-                                                <li class="has-children"><a href="${pageContext.request.contextPath}/ProductCategoryServlet?prodTypeCode=3" class="active">祭祀用品<span
-                                                            class="counter"><c:out value="${type3}"/></span></a>
-                                                </li>
-                                                <li class="has-children"><a href="${pageContext.request.contextPath}/ProductCategoryServlet?prodTypeCode=4" class="active">其他<span
-                                                            class="counter"><c:out value="${type4}"/></span></a>
-                                                </li> --%>
                                             </ul>
                                             
                                         </div>
@@ -339,7 +331,7 @@
                                                             ${getPrice.min}${getPrice.max}
                                                     </div>
                                                 </div>
-                                                <!--<div class="sidebar-sub-widget">
+                                                <!-- <div class="sidebar-sub-widget">
                                                     <h4
                                                         class="sidebar-sub-widget__title sidebar-sub-widget__title--abs-icon">
                                                         Manufacturer</h4>
@@ -368,12 +360,12 @@
                                                         <li><a href="#">Red (7)</a></li>
                                                         <li><a href="#">Cayan (8) </a></li>
                                                     </ul>
-                                                </div>-->
+                                                </div> -->
                                             </div>
                                         </div>
                                         <!--=======  End of single sidebar widget  =======-->
                                         <!--=======  single sidebar widget  =======-->
-                                        <!--<div class="single-sidebar-widget">
+                                        <!-- <div class="single-sidebar-widget">
                                             <h4 class="single-sidebar-widget__title">Popular Tags</h4>
                                             <ul class="single-sidebar-widget__tag-list">
                                                 <li><a href="#">Car Seats</a></li>
@@ -386,7 +378,7 @@
                                                 <li><a href="#">Chair</a></li>
 
                                             </ul>
-                                        </div>-->
+                                        </div>  -->
                                         <!--=======  End of single sidebar widget  =======-->
                                     </div>
                                     <!--=======  End of page sidebar wrapper  =======-->
@@ -400,7 +392,7 @@
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-6">
                                                 <!--=======  product grid view  =======-->
                                                
-                                                <!-- <div class="single-grid-product grid-view-product">
+                                                <div class="single-grid-product grid-view-product">
                                                     <div class="single-grid-product__image">
                                                         <div class="single-grid-product__label">
                                                             <span class="sale">20%</span>
@@ -408,10 +400,10 @@
                                                         </div>
                                                         <a href="single-product.jsp">
                                                             <img width="600" height="800"
-                                                                src="assets/img/products/1-600x800.webp"
+                                                                src="${pageContext.request.contextPath}/assets/img/products/1-600x800.webp"
                                                                 class="img-fluid" alt="">
                                                             <img width="600" height="800"
-                                                                src="assets/img/products/1_1-600x800.webp"
+                                                                src="${pageContext.request.contextPath}/assets/img/products/1_1-600x800.webp"
                                                                 class="img-fluid" alt="">
                                                         </a>
 
@@ -445,10 +437,10 @@
                                                                 class="discounted-price">$100.00</span> <span
                                                                 class="main-price discounted">$120.00</span></p>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                                 <!--=======  End of product grid view  =======-->
                                                 <!--=======  list view product  =======-->
-                                                <c:forEach var="prodVO" items="${selectAll}">
+                                                <c:forEach var="prodVO" items="${result}">
                                                 <div
                                                     class="single-grid-product single-grid-product--list-view list-view-product">
                                                     <div
@@ -457,17 +449,16 @@
                                                             <span class="sale">-10%</span>
                                                             <span class="new">New</span>
                                                         </div> -->
-                                                        <!-- <a href="single-product.jsp"> -->
                                                         <a href="${pageContext.request.contextPath}/SingleProductServlet.controller?prodNo=${prodVO.prodNo}">
                                                             <img width="600" height="800"
                                                                 src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=${prodVO.prodNo}&prodImg=1"
                                                                 class="img-fluid" alt="">
-                                                            <!-- <img width="600" height="800"
-                                                                src="assets/img/products/1_1-600x800.webp"
-                                                                class="img-fluid" alt=""> -->
+                                                            <%-- <img width="600" height="800"
+                                                                src="${pageContext.request.contextPath}/assets/img/products/1_1-600x800.webp"
+                                                                class="img-fluid" alt=""> --%>
                                                         </a>
 
-                                                        <!-- <div class="hover-icons">
+                                                        <div class="hover-icons">
                                                             <a href="javascript:void(0)"><i class="ion-bag"></i></a>
                                                             <a href="javascript:void(0)"><i class="ion-heart"></i></a>
                                                             <a href="javascript:void(0)"><i
@@ -475,12 +466,13 @@
                                                             <a href="javascript:void(0)" data-bs-toggle="modal"
                                                                 data-bs-target="#quick-view-modal-container"><i
                                                                     class="ion-android-open"></i></a>
-                                                        </div> -->
+                                                        </div>
                                                     </div>
                                                     <div
                                                         class="single-grid-product__content single-grid-product--list-view__content">
 
-                                                        
+                                                        <!-- <div class="category"><a href="shop-left-sidebar.jsp">Decor</a>
+                                                        </div> -->
                                                         <h3
                                                             class="single-grid-product__title single-grid-product--list-view__title">
                                                             <!-- <a href="../webprojt-shopping/SingleProductServlet">${prodVO.prodName}</a> -->
@@ -507,7 +499,9 @@
                                                 </c:forEach>
                                                 <!--=======  End of list view product  =======-->
                                             </div>
+                                            
                                         </div>
+
                                     </div>
 
                                     <!--=======  pagination area =======-->
@@ -524,7 +518,6 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    
                                     <!--=======  End of pagination area  =======-->
                                     <!--=======  End of shop page content  =======-->
                                 </div>
@@ -539,7 +532,7 @@
     <!--====================  End of shop page content area  ====================-->
 
     <!--====================  newsletter area ====================-->
-    <!-- <div class="newsletter-area section-space--inner">
+    <div class="newsletter-area section-space--inner">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -555,19 +548,19 @@
                                 <button type="submit" value="submit">SUBSCRIBE</button>
                             </form>
 
-                        </div> -->
+                        </div>
                         <!-- mailchimp-alerts Start -->
-                        <!-- <div class="mailchimp-alerts">
+                        <div class="mailchimp-alerts">
                             <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <!-- <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                           <!--  <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                       <!--  </div>  -->
+                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                        </div>
                         <!-- mailchimp-alerts end -->
-                   <!--  </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!--====================  End of newsletter area  ====================-->
     <!--====================  footer area ====================-->
     <div class="footer-area">
@@ -592,7 +585,7 @@
                                             Copyright &copy; 2021 <a href="#">Eposi</a>. All Rights Reserved.
                                         </div>
                                     </div>
-                                    <!-- <div class="col-lg-3 col-md-5">
+                                    <div class="col-lg-3 col-md-5">
                                         <div class="copyright-social-wrapper">
                                             <ul class="copyright-social">
                                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -601,7 +594,7 @@
                                                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                                             </ul>
                                         </div>
-                                    </div> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
