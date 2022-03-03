@@ -31,11 +31,11 @@ public class ChangePasswordServlet {
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);
 
-		String passwordReg = "^[(a-zA-Z0-9)]{6,15}$";
+		String passwordReg = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,15}$";
 		if (newpwd.trim().length() == 0) {
 			errors.put("newpwd", "請填寫密碼");
 		} else if (!newpwd.trim().matches(passwordReg)) {
-			errors.put("newpwd", "密碼只能是中、英文字母、數字 , 且長度必需在6到15之間");
+			errors.put("newpwd", "密碼需介於 6-15碼，且至少包含一個字母及數字");
 		}
 
 		
@@ -46,8 +46,11 @@ public class ChangePasswordServlet {
 			errors.put("confirmpwd", "請確認您的密碼");
 		}
 
-		
+		String showactive = "show active";
+		String active = "class=\"active\"";
 		if (errors != null && !errors.isEmpty()) {
+			model.addAttribute("showactive4",showactive);
+			model.addAttribute("active4", active);
 			return "/front-end/memberData/my-account-member.jsp";
 		}
 
@@ -56,11 +59,13 @@ public class ChangePasswordServlet {
 
 		if (memberDataVO == null) {
 			errors.put("action", "請確認您的帳號密碼");
-
 		} else {
 			model.addAttribute("change", memberDataVO);
+			session.setAttribute("user", memberDataVO);
 		}
-		session.setAttribute("user", memberDataVO);
+			
+		model.addAttribute("showactive4",showactive);
+		model.addAttribute("active4", active);
 		return "/front-end/memberData/my-account-member.jsp";
 //		}
 	}

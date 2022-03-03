@@ -47,7 +47,8 @@ public class EditProfileServlet {
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
-
+		String showactive = "show active";
+		String active = "class=\"active\"";
 //		if ("edit".equals(action)) {
 		memberDataVO.setUsername(username);
 		memberDataVO.setPhone(phone);
@@ -57,6 +58,8 @@ public class EditProfileServlet {
 		memberDataVO.setBirthday(birthday1);
 //			memberDataVO.setPicture(picture);
 		if (errors != null && !errors.isEmpty()) {
+			model.addAttribute("showactive4",showactive);
+			model.addAttribute("active4", active);
 			return "/front-end/memberData/my-account-member.jsp";
 		}
 
@@ -66,8 +69,11 @@ public class EditProfileServlet {
 			errors.put("action", "資料更新失敗");
 		} else {
 			model.addAttribute("edit", memberDataVO);
+			session.setAttribute("user", memberDataVO);
 		}
-		session.setAttribute("user", memberDataVO);
+		
+		model.addAttribute("showactive4",showactive);
+		model.addAttribute("active4", active);
 		return "/front-end/memberData/my-account-member.jsp";
 //		}
 

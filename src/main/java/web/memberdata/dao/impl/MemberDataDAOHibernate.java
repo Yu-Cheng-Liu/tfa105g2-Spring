@@ -11,13 +11,10 @@ import org.springframework.stereotype.Repository;
 import web.memberdata.dao.MemberDataDAO;
 import web.memberdata.entity.MemberDataVO;
 
-
-
 @Repository
 public class MemberDataDAOHibernate implements MemberDataDAO {
 	@PersistenceContext
 	private Session session;
-
 
 	@Override
 	public MemberDataVO selectByUserno(Integer userNo) {
@@ -26,53 +23,47 @@ public class MemberDataDAOHibernate implements MemberDataDAO {
 		}
 		return null;
 	}
-	
-	
 
 	@Override
 	public MemberDataVO selectByUserAccount(String userAccount) {
-		return session.createQuery(
-				"from MemberDataVO where user_account = :uaccount",MemberDataVO.class).
-			     setParameter("uaccount", userAccount).uniqueResult();
+		return session.createQuery("from MemberDataVO where user_account = :uaccount", MemberDataVO.class)
+				.setParameter("uaccount", userAccount).uniqueResult();
 	}
 
-	
 	@Override
 	public List<MemberDataVO> selectAll() {
-		return session.createQuery(
-				"FROM MemberDataVO", MemberDataVO.class).list();
+		return session.createQuery("FROM MemberDataVO", MemberDataVO.class).list();
 	}
 
 	@Override
 	public MemberDataVO insert(MemberDataVO memberDataVO) {
-		if(memberDataVO!=null&& memberDataVO.getUserno()==null ) {
+		if (memberDataVO != null && memberDataVO.getUserno() == null) {
 			session.save(memberDataVO);
-				return memberDataVO;
+			return memberDataVO;
 		}
 		return null;
 	}
-	
 
 	@Override
 	public MemberDataVO update(MemberDataVO memberDataVO) {
 		String hql = "from MemberDataVO where user_account = :uaccount";
 
 		MemberDataVO member = (MemberDataVO) session.createQuery(hql, MemberDataVO.class)
-				.setParameter("uaccount",memberDataVO.getUseraccount()).uniqueResult();
+				.setParameter("uaccount", memberDataVO.getUseraccount()).uniqueResult();
 		if (member != null) {
-				member.setUsername(memberDataVO.getUsername());
-				member.setUseraccount(memberDataVO.getUseraccount());
-				member.setPhone(memberDataVO.getPhone());
-				member.setEmail(memberDataVO.getEmail());
-				member.setAddress(memberDataVO.getAddress());
-				member.setGender(memberDataVO.getGender());
-				member.setBirthday(memberDataVO.getBirthday());
-				member.setPicture(memberDataVO.getPicture());
-				member.setPassword(memberDataVO.getPassword());
-				member.setCreatedate(memberDataVO.getCreatedate());
-				member.setLastupdatedatetime(LocalDateTime.now());
-				member.setVerifystatus(memberDataVO.getVerifystatus());
-				return member;		
+			member.setUsername(memberDataVO.getUsername());
+			member.setUseraccount(memberDataVO.getUseraccount());
+			member.setPhone(memberDataVO.getPhone());
+			member.setEmail(memberDataVO.getEmail());
+			member.setAddress(memberDataVO.getAddress());
+			member.setGender(memberDataVO.getGender());
+			member.setBirthday(memberDataVO.getBirthday());
+			member.setPicture(memberDataVO.getPicture());
+			member.setPassword(memberDataVO.getPassword());
+			member.setCreatedate(memberDataVO.getCreatedate());
+			member.setLastupdatedatetime(LocalDateTime.now());
+			member.setVerifystatus(memberDataVO.getVerifystatus());
+			return member;
 		}
 		return null;
 	}
