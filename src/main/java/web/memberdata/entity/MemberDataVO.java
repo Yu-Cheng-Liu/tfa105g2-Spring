@@ -30,7 +30,7 @@ public class MemberDataVO {
 	private String address;
 	private String gender;
 	private Date birthday;
-	@Column(name="picture",columnDefinition="blob")
+	@Column(name="picture",columnDefinition = "longblob")
 	private byte[] picture;
 	private String password;
 	@Column(name = "create_date")
