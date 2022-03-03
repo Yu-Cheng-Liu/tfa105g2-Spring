@@ -30,23 +30,23 @@ public class AllProductServlet extends HttpServlet {
 
 	@RequestMapping(value = "/AllProductServlet.controller", method = { RequestMethod.GET })
 	public String AllProduct(String action, Integer prodTypeCode, Model model, HttpSession session) {
-		System.out.println("action=" + action);
+//		System.out.println("action=" + action);
 
 		if ("selectAll".equals(action)) {
 			// 商品頁出現所有商品
 			List<ProductVO> selectAll = productService.selectAll();
 			model.addAttribute("selectAll", selectAll);
-			System.out.println("selectAll=" + selectAll);
+//			System.out.println("selectAll=" + selectAll);
 
 			// 商品頁顯示商品總數
 			Integer selectAllCount = productService.selectAll().size();
 			model.addAttribute("selectAllCount", selectAllCount);
-			System.out.println("selectAllCount=" + selectAllCount);
+//			System.out.println("selectAllCount=" + selectAllCount);
 
 			// 迴圈顯示商品分類名稱
 			List<ProductTypeVO> selectAllType = productTypeService.selectAll();
 			model.addAttribute("selectAllType", selectAllType);
-			System.out.println("selectAllType=" + selectAllType);
+//			System.out.println("selectAllType=" + selectAllType);
 
 			// 顯示商品分類個別數量
 //			List<Integer> typeCount = new ArrayList<>();
@@ -65,12 +65,12 @@ public class AllProductServlet extends HttpServlet {
 
 			List<ProductVO> result = productService.selectByProdType(prodTypeCodeInt);
 			model.addAttribute("result", result);
-			System.out.println("selectByProdType=" + result);
+//			System.out.println("selectByProdType=" + result);
 
 			// 迴圈顯示商品分類名稱
 			List<ProductTypeVO> selectAllType = productTypeService.selectAll();
 			model.addAttribute("selectAllType", selectAllType);
-			System.out.println("selectAllType=" + selectAllType);
+//			System.out.println("selectAllType=" + selectAllType);
 
 			return "/front-end/product/CategoryProduct.jsp";
 

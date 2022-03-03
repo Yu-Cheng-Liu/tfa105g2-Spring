@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %><!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*, web.cart.entity.CartVO" %>
 
 <head>
     <meta charset="utf-8">
@@ -90,51 +91,47 @@
                                         
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
-                                            
+                                            <c:forEach var="cart" items="${myCart}">
+                                            	<%-- ${cart.key}
+                                            	${cart.value} --%>
+                                            <%-- <%
+                                            Map<Integer, Integer> myCart = (Map) session.getAttribute("myCart");
+                                            	for(int i = 1; i < myCart.size(); i++){
+                                            		Integer cart = myCart.get(i);
+                                            	}
+                                            %> --%>
                                                 <div class="single-cart-item">
                                                     <a href="javascript:void(0)" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
                                                     <div class="image">
                                                         <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="${pageContext.request.contextPath}/assets/img/products/product-1-80x106.webp"
-                                                                class="img-fluid" alt="">
+                                                            <%-- <img width="80" height="106"
+                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=${prodVO.prodNo}&prodImg=1"
+                                                                class="img-fluid" alt=""> --%>
                                                         </a>
                                                     </div>
                                                     <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Cillum
-                                                                dolore furniture</a></p>
-                                                        <p class="count"><span>1 x </span> $402</p>
+                                                    
+                                                        <p class="product-title"><a href="single-product.jsp">${cprodName}</a></p>
+                                                        <p class="count"><span>${cart.value} x </span> $${cprodPrice}</p>
                                                     </div>
                                                 </div>
-                                                
+                                                </c:forEach>
                                                 
                                             </div>
                                             <div class="cart-calculation">
                                                 <table class="table">
                                                     <tbody>
                                                         <tr>
-                                                            <td class="text-start">Sub-Total :</td>
-                                                            <td class="text-end">$220.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">Eco Tax (-2.00) :</td>
-                                                            <td class="text-end">$6.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">VAT (20%) :</td>
-                                                            <td class="text-end">$44.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">Total :</td>
-                                                            <td class="text-end">$270.00</td>
+                                                            <td class="text-start">商品總金額 :</td>
+                                                            <td class="text-end">$${cart.value * cprodPrice}></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <div class="cart-buttons">
-                                                <a href="cart.jsp">VIEW CART</a>
-                                                <a href="checkout.jsp">CHECKOUT</a>
+                                                <a href="${pageContext.request.contextPath}/front-end/product/cart.jsp">檢視購物車</a>
+                                                <a href="${pageContext.request.contextPath}/front-end/product/checkout.jsp">結帳</a>
                                             </div>
                                         </div>
                                     </div>
@@ -339,10 +336,10 @@
                                                 <span class="review-count"> <a href="#">(2 reviews)則商品評論</a> | <a
                                                         href="#">留下商品評論</a> </span>
                                             </div>
-
+											
                                             <p class="single-grid-product__price"><span
-                                                    class="discounted-price">$${discountPrice}</span> <span
-                                                    class="main-price discounted">$${prodPrice}</span></p>
+                                                    class="discounted-price">$${prodPrice}</span><!-- <span
+                                                    class="main-price discounted">$${prodPrice}</span> --></p>
 
                                             <p class="single-info">商品編號: <span class="value">${prodNo}</span> </p>
                                             <!--<p class="single-info">Reward Points: <span class="value">200</span> </p>-->
@@ -355,7 +352,7 @@
                                             	</div>
 											</c:if>
 											<c:if test="${prodStock != 0}">
-												<form action="${pageContext.request.contextPath}/AddCart?action=ADD">
+												<form action="${pageContext.request.contextPath}/CartServlet.controller?action=AddCart">
                                             	<div class="product-actions">
                                             		<p class="single-info">數量: <input type="text" name="prodAmount" size="3" value=1> </p>
                                             	</div>
@@ -366,7 +363,8 @@
                                                 	<input type="hidden" name="prodNo" value="${prodNo}">
                                                 	<input type="hidden" name="prodName" value="${prodName}">
                                                 	<input type="hidden" name="prodPrice" value="${prodPrice}">
-                                                	<input type="hidden" name="action" value="ADD">
+                                                	<input type="hidden" name="prodStock" value="${prodStock}">
+                                                	<input type="hidden" name="action" value="AddCart">
                                                 	<button class="cart-btn" type="submit">加入購物車</button>
                                                 	<%-- <a class="cart-btn" href="${pageContext.request.contextPath}/AddCart" type="submit"><i class="ion-bag"></i> 加入購物車</a> --%>
                                                     <%-- <a class="cart-btn" href="${pageContext.request.contextPath}/AddCart?action=ADD"> <i class="ion-bag"></i> 加入購物車</a> --%>
