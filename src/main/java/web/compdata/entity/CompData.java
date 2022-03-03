@@ -40,16 +40,17 @@ public class CompData implements Serializable {
 	private String password;
 	@Column(name="create_date")
 	private LocalDateTime  createDate = LocalDateTime.now();
+	@Column(name="verify")
+	private String verify;
 	
 	public CompData() {
 		
 	}
-	
-	
 
-	public CompData(String compName, String compAccount, String chargePerson, String compPhone,
-			String email, String address, String password,LocalDateTime createDate) {
+	public CompData(Integer compNO, String compName, String compAccount, String chargePerson, String compPhone,
+			String email, String address, String password, LocalDateTime createDate, String verify) {
 		super();
+		this.compNO = compNO;
 		this.compName = compName;
 		this.compAccount = compAccount;
 		this.chargePerson = chargePerson;
@@ -58,11 +59,12 @@ public class CompData implements Serializable {
 		this.address = address;
 		this.password = password;
 		this.createDate = createDate;
+		this.verify = verify;
 	}
 
 
 
-	public int getCompNO() {
+	public Integer getCompNO() {
 		return compNO;
 	}
 
@@ -134,16 +136,22 @@ public class CompData implements Serializable {
 		this.createDate = createDate;
 	}
 
+	public String getVerify() {
+		return verify;
+	}
 
+	public void setVerify(String verify) {
+		this.verify = verify;
+	}
 
 	@Override
 	public String toString() {
 		return "CompData [compNO=" + compNO + ", compName=" + compName + ", compAccount=" + compAccount
 				+ ", chargePerson=" + chargePerson + ", compPhone=" + compPhone + ", email=" + email + ", address="
-				+ address + ", password=" + password + ", createDate=" + createDate + "]";
+				+ address + ", password=" + password + ", createDate=" + createDate + ", verify=" + verify + "]";
 	}
 	
 	
-	
+
 	
 }

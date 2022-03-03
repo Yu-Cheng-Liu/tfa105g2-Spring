@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,11 +17,13 @@ import web.compdata.service.CompDataServiceInterface;
 public class CompDataService implements CompDataServiceInterface {
 
 	public static Map<String, String> errors ;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private CompDataDAOInterface compDataDAOi;
 	
-	String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{8,}";
+	String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
 
 	public Map<String, String> getErrors() {
 		return errors;
@@ -36,12 +39,13 @@ public class CompDataService implements CompDataServiceInterface {
 		CompData cd = compDataDAOi.select(compAccount);
 		
 		if (cd != null && !"".equals(password)) {
-			String pass = cd.getPassword();
-//			System.out.println("input pass :" +password);
-//			System.out.println("original Pass" + pass);
-			if (password.equals(pass)) {
-//				System.out.println("Login succeed");
+			
+			boolean ppp = passwordEncoder.matches(password, cd.getPassword());
+			
+			if (ppp) {
+				
 				return cd;
+				
 			} else {
 				errors.put("password", "密碼錯誤");
 			
@@ -64,18 +68,21 @@ public class CompDataService implements CompDataServiceInterface {
 		
 		errors= new HashMap<String, String>();
 		
+		
+		
+		
 		if (cd != null) {
-			if (!cd.getPassword().equals(oldpass)) {
+			if (!passwordEncoder.matches(oldpass, cd.getPassword())) {
 				errors.put("oldPass", "原始密碼輸入錯誤");
 			}
 			if ("".equals(newpass.trim())) {
 				errors.put("newPass", "新密碼不可為空白");
 			}
-			if (newpass.equals(oldpass.trim())) {
+			if (passwordEncoder.matches(newpass, cd.getPassword())) {
 				errors.put("samePass", "密碼未更改");
 			}
-			if(!newpass.equals(passwordRegex)) {
-				errors.put("newpass", "密碼至少8個字,並包含小寫及數字");
+			if(!newpass.matches(passwordRegex)) {
+				errors.put("newPass", "密碼至少8個字,並包含大寫,小寫,數字");
 			}
 			if ("".equals(oldpass.trim())) {
 				errors.put("oldPass", "舊密碼不可為空白");
@@ -83,8 +90,10 @@ public class CompDataService implements CompDataServiceInterface {
 			if (!newpass.equals(confirm.trim())) {
 				errors.put("newPass", "兩次新密碼輸入不相同");
 			}
+			
+			System.out.println(errors);
 			if (errors.size() == 0) {
-				cd.setPassword(newpass);
+				cd.setPassword(passwordEncoder.encode(newpass));
 				compDataDAOi.update(cd);
 				if (compDataDAOi.update(cd)) {
 					return true;
@@ -104,7 +113,7 @@ public class CompDataService implements CompDataServiceInterface {
 		// compName , chargePerson , email , phone , address;
 		errors= new HashMap<String, String>();
 		
-		CompData edit = this.login(cd.getCompAccount(), cd.getPassword());
+		CompData edit = compDataDAOi.select(cd.getCompAccount());
 		if (edit != null) {
 			if ("".equals(cd.getCompName().trim())) {
 				errors.put("compName", "公司名稱不可為空白");
@@ -122,6 +131,7 @@ public class CompDataService implements CompDataServiceInterface {
 				edit.setEmail(cd.getEmail());
 				edit.setCompPhone(cd.getCompPhone());
 				edit.setAddress(cd.getAddress());
+				edit.setVerify(cd.getVerify());
 				return compDataDAOi.update(edit);
 			} else {
 				return false;
@@ -141,25 +151,23 @@ public class CompDataService implements CompDataServiceInterface {
 		errors= new HashMap<String, String>();
 
 		CompData check = compDataDAOi.select(cd.getCompAccount());
-//		System.out.println(check);
-//		System.out.println(errors);
 		if (check != null) {
-			errors.put("compAccount", "帳號已被使用");
+			errors.put("RcompAccount", "帳號已被使用");
 		}else {
 			if ("".equals(cd.getCompAccount().trim())) {
-				errors.put("compAccount", "帳號不可為空白");
+				errors.put("RcompAccount", "帳號不可為空白");
 			}
 			if ("".equals(cd.getCompName().trim())) {
-				errors.put("compName", "廠商名稱不可為空白");
+				errors.put("RcompName", "廠商名稱不可為空白");
 			}
 			if ("".equals(cd.getEmail().trim())) {
-				errors.put("email", "電子郵件不可為空白");
+				errors.put("Remail", "電子郵件不可為空白");
 			}
 			if ("".equals(cd.getPassword().trim())) {
-				errors.put("password", "密碼不可為空白");
+				errors.put("Rpassword", "密碼不可為空白");
 			}
 			if (!cd.getPassword().matches(passwordRegex)) {
-				errors.put("password", "密碼至少8個字,並包含小寫及數字");
+				errors.put("Rpassword", "密碼至少8個字,並包含大寫,小寫,數字");
 			}
 			if (errors.size() == 0) {
 				CompData result = compDataDAOi.insert(cd);
@@ -169,9 +177,60 @@ public class CompDataService implements CompDataServiceInterface {
 			}
 		}
 		return null;
-
-		
-
 	}
-
+//=============================================== find certain email ===================================================
+	
+	public CompData findCertainEmail(String email) {
+		
+		if(!"".equals(email.trim())) {
+		
+			CompData cd = compDataDAOi.selectByEmail(email);
+			if(cd!=null) {
+				return cd;
+			}else {
+				errors.put("noSuchMail", "找不到此email , 請檢察輸入內容或重新註冊");
+				return null;
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	public CompData findCertainAccount(String compAccount) {
+		
+		if(!"".equals(compAccount.trim())) {
+			
+			CompData cd = compDataDAOi.select(compAccount);
+			if(cd!=null) {
+				return cd;
+			}else {
+				return null;
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	
+	public String verifiedOrNot(CompData cd) {
+		
+		System.out.println(cd);
+		
+		System.out.println(cd.getVerify());
+		
+		if("1".equals(cd.getVerify())) {
+//			return "歡迎來到龘虤！　\r\n 恭喜您已完成email驗證，祝您斂財愉快";
+			return "0";
+		}else {
+			
+//			return "歡迎來到龘虤！ \r\n 您的email驗證尚未完成，將無法使用上架功能，是否現在驗證？";
+			return "1";
+		}
+	}
+	
+	
 }

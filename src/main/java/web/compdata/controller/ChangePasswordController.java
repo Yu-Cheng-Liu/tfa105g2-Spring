@@ -18,7 +18,7 @@ public class ChangePasswordController {
 	@Autowired
 	private CompDataServiceInterface service;
 
-	@RequestMapping(value = "/secure/changePass.controller", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/secure/changePass.controller", method = { RequestMethod.POST})
 	public String changePassword(String oldPass, String newPass, String confirm, Model model, HttpSession session) {
 
 		String compAccount = (String) session.getAttribute("compAccount");
@@ -35,8 +35,8 @@ public class ChangePasswordController {
 			return "/front-end/compData/comp-index.jsp";
 		} else {
 			model.addAttribute("changePasswordSucceed", "更改密碼成功");
-			model.addAttribute("classes1", classes);
-			model.addAttribute("attrs2", active);
+			model.addAttribute("classes6", classes);
+			model.addAttribute("attrs1", active);
 			return "/front-end/compData/comp-index.jsp";
 		}
 

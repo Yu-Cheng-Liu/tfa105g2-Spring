@@ -105,6 +105,20 @@ public class CompDataDAO implements CompDataDAOInterface {
 		}
 		return false;
 	}
+	
+	public CompData selectByEmail(String email) {
+		String hql = "From CompData where email = :email";
+		CompData cd = (CompData) session.createQuery(hql, CompData.class).setParameter("email", email)
+				.uniqueResult();
+		if (!email.trim().equals("") && cd != null) {
+//			System.out.println(cd);
+			System.out.println("Select success");
+		} else {
+			System.out.println("Failed to select");
+		}
+
+		return cd;
+	}
 //	
 
 }

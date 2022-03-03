@@ -6,31 +6,26 @@
 <html class="no-js" lang="zxx">
 
 <head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Eposi - Multipurpose eCommerce Bootstrap5 Template</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="icon"
-	href="<%=request.getContextPath()%>/assets/img/favicon.ico">
-
-<!-- FontAwesome 連結-->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<!-- BookStrap 連結-->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous"></script>
-
-
+<link rel="icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 <!--=============================================
     =            CSS  files       =
     =============================================-->
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+	rel="stylesheet">
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js"></script>
 
 <!-- Vendor CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/vendors.css"
@@ -38,16 +33,17 @@
 <!-- Main CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/style.css"
 	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-	rel="stylesheet">
-
+	
+<script src="<%=request.getContextPath()%>/assets/js/company.js"></script>
 
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/comp.css">
+	
 
 
+  
+  
 <style>
  *{
     color: black;
@@ -224,6 +220,7 @@
                         </div>
                     </div>
                     <!--=======  End of header wrapper  =======-->
+
 					<!--=======  mobile navigation area  =======-->
 
 					<div class="header-mobile-navigation d-block d-lg-none">
@@ -265,308 +262,71 @@
 	</div>
 	<!--====================  End of header area  ====================-->
 
-    <!--====================  breadcrumb area ====================-->
-    <div class="breadcrumb-area section-space--half">
-        <div class="container wide">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  breadcrumb wrpapper  =======-->
-                    <div class="breadcrumb-wrapper breadcrumb-bg">
-                        <!--=======  breadcrumb content  =======-->
-                        <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">My Account</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">My Account</li>
-                            </ul>
-                        </div>
-                        <!--=======  End of breadcrumb content  =======-->
-                    </div>
-                    <!--=======  End of breadcrumb wrpapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--====================  End of breadcrumb area  ====================-->
-    <!--====================  page content area ====================-->
-    <div class="page-content-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  page wrapper  =======-->
-                    <div class="page-wrapper">
-                        <div class="page-content-wrapper">
-                            <div class="row">
-                                <!-- My Account Tab Menu Start -->
-                                <div class="col-lg-3 col-12">
-                                    <div class="myaccount-tab-menu nav" role="tablist">
-                                    
-                                        <a href="#account-info" ${attrs1} data-bs-toggle="tab"><i class="fa fa-user"></i>公司資訊管理</a>
-                                            
-                                        <a href="#dashboad" ${attrs2}  data-bs-toggle="tab"><i
-                                                class="fa fa-dashboard"></i>
-                                            帳戶大廳</a>
+	<!--====================  breadcrumb area ====================-->
+	<div class="breadcrumb-area section-space--half">
+		<div class="container wide">
+			<div class="row">
+				<div class="col-lg-12">
+					<!--=======  breadcrumb wrpapper  =======-->
+					<div class="breadcrumb-wrapper breadcrumb-bg">
+						<!--=======  breadcrumb content  =======-->
+						<div class="breadcrumb-content">
+							<h2 class="breadcrumb-content__title">Login - Register</h2>
+							<ul class="breadcrumb-content__page-map">
+								<li><a href="index.html">Home</a></li>
+								<li class="active">Login - Register</li>
+							</ul>
+						</div>
+						<!--=======  End of breadcrumb content  =======-->
+					</div>
+					<!--=======  End of breadcrumb wrpapper  =======-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--====================  End of breadcrumb area  ====================-->
+	<!--====================  page content area ====================-->
+	<div class="page-content-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+				<!--=======  page wrapper  =======-->
+					<div class="page-wrapper">
+						<div class="page-content-wrapper">
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
+									<form
+										action="<%=request.getContextPath()%>/secure/forgetPassword.controller"
+										method="POST">
 
-                                        <a href="#orders" ${attrs3} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
-                                            訂單總覽</a>
-                                            
-                                        <a href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
-                                            商品管理</a>
+										<div class="login-form">
+											<h4 class="login-title">哈哈傻逼再亂設密碼啊</h4>
 
-                                        <a href="#payment-method" ${attrs5} data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
-                                            Payment
-                                            Method</a>
+											<div class="row">
+												<div class="col-md-12 col-12">
+													<input name="email"
+														type="text" placeholder="請輸入註冊時填的email">
+														<span style="color: red;">${errors.noSuchMail}</span>
+												<div class="col-md-12">
+													<button type="submit" class="register-button" value="Go">送出</button>
+												</div>
 
-                                        <a href="#address-edit" ${attrs6} data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
-                                            address</a>
+											</div>
+										</div>
 
-                                        <a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp"><i class="fa fa-sign-out"></i> Logout</a>
-                                    </div>
-                                </div>
-                                <!-- My Account Tab Menu End -->
+									</form>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<!--=======  End of page wrapper  =======-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--====================  End of page content area  ====================-->
 
-                                <!-- My Account Tab Content Start -->
-                                <div class="col-lg-9 col-12">
-                                    <div class="tab-content" id="myaccountContent">
-                                        <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade ${classes1}" id="dashboad" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>Dashboard</h3>
-
-                                                <div class="welcome mb-20">
-                                                    <p>Hello, <strong>${compName}</strong> (If Not <strong>${compName}</strong>
-                                                    <a href="login-register.html" class="logout">
-                                                            Logout</a>)</p>
-                                                </div>
-                                                
-                                                <form id= "verifyForm" action = "<%=request.getContextPath()%>/secure/verifyAgain.controller" method="post">
-		
-	                                                
-                                                	<p id="verifying" class="mb-0">${status == '1' ? "歡迎來到龘虤！ 您的email驗證尚未完成，將無法使用上架功能，是否現在驗證？" : "歡迎來到龘虤！ 恭喜您已完成email驗證，祝您斂財愉快"}</p>
-	                                                <input type = "hidden" name = "verifyAgain" value="${email}">
-	                                                <input type = "hidden" name = "verifyAgain" value="${chargePerson}">
-	                                                <c:if test="${status  == '1'}">
-		                                                <button type ="submit">我要驗證email</button>
-	                                                
-	                                                </c:if>
-	                                                
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <!-- Single Tab Content End -->
-
-                                        <!-- Single Tab Content Start -->
-												<!--  Order Details -->
-                                        <div class="tab-pane fade ${classes2} " id="orders" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>訂單總覽</h3>
-
-                                                <div class="myaccount-table table-responsive text-center">
-                                                    <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get">
-                                                    <table class="table table-bordered">
-                                                        <thead class="thead-light">
-                                                            <tr>
-                                                                <th>訂單編號</th>
-                                                                <th>產品編號</th>
-                                                                <th>廠商編號</th>
-                                                                <th>產品名稱</th>
-                                                                <th>產品數量</th>
-                                                                <th>價格</th>
-                                                            </tr>
-                                                        </thead>
-
-                                                        	<c:forEach var="OrderDetail" items="${list}">
-                                                        <tbody>
-	                                                                <td>${OrderDetail.orderNo}</td>
-	                                                                <td>${OrderDetail.prodNo}</td>
-	                                                                <td>${OrderDetail.compNO}</td>
-	                                                                <td>${OrderDetail.prodName}</td>
-	                                                                <td>${OrderDetail.prodAmount}</td>
-	                                                                <td>${OrderDetail.prodPrice}</td>
-                                                        
-                                                        </tbody>
-                                                        	</c:forEach>
-                                                       
-                                                    </table>
-                                                    
-                                                    		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢
-                                                    			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	
-                                                    		</button>
-                                                    	</form>
-                                                   
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single Tab Content End -->
-                                        
-                                        
-                                        
-<!--                                         Single Tab Content Start -->
-<!-- 												 Order Details -->
-<%--                                         <div class="tab-pane fade ${classes3} " id="product-management" role="tabpanel"> --%>
-<!--                                             <div class="myaccount-content"> -->
-<!--                                                 <h3>訂單總覽</h3> -->
-
-<!--                                                 <div class="myaccount-table table-responsive text-center"> -->
-<%--                                                     <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get"> --%>
-<!--                                                     <table class="table table-bordered"> -->
-<!--                                                         <thead class="thead-light"> -->
-<!--                                                             <tr> -->
-<!--                                                                 <th>訂單編號</th> -->
-<!--                                                                 <th>產品編號</th> -->
-<!--                                                                 <th>廠商編號</th> -->
-<!--                                                                 <th>產品名稱</th> -->
-<!--                                                                 <th>產品數量</th> -->
-<!--                                                                 <th>價格</th> -->
-<!--                                                             </tr> -->
-<!--                                                         </thead> -->
-
-<%--                                                         	<c:forEach var="OrderDetail" items="${list}"> --%>
-<!--                                                         <tbody> -->
-<%-- 	                                                                <td>${OrderDetail.orderNo}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.prodNo}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.compNO}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.prodName}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.prodAmount}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.prodPrice}</td> --%>
-                                                        
-<!--                                                         </tbody> -->
-<%--                                                         	</c:forEach> --%>
-                                                       
-<!--                                                     </table> -->
-                                                    
-<!--                                                     		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢 -->
-<!--                                                     			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	 -->
-<!--                                                     		</button> -->
-<!--                                                     	</form> -->
-                                                   
-<!--                                                 </div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                         Single Tab Content End -->
-
-
-                                        <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade ${classes4}" id="payment-method" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>Payment Method</h3>
-
-                                                <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
-                                            </div>
-                                        </div>
-                                        <!-- Single Tab Content End -->
-
-                                        <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade ${classes5}" id="address-edit" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>Billing Address</h3>
-
-                                                <address>
-                                                    <p><strong>Alex Tuntuni</strong></p>
-                                                    <p>1355 Market St, Suite 900 <br>
-                                                        San Francisco, CA 94103</p>
-                                                    <p>Mobile: (123) 456-7890</p>
-                                                </address>
-
-                                                <a href="#" class="btn d-inline-block edit-address-btn"><i
-                                                        class="fa fa-edit"></i>Edit Address</a>
-                                            </div>
-                                        </div>
-                                        <!-- Single Tab Content End -->
-
-                                        <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade ${classes6}" id="account-info" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>帳戶資訊</h3>
-
-                                                <div class="account-details-form">
-                                                        <div class="row">
-                                                        <form action = "<%=request.getContextPath()%>/secure/editProfile.controller" method="POST">
-                                                        <h2>${EditPersonalProfileSucceed}</h2>
-                                                        
-	                                                            <div class="col-lg-6 col-12"> 公司名稱
-	                                                                <input id="compName" placeholder="公司名稱" name="compName"
-	                                                                    value="${compName}" type="text" disabled>
-	                                                                    <span style="color: red;">${errors.compName}</span> <br>
-	                                                            </div>
-	
-	                                                            <div class="col-lg-6 col-12"> 公司負責人
-	                                                                <input id="chargePerson" placeholder="公司負責人" name="chargePerson"
-	                                                                     value="${chargePerson}" type="text" disabled>
-	                                                                      <span style="color: red;">${errors.chargePerson}</span>
-	                                                            </div>
-	                                                            
-	                                                            <div class="col-12"> 電子郵件
-	                                                                <input id="email" placeholder="電子郵件" name="email"
-	                                                                     value="${email}" type="email" disabled>
-	                                                                     <span style="color: red;">${errors.email}</span>
-	                                                            </div>
-	
-	                                                           <div class="col-12"> 公司地址
-	                                                                <input id="address" placeholder="公司地址" name="address"
-	                                                                     value="${address}" type="text" disabled>
-	                                                            </div>
-	                                                            
-	                                                           <div class="col-12"> 公司電話
-	                                                                <input id="compPhone" placeholder="公司電話" name="compPhone"
-	                                                                     value="${compPhone}" type="text" disabled>
-	                                                            </div>
-	                                                            
-	                                                           <div class="col-12"> 公司統編
-	                                                                <input id="compAccount" placeholder="公司統編" name="compAccount"
-	                                                                     value="${compAccount}" type="text" disabled> 
-	                                                            </div>
-	                                                            
-	                                                            <button type = "button" id="changePersonalProfile" class="save-change-btn"> 變更資料 </button>
-	                                                            <button type = "submit" id="compAccountSubmit" class="save-change-btn"> 送出 </button>
-														</form>
-														<form action="<%=request.getContextPath()%>/secure/changePass.controller" method="post">
-                                                            <div class="col-12 mb-2">
-                                                                <h4>密碼變更</h4>
-                                                                <span style="color: red;">${changePasswordSucceed}</span>
-                                                            </div>
-
-                                                            <div class="col-12">
-                                                                <input id="oldPass" placeholder="目前密碼" name="oldPass"
-                                                                    type="password">
-                                                                  <span style="color: red;">${errors.oldPass}</span>  
-                                                            </div>
-
-                                                            <div class="col-lg-6 col-12">
-                                                                <input id="newPass" placeholder="新密碼" name="newPass"
-                                                                    type="password">
-                                                                    <span style="color: red;">${errors.newPass}</span>
-                                                            </div>
-
-                                                            <div class="col-lg-6 col-12">
-                                                                <input id="confirm" placeholder="確認密碼" name="confirm"
-                                                                    type="password">
-                                                                    <span style="color: red;">${errors.samePass}</span>
-                                                            </div>
-
-                                                            <div class="col-12">
-                                                                <button class="save-change-btn">送出</button>
-                                                            </div>
-
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single Tab Content End -->
-                                    </div>
-                                </div>
-                                <!-- My Account Tab Content End -->
-                            </div>
-                        </div>
-                    </div>
-                    <!--=======  End of page wrapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--====================  End of page content area  ====================-->
- 
     <!--====================  footer area ====================-->
     <div class="footer-area">
         <div class="footer-copyright">
@@ -940,9 +700,7 @@
     <!-- Active JS -->
     <script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
 
-    <script src="<%=request.getContextPath()%>/assets/js/company.js"></script>
-    
-    
+	<script src="<%=request.getContextPath()%>/assets/js/company.js"></script>
     <!--=====  End of JS files ======-->
 
 </body>

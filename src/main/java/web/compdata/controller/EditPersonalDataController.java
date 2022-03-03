@@ -56,13 +56,21 @@ public class EditPersonalDataController {
 			model.addAttribute("CompPhone" , compPhone);
 			model.addAttribute("Address" , address);
 			model.addAttribute("errors",errors);
-			model.addAttribute("classes1",classes);
-			model.addAttribute("attrs2", active);
+			model.addAttribute("classes6",classes);
+			model.addAttribute("attrs1", active);
 			return "/front-end/compData/comp-index.jsp";
 		}else {
+			
+			session.setAttribute("compName", attrs.getCompName());
+			session.setAttribute("chargePerson", attrs.getChargePerson());
+			session.setAttribute("compPhone", attrs.getCompPhone());
+			session.setAttribute("email", attrs.getEmail());
+			session.setAttribute("compAccount", attrs.getCompAccount());
+			session.setAttribute("compNo", attrs.getCompNO());
+			session.setAttribute("address", attrs.getAddress());
 			model.addAttribute("EditPersonalProfileSucceed", "編輯帳戶資料成功");
-			model.addAttribute("classes1",classes);
-			model.addAttribute("attrs2", active);			
+			model.addAttribute("classes6",classes);
+			model.addAttribute("attrs1", active);			
 			return "/front-end/compData/comp-index.jsp";
 		}
 		
