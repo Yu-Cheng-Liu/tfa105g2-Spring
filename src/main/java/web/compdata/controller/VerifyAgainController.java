@@ -12,7 +12,7 @@ import web.tools.SendMail;
 import web.tools.impl.AuthCode;
 
 @Controller
-public class verifyAgainController {
+public class VerifyAgainController {
 	
 	@Autowired
 	private CompDataServiceInterface service;
