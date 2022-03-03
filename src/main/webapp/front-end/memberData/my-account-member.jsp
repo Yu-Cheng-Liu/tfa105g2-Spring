@@ -15,7 +15,8 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="icon" href="assets/img/favicon.ico">
+<link rel="icon"
+	href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 
 <!--=============================================
     =            CSS  files       =
@@ -26,6 +27,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
 	rel="stylesheet">
+	
 
 <!-- Vendor CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/vendors.css"
@@ -36,7 +38,20 @@
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/member.css">
-	
+
+<!-- JQuery 連結-->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/assets/css/chat.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/assets/css/chatStyle.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/assets/css/typing.css">
+
 <style>
 .account-details-form h4 {
 	margin-top: 30px;
@@ -47,7 +62,35 @@
 	margin-bottom: 23px;
 	line-height: 16px;
 	margin-top: 7px;
+	 border-radius:5px; 
+	 border:1px solid #ccc; 
+	 padding: 9px 25px;
+	 color: black;
 }
+
+.select_style{
+margin-top: 7px;
+  width:100%; 
+  height:36px; 
+  overflow:hidden;
+  border:1px solid #ccc; 
+  -moz-border-radius:5px; /* Gecko browsers */ 
+  -webkit-border-radius:5px; /* Webkit browsers */ 
+  border-radius:5px; 
+  
+} 
+
+.select_style select{ 
+  padding: 0px 25px;
+  background:transparent; 
+  width:100%; 
+  font-size:14px; 
+  border:none; 
+  height:36px; 
+  -webkit-appearance:none; /*for Webkit browsers*/ 
+} 
+
+
 </style>
 
 
@@ -301,32 +344,22 @@
 
 										<!-- settings menu -->
 										<div class="settings-menu-wrapper" id="settings-menu-wrapper">
-											<c:if test="${empty user}">
-												<div class="single-settings-block">
-													<h4 class="title">會員專區</h4>
-													<ul>
-														<li><a href="login-register.html">會員登入</a></li>
-														<li><a href="login-register.html">會員註冊</a></li>
-													</ul>
-												</div>
-												<div class="single-settings-block">
-													<h4 class="title">廠商專區</h4>
-													<ul>
-														<li><a href="login-register.html">廠商登入</a></li>
-														<li><a href="login-register.html">廠商註冊</a></li>
-													</ul>
-												</div>
-											</c:if>
 
-											<c:if test="${not empty user}">
-												<div class="single-settings-block">
-													<h4 class="title">會員專區</h4>
-													<ul>
-														<li><a
-															href="<c:url value="/my-account-member.jsp" />">會員中心</a></li>
-													</ul>
-												</div>
-											</c:if>
+											<div class="single-settings-block">
+												<h4 class="title">會員專區</h4>
+												<ul>
+													<li><a href="login-register.html">會員登入</a></li>
+													<li><a href="login-register.html">會員註冊</a></li>
+												</ul>
+											</div>
+											<div class="single-settings-block">
+												<h4 class="title">廠商專區</h4>
+												<ul>
+													<li><a href="login-register.html">廠商登入</a></li>
+													<li><a href="login-register.html">廠商註冊</a></li>
+												</ul>
+											</div>
+
 											<!-- <div class="single-settings-block">
                                                 <h4 class="title">LANGUAGE: EN-GB </h4>
                                                 <ul>
@@ -421,15 +454,17 @@
 								<!-- My Account Tab Menu Start -->
 								<div class="col-lg-3 col-12">
 									<div class="myaccount-tab-menu nav" role="tablist">
-										<a href="#dashboad" class="active" data-bs-toggle="tab"><i
+										<a href="#dashboad" ${active1} data-bs-toggle="tab"><i
 											class="fa fa-dashboard"></i> 會員中心</a> <a href="#orders"
-											data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
-											訂單查詢</a> <a href="#download" data-bs-toggle="tab"><i
-											class="fa fa-calendar"></i> 法會預約查詢</a> <a href="#payment-method"
-											data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
-											付款方式</a> <a href="#address-edit" data-bs-toggle="tab"><i
-											class="fa fa-map-marker"></i> 地址</a> <a href="#account-info"
-											data-bs-toggle="tab"><i class="fa fa-user"></i> 修改個人資料</a>
+											${active2} data-bs-toggle="tab"><i
+											class="fa fa-cart-arrow-down"></i> 訂單查詢</a> <a href="#download"
+											${active3} data-bs-toggle="tab"><i class="fa fa-calendar"></i>
+											法會預約查詢</a> <a href="#account-info" ${active4}
+											data-bs-toggle="tab"><i class="fa fa-user"></i> 修改個人資料</a> <a
+											href="#payment-method" ${active5} data-bs-toggle="tab"><i
+											class="fa fa-credit-card"></i> 付款方式</a> <a href="#address-edit"
+											${active6} data-bs-toggle="tab"><i
+											class="fa fa-map-marker"></i> 地址</a>
 										<!-- <a
 											href="/tfa105g2-1/index.jsp"><i class="fa fa-sign-out"></i>
 											登出</a>  -->
@@ -452,7 +487,7 @@
 								<div class="col-lg-9 col-12">
 									<div class="tab-content" id="myaccountContent">
 										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade show active" id="dashboad"
+										<div class="tab-pane fade ${showactive1}" id="dashboad"
 											role="tabpanel">
 											<div class="myaccount-content">
 												<h3>Dashboard</h3>
@@ -474,7 +509,8 @@
 										<!-- Single Tab Content End -->
 
 										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade" id="orders" role="tabpanel">
+										<div class="tab-pane fade ${showactive2}" id="orders"
+											role="tabpanel">
 											<div class="myaccount-content">
 												<h3>Orders</h3>
 
@@ -524,7 +560,8 @@
 										<!-- Single Tab Content End -->
 
 										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade" id="download" role="tabpanel">
+										<div class="tab-pane fade ${showactive3}" id="download"
+											role="tabpanel">
 											<div class="myaccount-content">
 												<h3>Downloads</h3>
 
@@ -560,7 +597,8 @@
 										<!-- Single Tab Content End -->
 
 										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade" id="payment-method" role="tabpanel">
+										<div class="tab-pane fade ${showactive5}" id="payment-method"
+											role="tabpanel">
 											<div class="myaccount-content">
 												<h3>Payment Method</h3>
 
@@ -571,7 +609,8 @@
 										<!-- Single Tab Content End -->
 
 										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade" id="address-edit" role="tabpanel">
+										<div class="tab-pane fade ${showactive6}" id="address-edit"
+											role="tabpanel">
 											<div class="myaccount-content">
 												<h3>Billing Address</h3>
 
@@ -593,9 +632,79 @@
 										<!-- Single Tab Content End -->
 
 										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade" id="account-info" role="tabpanel">
+										<div class="tab-pane fade ${showactive4}" id="account-info"
+											role="tabpanel">
+											<h5><span style="color: red">${errors.action}</span></h5>
+											<c:if test="${not empty change}">
+												<h5><span style="font-size: 20px; font-weight: 650;">密碼更新成功!</span></h5>
+											</c:if>
+											<c:if test="${not empty edit}">
+												<h5><span style="font-size: 20px; font-weight: 650;">資料更新成功!</span></h5>
+											</c:if>
 											<div class="myaccount-content">
 												<h3>個人基本資料</h3>
+
+												<div class="profile-wrap">
+													<div class="row">
+														<div class="col-md-8 offset-md-2 py-4">
+															<div class="edit-profile-photo text-center">
+				
+																<div id="changePicBox">
+																	<img class="picBox" alt="" 
+																		src="<%=request.getContextPath()%>/readerimg.controller?userno=${user.userno}" width="200">
+																</div>
+																
+																<!-- <div class="change-photo-btn">
+																	<a href="#" data-toggle="modal" data-target="#avatar" class="rate-review"><i class="ion-log-in"></i>變更圖片</a> -->
+																	<!-- modal-start -->
+																	<!-- <div class="modal " id="avatar">
+																		<div class="modal-dialog modal-dialog-centered"
+																			role="image">
+																			<div class="picBox"> 
+																			
+																				<div>
+																					<div id="changePic">
+																						<label for="p_file"> <img
+																							src="<%=request.getContextPath()%>/readerimg.controller?userno=${user.userno}" width="200">
+																						</label>
+																					</div>
+																				</div> -->
+
+
+
+																				
+																				<div>
+																					<div class="contact-form__upload-btn xs-left">
+																						<FORM METHOD="post" enctype="multipart/form-data"
+																							ACTION="<%=request.getContextPath()%>/uploadimg.controller">
+																							
+																							<input type="file" id="p_file" name="photoupload" > 
+																							
+																								<!-- style="display: none;" -->
+																							<input type="hidden" name="userno" value="${user.userno}">
+																							<input type="submit" name="action" value="確認">
+																						</FORM>
+																					</div>
+																				</div>
+																		
+																				
+
+																			<!-- </div>
+																		</div>
+																	</div> -->
+																	<!-- modal-ends -->
+
+
+
+
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+
+
 
 												<div class="account-details-form">
 													<form action="<c:url value="/edit.controller" />"
@@ -610,40 +719,45 @@
 																	value="${user.username}">
 															</div>
 															<div class="col-md-7">
-																<label>手機</label> <span style="color: red">${errors.phone}</span><input name="phone" type="tel"
-																	value="${user.phone}" maxlength="10">
+																<label>手機</label> <span style="color: red">${errors.phone}</span><input
+																	name="phone" type="tel" value="${user.phone}"
+																	maxlength="10">
 															</div>
 															<div class="col-md-12">
-																<label>信箱</label>  <span style="color: red">${errors.email}</span><input name="email" type="email"
-																	value="${user.email}">
+																<label>信箱</label> <span style="color: red">${errors.email}</span><input
+																	name="email" type="email" value="${user.email}">
 															</div>
 															<div class="col-md-12">
-																<label>通訊地址</label> <input name="address" type="text"
+																<label>地址</label> <input name="address" type="text"
 																	value="${user.address}">
 															</div>
 															<div class="col-lg-6 col-12">
-																<label>性別</label> <input name="gender" type="text"
-																	value="${user.gender}">
+																<label>性別</label> 
+																<!-- <input name="gender" type="text"
+																	value="${user.gender}"> -->
+																	<div class="select_style">
+																	<select name="gender">
+																		<option selected disabled>${user.gender}</option>
+																		<option >男</option>
+																		<option >女</option>
+																	</select>
+																</div>
 															</div>
 
 															<div class="col-lg-6 col-12">
-																<label>生日</label> <span style="color: red">${errors.birthday}</span><input name="birthday" id="f_date1" type="text"
+																<label>生日</label> <span style="color: red">${errors.birthday}</span><input
+																	name="birthday" id="f_date1" type="text"
 																	value="<fmt:formatDate value="${user.birthday}" pattern="yyyy/MM/dd"/>
 																	">
 															</div>
 															<div class="col-12">
-															<input type="hidden" name="action" value="edit">
+																<input type="hidden" name="action" value="edit">
 																<button type="submit" class="save-change-btn">修改個人資料</button>
-											
+
 															</div>
 														</div>
 													</form>
-													<h5>
-														<span style="color: red">${errors.action}</span>
-													</h5>
-													<c:if test="${not empty edit}">
-														<h5>資料更新成功!</h5>
-													</c:if>
+
 
 													<form
 														action="<c:url value="/change-password.controller" />"
@@ -660,7 +774,7 @@
 
 															<div class="col-lg-6 col-12">
 																<label>新密碼</label> <span style="color: red">${errors.newpwd}</span><input
-																	name="newpwd" placeholder="請設定6-8位英數字密碼"
+																	name="newpwd" placeholder="請設定6-15位英數字密碼"
 																	type="password">
 															</div>
 
@@ -675,12 +789,7 @@
 															</div>
 														</div>
 													</form>
-													<h5>
-														<span style="color: red">${errors.action}</span>
-													</h5>
-													<c:if test="${not empty change}">
-														<h5>密碼更新成功!</h5>
-													</c:if>
+
 
 												</div>
 											</div>
@@ -996,10 +1105,13 @@
     =============================================-->
 
 	<!-- Vendor JS -->
-	<script src="assets/js/vendors.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/vendors.js"></script>
 
 	<!-- Active JS -->
-	<script src="assets/js/active.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
+
+	<script src="<%=request.getContextPath()%>/assets/js/member.js"></script>
+
 
 	<!--=====  End of JS files ======-->
 
@@ -1007,27 +1119,26 @@
 
 <!-- =========================================以下為 datetimepicker 之相關設定========================================== -->
 
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.css" />
 <script src="<%=request.getContextPath()%>/datetimepicker/jquery.js"></script>
-<script src="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.full.js"></script>
+<script
+	src="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.full.js"></script>
 
 
 <script>
-        $.datetimepicker.setLocale('zh');
-        $('#f_date1').datetimepicker({
-           theme: '',              //theme: 'dark',
- 	       timepicker:false,       //timepicker:true,
- 	       step: 1,                //step: 60 (這是timepicker的預設間隔60分鐘)
- 	       format:'Y-m-d',         //format:'Y-m-d H:i:s',
- 		   value: '${user.birthday}', // value:   new Date(),
-           //disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], // 去除特定不含
-           //startDate:	            '2017/07/10',  // 起始日
-           //minDate:               '-1970-01-01', // 去除今日(不含)之前
-           //maxDate:               '+1970-01-01'  // 去除今日(不含)之後
-        });
-        
-
-        
+	$.datetimepicker.setLocale('zh');
+	$('#f_date1').datetimepicker({
+		theme : '', //theme: 'dark',
+		timepicker : false, //timepicker:true,
+		step : 1, //step: 60 (這是timepicker的預設間隔60分鐘)
+		format : 'Y-m-d', //format:'Y-m-d H:i:s',
+		value : '${user.birthday}', // value:   new Date(),
+	//disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], // 去除特定不含
+	//startDate:	            '2017/07/10',  // 起始日
+	//minDate:               '-1970-01-01', // 去除今日(不含)之前
+	//maxDate:               '+1970-01-01'  // 去除今日(不含)之後
+	});
 </script>
 
 </html>

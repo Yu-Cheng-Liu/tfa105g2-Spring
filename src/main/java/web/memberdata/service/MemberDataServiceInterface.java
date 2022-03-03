@@ -15,6 +15,8 @@ public interface MemberDataServiceInterface {
 	public MemberDataVO editPersonalProfile(MemberDataVO member);
 
 	public MemberDataVO selectByUserAccount(String userAccount);
+	
+	public MemberDataVO selectByUserNo(Integer userNo);
 
 	public List<MemberDataVO> findAll();
 

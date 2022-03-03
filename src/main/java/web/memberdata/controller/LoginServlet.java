@@ -47,7 +47,7 @@ public class LoginServlet {
 				return "/front-end/memberData/login-register-member.jsp";
 			} else {
 				session.setAttribute("user", memberDataVO);
-
+				session.setAttribute("type", "member");
 				try {
 					String location = (String)session.getAttribute("location");
 					if(location!=null) {
@@ -56,7 +56,7 @@ public class LoginServlet {
 					}
 				}catch(Exception ignored){ }
 
-				return "redirect:/front-end/index.jsp";
+				return "redirect:/front-end/memberData/my-account-member.jsp"; //要改首頁
 			}
 
 //		}
