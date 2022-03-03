@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import web.cart.dao.CartDAOInterface;
 import web.cart.entity.CartVO;
+import web.product.entity.ProductVO;
 
 @Repository
 public class CartDAO  implements CartDAOInterface{
@@ -64,6 +65,11 @@ public class CartDAO  implements CartDAOInterface{
 				.setParameter("prodNo", prodNo).uniqueResult();
 		return temp;
 	}
+	
+	@Override
+	public List<CartVO> selectAll() {
+		return session.createQuery("FROM CartVO", CartVO.class).list();
+	}
 
 	@Override
 	public CartVO update(CartVO vo) {
@@ -74,6 +80,8 @@ public class CartDAO  implements CartDAOInterface{
 	public boolean delete(Integer cartNo) {
 		return false;
 	}
+
+	
 
 	
 

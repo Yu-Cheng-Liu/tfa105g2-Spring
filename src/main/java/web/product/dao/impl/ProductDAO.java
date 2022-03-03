@@ -41,7 +41,10 @@ public class ProductDAO implements ProductDAOInterface {
 	// 查詢全部商品
 	@Override
 	public List<ProductVO> selectAll() {
-		return session.createQuery("FROM ProductVO", ProductVO.class).list();
+		
+		String hql = "from ProductVO where prodVerify = :prodVerify";
+		List<ProductVO> list = session.createQuery(hql, ProductVO.class).setParameter("prodVerify", "1").list();
+		return list;
 	}
 
 	// 查詢商品價格區間

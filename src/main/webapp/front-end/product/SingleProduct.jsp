@@ -89,9 +89,18 @@
                                         </a>
                                         <!-- mini cart  -->
                                         
+                                        
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
-                                            <c:forEach var="cart" items="${myCart}">
+                                        <%
+                                        	Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+                                        %>
+                                        <%if (buyList != null && (buyList.size() > 0)){ %>
+                                        	<%
+                                            	for(int i =0; i < buyList.size(); i++){
+                                            		CartVO order = buyList.get(i);
+                                            %>
+                                            <%-- <c:forEach var="cart" items="${myCart}"> --%>
                                             	<%-- ${cart.key}
                                             	${cart.value} --%>
                                             <%-- <%
@@ -100,6 +109,7 @@
                                             		Integer cart = myCart.get(i);
                                             	}
                                             %> --%>
+                                            
                                                 <div class="single-cart-item">
                                                     <a href="javascript:void(0)" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
@@ -112,13 +122,13 @@
                                                     </div>
                                                     <div class="content">
                                                     
-                                                        <p class="product-title"><a href="single-product.jsp">${cprodName}</a></p>
-                                                        <p class="count"><span>${cart.value} x </span> $${cprodPrice}</p>
+                                                        <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
+                                                        <p class="count"><span><%=order.getProdAmount()%> x </span> "$"<%=order.getProdPrice() %></p>
                                                     </div>
                                                 </div>
-                                                </c:forEach>
-                                                
+                                                <%-- </c:forEach> --%>
                                             </div>
+                                            <%}%>
                                             <div class="cart-calculation">
                                                 <table class="table">
                                                     <tbody>
@@ -129,6 +139,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            
                                             <div class="cart-buttons">
                                                 <a href="${pageContext.request.contextPath}/front-end/product/cart.jsp">檢視購物車</a>
                                                 <a href="${pageContext.request.contextPath}/front-end/product/checkout.jsp">結帳</a>
@@ -146,7 +157,7 @@
                                                 <span></span>
                                             </div>
                                         </a>
-
+										<%}%>
                                         <!-- settings menu -->
                                         <div class="settings-menu-wrapper" id="settings-menu-wrapper">
                                             <div class="single-settings-block">

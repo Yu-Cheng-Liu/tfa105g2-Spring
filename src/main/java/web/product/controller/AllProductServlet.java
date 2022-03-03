@@ -33,6 +33,8 @@ public class AllProductServlet extends HttpServlet {
 //		System.out.println("action=" + action);
 
 		if ("selectAll".equals(action)) {
+			
+			
 			// 商品頁出現所有商品
 			List<ProductVO> selectAll = productService.selectAll();
 			model.addAttribute("selectAll", selectAll);
