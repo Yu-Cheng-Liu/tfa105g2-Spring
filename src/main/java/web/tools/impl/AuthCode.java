@@ -5,11 +5,32 @@ import java.util.Random;
 import org.springframework.stereotype.Component;
 
 public class AuthCode {
-	
-	public String givenUsingJava8_whenGeneratingRandomAlphanumericString_thenCorrect() {
-	    int leftLimit = 48; 
+		int leftLimit = 48; 
 	    int rightLimit = 122;
-	    int targetStringLength = 6;
+	    int targetStringLength ;
+	    
+	    
+	public int getLeftLimit() {
+			return leftLimit;
+		}
+		public void setLeftLimit(int leftLimit) {
+			this.leftLimit = leftLimit;
+		}
+		public int getRightLimit() {
+			return rightLimit;
+		}
+		public void setRightLimit(int rightLimit) {
+			this.rightLimit = rightLimit;
+		}
+		public int getTargetStringLength() {
+			return targetStringLength;
+		}
+		public void setTargetStringLength(int targetStringLength) {
+			this.targetStringLength = targetStringLength;
+		}
+		
+	public String givenUsingJava8_whenGeneratingRandomAlphanumericString_thenCorrect() {
+	    
 	    Random random = new Random();
 
 	    String generatedString = random.ints(leftLimit, rightLimit + 1)

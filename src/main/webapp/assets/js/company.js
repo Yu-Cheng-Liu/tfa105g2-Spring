@@ -28,6 +28,8 @@ $(function() {
 			this.value = this.value.replace(/\s/g, "");
 		}
 	});
+	
+	
 
 })
 

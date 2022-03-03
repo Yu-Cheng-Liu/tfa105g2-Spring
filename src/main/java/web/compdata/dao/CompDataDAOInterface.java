@@ -15,4 +15,6 @@ public interface CompDataDAOInterface {
 	public abstract boolean delete(String compAccount);
  
 	public abstract boolean update(CompData compData);
+	
+	public CompData selectByEmail(String email);
 }

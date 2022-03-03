@@ -15,4 +15,10 @@ public interface CompDataServiceInterface {
 	public abstract CompData Register(CompData cd);
 
 	public Map<String, String> getErrors();
+	
+	public CompData findCertainEmail(String email);
+	
+	public CompData findCertainAccount(String compAccount);
+	
+	public String verifiedOrNot(CompData cd);
 }
