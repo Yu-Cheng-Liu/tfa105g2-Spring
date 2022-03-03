@@ -5,6 +5,9 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>Web Application from Archetype for Servlet 3.1</display-name>
 	
+	
+
+	
 	<filter>  
      <filter-name>encodingFilter</filter-name>  
      <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
@@ -51,7 +54,7 @@
 	</servlet-mapping>
 
 
-
+	
 	<welcome-file-list>
 		<welcome-file>/front-end/index.jsp</welcome-file>
 	</welcome-file-list>

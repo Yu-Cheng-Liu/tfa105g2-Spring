@@ -311,16 +311,17 @@
                                             訂單總覽</a>
                                             
                                         <a href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
-                                            商品管理</a>
+                                            商品上架</a>
 
                                         <a href="#payment-method" ${attrs5} data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
-                                            Payment
-                                            Method</a>
+                                            商品總覽</a>
 
                                         <a href="#address-edit" ${attrs6} data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
                                             address</a>
-
-                                        <a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp"><i class="fa fa-sign-out"></i> Logout</a>
+										<form action = "" method="post">
+                                        <a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp"><i class="fa fa-sign-out"></i> 登出</a>
+                                        	<input type="hidden" name="logout" value="byebye">
+                                    	</form>
                                     </div>
                                 </div>
                                 <!-- My Account Tab Menu End -->
@@ -400,50 +401,49 @@
                                         <!-- Single Tab Content End -->
                                         
                                         
-                                        
-<!--                                         Single Tab Content Start -->
-<!-- 												 Order Details -->
-<%--                                         <div class="tab-pane fade ${classes3} " id="product-management" role="tabpanel"> --%>
-<!--                                             <div class="myaccount-content"> -->
-<!--                                                 <h3>訂單總覽</h3> -->
+                                        <div class="tab-pane fade ${classes3} " id="product-management" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>商品上架</h3>
 
-<!--                                                 <div class="myaccount-table table-responsive text-center"> -->
-<%--                                                     <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get"> --%>
-<!--                                                     <table class="table table-bordered"> -->
-<!--                                                         <thead class="thead-light"> -->
-<!--                                                             <tr> -->
-<!--                                                                 <th>訂單編號</th> -->
-<!--                                                                 <th>產品編號</th> -->
-<!--                                                                 <th>廠商編號</th> -->
-<!--                                                                 <th>產品名稱</th> -->
-<!--                                                                 <th>產品數量</th> -->
-<!--                                                                 <th>價格</th> -->
-<!--                                                             </tr> -->
-<!--                                                         </thead> -->
+                                                <div class="myaccount-table table-responsive text-center">
+                                                    <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get">
+                                                    <table class="table table-bordered">
+                                                        <thead class="thead-light">
+                                                            <tr>
+                                                                <th>訂單編號</th>
+                                                                <th>產品編號</th>
+                                                                <th>廠商編號</th>
+                                                                <th>產品名稱</th>
+                                                                <th>產品數量</th>
+                                                                <th>價格</th>
+                                                                <th>選一下</th>
+                                                            </tr>
+                                                        </thead>
 
-<%--                                                         	<c:forEach var="OrderDetail" items="${list}"> --%>
-<!--                                                         <tbody> -->
-<%-- 	                                                                <td>${OrderDetail.orderNo}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.prodNo}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.compNO}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.prodName}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.prodAmount}</td> --%>
-<%-- 	                                                                <td>${OrderDetail.prodPrice}</td> --%>
+                                                        	<c:forEach var="OrderDetail" items="${list}">
+                                                        <tbody>
+                                                        			<td><input type="checkbox" name = "thisProduct"></td>
+	                                                                <td>${OrderDetail.orderNo}</td>
+	                                                                <td>${OrderDetail.prodNo}</td>
+	                                                                <td>${OrderDetail.compNO}</td>
+	                                                                <td>${OrderDetail.prodName}</td>
+	                                                                <td>${OrderDetail.prodAmount}</td>
+	                                                                <td>${OrderDetail.prodPrice}</td>
+	                                                                <td><button type="submit" name="launch" >上架</button><button type="submit" name="discontinue">下架</button></td>
                                                         
-<!--                                                         </tbody> -->
-<%--                                                         	</c:forEach> --%>
+                                                        </tbody>
+                                                        	</c:forEach>
                                                        
-<!--                                                     </table> -->
+                                                    </table>
                                                     
-<!--                                                     		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢 -->
-<!--                                                     			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	 -->
-<!--                                                     		</button> -->
-<!--                                                     	</form> -->
+                                                    		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢
+                                                    			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	
+                                                    		</button>
+                                                    	</form>
                                                    
-<!--                                                 </div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                         Single Tab Content End -->
+                                                </div>
+                                            </div>
+                                        </div>
 
 
                                         <!-- Single Tab Content Start -->
