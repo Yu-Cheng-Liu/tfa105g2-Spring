@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -22,6 +23,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @ComponentScan(basePackages = {"web.*.*.impl"})
 @EnableTransactionManagement
 public class SpringJavaConfig  {
+	
 	/*
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
 		<constructor-arg>
