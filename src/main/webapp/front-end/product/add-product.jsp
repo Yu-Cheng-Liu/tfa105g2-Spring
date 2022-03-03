@@ -5,6 +5,7 @@
 <html class="no-js" lang="zxx">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>新增商品</title>
@@ -39,6 +40,8 @@
         width: 100%;
     }
 </style>
+
+
 </head>
 
 <body>
@@ -68,9 +71,8 @@
                                             	
                                             	
                                             	
-                                            	<form METHOD="post" action="">
-                                            	<a href="<%=request.getContextPath()%>/AllProductServlet">商品總攬</a>
-                                            	</form>
+                                            	<a href="<%=request.getContextPath()%>/AllProductServlet.controller">商品總攬</a>
+                                            	
                                             	
                                             	
                                             
@@ -299,65 +301,77 @@
                 <div class="page-wrapper">
                     <div class="page-content-wrapper">
                         <!-- Checkout Form s-->
-                        <form class="checkout-form" METHOD="post" action="<%=request.getContextPath()%>/ProductInsertServlet" enctype="multipart/form-data">
+                        <form class="checkout-form" METHOD="post" action="<%=request.getContextPath()%>/front-end/product/ProductInsertServlet.controller" enctype="multipart/form-data">
                             <div class="row justify-content-around">
 						
                                 <div class="col-lg-7">
 							
-                                    <!-- Billing Address -->
+                                    <!-- Billing Address f-->
                                     <div id="billing-form">
                                         <h4 class="checkout-title" style="text-align:center;">新增商品</h4>
 
                                         <div class="row justify-content-around">
+<!-- 											<div class="col-md-7"> -->
+<!-- 											<label>商品類別<font style=color:red>*</font></label>				 -->
+<!-- 											<select id="findType" style="width:130px" name="prodTypeCode"> -->
+<!-- 											<option value="0">請選擇商品類別</option> -->
+<%-- 											<c:forEach items="${selectAllType}" var="prodTypeVO" >											 --%>
+<%-- 											<option value="${prodTypeVO.prodTypeCode}">${prodTypeVO.prodTypeDesc}</option> --%>
+<%-- 											</c:forEach> --%>
+<!-- 											</select> -->
+<%-- 											<font color="red"><c:out value="${errorMsgs['prodTypeCode']}"/></font> --%>
+<!-- 											</div> -->
 											<div class="col-md-7">
-											<label>商品類別<font style=color:red>*</font></label>				
+											<label>商品類別<font style=color:red>*</font></label>
 											<select id="findType" style="width:130px" name="prodTypeCode">
 											<option value="0">請選擇商品類別</option>
-											<c:forEach items="${selectAllType}" var="prodTypeVO" >											
-											<option value="${prodTypeVO.prodTypeCode}">${prodTypeVO.prodTypeDesc}</option>
-											</c:forEach>
+											<option value="1">水果</option>
+											<option value="2">鮮花</option>
+											<option value="3">祭祀用品</option>
+											<option value="4">其他</option>
 											</select>
-											<font color="red"><c:out value="${errorMsgs['prodTypeCode']}"/></font>
-											</div>
+											<font color="red"><c:out value="${errorMsgs.prodTypeCode}"/></font>
+                                            </div>
+                                            
                                             <div class="col-md-7">
                                                 <label>商品名稱<font style=color:red>*</font></label>
                                                 <font color="red"><c:out value="${errorMsgs['prodName']}"/></font>
-                                                <input type="text" placeholder="請輸入商品名稱" name="prodName" value="<%= request.getParameter("prodName")==null?"":request.getParameter("prodName") %>" />                                                                              
+                                                <input type="text" placeholder="請輸入商品名稱" name="prodName" value="${prodName}" />                                                                              
                                             </div>
 
                                             <div class="col-md-7">
                                                 <label>商品價格<font style=color:red>*</font></label>
                                                 <font color="red"><c:out value="${errorMsgs['prodPrice']}"/></font>
-                                                <input type="number" min="0" placeholder="請輸入商品價格" name="prodPrice" value="<%= request.getParameter("prodPrice")==null?"":request.getParameter("prodPrice") %>" />
+                                                <input type="number" min="0" placeholder="請輸入商品價格" name="prodPrice" value="${prodPrice}" />
                                             </div>
 
                                             <div class="col-md-7">
                                                 <label>商品說明</label>
-                                                <input type="text" placeholder="請輸入商品說明內容" name="prodDesc" value="<%= request.getParameter("prodDesc")==null?"":request.getParameter("prodDesc") %>" />
+                                                <input type="text" placeholder="請輸入商品說明內容" name="prodDesc" value="${prodDesc}" />
                                             </div>
 
                                             <div class="col-md-7">
                                                 <label>商品庫存量<font style=color:red>*</font></label>
                                                 <font color="red"><c:out value="${errorMsgs['prodStock']}"/></font>
-                                                <input type="number" min="0" placeholder="請輸入數量" name="prodStock" value="<%= request.getParameter("prodStock")==null?"":request.getParameter("prodStock") %>"/>
+                                                <input type="number" min="0" placeholder="請輸入數量" name="prodStock" value="${prodStock}"/>
                                             </div>
                                             <div class="col-md-7">
                                                 <label>商品圖片-1 <font style=color:red>*</font></label>
                                                 <font color="red"><c:out value="${errorMsgs['prodImg1']}"/></font>
-                                                <input type="file" id="p_file" name="prodImg1" />
+                                                <input type="file" id="p_file" name="prodImg" />
                                                 <div id="preview"><span class="text"></span></div>
                                                 <br>
                                                 <label>商品圖片-2</label>
-                                                <input type="file" id="p_file2" name="prodImg2" />
+                                                <input type="file" id="p_file2" name="prodImg" />
                                                 <div id="preview2"><span class="text"></span></div>
                                                 <br>
                                                 <label>商品圖片-3</label>
-                                                <input type="file" id="p_file3" name="prodImg3" />
+                                                <input type="file" id="p_file3" name="prodImg" />
                                                 <div id="preview3"><span class="text"></span></div>
                                             </div>
 
                                             <div class="col-7">
-                                            <input type="hidden" name="action" value="insert">
+<!--                                             <input type="hidden" name="action" value="insert"> -->
                                             <button type="submit" class="register-button mt-0">確認送出</button>
                                             </div>
                                            
@@ -611,7 +625,77 @@
 <script src="${pageContext.request.contextPath}/assets/js/active.js"></script>
 
 <!--=====  End of JS files ======-->
+<script>
+//  ---------- 圖片1 ----------//
+(function ($) {
+    "use strict";
+    $('#scroll-top').fadeIn();
+var preview_el = document.getElementById("preview");
+var p_file_el = document.getElementById("p_file");
 
+var preview_img = function(file){
+
+var reader =  new FileReader();
+   reader.readAsDataURL(file);
+   reader.addEventListener("load",function(){
+       let img_str = '<img src="' + reader.result + '" class="preview_img">';
+       preview_el.innerHTML = img_str;
+   });
+};
+
+p_file_el.addEventListener("change",function(e){
+   if(this.files.length > 0){
+       preview_img(this.files[0]);
+   }else{
+       preview_el.innerHTML = '<span class="text"></span>';
+   }
+});
+
+   //  ---------- 圖片2 ----------//	
+var preview_e2 = document.getElementById("preview2");
+var p_file_e2 = document.getElementById("p_file2");
+
+var preview_img2 = function(file){
+
+var reader =  new FileReader();
+   reader.readAsDataURL(file);
+   reader.addEventListener("load",function(){
+       let img_str = '<img src="' + reader.result + '" class="preview_img2">';
+       preview_e2.innerHTML = img_str;
+   });
+};
+
+p_file_e2.addEventListener("change",function(e){
+   if(this.files.length > 0){
+       preview_img2(this.files[0]);
+   }else{
+       preview_e2.innerHTML = '<span class="text"></span>';
+   }
+});
+
+    //  ---------- 圖片3 ----------//
+var preview_e3 = document.getElementById("preview3");
+var p_file_e3 = document.getElementById("p_file3");
+
+var preview_img3 = function(file){
+
+var reader =  new FileReader();
+   reader.readAsDataURL(file);
+   reader.addEventListener("load",function(){
+       let img_str = '<img src="' + reader.result + '" class="preview_img3">';
+       preview_e3.innerHTML = img_str;
+   });
+};
+
+p_file_e3.addEventListener("change",function(e){
+   if(this.files.length > 0){
+       preview_img3(this.files[0]);
+   }else{
+       preview_e3.innerHTML = '<span class="text"></span>';
+   }
+});
+})(jQuery);
+</script>
 </body>
 
 </html>
