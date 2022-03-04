@@ -28,6 +28,33 @@ public class CartVO implements java.io.Serializable{
 	@Column(name = "prod_name")
 	private String prodName;
 	
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((prodNo == null) ? 0 : prodNo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CartVO other = (CartVO) obj;
+		if (prodNo == null) {
+			if (other.prodNo != null)
+				return false;
+		} else if (!prodNo.equals(other.prodNo))
+			return false;
+		return true;
+	}
+
 	public CartVO() {
 		cartNo = 0;
 		prodNo = 0;

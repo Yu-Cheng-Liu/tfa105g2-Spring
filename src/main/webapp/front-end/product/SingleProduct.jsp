@@ -85,7 +85,7 @@
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
                                             <i class="ion-bag"></i>
-                                            <span class="counter">3</span>
+                                            <span class="counter">${buyListCount}</span>
                                         </a>
                                         <!-- mini cart  -->
                                         
@@ -97,8 +97,8 @@
                                         %>
                                         <%if (buyList != null && (buyList.size() > 0)){ %>
                                         	<%
-                                            	for(int i =0; i < buyList.size(); i++){
-                                            		CartVO order = buyList.get(i);
+                                            	for(int index =0; index < buyList.size(); index++){
+                                            		CartVO order = buyList.get(index);
                                             %>
                                             <%-- <c:forEach var="cart" items="${myCart}"> --%>
                                             	<%-- ${cart.key}
@@ -111,39 +111,56 @@
                                             %> --%>
                                             
                                                 <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
+                                                    <!-- <a href="javascript:void(0)" class="remove-icon"><i
+                                                            class="ion-android-close"></i></a> -->
+                                                    <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
-                                                    <div class="image">
+                                                    <%-- <form action="" class="remove-icon" method="get">
+                                                    	<input type="hidden" name="del" value="<%= index %>">
+                                                    	
+                                                    	<i class="ion-android-close"></i>
+                                                            
+                                                    </form> --%>
+                                                    <%-- <form action="${pageContext.request.contextPath}/CartServlet.controller?action=Delete" method="get">
+                                                    	<input type="hidden" name="del" value="<%= index %>">
+                                                    	<button type="sumbit" class="remove-icon"></button>
+                                                    	<i class="ion-android-close"></i>
+                                                            
+                                                    </form> --%>
+                                                    <%-- <div class="image">
                                                         <a href="single-product.jsp">
-                                                            <%-- <img width="80" height="106"
+                                                            <img width="80" height="106"
                                                                 src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=${prodVO.prodNo}&prodImg=1"
-                                                                class="img-fluid" alt=""> --%>
+                                                                class="img-fluid" alt="">
                                                         </a>
-                                                    </div>
+                                                    </div> --%>
                                                     <div class="content">
                                                     
                                                         <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
-                                                        <p class="count"><span><%=order.getProdAmount()%> x </span> "$"<%=order.getProdPrice() %></p>
+                                                        <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
                                                     </div>
-                                                </div>
+                                                	
                                                 <%-- </c:forEach> --%>
-                                            </div>
+                                            	</div>
+                                            	
                                             <%}%>
+                                            
                                             <div class="cart-calculation">
                                                 <table class="table">
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-start">商品總金額 :</td>
-                                                            <td class="text-end">$${cart.value * cprodPrice}></td>
+                                                            <td class="text-end">$${amount}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            
+                                            <%}%>
                                             <div class="cart-buttons">
                                                 <a href="${pageContext.request.contextPath}/front-end/product/cart.jsp">檢視購物車</a>
-                                                <a href="${pageContext.request.contextPath}/front-end/product/checkout.jsp">結帳</a>
+                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </li>
@@ -157,7 +174,7 @@
                                                 <span></span>
                                             </div>
                                         </a>
-										<%}%>
+                                       
                                         <!-- settings menu -->
                                         <div class="settings-menu-wrapper" id="settings-menu-wrapper">
                                             <div class="single-settings-block">
@@ -252,7 +269,7 @@
         											<!-- 顯示放大圖片 -->
                                                     <div class="single-image">
                                                         <img id="bigPicture" width="600" height="800"
-                                                            src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=${param.prodNo}&prodImg=1" class="img-fluid"
+                                                            src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=${prodNo}&prodImg=1" class="img-fluid"
                                                             alt="">
                                                     </div>
 <!--                                                     <div class="single-image"> -->
@@ -363,9 +380,9 @@
                                             	</div>
 											</c:if>
 											<c:if test="${prodStock != 0}">
-												<form action="${pageContext.request.contextPath}/CartServlet.controller?action=AddCart">
+												<form action="${pageContext.request.contextPath}/CartServlet.controller?action=AddCart" method="get">
                                             	<div class="product-actions">
-                                            		<p class="single-info">數量: <input type="text" name="prodAmount" size="3" value=1> </p>
+                                            		<p class="single-info">數量: <input type="number" min="0" max="${prodStock}" name="prodAmount" size="3" value=1> </p>
                                             	</div>
                                                 
                                             	<br>
