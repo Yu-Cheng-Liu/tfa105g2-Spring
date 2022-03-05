@@ -111,97 +111,6 @@ margin-top: 7px;
 	margin-bottom: 7px;
 }
 
-.myButton {
-	box-shadow: 0px 0px 0px 0px #1c1b18;
-	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
-	background-color:#eae0c2;
-	border-radius:17px;
-	display:inline-block;
-	cursor:pointer;
-	color:#505739;
-	font-family:Arial;
-	font-size:28px;
-	font-weight:bold;
-	padding:18px 57px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
-	background-color:#ccc2a6;
-	color:rgb(109, 18, 18);
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-	
-}
-
-
-
-	
-	/* display:inline-block;
-	
-	color:#3a8a9e; */
-
-	
-
-	
-
-.booking {
-	box-shadow: 3px 4px 14px 0px #899599;
-	background:linear-gradient(to bottom, #ededed 5%, #ccc2cc 100%);
-	background-color:#ededed;
-	border-radius:15px;
-	border:1px solid #d6bcd6;
-	cursor:pointer;
-	color:rgb(45, 106, 163);
-	display:inline-block;
-	font-family:Arial;
-	font-size:27px;
-	font-weight:bold;
-	padding:22px 45px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #e1e2ed;
-}
-.booking:hover {
-	background:linear-gradient(to bottom, #ccc2cc 5%, #ededed 100%);
-	background-color:#ccc2cc;
-	color:#328ba1;
-}
-.booking:active {
-	position:relative;
-	top:1px;
-}
-
-.select-booking {
-	box-shadow: 3px 4px 14px 0px #899599;
-	background:linear-gradient(to bottom, #ededed 5%, #ccc2cc 100%);
-	background-color:#ededed;
-	border-radius:15px;
-	border:1px solid #d6bcd6;
-	cursor:pointer;
-	color:rgb(245, 21, 114);
-	display:inline-block;
-	font-family:Arial;
-	font-size:27px;
-	font-weight:bold;
-	padding:22px 45px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #e1e2ed;
-}
-
-.select-booking:hover {
-	background:linear-gradient(to bottom, #ccc2cc 5%, #ededed 100%);
-	background-color:#ccc2cc;
-	color:#dd1346;
-}
-
-.select-booking:active {
-	position:relative;
-	top:1px;
-}
-
 
 
 </style>
@@ -572,7 +481,7 @@ margin-top: 7px;
 											${active2} data-bs-toggle="tab"><i
 											class="fa fa-cart-arrow-down"></i> 訂單查詢</a> <a href="#download"
 											${active3} data-bs-toggle="tab"><i class="fa fa-calendar"></i>
-											法會預約查詢</a> <a href="#account-info" ${active4}
+											塔位查詢</a> <a href="#account-info" ${active4}
 											data-bs-toggle="tab"><i class="fa fa-user"></i> 修改個人資料</a> <a
 											href="#payment-method" ${active5} data-bs-toggle="tab"><i
 											class="fa fa-credit-card"></i> 付款方式</a> <a href="#address-edit"
@@ -676,41 +585,10 @@ margin-top: 7px;
 										<div class="tab-pane fade ${showactive3}" id="download"
 											role="tabpanel">
 											<div class="myaccount-content">
-												<h3>法會預約查詢</h3>
+												<h3>塔位查詢</h3>
 
-<!-- 												<div class="myaccount-table table-responsive text-center"> -->
-<!-- 													<table class="table table-bordered"> -->
-<!-- 														<thead class="thead-light"> -->
-<!-- 															<tr> -->
-<!-- 																<th>Product</th> -->
-<!-- 																<th>Date</th> -->
-<!-- 																<th>Expire</th> -->
-<!-- 																<th>Download</th> -->
-<!-- 															</tr> -->
-<!-- 														</thead> -->
-
-<!-- 														<tbody> -->
-<!-- 															<tr> -->
-<!-- 																<td>Mostarizing Oil</td> -->
-<!-- 																<td>Aug 22, 2018</td> -->
-<!-- 																<td>Yes</td> -->
-<!-- 																<td><a href="#" class="btn">Download File</a></td> -->
-<!-- 															</tr> -->
-<!-- 															<tr> -->
-<!-- 																<td>Katopeno Altuni</td> -->
-<!-- 																<td>Sep 12, 2018</td> -->
-<!-- 																<td>Never</td> -->
-<!-- 																<td><a href="#" class="btn">Download File</a></td> -->
-<!-- 															</tr> -->
-<!-- 														</tbody> -->
-<!-- 													</table> -->
-<!-- 												</div> -->
-
-
-<a href="#" class="booking">法會預約</a>
-<a href="#" class="select-booking">預約查詢</a>
-
-
+												<div class=" text-center">
+												</div>
 
 											</div>
 										</div>

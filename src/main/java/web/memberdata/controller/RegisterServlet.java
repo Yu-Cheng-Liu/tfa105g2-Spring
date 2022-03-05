@@ -89,7 +89,7 @@ public class RegisterServlet {
 			bean.setBirthday(birthday1);
 			bean.setCreatedate(LocalDate.now());
 			bean.setLastupdatedatetime(LocalDateTime.now());
-			bean.setVerifystatus("驗證中");
+			bean.setVerifystatus("未驗證");
 
 			MemberDataVO result = service.register(bean);
 

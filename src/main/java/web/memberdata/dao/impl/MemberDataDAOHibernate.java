@@ -31,6 +31,12 @@ public class MemberDataDAOHibernate implements MemberDataDAO {
 	}
 
 	@Override
+	public MemberDataVO selectByEmail(String email) {
+		return session.createQuery("from MemberDataVO where email = :email", MemberDataVO.class)
+				.setParameter("email", email).uniqueResult();
+	}
+
+	@Override
 	public List<MemberDataVO> selectAll() {
 		return session.createQuery("FROM MemberDataVO", MemberDataVO.class).list();
 	}

@@ -20,7 +20,7 @@ public class FirstVerifyEmailServlet {
 	private MemberDataServiceInterface service;
 
 	@PostMapping(value = "/first-verify-email.controller")
-	public String verfiry(String verify, Model model, HttpSession session) {
+	public String verify(String verify, Model model, HttpSession session) {
 
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);

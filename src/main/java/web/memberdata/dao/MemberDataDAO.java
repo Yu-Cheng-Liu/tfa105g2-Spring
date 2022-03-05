@@ -8,6 +8,8 @@ public interface MemberDataDAO {
 	public abstract MemberDataVO selectByUserno(Integer userNo);
 	
 	public abstract MemberDataVO selectByUserAccount(String userAccount);
+	
+	public abstract MemberDataVO selectByEmail(String email);
 
 	public abstract List<MemberDataVO> selectAll();
 

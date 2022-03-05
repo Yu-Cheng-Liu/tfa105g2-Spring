@@ -12,11 +12,15 @@ public interface MemberDataServiceInterface {
 
 	public MemberDataVO changePassword(String userAccount, String oldPassword, String newPassword);
 
+	public MemberDataVO changePasswordBySystem(String userAccount, String temPassword);
+	
 	public MemberDataVO editPersonalProfile(MemberDataVO member);
 
 	public MemberDataVO selectByUserAccount(String userAccount);
 	
 	public MemberDataVO selectByUserNo(Integer userNo);
+	
+	public MemberDataVO selectByEmail(String email);
 
 	public List<MemberDataVO> findAll();
 

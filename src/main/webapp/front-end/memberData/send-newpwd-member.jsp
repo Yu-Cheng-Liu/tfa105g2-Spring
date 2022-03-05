@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>會員登入註冊 | 龘虤</title>
+<title>忘記密碼 | 龘虤</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -53,23 +53,14 @@
 	background-position: center center;
 }
 
-
-select{
-	height: 40px;
-    margin-bottom: 4%;
-    max-width: 100%;  
-}
-
-
 .login-title {
-	font-size: 18px;
+	font-size: 17px;
 	line-height: 0px;
 	text-decoration: none;
 }
 
-
 .login-form label {
-	margin-bottom: 9px;
+	margin-bottom: 5px;
 	font-weight: 550;
 }
 
@@ -79,50 +70,26 @@ select{
 	font-size: 12px;
 	margin-bottom: 13px;
 	border-radius: 5px;
-	border:1px solid #bbb;
+	border: 1px solid #bbb;
 }
 
-.login-form .check-box input[type=checkbox]+label {
-	padding-left: 23px;
-	line-height: 17px;
-	font-size: 12px;
-	margin-top: 0px;
+.back-to-index a {
+	background-color: #FBD02C;
+	color: #333;
+	text-decoration: none;
+	display: block;
+	width: 150px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	font-weight:600;
 }
 
-.login-form .check-box input[type=checkbox]+label::before {
-	width: 15px;
-	height: 15px;
-}
 
-.login-form .check-box input[type=checkbox]+label::after {
-	line-height: 15px;
-	width: 15px;
-}
-
-.login-form .radio {
-	float: left;
-	margin-right: 70px;
-	position: relative;
-}
-
-.login-form .radio input[type=radio]+label {
-	padding-left: 42px;
-	line-height: 15px;
-	font-size: 12px;
-	font-weight: 500;
-	color: #707070;
-}
-
-#ckbutton_id {
-	position: absolute;
-}
-
-#ckbutton_id2 {
-	position: absolute;
-}
-
-font{
-	font-size: 15px;
+.back-to-index a:hover {
+	background-color: #333;
+	color: white;
 }
 </style>
 
@@ -380,128 +347,15 @@ font{
 					<div class="page-wrapper">
 						<div class="page-content-wrapper">
 							<div class="row">
-								<h3>
-									<span style="color: red">${errors.action}</span>
-								</h3>
-								
 								<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
-									<!-- Login Form s-->
-									<form
-										action="<c:url value="/login-register-member.controller" />"
-										method="post">
-
-										<div class="login-form">
-											<h4 class="login-title">會員登入</h4>
-
-											<div class="row">
-												<div class="col-md-12 col-12">
-													<label>帳號</label> <input type="text" name="useraccount"
-														value="${param.useraccount}"> <span
-														style="color: red">${errors.useraccount}</span>
-												</div>
-												<div class="col-12">
-													<label>密碼</label> <input type="password" name="password"
-														value="${param.password}"> <span
-														style="color: red">${errors.password}</span>
-												</div>
-												<div class="col-sm-6">
-
-													<div class="check-box d-inline-block ml-0 ml-md-2">
-														<input type="checkbox" id="remember_me"> <label
-															for="remember_me">記住我</label>
-													</div>
-												</div>
-
-												<div class="col-sm-6 text-start text-sm-end">
-													<a href="<%=request.getContextPath()%>/front-end/memberData/forgot-pwd.jsp" class="forget-pass-link"> 忘記密碼?</a>
-												</div>
-
-												<div class="col-md-12">
-													<input type="hidden" name="action" value="login">
-													<button type="submit" class="register-button mt-3">登入</button>
-
-												</div>
-
+									<div class="login-form">
+										<h4 class="login-title"">請至您的電子信箱收取新密碼!</h4>
+										<div class="row">
+											<div class="back-to-index">
+												<a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">重新登入</a>
 											</div>
 										</div>
-
-									</form>
-								</div>
-								<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-									<form action="<c:url value="/register-member.controller" />"
-										method="post">
-
-										<div class="login-form">
-											<h4 class="login-title">會員註冊</h4>
-
-											<div class="row">
-												<div class="col-md-12 mb-20">
-													<label>帳號<font color="red">*</font></label> <span style="color: red">${errors.useraccount_rg}</span><input
-														type="text" name="useraccount_rg"
-														value="${param.useraccount_rg}"
-														placeholder="請設定4-15位英數字帳號">
-												</div>
-												<div class="col-md-6 mb-20">
-													<label>密碼<font color="red">*</font></label><span style="color: red">${errors.password_rg}</span><input
-														type="password" name="password_rg"
-														placeholder="請設定6-15位英數字密碼">
-												</div>
-												<div class="col-md-6 mb-20">
-													<label>確認密碼<font color="red">*</font></label> <span style="color: red">${errors.password_rg2}</span><input
-														type="password" name="password_rg2" placeholder="請再輸入一次密碼">
-												</div>
-												<div class="col-md-12 mb-20">
-													<label>姓名</label> <span style="color: red">${errors.username}</span><input
-														type="text" name="username" value="${param.username}">
-												</div>
-												<div class="col-md-12">
-													<label>手機<font color="red">*</font></label><span style="color: red">${errors.phone}</span>
-													<input type="tel" name="phone" value="${param.phone}"
-														maxlength="10">
-												</div>
-												<div class="col-md-12">
-													<label>信箱<font color="red">*</font></label> <span style="color: red">${errors.email}</span><input
-														type="email" name="email" value="${param.email}">
-												</div>
-												<div class="col-md-6 col-12 mb-20">
-													<label>地址</label>
-													<div id="twzipcode_ADV">
-														<script>
-															$("#twzipcode_ADV").twzipcode({
-																zipcodeIntoDistrict: true, // 郵遞區號自動顯示在地區
-																css: ["city form-control", "town form-control"], // 自訂 "城市"、"地區" class 名稱 
-																countyName: "city", // 自訂城市 select 標籤的 name 值
-																districtName: "town" // 自訂地區 select 標籤的 name 值
-															});
-														</script>
-													</div>
-												</div>
-												<div class="col-md-12">
-													<input type="text" name="address" value="${param.address}">
-												</div>
-												<div class="col-md-12">
-													<label>性別</label>
-													<div class="radio ">
-														<input type="radio" id="ckbutton_id" name="gender"
-															value="男"> <label for="ckbutton_id">男</label> <input
-															type="radio" id="ckbutton_id2" name="gender" value="女">
-														<label for="ckbutton_id2">女</label>
-													</div>
-												</div>
-												<div class="col-md-12">
-													<label>生日</label> <span style="color: red">${errors.birthday}</span>
-													<input id="f_date1" type="text" name="birthday"
-														value="${param.birthday}">
-												</div>
-
-												<div class="col-12">
-													<input type="hidden" name="action2" value="register">
-													<button type="submit" class="register-button mt-1">註冊</button>
-												</div>
-											</div>
-										</div>
-
-									</form>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -713,27 +567,5 @@ font{
 
 </body>
 
-<!-- =========================================以下為 datetimepicker 之相關設定========================================== -->
-
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.css" />
-<script src="<%=request.getContextPath()%>/datetimepicker/jquery.js"></script>
-<script
-	src="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.full.js"></script>
-
-<script>
-	$.datetimepicker.setLocale('zh');
-	$('#f_date1').datetimepicker({
-		theme : '', //theme: 'dark',
-		timepicker : false, //timepicker:true,
-		step : 1, //step: 60 (這是timepicker的預設間隔60分鐘)
-		format : 'Y-m-d', //format:'Y-m-d H:i:s',
-		value : '${param.birthday}', // value:   new Date(),
-	//disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], // 去除特定不含
-	//startDate:	            '2017/07/10',  // 起始日
-	//minDate:               '-1970-01-01', // 去除今日(不含)之前
-	//maxDate:               '+1970-01-01'  // 去除今日(不含)之後
-	});
-</script>
 
 </html>
