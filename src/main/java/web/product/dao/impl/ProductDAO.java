@@ -1,9 +1,8 @@
 package web.product.dao.impl;
 
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
->>>>>>> Michael
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +20,7 @@ public class ProductDAO implements ProductDAOInterface {
 
 	@PersistenceContext
 	private Session session;
-<<<<<<< HEAD
-=======
+
 	
 	
 	
@@ -33,7 +31,7 @@ public class ProductDAO implements ProductDAOInterface {
 		return result;
 		
 	}
->>>>>>> Michael
+
 
 	// 用prodNo找商品照片
 	@Override
@@ -120,8 +118,7 @@ public class ProductDAO implements ProductDAOInterface {
 //		}
 		return null;
 	}
-<<<<<<< HEAD
-=======
+
 	
 	
 	public boolean updateProdStatus(List<Integer> productNumbers) {
@@ -132,7 +129,6 @@ public class ProductDAO implements ProductDAOInterface {
 		
 		
 	}
->>>>>>> Michael
 
 	// 修改商品
 	@Override

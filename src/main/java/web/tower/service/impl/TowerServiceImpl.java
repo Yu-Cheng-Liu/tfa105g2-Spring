@@ -34,6 +34,20 @@ public class TowerServiceImpl implements TowerService{
 //			session.close();
 //			sessionFactory.close();
 //		}
+		public List<TowerVO> selectAll() {
+			return towerDao.select();
+		}
+		
+		
+		
+		public List<TowerVO> selectAllByUserNo(Integer userNo) {
+			
+			List <TowerVO> list = towerDao.selectByUser(userNo);
+			
+			return list;
+		}
+		
+		
 		public List<TowerVO> select(TowerVO bean) {
 			List<TowerVO> result=null;
 			if(bean!=null&&bean.getTowerNo()!=null&&bean.getTowerNo().equals(0)) {
@@ -49,9 +63,9 @@ public class TowerServiceImpl implements TowerService{
 		}
 		public TowerVO insert(TowerVO bean) {
 			TowerVO result=null;
-			if(bean!=null&&bean.getTowerNo()!=null) {
-				result=towerDao.insert(bean);
-			}
+
+			result = towerDao.insert(bean);
+
 			return result;
 		}
 		public TowerVO update (TowerVO bean) {

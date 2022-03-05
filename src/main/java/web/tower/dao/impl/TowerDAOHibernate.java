@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+
 import web.tower.dao.TowerDAO;
 import web.tower.entity.TowerVO;
 
@@ -34,6 +35,8 @@ public class TowerDAOHibernate implements TowerDAO {
 //			session.close();
 //			sessionFactory.close();
 		}
+		
+
 		@Override
 		public TowerVO select(Integer towerNo) {
 			if(towerNo!=null) {
@@ -41,19 +44,24 @@ public class TowerDAOHibernate implements TowerDAO {
 			}
 			return null;
 		}
+		
+		public List selectByUser(Integer userNo) {
+			String hql = "from towerVO where userNo = :userNo";
+			List<TowerVO> list = this.session.createQuery(hql, TowerVO.class).setParameter("userNo", userNo).list();
+			return list;
+			
+		}
 @Override
-		public List<TowerVO> select() {
+		public  List<TowerVO> select() {
 			return this.session.createQuery("FROM TowerVO",TowerVO.class).list();
 			
 		}
 		@Override
 		public TowerVO insert(TowerVO bean) {
-			if(bean!=null&&bean.getTowerNo()!=null) {
-				TowerVO temp=this.session.get(TowerVO.class, bean.getTowerNo());
-			if( temp==null) {
+			if(bean!=null) {
 				session.save(bean);
 				return bean;
-			}
+
 		}
 			return null;
 		}

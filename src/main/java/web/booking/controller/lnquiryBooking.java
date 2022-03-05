@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import web.booking.entity.BookingVO;
 import web.booking.service.BookingService;
+import web.memberdata.entity.MemberDataVO;
 
 @Controller
 public class lnquiryBooking{
@@ -27,7 +28,8 @@ public class lnquiryBooking{
 	public String lnquirybooking(String bookingion,String reserveDate,String towerNo,Model model,HttpSession session) {
 		
 		DateFormat sFormat=new SimpleDateFormat("yyyy-MM-dd");
-		
+		MemberDataVO mv= (MemberDataVO)session.getAttribute("user");
+		Integer userNo = mv.getUserno();
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);
 		if ("select".equals(bookingion)) {

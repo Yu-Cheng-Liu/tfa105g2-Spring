@@ -30,8 +30,7 @@ public class ProductService implements ProductServiceInterface {
 	public ProductVO selectByProdNo(Integer prodNo) {
 		return productDAOInterface.selectByProdNo(prodNo);
 	}
-<<<<<<< HEAD
-=======
+
 	
 	
 	
@@ -42,7 +41,7 @@ public class ProductService implements ProductServiceInterface {
 			return null;
 		}
 	}
->>>>>>> Michael
+
 
 	// select一種商品就不用list，select多種商品就要用list包起來。而且單選和全選要分開設定
 	public List<ProductVO> selectByNameLike(String prodName) {

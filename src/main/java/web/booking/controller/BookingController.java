@@ -16,21 +16,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import web.booking.entity.BookingVO;
 import web.booking.service.BookingService;
+import web.memberdata.entity.MemberDataVO;
+import web.tower.entity.TowerVO;
+import web.tower.service.TowerService;
 
 @Controller
 public class BookingController {
 	@Autowired
 	private BookingService service;
 	
+	private TowerService Tservice;
+	
 	
 	
 	@RequestMapping(value = "/front-end/booking/booking.controller" , method = {RequestMethod.POST})
-	public String booking(String userNo, String towerNo , String orderNo , String reserveDate , String remark ,Model model , HttpSession session) {
+	public String booking(String towerNo, String orderNo , String reserveDate , String remark ,Model model , HttpSession session) {
 		
 		DateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String regexNumberOnly = "[0-9]+";
 		String regexDate       = "\\d{4}-\\d{2}-\\d{2}";
 		Map<String, String> errors = new HashMap<String, String>();
+		MemberDataVO mv= (MemberDataVO)session.getAttribute("user");
+		Integer userNo = mv.getUserno();
+//		MemberOrderVO mov=(MemberOrderVO)session.getAttribute(orderNo);
+//		Integer orderNo= mov.getOrderno();
+		
+//		TowerVO tv=(TowerVO)session.getAttribute("towerVO");
+//		Integer towerNo =  Tservice.selectAllByUserNo(userNo);
 		
 		if(!towerNo.matches(regexNumberOnly)) {
 			errors.put("towerNo", "塔位只接受數字");
@@ -40,10 +52,7 @@ public class BookingController {
 			errors.put("towerNo", "塔位不可空白");
 			model.addAttribute("errors", errors);
 		}
-//		if("".equals(orderNo)) {
-//			errors.put("orderNo","訂單編號不可空白");
-//			req.setAttribute("errors", errors);
-//		}
+
 		if(!reserveDate.matches(regexDate)) {
 			errors.put("reserveDate", "只接受yyyy-mm-dd格式");
 			model.addAttribute("errors", errors);
@@ -58,7 +67,7 @@ public class BookingController {
 			model.addAttribute("userNo", userNo);
 			model.addAttribute("orderNo", orderNo);
 			model.addAttribute("remark", remark);
-//			req.setAttribute("errors", errors);
+
 		
 			return "/front-end/booking/error.jsp";
 			
@@ -67,12 +76,10 @@ public class BookingController {
 			try {
 				BookingVO bean = new BookingVO();
 				ReserveDate = sFormat.parse(reserveDate);
-				if("".equals(userNo)) {
-					Integer UserNo = null;
-					bean.setUserNo(UserNo);
+				if(userNo==null) {
+					errors.put("userNo", "尚未登入");
 				}else {
-					Integer UserNo = Integer.parseInt(userNo);
-					bean.setUserNo(UserNo);
+					bean.setUserNo(userNo);
 				}
 				if("".equals(orderNo)) {
 					Integer OrderNo = null;
@@ -81,7 +88,6 @@ public class BookingController {
 				          bean.setOrderNo(OrderNo);}
 
 				Integer TowerNo = Integer.parseInt(towerNo);
-				
 			
 				bean.setTowerNo(TowerNo);
 			

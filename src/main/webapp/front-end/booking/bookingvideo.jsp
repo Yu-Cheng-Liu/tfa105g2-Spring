@@ -1,9 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-        <!DOCTYPE html>
-        <html class="no-js" lang="zxx">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -30,7 +25,6 @@
     <link href="<%=request.getContextPath()%>/assets/css/vendors.css" rel="stylesheet">
     <!-- Main CSS -->
     <link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/booking.css">
 
     <!-- JQuery 連結-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -39,6 +33,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/chat.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/chatStyle.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/typing.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/booking.css">
 
 
 </head>
@@ -68,11 +63,10 @@
                                         </ul>
                                     </li>
 
-                                    <li class="menu-item-has-children"><a href="#">預約服務</a>
+                                    <li class="menu-item-has-children"><a href="#">法會直播</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog-post-video-format.jsp">法會直播</a></li>
-                                            <li><a href="blog-post-audio-format.jsp">預約祭祀</a></li>
-                                            <li><a href="menu-item-has-children">線上祭祀</a></li>
+                                           <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsppost-video-format.jsp">法會直播</a></li>
+                                            
                                         </ul>
                                     </li>
 
@@ -214,12 +208,13 @@
 
                     <!--=======  mobile navigation area  =======-->
 
+                   
                     <div class="header-mobile-navigation d-block d-lg-none">
                         <div class="row align-items-center">
                             <div class="col-6 col-md-6">
                                 <div class="header-logo">
                                     <a href="index.html">
-                                        <img width="93" height="25" src="<%=request.getContextPath() %>/assets/img/logo.webp" class="img-fluid" alt="">
+                                        <img width="93" height="25" src="<%=request.getContextPath()%>/assets/img/logo.webp" class="img-fluid" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -263,10 +258,10 @@
                     <div class="breadcrumb-wrapper breadcrumb-bg">
                         <!--=======  breadcrumb content  =======-->
                         <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Login - Register</h2>
+                            <h2 class="breadcrumb-content__title">Blog Post</h2>
                             <ul class="breadcrumb-content__page-map">
                                 <li><a href="index.html">Home</a></li>
-                                <li class="active">Login - Register</li>
+                                <li class="active">Blog Post</li>
                             </ul>
                         </div>
                         <!--=======  End of breadcrumb content  =======-->
@@ -279,30 +274,235 @@
     <!--====================  End of breadcrumb area  ====================-->
     <!--====================  page content area ====================-->
     
-    <h1>預約資訊</h1>
-  <table>
-	<tr>
-		<th>預約編號</th>
-		<th>塔位編號</th>
-		<th>使用者編號</th>
-		<th>預約日期</th>
-		<th>訂單編號</th>
-		<th>備註</th>
-	</tr>
+                    <!--=======  page wrapper  =======-->
+                    
+                                    <!--=======  page sidebar wrapper =======-->
+                                    
+                                        <!--=======  End of single sidebar widget  =======-->
 
-		<tr>
-			<td>${bookingNo}</td>
-			<td>${towerNo}</td>
-			<td>${userNo}</td>
-		<td><fmt:formatDate value="${reserveDate}" pattern="yyyy-MM-dd"/></td>
-			<td>${orderNo}</td>
-			<td>${remark}</td> 
-		</tr>
-</table>
+                                        <!--=======  single sidebar widget  =======-->
+                                       
+
+                                            <!--=======  block container  =======-->
+
+
+                                                <!--=======  single block  =======-->
+
+                                                
+
+                                                <!--=======  End of single block  =======-->
+
+                                                <!--=======  single block  =======-->
+
+
+                                                <!--=======  End of single block  =======-->
+
+                                                <!--=======  single block  =======-->
+
+                                             
+                                                <!--=======  End of single block  =======-->
+
+                                                <!--=======  single block  =======-->
+
+                                               
+                                                <!--=======  End of single block  =======-->
+
+
+                                            <!--=======  End of block container  =======-->
+                           
+                                        <!--=======  End of single sidebar widget  =======-->
+
+                                        <!--=======  single sidebar widget  =======-->
+                                        
+
+                                            <!--=======  block container  =======-->
+
+                                       
+
+                                                <!--=======  single block  =======-->
+
+
+                                                <!--=======  End of single block  =======-->
+
+                                                <!--=======  single block  =======-->
+
+                                               
+
+                                                <!--=======  End of single block  =======-->
+
+                                                <!--=======  single block  =======-->
+
+                                             
+
+                                                <!--=======  End of single block  =======-->
+
+                                                <!--=======  single block  =======-->
+
+                                               
+
+                                                <!--=======  End of single block  =======-->
+
+                                           
+
+                                            <!--=======  End of block container  =======-->
+                                        
+                                        <!--=======  End of single sidebar widget  =======-->
+
+
+
+                                        <!--=======  single sidebar widget  =======-->
+                                       
+                                        <!--=======  End of single sidebar widget  =======-->
+                                    
+                                    <!--=======  End of page sidebar wrapper  =======-->
+                                
+                                    <!--=======  blog page content  =======-->
+                                    
+                                        <!--=======  blog post container  =======-->
+
+                                       
+
+                                            <!--=======  post title  =======-->
+
+
+                                            <h1 class="post-title"style="text-align:center;">法會直播</h1>
+
+                                            <!--=======  End of post title  =======-->
+
+
+                                            <!--=======  Post meta  =======-->
+                                            <div class="post-meta" style="text-align: center;">
+                                                <p><span><i class="fa fa-user-circle"></i> Posted By: </span> <a
+                                                        href="#">admin</a> <span class="separator">|</span> <span><i
+                                                            class="fa fa-calendar"></i> Posted On: <a href="#">24
+                                                            March, 2022</a></span></p>
+                                            </div>
+
+                                            <!--=======  End of Post meta  =======-->
+
+                                            <!--=======  Post media  =======-->
+                                            <div id = "buabuayAndStreaming">
+                                                <div class="single-blog-post-media" style="text-align: center;" >
+                                                    <div class="video" id="streaming">
+                                                        <iframe width="699" height="393" src="https://www.youtube.com/embed/HVfua9eU1SA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    </div>
+                                                    
+                                                    <div id="buabuay" style="text-align: right;">
+                                                    	<h3>擲筊祈福</h3>
+                                                	<div id="bbans">
+                                                    	<label id="bbname"></label>
+                                                    	<img id="bb"  width="150" height="150">   
+                                                	</div>
+                                                
+                                                    	<img src="<%=request.getContextPath()%>/assets/img/baibai/wish.gif" width="150" height="150" id="bbgif">
+                                                    <button id="bbBtn" >擲筊</button>
+                                                </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <!--=======  End of Post media  =======-->
+
+                                            <!--=======  Post content  =======-->
+
+
+                                            <!--=======  End of Post content  =======-->
+                                            <!-- <h3>擲筊祈福</h3> -->
+                                            <!--=======  Tags area  =======-->
+
+                                            <!-- <div id="bbans">
+                                                <label id="bbname"></label>
+                                                <img id="bb"  width="150" height="150">   
+                                              </div>
+                                             
+                                              <img src="<%=request.getContextPath()%>/assets/img/baibai/wish.gif" width="150" height="150" id="bbgif">
+                                              <button id="bbBtn" >擲筊</button> -->
+
+                                            <!--=======  End of Tags area  =======-->
+
+
+                                            <!--=======  Share post area  =======-->
+
+                                      
+                                            <!--=====  End of Share post area  ======-->
+
+                                            <!--=======  related post  =======-->
+
+                                     
+                                                        <!--=======  single related post  =======-->
+
+
+                                                        <!--=======  End of single related post  =======-->
+                                                    
+                                                        <!--=======  single related post  =======-->
+
+                                                    
+                                                        
+
+                                                        <!--=======  End of single related post  =======-->
+                                                 
+                                                        <!--=======  single related post  =======-->
+
+                                                       
+                                                        <!--=======  End of single related post  =======-->
+                                              
+
+                                            <!--=======  End of related post  =======-->
+
+                                   
+
+                                        <!--=======  End of blog post container  =======-->
+
+                                        <!--=============================================
+                        =            Comment section         =
+                        =============================================-->
+
+                                      
+
+                                                <!--=======  End of single comment  =======-->
+
+                                                <!--=======  single reply comment  =======-->
+
+
+                                                <!--=======  End of single reply comment  =======-->
+
+                                                <!--=======  single comment  =======-->
+
+                                                
+
+                                                <!--=======  End of single comment  =======-->
+
+
+
+                                           
+                                            <!--=======  End of comment container  =======-->
+
+                                            <!--=======  comment form container  =======-->
+
+
+                                                <!--=======  comment form  =======-->
+
+                                                
+                                                <!--=======  End of comment form  =======-->
+                                            
+
+                                            <!--=======  End of comment form container  =======-->
+
+                                        
+
+
+                                        <!--=====  End of Comment section  ======-->
+                                    
+                                    <!--=======  End of blog page content  =======-->
+                                
+                
+                    <!--=======  End of page wrapper  =======-->
+   
     <!--====================  End of page content area  ====================-->
+    <!--====================  newsletter area ====================-->
     
-   <!--====================  footer area ====================-->
-   <div class="footer-area">
+    <!--====================  End of newsletter area  ====================-->
+    <!--====================  footer area ====================-->
+     <div class="footer-area">
         <div class="footer-copyright">
             <div class="container wide">
                 <div class="row">
@@ -620,9 +820,29 @@
 
     <!-- Active JS -->
     <script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
-  <script src="<%=request.getContextPath()%>/assets/js/booking.js"></script>
+    
+   
+ <script src="<%=request.getContextPath()%>/assets/js/booking.js"></script>
     <!--=====  End of JS files ======-->
 
 </body>
+<script>
+    var bbans=document.getElementById("bbans"); 
+    var bbname=document.getElementById("bbname");  
+    var bbgif=document.getElementById("bbgif");
+    var bbBtn=document.getElementById("bbBtn");  
+    var bb=document.getElementById("bb"); 
+    bbans.setAttribute('style','display:none;'); 
+    bbBtn.addEventListener("click",function(e){
+    var myArray = [ {url: '<%=request.getContextPath()%>/assets/img/baibai/01.png',name:'聖筊'},{url: '<%=request.getContextPath()%>/assets/img/baibai/02.png',name:'陰筊'},{url: '<%=request.getContextPath()%>/assets/img/baibai/03.png',name:'笑筊'},{url: '<%=request.getContextPath()%>/assets/img/baibai/01.png',name:'聖筊'}]
+    var rand = Math.floor(Math.random()*myArray.length);
+    var arrRand= myArray[rand];
+    bbname.innerText=arrRand.name;
+    bb.setAttribute('src', arrRand.url);
+    bbans.removeAttribute('style','display:none;');
+    bbgif.setAttribute('style','display:none;');
+     }); 
+    
+    </script>
 
 </html>

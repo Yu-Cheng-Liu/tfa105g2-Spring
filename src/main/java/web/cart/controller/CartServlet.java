@@ -25,7 +25,6 @@ import web.cart.service.CartServiceInterface;
 import web.memberdata.dao.MemberDataDAO;
 import web.memberdata.entity.MemberDataVO;
 import web.product.entity.ProductVO;
-import web.product.entity.ProductView;
 import web.product.service.ProductServiceInterface;
 
 @Controller

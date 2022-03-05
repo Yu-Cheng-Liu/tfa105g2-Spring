@@ -21,9 +21,7 @@ public interface ProductServiceInterface {
 //			Integer prodPrice, Integer prodStock, String prodVerify, byte[] prodImg1, byte[] prodImg2, byte[] prodImg3,
 //			Date startDate, Date endDate);
 	public abstract boolean delete(Integer prodNo);
-<<<<<<< HEAD
-=======
-	
+
 	public List<ProductVO> selectProdByCompNo(Integer CompNo);
->>>>>>> Michael
+
 }

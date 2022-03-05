@@ -24,9 +24,8 @@ public interface ProductDAOInterface {
 //			Date startDate, Date endDate);
 	public abstract boolean delete(Integer prodNo);
 	public abstract Map<String, Integer> getPrice();
-<<<<<<< HEAD
-=======
+
 	public List<ProductVO> getProductByCompNo(Integer compNo);
 	public boolean updateProdStatus(List<Integer> productNumbers);
->>>>>>> Michael
+
 }

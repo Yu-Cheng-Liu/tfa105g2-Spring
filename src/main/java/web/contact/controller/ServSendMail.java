@@ -26,7 +26,7 @@ public class ServSendMail {
 	@ResponseBody
 	@PostMapping(value = "/backstage/ServSendMail.controller")
 	public String ServSelectAll(@RequestBody(required = false) HashMap<String, String> req, HttpSession session) {
-		
+		System.out.println(session);
 		ServiceBean bean = new ServiceBean();
 		bean.setTaskNo(Integer.valueOf(req.get("taskNo")));
 		bean = service.sendEmail(bean, req.get("subject"), req.get("replyContent"));
