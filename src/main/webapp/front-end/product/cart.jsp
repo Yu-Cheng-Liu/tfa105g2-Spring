@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*, web.cart.entity.CartVO" %>
 
 <head>
     <meta charset="utf-8">
@@ -50,8 +52,8 @@
                                 <ul>
                                     <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
-                                            <li><a href="shop-list-left-sidebar.jsp">商品總攬</a></li>
-                                            <li><a href="cart.jsp">購物車</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
                                         </ul>
                                     </li>
 
@@ -81,86 +83,82 @@
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
                                             <i class="ion-bag"></i>
-                                            <span class="counter">3</span>
+                                            <span class="counter">${buyListCount}</span>
                                         </a>
                                         <!-- mini cart  -->
+                                        
+                                        
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
+                                        <%
+                                        	Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+                                        %>
+                                        <%if (buyList != null && (buyList.size() > 0)){ %>
+                                        	<%
+                                            	for(int index =0; index < buyList.size(); index++){
+                                            		CartVO order = buyList.get(index);
+                                            %>
+                                            <%-- <c:forEach var="cart" items="${myCart}"> --%>
+                                            	<%-- ${cart.key}
+                                            	${cart.value} --%>
+                                            <%-- <%
+                                            Map<Integer, Integer> myCart = (Map) session.getAttribute("myCart");
+                                            	for(int i = 1; i < myCart.size(); i++){
+                                            		Integer cart = myCart.get(i);
+                                            	}
+                                            %> --%>
+                                            
                                                 <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
+                                                    <!-- <a href="javascript:void(0)" class="remove-icon"><i
+                                                            class="ion-android-close"></i></a> -->
+                                                    <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
+                                                    <%-- <form action="" class="remove-icon" method="get">
+                                                    	<input type="hidden" name="del" value="<%= index %>">
+                                                    	
+                                                    	<i class="ion-android-close"></i>
+                                                            
+                                                    </form> --%>
+                                                    <%-- <form action="${pageContext.request.contextPath}/CartServlet.controller?action=Delete" method="get">
+                                                    	<input type="hidden" name="del" value="<%= index %>">
+                                                    	<button type="sumbit" class="remove-icon"></button>
+                                                    	<i class="ion-android-close"></i>
+                                                            
+                                                    </form> --%>
                                                     <div class="image">
                                                         <a href="single-product.jsp">
                                                             <img width="80" height="106"
-                                                                src="${pageContext.request.contextPath}/assets/img/products/product-1-80x106.webp"
+                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Cillum
-                                                                dolore furniture</a></p>
-                                                        <p class="count"><span>1 x </span> $402</p>
+                                                    
+                                                        <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
+                                                        <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
                                                     </div>
-                                                </div>
-                                                <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a>
-                                                    <div class="image">
-                                                        <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="${pageContext.request.contextPath}/assets/img/products/product-2-80x106.webp"
-                                                                class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Lorem
-                                                                ipsum furniture</a></p>
-                                                        <p class="count"><span>1 x </span> $500</p>
-                                                    </div>
-                                                </div>
-                                                <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a>
-                                                    <div class="image">
-                                                        <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="${pageContext.request.contextPath}/assets/img/products/product-3-80x106.webp"
-                                                                class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Cillum
-                                                                dolore tool</a></p>
-                                                        <p class="count"><span>1 x </span> $607</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                	
+                                                <%-- </c:forEach> --%>
+                                            	</div>
+                                            	
+                                            <%}%>
+                                            
                                             <div class="cart-calculation">
                                                 <table class="table">
                                                     <tbody>
                                                         <tr>
-                                                            <td class="text-start">Sub-Total :</td>
-                                                            <td class="text-end">$220.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">Eco Tax (-2.00) :</td>
-                                                            <td class="text-end">$6.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">VAT (20%) :</td>
-                                                            <td class="text-end">$44.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">Total :</td>
-                                                            <td class="text-end">$270.00</td>
+                                                            <td class="text-start">商品總金額 :</td>
+                                                            <td class="text-end">$${amount}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <%}%>
                                             <div class="cart-buttons">
-                                                <a href="cart.jsp">VIEW CART</a>
-                                                <a href="checkout.jsp">CHECKOUT</a>
+                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
+                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </li>
@@ -319,78 +317,40 @@
 
                                 <div class="cart-table table-responsive">
                                     <table class="table">
+                                    
+                                        	
                                         <thead>
                                             <tr>
-                                                <th class="pro-thumbnail">Image</th>
-                                                <th class="pro-title">Product</th>
-                                                <th class="pro-price">Price</th>
-                                                <th class="pro-quantity">Quantity</th>
-                                                <th class="pro-subtotal">Total</th>
-                                                <th class="pro-remove">Remove</th>
+                                                <th class="pro-thumbnail">商品圖片</th>
+                                                <th class="pro-title">商品名稱</th>
+                                                <th class="pro-price">價格</th>
+                                                <th class="pro-quantity">數量</th>
+                                                <th class="pro-subtotal">商品金額</th>
+                                                <th class="pro-remove">移除</th>
                                             </tr>
                                         </thead>
+                                        
+                                        <%
+                                            for(int index =0; index < buyList.size(); index++){
+                                            	CartVO order = buyList.get(index);
+                                        %>
                                         <tbody>
                                             <tr>
                                                 <td class="pro-thumbnail"><a href="single-product.jsp"><img width="600"
-                                                            height="800" src="${pageContext.request.contextPath}/assets/img/products/big1-1.webp"
+                                                            height="800" src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
                                                             class="img-fluid" alt="Product"></a></td>
-                                                <td class="pro-title"><a href="single-product.jsp">Cillum dolore tortor
-                                                        nisl fermentum</a></td>
-                                                <td class="pro-price"><span>$29.00</span></td>
+                                                <td class="pro-title"><a href="single-product.jsp"><%=order.getProdName()%></a></td>
+                                                <td class="pro-price"><span>$ <%=order.getProdPrice() %></span></td>
                                                 <td class="pro-quantity">
                                                     <div class="quantity-selection"><input type="number" value="1"
                                                             min="1"></div>
                                                 </td>
-                                                <td class="pro-subtotal"><span>$29.00</span></td>
-                                                <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="pro-thumbnail"><a href="single-product.jsp"><img width="600"
-                                                            height="800" src="${pageContext.request.contextPath}/assets/img/products/big1-2.webp"
-                                                            class="img-fluid" alt="Product"></a></td>
-                                                <td class="pro-title"><a href="single-product.jsp">Auctor gravida
-                                                        pellentesque</a></td>
-                                                <td class="pro-price"><span>$30.00</span></td>
-                                                <td class="pro-quantity">
-                                                    <div class="quantity-selection"><input type="number" value="1"
-                                                            min="1"></div>
-                                                </td>
-                                                <td class="pro-subtotal"><span>$60.00</span></td>
-                                                <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="pro-thumbnail"><a href="single-product.jsp"><img width="600"
-                                                            height="800" src="${pageContext.request.contextPath}/assets/img/products/big1-3.webp"
-                                                            class="img-fluid" alt="Product"></a></td>
-                                                <td class="pro-title"><a href="single-product.jsp">Condimentum posuere
-                                                        consectetur</a></td>
-                                                <td class="pro-price"><span>$25.00</span></td>
-                                                <td class="pro-quantity">
-                                                    <div class="quantity-selection"><input type="number" value="1"
-                                                            min="1"></div>
-                                                </td>
-                                                <td class="pro-subtotal"><span>$25.00</span></td>
-                                                <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="pro-thumbnail"><a href="single-product.jsp"><img width="600"
-                                                            height="800" src="${pageContext.request.contextPath}/assets/img/products/big1-4.webp"
-                                                            class="img-fluid" alt="Product"></a></td>
-                                                <td class="pro-title"><a href="single-product.jsp">Habitasse dictumst
-                                                        elementum</a></td>
-                                                <td class="pro-price"><span>$11.00</span></td>
-                                                <td class="pro-quantity">
-                                                    <div class="quantity-selection"><input type="number" value="1"
-                                                            min="1"></div>
-                                                </td>
-                                                <td class="pro-subtotal"><span>$11.00</span></td>
-                                                <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a>
+                                                <td class="pro-subtotal"><span>$${amount}</span></td>
+                                                <td class="pro-remove"><a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
+                                        <%}%>
                                     </table>
                                 </div>
 
@@ -404,7 +364,7 @@
                                 <div class="col-lg-6 col-12">
                                     <!--=======  Calculate Shipping  =======-->
 
-                                    <div class="calculate-shipping">
+                                    <!-- <div class="calculate-shipping">
                                         <h4>Calculate Shipping</h4>
                                         <form action="#">
                                             <div class="row">
@@ -434,13 +394,13 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> -->
 
                                     <!--=======  End of Calculate Shipping  =======-->
 
                                     <!--=======  Discount Coupon  =======-->
 
-                                    <div class="discount-coupon">
+                                    <!-- <div class="discount-coupon">
                                         <h4>Discount Coupon Code</h4>
                                         <form action="#">
                                             <div class="row">
@@ -452,7 +412,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> -->
 
                                     <!--=======  End of Discount Coupon  =======-->
 

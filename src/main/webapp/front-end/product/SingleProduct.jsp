@@ -55,7 +55,7 @@
                                             <!-- <li><a href="/webprojt-shopping/AllProductServlet">商品總攬</a></li> -->
                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
                                             
-                                            <li><a href="cart.jsp">購物車</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
                                         </ul>
                                     </li>
 
@@ -127,13 +127,13 @@
                                                     	<i class="ion-android-close"></i>
                                                             
                                                     </form> --%>
-                                                    <%-- <div class="image">
+                                                    <div class="image">
                                                         <a href="single-product.jsp">
                                                             <img width="80" height="106"
-                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=${prodVO.prodNo}&prodImg=1"
+                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
                                                                 class="img-fluid" alt="">
                                                         </a>
-                                                    </div> --%>
+                                                    </div>
                                                     <div class="content">
                                                     
                                                         <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
@@ -157,7 +157,7 @@
                                             </div>
                                             <%}%>
                                             <div class="cart-buttons">
-                                                <a href="${pageContext.request.contextPath}/front-end/product/cart.jsp">檢視購物車</a>
+                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
                                                 <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
                                             </div>
                                             
