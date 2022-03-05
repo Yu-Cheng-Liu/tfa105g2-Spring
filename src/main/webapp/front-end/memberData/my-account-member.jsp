@@ -53,6 +53,14 @@
 	href="<%=request.getContextPath()%>/assets/css/typing.css">
 
 <style>
+.breadcrumb-bg {
+	background-image:
+		url("<%=request.getContextPath()%>/assets/img/hero-slider/test4.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
 .account-details-form h4 {
 	margin-top: 30px;
 	margin-bottom: 15px;
@@ -89,6 +97,111 @@ margin-top: 7px;
   height:36px; 
   -webkit-appearance:none; /*for Webkit browsers*/ 
 } 
+
+#verifying {
+	color:orangered;
+	/* display: inline; */
+}
+
+.save-change-btn{
+	margin-top: 5px;
+}
+
+.profile-wrap{
+	margin-bottom: 7px;
+}
+
+.myButton {
+	box-shadow: 0px 0px 0px 0px #1c1b18;
+	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color:#eae0c2;
+	border-radius:17px;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Arial;
+	font-size:28px;
+	font-weight:bold;
+	padding:18px 57px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+	background-color:#ccc2a6;
+	color:rgb(109, 18, 18);
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+	
+}
+
+
+
+	
+	/* display:inline-block;
+	
+	color:#3a8a9e; */
+
+	
+
+	
+
+.booking {
+	box-shadow: 3px 4px 14px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #ccc2cc 100%);
+	background-color:#ededed;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	cursor:pointer;
+	color:rgb(45, 106, 163);
+	display:inline-block;
+	font-family:Arial;
+	font-size:27px;
+	font-weight:bold;
+	padding:22px 45px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.booking:hover {
+	background:linear-gradient(to bottom, #ccc2cc 5%, #ededed 100%);
+	background-color:#ccc2cc;
+	color:#328ba1;
+}
+.booking:active {
+	position:relative;
+	top:1px;
+}
+
+.select-booking {
+	box-shadow: 3px 4px 14px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #ccc2cc 100%);
+	background-color:#ededed;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	cursor:pointer;
+	color:rgb(245, 21, 114);
+	display:inline-block;
+	font-family:Arial;
+	font-size:27px;
+	font-weight:bold;
+	padding:22px 45px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+
+.select-booking:hover {
+	background:linear-gradient(to bottom, #ccc2cc 5%, #ededed 100%);
+	background-color:#ccc2cc;
+	color:#dd1346;
+}
+
+.select-booking:active {
+	position:relative;
+	top:1px;
+}
+
 
 
 </style>
@@ -563,35 +676,42 @@ margin-top: 7px;
 										<div class="tab-pane fade ${showactive3}" id="download"
 											role="tabpanel">
 											<div class="myaccount-content">
-												<h3>Downloads</h3>
+												<h3>法會預約查詢</h3>
 
-												<div class="myaccount-table table-responsive text-center">
-													<table class="table table-bordered">
-														<thead class="thead-light">
-															<tr>
-																<th>Product</th>
-																<th>Date</th>
-																<th>Expire</th>
-																<th>Download</th>
-															</tr>
-														</thead>
+<!-- 												<div class="myaccount-table table-responsive text-center"> -->
+<!-- 													<table class="table table-bordered"> -->
+<!-- 														<thead class="thead-light"> -->
+<!-- 															<tr> -->
+<!-- 																<th>Product</th> -->
+<!-- 																<th>Date</th> -->
+<!-- 																<th>Expire</th> -->
+<!-- 																<th>Download</th> -->
+<!-- 															</tr> -->
+<!-- 														</thead> -->
 
-														<tbody>
-															<tr>
-																<td>Mostarizing Oil</td>
-																<td>Aug 22, 2018</td>
-																<td>Yes</td>
-																<td><a href="#" class="btn">Download File</a></td>
-															</tr>
-															<tr>
-																<td>Katopeno Altuni</td>
-																<td>Sep 12, 2018</td>
-																<td>Never</td>
-																<td><a href="#" class="btn">Download File</a></td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
+<!-- 														<tbody> -->
+<!-- 															<tr> -->
+<!-- 																<td>Mostarizing Oil</td> -->
+<!-- 																<td>Aug 22, 2018</td> -->
+<!-- 																<td>Yes</td> -->
+<!-- 																<td><a href="#" class="btn">Download File</a></td> -->
+<!-- 															</tr> -->
+<!-- 															<tr> -->
+<!-- 																<td>Katopeno Altuni</td> -->
+<!-- 																<td>Sep 12, 2018</td> -->
+<!-- 																<td>Never</td> -->
+<!-- 																<td><a href="#" class="btn">Download File</a></td> -->
+<!-- 															</tr> -->
+<!-- 														</tbody> -->
+<!-- 													</table> -->
+<!-- 												</div> -->
+
+
+<a href="#" class="booking">法會預約</a>
+<a href="#" class="select-booking">預約查詢</a>
+
+
+
 											</div>
 										</div>
 										<!-- Single Tab Content End -->
@@ -697,33 +817,54 @@ margin-top: 7px;
 
 
 
-																</div>
 															</div>
 														</div>
 													</div>
 												</div>
+												
 
 
 
 
 												<div class="account-details-form">
+													<form id="verifyForm"
+														action="<%=request.getContextPath()%>/verify-email.controller"
+														method="post">
+														<c:if test="${user.verifystatus.equals('未驗證')}">
+															<div class="row">	
+																<div class="col-md-6">
+																	<p id="verifying" class="mb-0">
+																		您的email尚未驗證，是否現在驗證？</p>
+																	<div class="col-12">
+																		<button type="submit"
+																			class="save-change-btn">取得驗證碼</button>
+																	</div>
+																</div>
+															</div>
+														</c:if>
+																
+													</form>
+													<br>
+													<br>
+
+
 													<form action="<c:url value="/edit.controller" />"
 														method="post">
 														<div class="row">
-															<div class="col-md-7">
+															<div class="col-md-6">
 																<label>帳號</label> <input name="useraccount" type="text"
 																	value="${user.useraccount}" disabled>
 															</div>
-															<div class="col-md-7">
+															<div class="col-md-6">
 																<label>姓名</label> <input name="username" type="text"
 																	value="${user.username}">
 															</div>
-															<div class="col-md-7">
+															<div class="col-md-6">
 																<label>手機</label> <span style="color: red">${errors.phone}</span><input
 																	name="phone" type="tel" value="${user.phone}"
 																	maxlength="10">
 															</div>
-															<div class="col-md-12">
+															<div class="col-md-6">
 																<label>信箱</label> <span style="color: red">${errors.email}</span><input
 																	name="email" type="email" value="${user.email}">
 															</div>
@@ -752,7 +893,7 @@ margin-top: 7px;
 															</div>
 															<div class="col-12">
 																<input type="hidden" name="action" value="edit">
-																<button type="submit" class="save-change-btn">修改個人資料</button>
+																<button type="submit" class="register-button">修改個人資料</button>
 
 															</div>
 														</div>
@@ -785,15 +926,15 @@ margin-top: 7px;
 
 															<div class="col-12">
 																<input type="hidden" name="action" value="changepwd">
-																<button type="submit" class="save-change-btn">修改密碼</button>
+																<button type="submit" class="register-button">修改密碼</button>
 															</div>
 														</div>
 													</form>
-
-
 												</div>
+
 											</div>
 										</div>
+									</div>
 										<!-- Single Tab Content End -->
 									</div>
 								</div>

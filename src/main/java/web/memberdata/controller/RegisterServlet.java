@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import web.memberdata.entity.MemberDataVO;
 import web.memberdata.service.MemberDataServiceInterface;
+import web.tools.SendMail;
+import web.tools.impl.AuthCode;
 
 @Controller
 public class RegisterServlet {
@@ -22,13 +26,10 @@ public class RegisterServlet {
 
 	@RequestMapping(path = { "/register-member.controller" }, method = { RequestMethod.POST })
 	public String register(Model model, String action, String useraccount_rg, String password_rg, String password_rg2,
-			String username, String phone, String email, String city,
-			String town,String address, String gender, String birthday) {
-		
-		String Address = city+town+address;
-//		String action = req.getParameter("action2");
+			String username, String phone, String email, String city, String town, String address, String gender,
+			String birthday, HttpSession session) {
 
-//		if ("register".equals(action)) {
+		String Address = city + town + address;
 
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);
@@ -72,8 +73,6 @@ public class RegisterServlet {
 			birthday1 = java.sql.Date.valueOf(birthday.trim());
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
-//				birthday1 = new java.sql.Date(System.currentTimeMillis());
-//				errors.put("birthday", "請輸入日期!");
 		}
 
 		if (errors != null && !errors.isEmpty()) {
@@ -94,14 +93,23 @@ public class RegisterServlet {
 
 			MemberDataVO result = service.register(bean);
 
+			AuthCode authcode = new AuthCode();
+			authcode.setTargetStringLength(6);
+			String auth_code = authcode.givenUsingJava8_whenGeneratingRandomAlphanumericString_thenCorrect();
+
 			if (result == null) {
 				errors.put("action", "註冊失敗");
 			} else {
 				model.addAttribute("insert", result);
-			}
-			return "/front-end/memberData/login-register-member.jsp";
-		}
-//		}
+				session.setAttribute("authcode", auth_code);
+				session.setAttribute("useraccount", result.getUseraccount());
 
+				SendMail sendMail = new SendMail(result.getEmail(), "龘虤會員e-mail驗證信",
+						"您好:\n\r您已成功註冊龘虤會員,請在頁面上輸入驗證碼 " + auth_code + "," + "\n\r" + "此驗證碼將於30分鐘後失效");
+				sendMail.send();
+
+			}
+			return "/front-end/memberData/verify-member.jsp";
+		}
 	}
 }
