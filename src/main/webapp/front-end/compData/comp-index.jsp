@@ -307,18 +307,18 @@
                                                 class="fa fa-dashboard"></i>
                                             帳戶大廳</a>
 
-                                        <a href="#orders" ${attrs3} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
+                                        <a id="view-orders" href="#orders" ${attrs3} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                             訂單總覽</a>
                                             
-                                        <a href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
-                                            商品上架</a>
+                                        <a id="product-luanchAndDiscontinue" href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
+                                            商品上架/下架</a>
 
-                                        <a href="#payment-method" ${attrs5} data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
-                                            商品總覽</a>
+<%--                                         <a href="#payment-method" ${attrs5} data-bs-toggle="tab"><i class="fa fa-credit-card"></i> --%>
+<!--                                             商品總覽</a> -->
 
-                                        <a href="#address-edit" ${attrs6} data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
-                                            address</a>
-										<form action = "" method="post">
+<%--                                         <a href="#address-edit" ${attrs6} data-bs-toggle="tab"><i class="fa fa-map-marker"></i> --%>
+<!--                                             address</a> -->
+<!-- 										<form action = "" method="post"> -->
                                         <a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp"><i class="fa fa-sign-out"></i> 登出</a>
                                         	<input type="hidden" name="logout" value="byebye">
                                     	</form>
@@ -363,7 +363,7 @@
                                                 <h3>訂單總覽</h3>
 
                                                 <div class="myaccount-table table-responsive text-center">
-                                                    <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get">
+                                                    
                                                     <table class="table table-bordered">
                                                         <thead class="thead-light">
                                                             <tr>
@@ -389,10 +389,8 @@
                                                         	</c:forEach>
                                                        
                                                     </table>
-                                                    
-                                                    		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢
-                                                    			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	
-                                                    		</button>
+                                                    <form id="getAllOrders"action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="POST">
+                                                    			<input name="getListByCompNo"type="hidden" value="getListByCompNo" />	
                                                     	</form>
                                                    
                                                 </div>
@@ -403,42 +401,51 @@
                                         
                                         <div class="tab-pane fade ${classes3} " id="product-management" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>商品上架</h3>
+                                                <h3>商品上架/下架</h3>
 
                                                 <div class="myaccount-table table-responsive text-center">
-                                                    <form action="<%=request.getContextPath()%>/secure/getAllOrders.controller" method="get">
+                                                    
                                                     <table class="table table-bordered">
                                                         <thead class="thead-light">
                                                             <tr>
-                                                                <th>訂單編號</th>
-                                                                <th>產品編號</th>
-                                                                <th>廠商編號</th>
-                                                                <th>產品名稱</th>
-                                                                <th>產品數量</th>
-                                                                <th>價格</th>
+                                                            	<th></th>
+                                                                <th>商品編號</th>
+                                                                <th>商品名稱</th>
+                                                                <th>商品類別</th>
+                                                                <th>商品描述</th>
+                                                                <th>商品價格</th>
+                                                                <th>商品庫存</th>
+                                                                <th>商品狀態</th>
+                                                                <th>商品圖片1</th>
+                                                                <th>商品圖片2</th>
+                                                                <th>商品圖片3</th>
                                                                 <th>選一下</th>
                                                             </tr>
                                                         </thead>
 
-                                                        	<c:forEach var="OrderDetail" items="${list}">
+                                                        	<c:forEach var="ProductVO" items="${prods}">
+                                                       
+                                                        		<form action="<%=request.getContextPath()%>/secure/launchAndDiscontinue.controller" Method="post">	
                                                         <tbody>
-                                                        			<td><input type="checkbox" name = "thisProduct"></td>
-	                                                                <td>${OrderDetail.orderNo}</td>
-	                                                                <td>${OrderDetail.prodNo}</td>
-	                                                                <td>${OrderDetail.compNO}</td>
-	                                                                <td>${OrderDetail.prodName}</td>
-	                                                                <td>${OrderDetail.prodAmount}</td>
-	                                                                <td>${OrderDetail.prodPrice}</td>
-	                                                                <td><button type="submit" name="launch" >上架</button><button type="submit" name="discontinue">下架</button></td>
-                                                        
+                                                        			<td><input type="checkbox" name = "thisProduct" value="${ProductVO.prodNo}"></td>
+	                                                                <td>${ProductVO.prodNo}</td>
+	                                                                <td>${ProductVO.prodName}</td>
+	                                                                <td>${ProductVO.prodTypeCode}</td>
+	                                                                <td>${ProductVO.prodDesc}</td>
+	                                                                <td>${ProductVO.prodPrice}</td>
+	                                                                <td>${ProductVO.prodStock}</td>
+	                                                                <td>${ProductVO.prodVerify}</td>
+	                                                                <td>${ProductVO.prodImg1}</td>
+	                                                                <td>${ProductVO.prodImg2}</td>
+	                                                                <td>${ProductVO.prodImg3}</td>
                                                         </tbody>
                                                         	</c:forEach>
-                                                       
-                                                    </table>
-                                                    
-                                                    		<button name="getListByCompNo" class="getListByCompNo" type="submit">查詢
+	                                                                
+                                                    </table>		
+                                                       				<button type="submit" name="launch" >上架</button><button type="submit" name="discontinue">下架</button>
+                                                        		</form>
+                                                    	<form id="getListByCompNo" action="<%=request.getContextPath()%>/secure/productManagement.controller" method="POST">
                                                     			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	
-                                                    		</button>
                                                     	</form>
                                                    
                                                 </div>
@@ -447,31 +454,31 @@
 
 
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade ${classes4}" id="payment-method" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>Payment Method</h3>
+<%--                                         <div class="tab-pane fade ${classes4}" id="payment-method" role="tabpanel"> --%>
+<!--                                             <div class="myaccount-content"> -->
+<!--                                                 <h3>Payment Method</h3> -->
 
-                                                <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
-                                            </div>
-                                        </div>
+<!--                                                 <p class="saved-message">You Can't Saved Your Payment Method yet.</p> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
                                         <!-- Single Tab Content End -->
 
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade ${classes5}" id="address-edit" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>Billing Address</h3>
+<%--                                         <div class="tab-pane fade ${classes5}" id="address-edit" role="tabpanel"> --%>
+<!--                                             <div class="myaccount-content"> -->
+<!--                                                 <h3>Billing Address</h3> -->
 
-                                                <address>
-                                                    <p><strong>Alex Tuntuni</strong></p>
-                                                    <p>1355 Market St, Suite 900 <br>
-                                                        San Francisco, CA 94103</p>
-                                                    <p>Mobile: (123) 456-7890</p>
-                                                </address>
+<!--                                                 <address> -->
+<!--                                                     <p><strong>Alex Tuntuni</strong></p> -->
+<!--                                                     <p>1355 Market St, Suite 900 <br> -->
+<!--                                                         San Francisco, CA 94103</p> -->
+<!--                                                     <p>Mobile: (123) 456-7890</p> -->
+<!--                                                 </address> -->
 
-                                                <a href="#" class="btn d-inline-block edit-address-btn"><i
-                                                        class="fa fa-edit"></i>Edit Address</a>
-                                            </div>
-                                        </div>
+<!--                                                 <a href="#" class="btn d-inline-block edit-address-btn"><i -->
+<!--                                                         class="fa fa-edit"></i>Edit Address</a> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
                                         <!-- Single Tab Content End -->
 
                                         <!-- Single Tab Content Start -->
