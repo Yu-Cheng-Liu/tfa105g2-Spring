@@ -1,5 +1,9 @@
 package web.product.dao.impl;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+>>>>>>> Michael
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +21,19 @@ public class ProductDAO implements ProductDAOInterface {
 
 	@PersistenceContext
 	private Session session;
+<<<<<<< HEAD
+=======
+	
+	
+	
+	
+	public List<ProductVO> getProductByCompNo(Integer compNo){
+		String hql = "From ProductVO where compNo = :compNo";
+		List<ProductVO> result = session.createQuery(hql, ProductVO.class).setParameter("compNo", compNo).list();
+		return result;
+		
+	}
+>>>>>>> Michael
 
 	// 用prodNo找商品照片
 	@Override
@@ -103,6 +120,19 @@ public class ProductDAO implements ProductDAOInterface {
 //		}
 		return null;
 	}
+<<<<<<< HEAD
+=======
+	
+	
+	public boolean updateProdStatus(List<Integer> productNumbers) {
+		for(int i = 0 ; i < productNumbers.size() ; i++) {
+			ProductVO pv = session.get(ProductVO.class,productNumbers.indexOf(i));
+			pv.setProdVerify("1");
+		}return true;
+		
+		
+	}
+>>>>>>> Michael
 
 	// 修改商品
 	@Override
