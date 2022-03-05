@@ -93,7 +93,7 @@ public class SpringJavaConfig  {
 		Properties props = new Properties();
 		props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		props.setProperty("hibernate.show_sql", "true");
-		props.setProperty("hibernate.hbm2ddl.auto", "validate");
+//		props.setProperty("hibernate.hbm2ddl.auto", "validate");
 		
 		builder.addProperties(props);
 		

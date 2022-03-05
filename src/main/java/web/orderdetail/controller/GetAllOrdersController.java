@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import web.orderdetail.entity.OrderDetail;
 import web.orderdetail.service.OrderDetailServiceInterface;
@@ -18,11 +19,11 @@ public class GetAllOrdersController {
 	@Autowired
 	private OrderDetailServiceInterface odsi;
 
-	@GetMapping("/secure/getAllOrders.controller")
+	@PostMapping("/secure/getAllOrders.controller")
 	public String OrderDetails(String getListByCompNo, Model model, HttpSession session) {
 		
 		System.out.println(getListByCompNo);
-		if (",getListByCompNo".equals(getListByCompNo)) {
+		if ("getListByCompNo".equals(getListByCompNo)) {
 			Integer attribute = (Integer) session.getAttribute("compNo");
 			System.out.println(attribute);
 			

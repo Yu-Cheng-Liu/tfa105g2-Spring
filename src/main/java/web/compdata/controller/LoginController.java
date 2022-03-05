@@ -25,17 +25,10 @@ public class LoginController {
 	public String compData(String compAccount, String password, Model model, HttpSession session) {
 		
 		
-		
-		
-		
 		CompData cd = service.login(compAccount, password);
 		Map<String, String> errors = service.getErrors();	
 		System.out.println(cd);
-		
-		
-		
-		
-		
+	
 		
 		if (cd==null) {
 				model.addAttribute("errors", errors);
@@ -63,8 +56,6 @@ public class LoginController {
 				model.addAttribute("attrs2", active);
 				session.setAttribute("type", "comp");
 				return "/front-end/compData/comp-index.jsp";
-			
-			
 			
 		}
 

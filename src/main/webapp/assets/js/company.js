@@ -30,6 +30,20 @@ $(function() {
 	});
 	
 	
+	document.querySelector('#product-luanchAndDiscontinue').onclick = () => {
+		const form = document.querySelector('#getListByCompNo');
+		const button = document.createElement('button');
+		button.type = 'submit';
+		// form.append(button);
+		form.submit();
+	};
+
+	document.querySelector('#view-orders').onclick = () => {
+		const form1 = document.querySelector('#getAllOrders');
+		const button1 = document.createElement('button');
+		button1.type = 'submit';
+		// form.append(button);
+		form1.submit();
+	};
 
 })
-
