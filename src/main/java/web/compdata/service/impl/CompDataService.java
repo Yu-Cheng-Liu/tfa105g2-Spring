@@ -67,10 +67,6 @@ public class CompDataService implements CompDataServiceInterface {
 		CompData cd = compDataDAOi.select(compAccount);
 		
 		errors= new HashMap<String, String>();
-		
-		
-		
-		
 		if (cd != null) {
 			if (!passwordEncoder.matches(oldpass, cd.getPassword())) {
 				errors.put("oldPass", "原始密碼輸入錯誤");
@@ -105,6 +101,33 @@ public class CompDataService implements CompDataServiceInterface {
 		}
 		return false;
 	}
+//====================================Auto Generate new password when user forgets password=============================
+	
+	
+	public boolean changePasswordByAuthCode(String compAccount, String oldpass, String newpass, String confirm) {
+		CompData cd = compDataDAOi.select(compAccount);
+		
+		errors= new HashMap<String, String>();
+		if (cd != null) {
+			if ("".equals(newpass.trim())) {
+				errors.put("newPass", "新密碼不可為空白");
+			}
+			
+			System.out.println(errors);
+			if (errors.size() == 0) {
+				cd.setPassword(passwordEncoder.encode(newpass));
+				compDataDAOi.update(cd);
+				if (compDataDAOi.update(cd)) {
+					return true;
+				} 
+				}
+
+			}else {
+					return false;
+		}
+		return false;
+	}
+	
 
 //==================================================Edit profile=========================================================	
 

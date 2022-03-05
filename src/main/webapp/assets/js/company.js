@@ -45,5 +45,13 @@ $(function() {
 		// form.append(button);
 		form1.submit();
 	};
+	
+	document.querySelector('#byebye').onclick = () => {
+		const form2 = document.querySelector('#logout');
+		const button2 = document.createElement('button');
+		button2.type = 'submit';
+		// form.append(button);
+		form2.submit();
+	};
 
 })
