@@ -53,6 +53,14 @@
 	href="<%=request.getContextPath()%>/assets/css/typing.css">
 
 <style>
+.breadcrumb-bg {
+	background-image:
+		url("<%=request.getContextPath()%>/assets/img/hero-slider/test4.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
 .account-details-form h4 {
 	margin-top: 30px;
 	margin-bottom: 15px;
@@ -89,6 +97,20 @@ margin-top: 7px;
   height:36px; 
   -webkit-appearance:none; /*for Webkit browsers*/ 
 } 
+
+#verifying {
+	color:orangered;
+	/* display: inline; */
+}
+
+.save-change-btn{
+	margin-top: 5px;
+}
+
+.profile-wrap{
+	margin-bottom: 7px;
+}
+
 
 
 </style>
@@ -459,7 +481,7 @@ margin-top: 7px;
 											${active2} data-bs-toggle="tab"><i
 											class="fa fa-cart-arrow-down"></i> 訂單查詢</a> <a href="#download"
 											${active3} data-bs-toggle="tab"><i class="fa fa-calendar"></i>
-											法會預約查詢</a> <a href="#account-info" ${active4}
+											塔位查詢</a> <a href="#account-info" ${active4}
 											data-bs-toggle="tab"><i class="fa fa-user"></i> 修改個人資料</a> <a
 											href="#payment-method" ${active5} data-bs-toggle="tab"><i
 											class="fa fa-credit-card"></i> 付款方式</a> <a href="#address-edit"
@@ -563,35 +585,11 @@ margin-top: 7px;
 										<div class="tab-pane fade ${showactive3}" id="download"
 											role="tabpanel">
 											<div class="myaccount-content">
-												<h3>Downloads</h3>
+												<h3>塔位查詢</h3>
 
-												<div class="myaccount-table table-responsive text-center">
-													<table class="table table-bordered">
-														<thead class="thead-light">
-															<tr>
-																<th>Product</th>
-																<th>Date</th>
-																<th>Expire</th>
-																<th>Download</th>
-															</tr>
-														</thead>
-
-														<tbody>
-															<tr>
-																<td>Mostarizing Oil</td>
-																<td>Aug 22, 2018</td>
-																<td>Yes</td>
-																<td><a href="#" class="btn">Download File</a></td>
-															</tr>
-															<tr>
-																<td>Katopeno Altuni</td>
-																<td>Sep 12, 2018</td>
-																<td>Never</td>
-																<td><a href="#" class="btn">Download File</a></td>
-															</tr>
-														</tbody>
-													</table>
+												<div class=" text-center">
 												</div>
+
 											</div>
 										</div>
 										<!-- Single Tab Content End -->
@@ -697,33 +695,54 @@ margin-top: 7px;
 
 
 
-																</div>
 															</div>
 														</div>
 													</div>
 												</div>
+												
 
 
 
 
 												<div class="account-details-form">
+													<form id="verifyForm"
+														action="<%=request.getContextPath()%>/verify-email.controller"
+														method="post">
+														<c:if test="${user.verifystatus.equals('未驗證')}">
+															<div class="row">	
+																<div class="col-md-6">
+																	<p id="verifying" class="mb-0">
+																		您的email尚未驗證，是否現在驗證？</p>
+																	<div class="col-12">
+																		<button type="submit"
+																			class="save-change-btn">取得驗證碼</button>
+																	</div>
+																</div>
+															</div>
+														</c:if>
+																
+													</form>
+													<br>
+													<br>
+
+
 													<form action="<c:url value="/edit.controller" />"
 														method="post">
 														<div class="row">
-															<div class="col-md-7">
+															<div class="col-md-6">
 																<label>帳號</label> <input name="useraccount" type="text"
 																	value="${user.useraccount}" disabled>
 															</div>
-															<div class="col-md-7">
+															<div class="col-md-6">
 																<label>姓名</label> <input name="username" type="text"
 																	value="${user.username}">
 															</div>
-															<div class="col-md-7">
+															<div class="col-md-6">
 																<label>手機</label> <span style="color: red">${errors.phone}</span><input
 																	name="phone" type="tel" value="${user.phone}"
 																	maxlength="10">
 															</div>
-															<div class="col-md-12">
+															<div class="col-md-6">
 																<label>信箱</label> <span style="color: red">${errors.email}</span><input
 																	name="email" type="email" value="${user.email}">
 															</div>
@@ -752,7 +771,7 @@ margin-top: 7px;
 															</div>
 															<div class="col-12">
 																<input type="hidden" name="action" value="edit">
-																<button type="submit" class="save-change-btn">修改個人資料</button>
+																<button type="submit" class="register-button">修改個人資料</button>
 
 															</div>
 														</div>
@@ -785,15 +804,15 @@ margin-top: 7px;
 
 															<div class="col-12">
 																<input type="hidden" name="action" value="changepwd">
-																<button type="submit" class="save-change-btn">修改密碼</button>
+																<button type="submit" class="register-button">修改密碼</button>
 															</div>
 														</div>
 													</form>
-
-
 												</div>
+
 											</div>
 										</div>
+									</div>
 										<!-- Single Tab Content End -->
 									</div>
 								</div>

@@ -78,6 +78,18 @@ public class MemberDataService implements MemberDataServiceInterface {
 		}
 		return null;
 	}
+	
+
+	public MemberDataVO changePasswordBySystem(String userAccount, String temPassword) {
+		MemberDataVO member = memberDataDao.selectByUserAccount(userAccount);
+		MemberDataVO result = null;
+		if (member != null) {
+			member.setPassword(passwordEncoder.encode(temPassword));
+			result = memberDataDao.update(member);
+			return result;
+		}
+		return null;
+	}
 
 	public MemberDataVO editPersonalProfile(MemberDataVO member) {
 
@@ -97,6 +109,10 @@ public class MemberDataService implements MemberDataServiceInterface {
 
 	public MemberDataVO selectByUserNo(Integer userNo) {
 		return memberDataDao.selectByUserno(userNo);
+	}
+
+	public MemberDataVO selectByEmail(String email) {
+		return memberDataDao.selectByEmail(email);
 	}
 
 	public List<MemberDataVO> findAll() {
