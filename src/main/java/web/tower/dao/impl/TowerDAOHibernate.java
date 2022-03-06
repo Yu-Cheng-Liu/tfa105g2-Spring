@@ -46,7 +46,7 @@ public class TowerDAOHibernate implements TowerDAO {
 		}
 		
 		public List selectByUser(Integer userNo) {
-			String hql = "from towerVO where userNo = :userNo";
+			String hql = "from TowerVO where userNo = :userNo";
 			List<TowerVO> list = this.session.createQuery(hql, TowerVO.class).setParameter("userNo", userNo).list();
 			return list;
 			

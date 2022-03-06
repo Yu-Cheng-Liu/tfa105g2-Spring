@@ -61,6 +61,10 @@ public class BookingController {
 			errors.put("reserveDate", "請選擇預約時間");
 			model.addAttribute("errors", errors);
 		}
+		if("".equals(userNo)) {
+			errors.put("userNo", "請先登入會員");
+			model.addAttribute("errors", errors);
+		}
 
 		if (errors.size() != 0) {
 		
