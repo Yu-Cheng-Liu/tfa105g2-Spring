@@ -7,6 +7,8 @@
     <title>龘虤</title>
     <!-- JQuery 連結-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <!-- FontAwesome 連結-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- BookStrap 連結-->
@@ -19,8 +21,6 @@
     <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap.min.css">
     <link rel="stylesheet" href=" https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
@@ -29,7 +29,7 @@
     <!-- 日期格式 -->
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
-    
+
     <!-- js 連結-->
     <script src="js/backstage.js"></script>
     <!-- css 連結-->
@@ -43,7 +43,7 @@
         <div class="container-left">
             <!-- 導覽列 -->
             <nav class="nav nav-tabs" id="sidebar">
-                <!-- 展/縮按鈕 -->
+                <!-- 大俠愛吃漢堡包 -->
                 <div id="button-collapse">
                     <button type="button" id="collapse" class="collapse-btn">
                         <i class="fas fa-align-left"></i>
@@ -68,8 +68,7 @@
                             aria-selected="false">商品管理<i class="fas fa-th"></i></a>
                     </li>
                     <li>
-                        <a href="#sublist" data-bs-toggle="collapse" id="dropdown">客服中心<i
-                                class="far fa-comments"></i></a>
+                        <a href="#sublist" data-bs-toggle="collapse">客服中心<i class="far fa-comments"></i></a>
                         <!-- 子連結列表 -->
                         <ul id="sublist" class="list-unstyled collapse">
                             <li>
@@ -84,23 +83,26 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#news"
-                            aria-selected="false">最新消息<i class="fas fa-table"></i></a>
+                        <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#tower"
+                            aria-selected="false" onclick="SelectAllTowerData();">塔位管理<i class="fas fa-table"></i></a>
                     </li>
                     <li>
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#finance"
                             aria-selected="false">財務報表<i class="fas fa-file-invoice-dollar"></i></a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#permission"
-                            aria-selected="false">權限管理<i class="fas fa-user-lock"></i></a>
+                        <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#adminManager"
+                            aria-selected="false" onclick="selectAllAdmin();">管理員權限管理<i
+                                class="fas fa-file-invoice-dollar"></i></a>
                     </li>
-
                 </ul>
+                <!-- List 列表 END -->
 
             </nav>
+            <!-- 導覽列 END -->
 
         </div>
+        <!-- 左邊 END -->
 
         <!-- 右邊 -->
         <div class="container-right">
@@ -155,27 +157,23 @@
                         <h3>測試6</h3>
                         <img src="img/Rick.png" alt="">
                     </div>
-                    <div class="tab-pane fade" id="news" role="tabpanel">
-                        <h3>測試7</h3>
-                        <img src="img/Rick.png" alt="">
-                    </div>
+                    <div class="tab-pane fade" id="tower" role="tabpanel"></div>
                     <div class="tab-pane fade" id="finance" role="tabpanel">
                         <h3>測試8</h3>
                         <img src="img/Rick.png" alt="">
                     </div>
-                    <div class="tab-pane fade" id="permission" role="tabpanel">
-                        <h3>測試9</h3>
-                        <img src="img/Rick.png" alt="">
-                    </div>
+                    <div class="tab-pane fade" id="adminManager" role="tabpanel"></div>
                 </div>
+                <!-- 頁籤 END -->
 
             </div>
 
         </div>
+        <!-- 右邊 END -->
 
     </div>
 
-    <!-- 跳出視窗內容 -->
+    <!-- 登入彈窗 -->
     <div class="modal fade" id="loginModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -205,6 +203,7 @@
             </div>
         </div>
     </div>
+    <!-- 登入彈窗 END -->
 
     <!-- 意見內容彈窗 -->
     <div class="modal fade" id="content">
@@ -226,6 +225,7 @@
             </div>
         </div>
     </div>
+    <!-- 意見內容彈窗 END -->
 
     <!-- 寄信彈窗 -->
     <div class="modal fade" id="sendMail">
@@ -262,6 +262,131 @@
             </div>
         </div>
     </div>
+    <!-- 寄信彈窗 END -->
+
+    <!-- 塔位新增彈窗 -->
+    <div class="modal fade" id="addTower">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <h3>新增塔位資料</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body">
+                    <form onsubmit="insertTower(); return false;">
+                        <div class="form-group">
+                            使用者編號：<input type="text" id="newTowerUserNo" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            往生者姓名：<input type="text" id="deadName" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info" data-bs-dismiss="modal"
+                                style="margin-top: 10px;">送出</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 塔位新增彈窗 END -->
+
+    <!-- 管理員新增彈窗 -->
+    <div class="modal fade" id="addAdmin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <h3>新增管理員資料</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body">
+                    <form onsubmit="insertAdmin(); return false;">
+                        <div class="form-group">
+                            管理員帳號：<input type="text" id="adminAccount" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            管理員密碼：<input type="password" id="adminPassword" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info" data-bs-dismiss="modal"
+                                style="margin-top: 10px;">送出</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 管理員新增彈窗 END -->
+
+    <!-- 權限變更彈窗 -->
+    <div class="modal fade" id="right">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <h3>權限變更</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body" height="400px">
+                    <div id="rightItem" class="container">
+                        <div class="row align-items-center">
+                            <input type="hidden" id="tmpId">
+                            <div class="col-3 left-select">
+                                <p>未選擇：</p>
+                                <select class="form-select non-permission" multiple
+                                    aria-label="multiple select example"></select>
+                            </div>
+                            <div class="col-2 middle-select">
+                                <button id="moveItem" class="btn btn-outline-success">⇌</button>
+                            </div>
+                            <div class="col-3 right-select">
+                                <p>已選擇：</p>
+                                <select class="form-select permission" multiple
+                                    aria-label="multiple select example"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-outline-success" id="permissionUpdate">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 權限變更彈窗 END -->
+
+    <!-- 功能管理彈窗 -->
+    <div class="modal fade" id="function">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body" height="600px">
+                    <div id="functionItem" class="container" margin-top="10px" heigth="80%">
+                        <select class="form-select function" multiple aria-label="multiple select example"
+                            style="height: 150px;"></select>
+                    </div>
+                    <div id="funBtn">
+                        <button class="btn btn-outline-secondary" id="newFun" style='margin-right: 10px;'>新增</button>
+                        <button class="btn btn-outline-danger" id="deleteFun" style='margin-left: 10px;'>刪除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 功能管理彈窗 END -->
 
 </body>
 
