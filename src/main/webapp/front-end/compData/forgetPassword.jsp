@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page import="java.util.*, web.cart.entity.CartVO" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -54,16 +54,16 @@
 
 <body>
 	<!--====================  header area ====================-->
-	<div class="header-area header-sticky">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
- <!--=======  header wrapper  =======-->
+	    <div class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=======  header wrapper  =======-->
                     <div class="header-wrapper d-none d-lg-flex">
                         <!-- logo -->
                         <div class="logo">
                             <a href="<%=request.getContextPath()%>/front-end/index.jsp">
-                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg" class="img-fluid" alt="">
+                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png" class="img-fluid" alt="">
                             </a>
                         </div>
                         <!-- menu wrapper -->
@@ -72,16 +72,16 @@
                                 <ul>
                                     <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
-                                            <li><a href="${pageContext.request.contextPath}/AllProductServlet?action=selectAll">商品總覽</a></li>
-                                            <li><a href="cart.jsp">購物車</a></li>
+                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
                                         </ul>
                                     </li>
 
                                     <li class="menu-item-has-children"><a href="#">預約服務</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog-post-video-format.jsp">法會直播</a></li>
-                                            <li><a href="blog-post-audio-format.jsp">預約祭祀</a></li>
-                                            <li><a href="menu-item-has-children">線上祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
                                         </ul>
                                     </li>
 
@@ -103,86 +103,58 @@
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
                                             <i class="ion-bag"></i>
-                                            <span class="counter">3</span>
+                                            <span class="counter">${buyListCount}</span>
                                         </a>
                                         <!-- mini cart  -->
+                                        
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
+                                        <%
+                                        	Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+                                        %>
+                                        <%if (buyList != null && (buyList.size() > 0)){ %>
+                                        	<%
+                                            	for(int index =0; index < buyList.size(); index++){
+                                            		CartVO order = buyList.get(index);
+                                            %>
+                                            
                                                 <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
+                                                    
+                                                    <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
+                                                    
                                                     <div class="image">
                                                         <a href="single-product.jsp">
                                                             <img width="80" height="106"
-                                                                src="<%=request.getContextPath()%>/assets/img/products/product-1-80x106.webp"
+                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Cillum
-                                                                dolore furniture</a></p>
-                                                        <p class="count"><span>1 x </span> $402</p>
+                                                    
+                                                        <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
+                                                        <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
                                                     </div>
-                                                </div>
-                                                <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a>
-                                                    <div class="image">
-                                                        <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="<%=request.getContextPath()%>/assets/img/products/product-2-80x106.webp"
-                                                                class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Lorem
-                                                                ipsum furniture</a></p>
-                                                        <p class="count"><span>1 x </span> $500</p>
-                                                    </div>
-                                                </div>
-                                                <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a>
-                                                    <div class="image">
-                                                        <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="<%=request.getContextPath()%>/assets/img/products/product-3-80x106.webp"
-                                                                class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Cillum
-                                                                dolore tool</a></p>
-                                                        <p class="count"><span>1 x </span> $607</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            	</div>
+                                            	
+                                            <%}%>
+                                            
                                             <div class="cart-calculation">
                                                 <table class="table">
                                                     <tbody>
                                                         <tr>
-                                                            <td class="text-start">Sub-Total :</td>
-                                                            <td class="text-end">$220.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">Eco Tax (-2.00) :</td>
-                                                            <td class="text-end">$6.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">VAT (20%) :</td>
-                                                            <td class="text-end">$44.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">Total :</td>
-                                                            <td class="text-end">$270.00</td>
+                                                            <td class="text-start">商品總金額 :</td>
+                                                            <td class="text-end">$${amount}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <%}%>
                                             <div class="cart-buttons">
-                                                <a href="cart.jsp">VIEW CART</a>
-                                                <a href="checkout.jsp">CHECKOUT</a>
+                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
+                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </li>
@@ -324,7 +296,7 @@
 
     <!--====================  footer area ====================-->
     <div class="footer-area">
-        <div class="footer-copyright">
+        <div class="footer-">
             <div class="container wide">
                 <div class="row">
                     <div class="col-lg-12">
@@ -333,22 +305,24 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="100" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg"
+                                            <a href="#"><img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
                                                     class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-7 col-md-5">
+                                  <div class="col-lg-7 col-md-5">
 
                                         <div class="copyright-text">
-
-                                            Copyright &copy; 2021 <a href="#">Eposi</a>. All Rights Reserved.
+                                            
+                                             <a href="#">龘虤</a>
+                                            <P>104 台北市中山區南京東路三段219號5樓</P>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-5">
                                         <div class="copyright-social-wrapper">
                                             <ul class="copyright-social">
                                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
@@ -376,20 +350,20 @@
             <div class="offcanvas-inner-content">
                 <nav class="offcanvas-navigation">
                     <ul>
-                        <li class="menu-item-has-children"><a href="index.html">祭祖商城</a>
-                            <ul class="sub-menu">
-                                <li><a href="shop-list-left-sidebar.jsp">商品總攬</a></li>
-                                <li><a href="cart.jsp">購物車</a></li>
-                            </ul>
-                        </li>
+                       <li class="menu-item-has-children"><a href="#">祭祖商城</a>
+                                        <ul class="sub-menu">
+                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+                                        </ul>
+                                    </li>
+                         <li class="menu-item-has-children"><a href="#">預約服務</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
+                                        </ul>
+                                    </li>
 
-                        <li class="menu-item-has-children"><a href="#">預約服務</a>
-                            <ul class="sub-menu">
-                                <li><a href="blog-post-video-format.jsp">法會直播</a></li>
-                                <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
-                                <li><a href="menu-item-has-children">線上祭祀</a></li>
-                            </ul>
-                        </li>
 
                         <li class="menu-item-has-children"><a href="#">客服中心</a>
                             <ul class="sub-menu">

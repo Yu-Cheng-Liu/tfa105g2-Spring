@@ -171,7 +171,7 @@
                                             <div class="single-settings-block">
                                                 <h4 class="title">廠商專區 </h4>
                                                 <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
+                                                    <li><a href="<%=request.getContextPath()%>/secure/loginFromSession.controller">註冊/登入</a></li>
                                                     
                                                 </ul>
                                             </div>
@@ -341,12 +341,12 @@
             <div class="container wide">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="footer--wrapper footer--wrapper--default-footer">
+                        <div class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
                             <div class="container">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="100" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
+                                            <a href="#"><img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
                                                     class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
@@ -354,8 +354,9 @@
                                   <div class="col-lg-7 col-md-5">
 
                                         <div class="copyright-text">
-
-                                            Copyright &copy; 2021 <a href="#">Eposi</a>. All Rights Reserved.
+                                            
+                                             <a href="#">龘虤</a>
+                                            <P>104 台北市中山區南京東路三段219號5樓</P>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-5">
