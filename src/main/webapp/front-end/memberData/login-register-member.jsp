@@ -2,6 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%
+
+	String useraccount = "";
+	String password = "";
+	Cookie [] cookies = request.getCookies();
+	if(cookies!=null) {
+		for(Cookie cookie:cookies) {
+			String name = cookie.getName();
+			if("useraccount".equals(name)) {
+				useraccount = cookie.getValue();
+			}else if("password".equals(name)) {
+				password = cookie.getValue();
+			}
+		}
+	}
+
+
+%>
+
+
+
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -395,19 +416,19 @@ font{
 
 											<div class="row">
 												<div class="col-md-12 col-12">
-													<label>帳號</label> <input type="text" name="useraccount"
-														value="${param.useraccount}"> <span
-														style="color: red">${errors.useraccount}</span>
+													<label>帳號</label>
+													<input type="text" name="useraccount" value="<%=useraccount%>">
+													<span style="color: red">${errors.useraccount}</span>
 												</div>
 												<div class="col-12">
-													<label>密碼</label> <input type="password" name="password"
-														value="${param.password}"> <span
-														style="color: red">${errors.password}</span>
+													<label>密碼</label> 
+													<input type="password" name="password" value="<%=password%>"> 
+													<span style="color: red">${errors.password}</span>
 												</div>
 												<div class="col-sm-6">
 
 													<div class="check-box d-inline-block ml-0 ml-md-2">
-														<input type="checkbox" id="remember_me"> <label
+														<input type="checkbox" id="remember_me" name="remember"> <label
 															for="remember_me">記住我</label>
 													</div>
 												</div>

@@ -27,7 +27,10 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
 	rel="stylesheet">
-	
+
+<!-- BookStrap 連結-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Vendor CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/vendors.css"
@@ -651,8 +654,8 @@ margin-top: 7px;
 																	<img class="picBox" alt="" 
 																		src="<%=request.getContextPath()%>/readerimg.controller?userno=${user.userno}" width="200">
 																</div>
-																
-																<!-- <div class="change-photo-btn">
+																<!-- <button type="button" class="btn btn-primary">點擊</button>
+																<div class="change-photo-btn">
 																	<a href="#" data-toggle="modal" data-target="#avatar" class="rate-review"><i class="ion-log-in"></i>變更圖片</a> -->
 																	<!-- modal-start -->
 																	<!-- <div class="modal " id="avatar">
@@ -686,8 +689,8 @@ margin-top: 7px;
 																				</div>
 																		
 																				
-
-																			<!-- </div>
+<!-- 
+																			</div>
 																		</div>
 																	</div> -->
 																	<!-- modal-ends -->
