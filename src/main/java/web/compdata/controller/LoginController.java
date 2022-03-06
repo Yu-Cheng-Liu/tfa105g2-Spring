@@ -22,7 +22,7 @@ public class LoginController {
 	private PasswordEncoder passwordEncoder;
 
 	@RequestMapping(value="/secure/login.controller" , method= {RequestMethod.POST})
-	public String compData(String compAccount, String password, Model model, HttpSession session) {
+	public String compData(String rememberMe ,String compAccount, String password, Model model, HttpSession session) {
 		
 		
 		CompData cd = service.login(compAccount, password);
@@ -39,7 +39,8 @@ public class LoginController {
 		}
 
 		else {
-			
+				
+				
 				String status = service.verifiedOrNot(cd);
 				model.addAttribute("status", status);
 				session.setAttribute("verify", status);

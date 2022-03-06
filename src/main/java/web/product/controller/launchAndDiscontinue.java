@@ -26,7 +26,11 @@ public class launchAndDiscontinue {
 		
 		
 		if(thisProduct==null) {
-
+			Integer compNo = (Integer) session.getAttribute("compNo");
+			System.out.println(compNo);
+			
+			List <ProductVO> list = service.selectProdByCompNo(compNo);
+			model.addAttribute("prods", list);
 			String classes = "show active";
 			model.addAttribute("classes3",classes);
 			String active = "class=\"active\"";

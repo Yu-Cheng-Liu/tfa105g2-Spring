@@ -314,7 +314,7 @@
 												<div class="col-sm-6">
 
 													<div class="check-box d-inline-block ml-0 ml-md-2">
-														<input type="checkbox" id="remember_me"> <label
+														<input type="checkbox" id="remember_me" name="rememberMe> <label
 															for="remember_me">記住我</label>
 													</div>
 
