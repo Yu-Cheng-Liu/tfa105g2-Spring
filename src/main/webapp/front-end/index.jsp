@@ -53,7 +53,7 @@
                         <!-- logo -->
                         <div class="logo">
                             <a href="<%=request.getContextPath()%>/front-end/index.jsp">
-                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg" class="img-fluid" alt="">
+                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png" class="img-fluid" alt="">
                             </a>
                         </div>
                         <!-- menu wrapper -->
@@ -346,7 +346,7 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="100" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg"
+                                            <a href="#"><img width="100" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
                                                     class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
