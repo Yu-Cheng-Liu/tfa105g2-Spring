@@ -30,7 +30,7 @@ $(function() {
 	});
 	
 	
-	document.querySelector('#product-luanchAndDiscontinue').onclick = () => {
+	document.querySelector('#product-launchAndDiscontinue').onclick = () => {
 		const form = document.querySelector('#getListByCompNo');
 		const button = document.createElement('button');
 		button.type = 'submit';

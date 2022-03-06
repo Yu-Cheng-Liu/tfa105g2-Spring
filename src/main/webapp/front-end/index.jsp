@@ -170,7 +170,7 @@
                                             <div class="single-settings-block">
                                                 <h4 class="title">廠商專區 </h4>
                                                 <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
+                                                    <li><a href="<%=request.getContextPath()%>/secure/loginFromSession.controller">註冊/登入</a></li>
                                                     
                                                 </ul>
                                             </div>

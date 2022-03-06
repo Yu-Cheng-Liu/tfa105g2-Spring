@@ -217,20 +217,9 @@
 
                                         <!-- settings menu -->
                                         <div class="settings-menu-wrapper" id="settings-menu-wrapper">
-                                            <div class="single-settings-block">
-                                                <h4 class="title">一般用戶 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                                  
-                                                </ul>
-                                            </div>
-                                            <div class="single-settings-block">
-                                                <h4 class="title">廠商專區 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                                    
-                                                </ul>
-                                            </div>
+                                        
+                                        	${indexHamburger}
+                                            
                                         </div>
                                     </div>
                                 </li>
@@ -322,8 +311,7 @@
                                             
 	                                    <a href="#product-insert" ${attrs5} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
 	                                    商品新增</a>
-	                                    
-                                        <a id="product-luanchAndDiscontinue" href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
+                                        <a id="product-launchAndDiscontinue" href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
                                             商品上架/下架</a>
 
 
@@ -548,6 +536,7 @@
  						 </form>
              		</div>
              	</div>
+             	 </div>
                                         
                                         
                                         <!-- Single Tab Content End -->
@@ -557,6 +546,8 @@
 
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade ${classes6}" id="account-info" role="tabpanel">
+                    					                              
+                                        
                                             <div class="myaccount-content">
                                                 <h3>帳戶資訊</h3>
 
@@ -629,13 +620,13 @@
                                                                 <button class="save-change-btn">送出</button>
                                                             </div>
 
-                                                        </div>
-                                                    </form>
+                                                         </form>
+                                                       </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
-                                    </div>
+                                   
                                 </div>
                                 <!-- My Account Tab Content End -->
                             </div>
