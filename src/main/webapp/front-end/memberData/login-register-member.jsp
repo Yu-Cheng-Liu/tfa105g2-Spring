@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-
 	String useraccount = "";
 	String password = "";
 	Cookie [] cookies = request.getCookies();
@@ -17,12 +16,7 @@
 			}
 		}
 	}
-
-
 %>
-
-
-
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -68,7 +62,7 @@
 
 .breadcrumb-bg {
 	background-image:
-		url("<%=request.getContextPath()%>/assets/img/hero-slider/test4.jpg");
+		url("<%=request.getContextPath()%>/assets/img/hero-slider/test8.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
