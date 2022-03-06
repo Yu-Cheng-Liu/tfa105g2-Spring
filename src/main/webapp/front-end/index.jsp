@@ -67,10 +67,11 @@
                                         </ul>
                                     </li>
 
-                                    <li class="menu-item-has-children"><a href="#">法會直播</a>
+                                    <li class="menu-item-has-children"><a href="#">預約服務</a>
                                         <ul class="sub-menu">
                                             <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
-                                       
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
                                         </ul>
                                     </li>
 
@@ -361,6 +362,7 @@
                                         <div class="copyright-social-wrapper">
                                             <ul class="copyright-social">
                                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
@@ -388,17 +390,17 @@
             <div class="offcanvas-inner-content">
                 <nav class="offcanvas-navigation">
                     <ul>
-                        <li class="menu-item-has-children"><a href="index.html">祭祖商城</a>
-                            <ul class="sub-menu">
-                                <li><a href="shop-list-left-sidebar.jsp">商品總攬</a></li>
-                                <li><a href="cart.jsp">購物車</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="menu-item-has-children"><a href="#">法會直播</a>
+                       <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
-                                           <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsppost-video-format.jsp">法會直播</a></li>
-                                           
+                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+                                        </ul>
+                                    </li>
+                         <li class="menu-item-has-children"><a href="#">預約服務</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
                                         </ul>
                                     </li>
 
