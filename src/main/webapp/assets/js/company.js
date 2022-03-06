@@ -54,4 +54,19 @@ $(function() {
 		form2.submit();
 	};
 
+	$("#launch-btn").on("click",function(){
+		$("#inputValue").val("1");
+		const button2 = document.createElement('button');
+		button5.type = 'submit';
+		("#launchAndDiscontinueForm").submit();
+		
+	})
+
+	$("#discontinue-btn").on("click",function(){
+		$("#inputValue").val("0");
+		const button2 = document.createElement('button');
+		button5.type = 'submit';
+		("#launchAndDiscontinueForm").submit();
+	})
+
 })
