@@ -223,6 +223,7 @@ public class CompDataService implements CompDataServiceInterface {
 	
 	public CompData findCertainAccount(String compAccount) {
 		
+		
 		if(!"".equals(compAccount.trim())) {
 			
 			CompData cd = compDataDAOi.select(compAccount);

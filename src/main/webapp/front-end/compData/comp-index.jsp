@@ -54,6 +54,20 @@
  }
 </style>
 
+<style>
+    #preview img.preview_img{
+        width: 100%;
+    }
+    
+    #preview2 img.preview_img2{
+        width: 100%;
+    }
+    
+    #preview3 img.preview_img3{
+        width: 100%;
+    }
+</style>
+
 </head>
 
 <body>
@@ -203,20 +217,9 @@
 
                                         <!-- settings menu -->
                                         <div class="settings-menu-wrapper" id="settings-menu-wrapper">
-                                            <div class="single-settings-block">
-                                                <h4 class="title">一般用戶 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                                  
-                                                </ul>
-                                            </div>
-                                            <div class="single-settings-block">
-                                                <h4 class="title">廠商專區 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                                    
-                                                </ul>
-                                            </div>
+                                        
+                                        	${indexHamburger}
+                                            
                                         </div>
                                     </div>
                                 </li>
@@ -306,11 +309,11 @@
                                         <a id="view-orders" href="#orders" ${attrs3} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                             訂單總覽</a>
                                             
-                                        <a id="product-luanchAndDiscontinue" href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
+	                                    <a href="#product-insert" ${attrs5} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
+	                                    商品新增</a>
+                                        <a id="product-launchAndDiscontinue" href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
                                             商品上架/下架</a>
 
-<%--                                         <a href="#payment-method" ${attrs5} data-bs-toggle="tab"><i class="fa fa-credit-card"></i> --%>
-<!--                                             商品總覽</a> -->
 
 <%--                                         <a href="#address-edit" ${attrs6} data-bs-toggle="tab"><i class="fa fa-map-marker"></i> --%>
 <!--                                             address</a> -->
@@ -328,12 +331,11 @@
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade ${classes1}" id="dashboad" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>Dashboard</h3>
+                                                <h3>帳戶大廳</h3>
 
                                                 <div class="welcome mb-20">
-                                                    <p>Hello, <strong>${compName}</strong> (If Not <strong>${compName}</strong>
-                                                    <a href="login-register.html" class="logout">
-                                                            Logout</a>)</p>
+                                                    <p>哈摟, <strong>${compName}</strong> <strong></strong>
+                                                   </p>
                                                 </div>
                                                 
                                                 <form id= "verifyForm" action = "<%=request.getContextPath()%>/secure/verifyAgain.controller" method="post">
@@ -412,16 +414,12 @@
                                                                 <th>商品價格</th>
                                                                 <th>商品庫存</th>
                                                                 <th>商品狀態</th>
-                                                                <th>商品圖片1</th>
-                                                                <th>商品圖片2</th>
-                                                                <th>商品圖片3</th>
-                                                                <th>選一下</th>
                                                             </tr>
                                                         </thead>
 
                                                         	<c:forEach var="ProductVO" items="${prods}">
                                                        
-                                                        		<form action="<%=request.getContextPath()%>/secure/launchAndDiscontinue.controller" Method="post">	
+                                                        		<form id = "launchAndDiscontinueForm" action="<%=request.getContextPath()%>/secure/launchAndDiscontinue.controller" Method="post">	
                                                         <tbody>
                                                         			<td><input type="checkbox" name = "thisProduct" value="${ProductVO.prodNo}"></td>
 	                                                                <td>${ProductVO.prodNo}</td>
@@ -430,15 +428,15 @@
 	                                                                <td>${ProductVO.prodDesc}</td>
 	                                                                <td>${ProductVO.prodPrice}</td>
 	                                                                <td>${ProductVO.prodStock}</td>
-	                                                                <td>${ProductVO.prodVerify}</td>
-	                                                                <td>${ProductVO.prodImg1}</td>
-	                                                                <td>${ProductVO.prodImg2}</td>
-	                                                                <td>${ProductVO.prodImg3}</td>
+	                                                                <td><strong>${ProductVO.prodVerify =="1" ? "已上架" : "未上架"}</strong></td>
                                                         </tbody>
                                                         	</c:forEach>
 	                                                                
                                                     </table>		
-                                                       				<button type="submit" name="launch" >上架</button><button type="submit" name="discontinue">下架</button>
+                                                    
+                                                    				<input id="inputValue" type = "hidden" name = "setProductStatus"  >
+                                                       				<button id="launch-btn" type="submit">上架</button>
+                                                       				<button id="discontinue-btn" type="submit" >下架</button>
                                                         		</form>
                                                     	<form id="getListByCompNo" action="<%=request.getContextPath()%>/secure/productManagement.controller" method="POST">
                                                     			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	
@@ -447,38 +445,109 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        
+                    <!-- Single Tab Content Start -->
+                     <div class="tab-pane fade ${classes5} " id="product-insert" role="tabpanel">                   
+                    <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+                        <!-- Checkout Form s-->
+                        <form class="checkout-form" METHOD="post" action="<%=request.getContextPath()%>/front-end/product/ProductInsertServlet.controller" enctype="multipart/form-data">
+                            <div class="row justify-content-around">
+						
+                                <div class="col-lg-7">
+							
+                                    <!-- Billing Address f-->
+                                    <div id="billing-form">
+                                        <h4 class="checkout-title" style="text-align:center;">新增商品</h4>
 
+                                        <div class="row justify-content-around">
+<!-- 											<div class="col-md-7"> -->
+<!-- 											<label>商品類別<font style=color:red>*</font></label>				 -->
+<!-- 											<select id="findType" style="width:130px" name="prodTypeCode"> -->
+<!-- 											<option value="0">請選擇商品類別</option> -->
+<%-- 											<c:forEach items="${selectAllType}" var="prodTypeVO" >											 --%>
+<%-- 											<option value="${prodTypeVO.prodTypeCode}">${prodTypeVO.prodTypeDesc}</option> --%>
+<%-- 											</c:forEach> --%>
+<!-- 											</select> -->
+<%-- 											<font color="red"><c:out value="${errorMsgs['prodTypeCode']}"/></font> --%>
+<!-- 											</div> -->
+											<div class="col-md-7">
+											<label>商品類別<font style=color:red>*</font></label>
+											<select id="findType" style="width:130px" name="prodTypeCode">
+											<option value="0">請選擇商品類別</option>
+											<option value="1">水果</option>
+											<option value="2">鮮花</option>
+											<option value="3">祭祀用品</option>
+											<option value="4">其他</option>
+											</select>
+											<font color="red"><c:out value="${errorMsgs.prodTypeCode}"/></font>
+                                            </div>
+                                            
+                                            <div class="col-md-7">
+                                                <label>商品名稱<font style=color:red>*</font></label>
+                                                <font color="red"><c:out value="${errorMsgs['prodName']}"/></font>
+                                                <input type="text" placeholder="請輸入商品名稱" name="prodName" value="${prodName}" />                                                                              
+                                            </div>
 
-                                        <!-- Single Tab Content Start -->
-<%--                                         <div class="tab-pane fade ${classes4}" id="payment-method" role="tabpanel"> --%>
-<!--                                             <div class="myaccount-content"> -->
-<!--                                                 <h3>Payment Method</h3> -->
+                                            <div class="col-md-7">
+                                                <label>商品價格<font style=color:red>*</font></label>
+                                                <font color="red"><c:out value="${errorMsgs['prodPrice']}"/></font>
+                                                <input type="number" min="0" placeholder="請輸入商品價格" name="prodPrice" value="${prodPrice}" />
+                                            </div>
 
-<!--                                                 <p class="saved-message">You Can't Saved Your Payment Method yet.</p> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
+                                            <div class="col-md-7">
+                                                <label>商品說明</label>
+                                                <input type="text" placeholder="請輸入商品說明內容" name="prodDesc" value="${prodDesc}" />
+                                            </div>
+
+                                            <div class="col-md-7">
+                                                <label>商品庫存量<font style=color:red>*</font></label>
+                                                <font color="red"><c:out value="${errorMsgs['prodStock']}"/></font>
+                                                <input type="number" min="0" placeholder="請輸入數量" name="prodStock" value="${prodStock}"/>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <label>商品圖片-1 <font style=color:red>*</font></label>
+                                                <font color="red"><c:out value="${errorMsgs['prodImg1']}"/></font>
+                                                <input type="file" id="p_file" name="prodImg" />
+                                                <div id="preview"><span class="text"></span></div>
+                                                <br>
+                                                <label>商品圖片-2</label>
+                                                <input type="file" id="p_file2" name="prodImg" />
+                                                <div id="preview2"><span class="text"></span></div>
+                                                <br>
+                                                <label>商品圖片-3</label>
+                                                <input type="file" id="p_file3" name="prodImg" />
+                                                <div id="preview3"><span class="text"></span></div>
+                                            </div>
+
+                                            <div class="col-7">
+<!--                                             <input type="hidden" name="action" value="insert"> -->
+                                            <button type="submit" class="register-button mt-0">確認送出</button>
+                                            </div>
+                                           
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+ 						 </form>
+             		</div>
+             	</div>
+             	 </div>
+                                        
+                                        
                                         <!-- Single Tab Content End -->
 
-                                        <!-- Single Tab Content Start -->
-<%--                                         <div class="tab-pane fade ${classes5}" id="address-edit" role="tabpanel"> --%>
-<!--                                             <div class="myaccount-content"> -->
-<!--                                                 <h3>Billing Address</h3> -->
 
-<!--                                                 <address> -->
-<!--                                                     <p><strong>Alex Tuntuni</strong></p> -->
-<!--                                                     <p>1355 Market St, Suite 900 <br> -->
-<!--                                                         San Francisco, CA 94103</p> -->
-<!--                                                     <p>Mobile: (123) 456-7890</p> -->
-<!--                                                 </address> -->
-
-<!--                                                 <a href="#" class="btn d-inline-block edit-address-btn"><i -->
-<!--                                                         class="fa fa-edit"></i>Edit Address</a> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-                                        <!-- Single Tab Content End -->
+ 
 
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade ${classes6}" id="account-info" role="tabpanel">
+                    					                              
+                                        
                                             <div class="myaccount-content">
                                                 <h3>帳戶資訊</h3>
 
@@ -551,13 +620,13 @@
                                                                 <button class="save-change-btn">送出</button>
                                                             </div>
 
-                                                        </div>
-                                                    </form>
+                                                         </form>
+                                                       </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
-                                    </div>
+                                   
                                 </div>
                                 <!-- My Account Tab Content End -->
                             </div>

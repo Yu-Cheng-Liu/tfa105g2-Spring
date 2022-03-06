@@ -34,7 +34,7 @@ public class ProductInsertServlet {
 //			System.out.println(bytes);
 //		}
 
-
+		Integer compNo = (Integer)session.getAttribute("compNo");
 		Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
 
 		// 商品名稱
@@ -92,7 +92,7 @@ public class ProductInsertServlet {
 
 
 		ProductVO prodVO = new ProductVO();
-		prodVO.setCompNo(1);
+		prodVO.setCompNo(compNo);
 		prodVO.setProdName(prodName);
 		prodVO.setProdDesc(prodDesc);
 		prodVO.setProdPrice(prodPrice);
