@@ -235,7 +235,7 @@ a {
     border: 1px solid #ddd;
 }
 
-#functionManageBtn {
+#functionManageBtn,#towerInsertBtn {
     position: relative;
     left: 500px;
     top: -39px;

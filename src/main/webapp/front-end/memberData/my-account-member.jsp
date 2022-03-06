@@ -482,9 +482,9 @@ margin-top: 7px;
 										<a href="#dashboad" ${active1} data-bs-toggle="tab"><i
 											class="fa fa-dashboard"></i> 會員中心</a> <a href="#orders"
 											${active2} data-bs-toggle="tab"><i
-											class="fa fa-cart-arrow-down"></i> 訂單查詢</a> <a href="#download"
-											${active3} data-bs-toggle="tab"><i class="fa fa-calendar"></i>
-											塔位查詢</a> <a href="#account-info" ${active4}
+											class="fa fa-cart-arrow-down"></i> 訂單查詢</a> 
+											<a id="tower" href="#tower" ${active3} data-bs-toggle="tab"><i class="fa fa-calendar"></i>塔位資訊</a> 
+											<a href="#account-info" ${active4}
 											data-bs-toggle="tab"><i class="fa fa-user"></i> 修改個人資料</a> <a
 											href="#payment-method" ${active5} data-bs-toggle="tab"><i
 											class="fa fa-credit-card"></i> 付款方式</a> <a href="#address-edit"
@@ -585,15 +585,36 @@ margin-top: 7px;
 										<!-- Single Tab Content End -->
 
 										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade ${showactive3}" id="download"
+										   <div class="tab-pane fade ${showactive3}" id="tower"
 											role="tabpanel">
 											<div class="myaccount-content">
-												<h3>塔位查詢</h3>
-
-												<div class=" text-center">
-												</div>
-
+											  <form id="selectTower"action="<%=request.getContextPath() %>/towerforuser.controller" method="POST">
+												
+												<table class="table table-bordered">
+														<thead class="thead-light">
+															<tr>
+																<th>塔位編號</th>
+																<th>使用者編號</th>
+																<th>往者姓名</th>
+															</tr>																
+														</thead>
+														<c:forEach var="TowerVO" items="${TowerVO}">
+														<tbody>
+															<tr>
+																<td>${TowerVO.towerNo}</td>
+																<td>${TowerVO.userNo}</td>
+																<td>${TowerVO.deadName}</td>
+																
+															</tr>
+															
+														</tbody>
+														</c:forEach>
+													
+													</table>
+													
+												</form>
 											</div>
+											
 										</div>
 										<!-- Single Tab Content End -->
 
@@ -1133,8 +1154,8 @@ margin-top: 7px;
 	<script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
 
 	<script src="<%=request.getContextPath()%>/assets/js/member.js"></script>
-
-
+ 
+    <script src="<%=request.getContextPath()%>/assets/js/tower.js"></script>
 	<!--=====  End of JS files ======-->
 
 </body>
