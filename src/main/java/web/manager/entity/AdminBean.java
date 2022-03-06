@@ -27,7 +27,7 @@ public class AdminBean implements Serializable {
 	@Column(name = "password")
 	String password;
 	
-	@Column(name = "create_date")
+	@Column(name = "create_datetime")
 	Date createDate = new Date();
 
 	public Integer getAdminNo() {

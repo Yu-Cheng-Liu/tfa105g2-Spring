@@ -4,7 +4,7 @@ import java.util.List;
 import web.manager.entity.FunctionBean;
 
 public interface FunctionServiceInterface {
-	public abstract List<FunctionBean> select();
+	public abstract List<FunctionBean> selectAll();
 	
 	public abstract boolean delete(FunctionBean bean);
 

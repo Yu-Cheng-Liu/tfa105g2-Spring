@@ -22,19 +22,17 @@ public class AdminDAO implements AdminDAOInterface {
 	public AdminBean select(AdminBean adminBean) {
 		if (adminBean.getAdminNo() != null) {
 			return session.get(AdminBean.class, adminBean.getAdminNo());
+		} else if (adminBean.getAccount() != null) {
+			return session.createQuery("FROM AdminBean WHERE account = :account", AdminBean.class)
+					.setParameter("account", adminBean.getAccount().trim()).uniqueResult();
 		}
 		return null;
 	}
 
 	@Override
 	public AdminBean update(AdminBean adminBean) {
-		if (adminBean.getAdminNo() != null) {
-			AdminBean temp = session.get(AdminBean.class, adminBean.getAdminNo());
-			if (temp != null) {
-				temp.setAccount(adminBean.getAccount());
-				temp.setPassword(adminBean.getPassword());
-				return (AdminBean) session.merge(temp);
-			}
+		if (adminBean != null) {
+			return (AdminBean) session.merge(adminBean);
 		}
 		return null;
 	}

@@ -76,7 +76,7 @@ ul .fas, ul .far, ul .fab {
     margin-right: 10px;
 }
 
-#sublist {
+#sublist, #admin {
     background-color: #c3b7bc;
     font-size: 20px;
     font-style: italic;
@@ -220,6 +220,91 @@ a {
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #ddd;
+}
+
+#towerInsertBtn, #adminInsertBtn {
+    position: relative;
+    left: 500px;
+    top: -39px;
+    text-transform: none;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#functionManageBtn {
+    position: relative;
+    left: 500px;
+    top: -39px;
+    text-transform: none;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#functionItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle-select {
+    height: 300px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle-select button {
+    align-items: center;
+}
+
+.left-select {
+    margin-top: -30px;
+    height: 250px;
+    width: 200px;
+}
+
+.left-select select {
+    height: 100%;
+    width: 100%;
+}
+
+.right-select {
+    margin-top: -30px;
+    height: 250px;
+    width: 200px;
+}
+
+.right-select select {
+    height: 100%;
+    width: 100%;
+}
+
+#funBtn {
+    margin-top: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+select#function {
+    height: 400px;
+}
+
+button#permissionUpdate {
+    width: 100%;
+}
+
+td {
+    vertical-align:middle;
 }
 
 @media (max-width:700px) {

@@ -1,8 +1,6 @@
 package web.manager.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +14,6 @@ import web.manager.service.RightServiceInterface;
 @Transactional
 public class RightService implements RightServiceInterface {
 
-	private Map<String, String> errorMsgs;
-
 	@Autowired
 	private RightDAO rightDao;
 
@@ -27,22 +23,22 @@ public class RightService implements RightServiceInterface {
 	}
 
 	@Override
-	public RightBean insert(RightBean rightBean) {
-		errorMsgs = new HashMap<String, String>();
-		if (rightDao.select(rightBean) != null) {
-			errorMsgs.put("insert", "管理員已有此功能");
-		}
+	public List<RightBean> selectAdminAll(RightBean rightBean) {
+		return rightDao.selectAdminAll(rightBean);
+	}
 
-		if (!errorMsgs.isEmpty()) {
-			return null;
-		}
+	@Override
+	public RightBean insert(RightBean rightBean) {
 		return rightDao.insert(rightBean);
 	}
 
 	@Override
 	public boolean delete(RightBean rightBean) {
-		if (rightDao.select(rightBean) != null) {
+		if (rightBean != null && rightBean.getFunctionNo() != null) {
+			rightBean = rightDao.select(rightBean);
 			return rightDao.delete(rightBean);
+		} else if (rightBean.getAdminNo() != null) {
+			return rightDao.deleteAll(rightBean);
 		}
 		return false;
 	}

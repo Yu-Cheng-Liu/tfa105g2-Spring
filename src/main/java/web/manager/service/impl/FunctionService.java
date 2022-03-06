@@ -22,7 +22,7 @@ public class FunctionService implements FunctionServiceInterface {
 	private FunctionDAO functionDao;
 
 	@Override
-	public List<FunctionBean> select() {
+	public List<FunctionBean> selectAll() {
 		return functionDao.selectAll();
 	}
 

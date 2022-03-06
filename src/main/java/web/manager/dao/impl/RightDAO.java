@@ -19,6 +19,12 @@ public class RightDAO implements RightDAOInterface {
 	}
 
 	@Override
+	public List<RightBean> selectAdminAll(RightBean rightBean) {
+		return session.createQuery("FROM RightBean WHERE adminNo = :adminNo", RightBean.class)
+				.setParameter("adminNo", rightBean.getAdminNo()).list();
+	}
+
+	@Override
 	public RightBean select(RightBean rightBean) {
 		return session.createQuery("FROM RightBean WHERE adminNo = :adminNo, functionNo = :functionNo", RightBean.class)
 				.setParameter("adminNo", rightBean.getAdminNo()).setParameter("functionNo", rightBean.getFunctionNo())
@@ -36,9 +42,21 @@ public class RightDAO implements RightDAOInterface {
 
 	@Override
 	public boolean delete(RightBean rightBean) {
-		if (rightBean != null && rightBean.getAdminNo() != null && rightBean.getFunctionNo() != null) {
-				session.delete(rightBean);
-				return true;
+		if (rightBean != null && rightBean.getAdminNo() != null) {
+			session.createQuery("DELETE FROM RightBean WHERE adminNo = :adminNo, functionNo = :functionNo")
+					.setParameter("adminNo", rightBean.getAdminNo())
+					.setParameter("functionNo", rightBean.getFunctionNo()).executeUpdate();
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteAll(RightBean rightBean) {
+		if (rightBean != null && rightBean.getAdminNo() != null) {
+			session.createQuery("DELETE FROM RightBean WHERE adminNo = :adminNo")
+					.setParameter("adminNo", rightBean.getAdminNo()).executeUpdate();
+			return true;
 		}
 		return false;
 	}

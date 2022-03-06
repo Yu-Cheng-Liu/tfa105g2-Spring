@@ -22,8 +22,16 @@ public class AdminService implements AdminServiceInterface {
 	private AdminDAO adminDao;
 
 	@Override
-	public List<AdminBean> select() {
+	public List<AdminBean> selectAll() {
 		return adminDao.selectAll();
+	}
+
+	public Map<String, String> getErrorMsgs() {
+		return errorMsgs;
+	}
+
+	public void setErrorMsgs(Map<String, String> errorMsgs) {
+		this.errorMsgs = errorMsgs;
 	}
 
 	@Override
@@ -32,11 +40,7 @@ public class AdminService implements AdminServiceInterface {
 		if (adminBean.getAdminNo() == null) {
 			errorMsgs.put("update", "管理員編號空白");
 		}
-
-		if (adminBean.getAccount() == null) {
-			errorMsgs.put("update", "管理員帳號空白");
-		}
-
+		
 		if (adminBean.getPassword() == null || adminBean.getPassword().length() > 8) {
 			errorMsgs.put("update", "管理員密碼空白or格式錯誤");
 		}
@@ -49,8 +53,6 @@ public class AdminService implements AdminServiceInterface {
 		if (!errorMsgs.isEmpty()) {
 			return null;
 		}
-
-		temp.setAccount(adminBean.getAccount());
 		temp.setPassword(adminBean.getPassword());
 		return adminDao.update(temp);
 	}
@@ -60,10 +62,16 @@ public class AdminService implements AdminServiceInterface {
 		errorMsgs = new HashMap<String, String>();
 		if (adminBean.getAccount() == null) {
 			errorMsgs.put("insert", "帳號空白");
+		}else if(adminDao.select(adminBean) != null) {
+			errorMsgs.put("insert", "帳號已存在");
 		}
+		
 		if (adminBean.getPassword() == null) {
 			errorMsgs.put("insert", "密碼空白");
+		}else if(adminBean.getPassword().length() > 8) {
+			errorMsgs.put("insert", "密碼過長");
 		}
+		
 		if (!errorMsgs.isEmpty()) {
 			return null;
 		}
