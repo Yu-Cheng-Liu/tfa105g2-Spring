@@ -367,6 +367,28 @@ function insertTower() {
     }).catch((error) => console.log(error));
 }
 
+function selectAllMemberData() {
+    $("#member").empty();
+    let table = `<table id="memTable" class="table table-striped table-bordered nowrap"
+                    style="width:100%;"></table>`;
+    $("#member").prepend(table);
+    axios.post("./MemberAllData.controller").then(res => {
+        var col = [
+            { data: 'userno', title: "會員編號" },
+            { data: 'useraccount', title: "帳號" },
+            { data: 'username', title: "姓名" },
+            { data: 'phone', title: "電話" },
+            { data: 'email', title: "信箱" },
+            { data: 'address', title: "地址", defaultContent: "" },
+            { data: 'gender', title: "性別", defaultContent: "" },
+            { data: 'birthday', title: "生日", defaultContent: "" },
+            { data: 'verifystatus', title: "審核狀態" },
+        ]
+        drewTable($("#memTable"), res, col);
+    })
+
+}
+
 function drewTable(table, res, col) {
     new $.fn.dataTable.FixedHeader(
         table.DataTable({
