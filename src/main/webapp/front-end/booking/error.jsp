@@ -44,7 +44,7 @@
 
 <body>
     <!--====================  header area ====================-->
-       <div class="header-area header-sticky">
+  	 <div class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -53,7 +53,7 @@
                         <!-- logo -->
                         <div class="logo">
                             <a href="<%=request.getContextPath()%>/front-end/index.jsp">
-                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg" class="img-fluid" alt="">
+                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png" class="img-fluid" alt="">
                             </a>
                         </div>
                         <!-- menu wrapper -->
@@ -181,6 +181,48 @@
                             </ul>
                         </div>
                     </div>
+					<!--=======  End of header wrapper  =======-->
+
+
+					<!--=======  mobile navigation area  =======-->
+
+					<div class="header-mobile-navigation d-block d-lg-none">
+						<div class="row align-items-center">
+							<div class="col-6 col-md-6">
+								<div class="header-logo">
+									<a href="index.html"> <img width="93" height="25"
+										src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg"
+										class="img-fluid" alt="">
+									</a>
+								</div>
+							</div>
+							<div class="col-6 col-md-6">
+								<div class="mobile-navigation text-end">
+									<div class="header-icon-wrapper">
+										<ul class="icon-list justify-content-end">
+											<li>
+												<div class="header-cart-icon">
+													<a href="cart.jsp"> <i class="ion-bag"></i> <span
+														class="counter">3</span>
+													</a>
+												</div>
+											</li>
+											<li><a href="javascript:void(0)"
+												class="mobile-menu-icon" id="mobile-menu-trigger"><i
+													class="fa fa-bars"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--=======  End of mobile navigation area  =======-->
+
+				</div>
+			</div>
+		</div>
+	</div>
     <!--====================  End of header area  ====================-->
 
     <!--====================  breadcrumb area ====================-->
@@ -272,12 +314,12 @@
             <div class="container wide">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="footer--wrapper footer--wrapper--default-footer">
+                        <div class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
                             <div class="container">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="100" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg"
+                                            <a href="#"><img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
                                                     class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
@@ -285,8 +327,9 @@
                                   <div class="col-lg-7 col-md-5">
 
                                         <div class="copyright-text">
-
-                                            Copyright &copy; 2021 <a href="#">Eposi</a>. All Rights Reserved.
+                                            
+                                             <a href="#">龘虤</a>
+                                            <P>104 台北市中山區南京東路三段219號5樓</P>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-5">
@@ -311,7 +354,7 @@
     <!--====================  End of footer area  ====================-->
     <!--=======  offcanvas mobile menu  =======-->
 
-  <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
+    <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
         <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
             <i class="ion-android-close"></i>
         </a>

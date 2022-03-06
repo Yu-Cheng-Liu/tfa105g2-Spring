@@ -34,7 +34,7 @@
 
 <body>
     <!--====================  header area ====================-->
-    <div class="header-area header-sticky">
+     <div class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -42,8 +42,8 @@
                     <div class="header-wrapper d-none d-lg-flex">
                         <!-- logo -->
                         <div class="logo">
-                            <a href="index.html">
-                                <img width="93" height="25" src="${pageContext.request.contextPath}/assets/img/logo.webp" class="img-fluid" alt="">
+                            <a href="<%=request.getContextPath()%>/front-end/index.jsp">
+                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png" class="img-fluid" alt="">
                             </a>
                         </div>
                         <!-- menu wrapper -->
@@ -52,27 +52,27 @@
                                 <ul>
                                     <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
-                                            <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
-                                            <li><a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
                                         </ul>
                                     </li>
 
                                     <li class="menu-item-has-children"><a href="#">預約服務</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog-post-video-format.jsp">法會直播</a></li>
-                                            <li><a href="blog-post-audio-format.jsp">預約祭祀</a></li>
-                                            <li><a href="menu-item-has-children">線上祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
                                         </ul>
                                     </li>
 
                                     <li class="menu-item-has-children"><a href="#">客服中心</a>
                                         <ul class="sub-menu">
-                                            <li><a href="contact.jsp">聯絡我們</a></li>
-                                            <li><a href="about.jsp">關於我們</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
                                         </ul>
                                     </li>
 
-                                    <li><a href="faq.jsp">常見問題</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -87,7 +87,6 @@
                                         </a>
                                         <!-- mini cart  -->
                                         
-                                        
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
                                         <%
@@ -98,33 +97,12 @@
                                             	for(int index =0; index < buyList.size(); index++){
                                             		CartVO order = buyList.get(index);
                                             %>
-                                            <%-- <c:forEach var="cart" items="${myCart}"> --%>
-                                            	<%-- ${cart.key}
-                                            	${cart.value} --%>
-                                            <%-- <%
-                                            Map<Integer, Integer> myCart = (Map) session.getAttribute("myCart");
-                                            	for(int i = 1; i < myCart.size(); i++){
-                                            		Integer cart = myCart.get(i);
-                                            	}
-                                            %> --%>
                                             
                                                 <div class="single-cart-item">
-                                                    <!-- <a href="javascript:void(0)" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a> -->
+                                                    
                                                     <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
-                                                    <%-- <form action="" class="remove-icon" method="get">
-                                                    	<input type="hidden" name="del" value="<%= index %>">
-                                                    	
-                                                    	<i class="ion-android-close"></i>
-                                                            
-                                                    </form> --%>
-                                                    <%-- <form action="${pageContext.request.contextPath}/CartServlet.controller?action=Delete" method="get">
-                                                    	<input type="hidden" name="del" value="<%= index %>">
-                                                    	<button type="sumbit" class="remove-icon"></button>
-                                                    	<i class="ion-android-close"></i>
-                                                            
-                                                    </form> --%>
+                                                    
                                                     <div class="image">
                                                         <a href="single-product.jsp">
                                                             <img width="80" height="106"
@@ -137,8 +115,6 @@
                                                         <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
                                                         <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
                                                     </div>
-                                                	
-                                                <%-- </c:forEach> --%>
                                             	</div>
                                             	
                                             <%}%>
@@ -178,15 +154,15 @@
                                             <div class="single-settings-block">
                                                 <h4 class="title">一般用戶 </h4>
                                                 <ul>
-                                                    <li><a href="login-register.jsp">註冊</a></li>
-                                                    <li><a href="login-register.jsp">登入</a></li>
+                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
+                                                  
                                                 </ul>
                                             </div>
                                             <div class="single-settings-block">
                                                 <h4 class="title">廠商專區 </h4>
                                                 <ul>
-                                                    <li><a href="login-register.jsp">註冊</a></li>
-                                                    <li><a href="login-register.jsp">登入</a></li>
+                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
@@ -449,39 +425,11 @@
     </div>
     <!--====================  End of page content area  ====================-->
     <!--====================  newsletter area ====================-->
-    <div class="newsletter-area section-space--inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="newsletter-wrapper">
-                        <p class="small-text">Special Ofers For Subscribers</p>
-                        <h3 class="title">Ten Percent Member Discount</h3>
-                        <p class="short-desc">Subscribe to our newsletters now and stay up to date with new collections,
-                            the latest lookbooks and exclusive offers.</p>
-
-                        <div class="newsletter-form">
-                            <form id="mc-form" class="mc-form">
-                                <input type="email" placeholder="Enter Your Email Address Here..." required>
-                                <button type="submit" value="submit">SUBSCRIBE</button>
-                            </form>
-
-                        </div>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div>
-                        <!-- mailchimp-alerts end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
     <!--====================  End of newsletter area  ====================-->
     <!--====================  footer area ====================-->
-    <div class="footer-area">
-        <div class="footer-copyright">
+     <div class="footer-area">
+        <div class="footer-">
             <div class="container wide">
                 <div class="row">
                     <div class="col-lg-12">
@@ -490,22 +438,24 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="93" height="25" src="${pageContext.request.contextPath}/assets/img/logo.webp"
+                                            <a href="#"><img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
                                                     class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-7 col-md-5">
+                                  <div class="col-lg-7 col-md-5">
 
                                         <div class="copyright-text">
-
-                                            Copyright &copy; 2021 <a href="#">Eposi</a>. All Rights Reserved.
+                                            
+                                             <a href="#">龘虤</a>
+                                            <P>104 台北市中山區南京東路三段219號5樓</P>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-5">
                                         <div class="copyright-social-wrapper">
                                             <ul class="copyright-social">
                                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
@@ -533,29 +483,29 @@
             <div class="offcanvas-inner-content">
                 <nav class="offcanvas-navigation">
                     <ul>
-                        <li class="menu-item-has-children"><a href="index.html">祭祖商城</a>
-                            <ul class="sub-menu">
-                                <li><a href="shop-list-left-sidebar.jsp">商品總攬</a></li>
-                                <li><a href="cart.jsp">購物車</a></li>
-                            </ul>
-                        </li>
+                       <li class="menu-item-has-children"><a href="#">祭祖商城</a>
+                                        <ul class="sub-menu">
+                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+                                        </ul>
+                                    </li>
+                         <li class="menu-item-has-children"><a href="#">預約服務</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
+                                        </ul>
+                                    </li>
 
-                        <li class="menu-item-has-children"><a href="#">預約服務</a>
-                            <ul class="sub-menu">
-                                <li><a href="blog-post-video-format.jsp">法會直播</a></li>
-                                <li><a href="blog-post-audio-format.jsp">預約祭祀</a></li>
-                                <li><a href="menu-item-has-children">線上祭祀</a></li>
-                            </ul>
-                        </li>
 
                         <li class="menu-item-has-children"><a href="#">客服中心</a>
                             <ul class="sub-menu">
-                                <li><a href="contact.jsp">聯絡我們</a></li>
-                                <li><a href="about.jsp">關於我們</a></li>
+                                <li><a href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
+                                <li><a href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="faq.jsp">常見問題</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
                     </ul>
                 </nav>
 
@@ -564,14 +514,12 @@
                         <ul>
                             <li class="menu-item-has-children"><a href="#">會員登入 </a>
                                 <ul class="sub-menu">
-                                    <li><a href="login-register.jsp">註冊</a></li>
-                                    <li><a href="login-register.jsp">登入</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children"><a href="#">廠商登入 </a>
                                 <ul class="sub-menu">
-                                    <li><a href="login-register.jsp">註冊</a></li>
-                                    <li><a href="login-register.jsp">登入</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -593,7 +541,6 @@
         </div>
 
     </div>
-
     <!--=======  End of offcanvas mobile menu  =======-->
     <!--====================  search overlay ====================-->
 
