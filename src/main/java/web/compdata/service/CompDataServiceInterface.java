@@ -21,4 +21,6 @@ public interface CompDataServiceInterface {
 	public CompData findCertainAccount(String compAccount);
 	
 	public String verifiedOrNot(CompData cd);
+	
+	public boolean changePasswordByAuthCode(String compAccount, String oldpass, String newpass, String confirm);
 }

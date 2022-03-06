@@ -2,6 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%
+
+	String useraccount = "";
+	String password = "";
+	Cookie [] cookies = request.getCookies();
+	if(cookies!=null) {
+		for(Cookie cookie:cookies) {
+			String name = cookie.getName();
+			if("useraccount".equals(name)) {
+				useraccount = cookie.getValue();
+			}else if("password".equals(name)) {
+				password = cookie.getValue();
+			}
+		}
+	}
+
+
+%>
+
+
+
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -60,16 +81,16 @@ select{
     max-width: 100%;  
 }
 
-<!-- Login Title -->
+
 .login-title {
 	font-size: 18px;
 	line-height: 0px;
 	text-decoration: none;
 }
 
-<!-- Login Form -->
+
 .login-form label {
-	margin-bottom: 5px;
+	margin-bottom: 9px;
 	font-weight: 550;
 }
 
@@ -119,6 +140,10 @@ select{
 
 #ckbutton_id2 {
 	position: absolute;
+}
+
+font{
+	font-size: 15px;
 }
 </style>
 
@@ -379,10 +404,7 @@ select{
 								<h3>
 									<span style="color: red">${errors.action}</span>
 								</h3>
-								<c:if test="${not empty insert}">
-									<span
-										style="font-size: 28px; font-weight: 650; text-align: center;">註冊成功，歡迎光臨!</span>
-								</c:if>
+								
 								<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
 									<!-- Login Form s-->
 									<form
@@ -394,25 +416,25 @@ select{
 
 											<div class="row">
 												<div class="col-md-12 col-12">
-													<label>帳號</label> <input type="text" name="useraccount"
-														value="${param.useraccount}"> <span
-														style="color: red">${errors.useraccount}</span>
+													<label>帳號</label>
+													<input type="text" name="useraccount" value="<%=useraccount%>">
+													<span style="color: red">${errors.useraccount}</span>
 												</div>
 												<div class="col-12">
-													<label>密碼</label> <input type="password" name="password"
-														value="${param.password}"> <span
-														style="color: red">${errors.password}</span>
+													<label>密碼</label> 
+													<input type="password" name="password" value="<%=password%>"> 
+													<span style="color: red">${errors.password}</span>
 												</div>
 												<div class="col-sm-6">
 
 													<div class="check-box d-inline-block ml-0 ml-md-2">
-														<input type="checkbox" id="remember_me"> <label
+														<input type="checkbox" id="remember_me" name="remember"> <label
 															for="remember_me">記住我</label>
 													</div>
 												</div>
 
 												<div class="col-sm-6 text-start text-sm-end">
-													<a href="#" class="forget-pass-link"> 忘記密碼?</a>
+													<a href="<%=request.getContextPath()%>/front-end/memberData/forgot-pwd.jsp" class="forget-pass-link"> 忘記密碼?</a>
 												</div>
 
 												<div class="col-md-12">
@@ -435,18 +457,18 @@ select{
 
 											<div class="row">
 												<div class="col-md-12 mb-20">
-													<label>帳號*</label> <span style="color: red">${errors.useraccount_rg}</span><input
+													<label>帳號<font color="red">*</font></label> <span style="color: red">${errors.useraccount_rg}</span><input
 														type="text" name="useraccount_rg"
 														value="${param.useraccount_rg}"
 														placeholder="請設定4-15位英數字帳號">
 												</div>
 												<div class="col-md-6 mb-20">
-													<label>密碼*</label> <span style="color: red">${errors.password_rg}</span><input
+													<label>密碼<font color="red">*</font></label><span style="color: red">${errors.password_rg}</span><input
 														type="password" name="password_rg"
 														placeholder="請設定6-15位英數字密碼">
 												</div>
 												<div class="col-md-6 mb-20">
-													<label>確認密碼*</label> <span style="color: red">${errors.password_rg2}</span><input
+													<label>確認密碼<font color="red">*</font></label> <span style="color: red">${errors.password_rg2}</span><input
 														type="password" name="password_rg2" placeholder="請再輸入一次密碼">
 												</div>
 												<div class="col-md-12 mb-20">
@@ -454,12 +476,12 @@ select{
 														type="text" name="username" value="${param.username}">
 												</div>
 												<div class="col-md-12">
-													<label>手機*</label><span style="color: red">${errors.phone}</span>
+													<label>手機<font color="red">*</font></label><span style="color: red">${errors.phone}</span>
 													<input type="tel" name="phone" value="${param.phone}"
 														maxlength="10">
 												</div>
 												<div class="col-md-12">
-													<label>信箱*</label> <span style="color: red">${errors.email}</span><input
+													<label>信箱<font color="red">*</font></label> <span style="color: red">${errors.email}</span><input
 														type="email" name="email" value="${param.email}">
 												</div>
 												<div class="col-md-6 col-12 mb-20">
@@ -492,9 +514,7 @@ select{
 													<input id="f_date1" type="text" name="birthday"
 														value="${param.birthday}">
 												</div>
-												<div class="col-md-12">
-													<label>驗證碼</label> <input type="email">
-												</div>
+
 												<div class="col-12">
 													<input type="hidden" name="action2" value="register">
 													<button type="submit" class="register-button mt-1">註冊</button>

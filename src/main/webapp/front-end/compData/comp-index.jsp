@@ -274,11 +274,7 @@
                     <div class="breadcrumb-wrapper breadcrumb-bg">
                         <!--=======  breadcrumb content  =======-->
                         <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">My Account</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">My Account</li>
-                            </ul>
+                           
                         </div>
                         <!--=======  End of breadcrumb content  =======-->
                     </div>
@@ -319,8 +315,8 @@
 <%--                                         <a href="#address-edit" ${attrs6} data-bs-toggle="tab"><i class="fa fa-map-marker"></i> --%>
 <!--                                             address</a> -->
 <!-- 										<form action = "" method="post"> -->
-                                        <a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp"><i class="fa fa-sign-out"></i> 登出</a>
-                                        	<input type="hidden" name="logout" value="byebye">
+										<form action = "<%=request.getContextPath()%>/secure/logout.controller" id="logout" method="POST">
+                                        <a id="byebye"><i class="fa fa-sign-out"></i> 登出</a>
                                     	</form>
                                     </div>
                                 </div>

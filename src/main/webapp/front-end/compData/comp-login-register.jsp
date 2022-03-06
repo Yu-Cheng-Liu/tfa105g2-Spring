@@ -271,11 +271,7 @@
 					<div class="breadcrumb-wrapper breadcrumb-bg">
 						<!--=======  breadcrumb content  =======-->
 						<div class="breadcrumb-content">
-							<h2 class="breadcrumb-content__title">Login - Register</h2>
-							<ul class="breadcrumb-content__page-map">
-								<li><a href="index.html">Home</a></li>
-								<li class="active">Login - Register</li>
-							</ul>
+							
 						</div>
 						<!--=======  End of breadcrumb content  =======-->
 					</div>

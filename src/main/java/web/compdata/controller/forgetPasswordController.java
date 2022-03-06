@@ -16,7 +16,7 @@ import web.tools.SendMail;
 import web.tools.impl.AuthCode;
 
 @Controller
-public class forgetPassword {
+public class forgetPasswordController {
 	@Autowired
 	private CompDataServiceInterface service;
 	
@@ -34,7 +34,7 @@ public class forgetPassword {
 			AuthCode ac = new AuthCode() ;
 			ac.setTargetStringLength(8);
 			String newPass = ac.givenUsingJava8_whenGeneratingRandomAlphanumericString_thenCorrect();
-			boolean trueOrFalse = service.changePassword(cd.getCompAccount(), cd.getPassword(), newPass, newPass);
+			boolean trueOrFalse = service.changePasswordByAuthCode(cd.getCompAccount(), cd.getPassword(), newPass, newPass);
 			
 			System.out.println(trueOrFalse);
 			System.out.println(errors);

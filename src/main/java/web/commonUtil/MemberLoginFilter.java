@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = { "/front-end/memberData/my-account-member.jsp" }) //待確認
+@WebFilter(urlPatterns = { "/front-end/memberData/my-account-member.jsp","/front-end/booking/booking.jsp","/front-end/booking/inquirybooking.jsp"})
 public class MemberLoginFilter implements Filter {
 
 	@Override
@@ -27,26 +26,12 @@ public class MemberLoginFilter implements Filter {
 
 		Object user = session.getAttribute("user");
 		if (user == null) {
-			session.setAttribute("location", req.getRequestURI());  //路徑還要確認
+			session.setAttribute("location", req.getServletPath());
 			res.sendRedirect(req.getContextPath() + "/front-end/memberData/login-register-member.jsp");
 			return;
 		} else {
 			chain.doFilter(request, response);
 		}
-	}
-
-	private FilterConfig filterConfig;
-
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		this.filterConfig = filterConfig;
-	}
-
-	@Override
-	public void destroy() {
-		filterConfig = null;
-	}
-	
-	
+	}	
 
 }
