@@ -1,6 +1,6 @@
 package web.product.controller;
 
-import java.util.*;
+import java.util.List;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;

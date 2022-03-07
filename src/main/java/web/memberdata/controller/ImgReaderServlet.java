@@ -6,7 +6,6 @@ import java.io.InputStream;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import web.memberdata.entity.MemberDataVO;
 import web.memberdata.service.MemberDataServiceInterface;
-import web.memberdata.service.impl.MemberDataService;
 
 
 @Controller

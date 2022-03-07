@@ -1,6 +1,7 @@
 package web.manager.dao;
 
 import java.util.List;
+
 import web.manager.entity.FunctionBean;
 
 public interface FunctionDAOInterface {

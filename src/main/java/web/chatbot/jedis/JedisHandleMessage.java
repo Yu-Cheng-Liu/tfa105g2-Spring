@@ -2,8 +2,6 @@ package web.chatbot.jedis;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 

@@ -24,6 +24,8 @@ public class CompDataService implements CompDataServiceInterface {
 	private CompDataDAOInterface compDataDAOi;
 	
 	String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
+	
+	
 
 	public Map<String, String> getErrors() {
 		return errors;
@@ -55,8 +57,6 @@ public class CompDataService implements CompDataServiceInterface {
 			errors.put("password", "登入失敗請檢查輸入內容");
 			return null;
 		}
-//		System.out.println(cd);
-//		System.out.println(errors);
 		return null;
 
 	}
@@ -223,6 +223,7 @@ public class CompDataService implements CompDataServiceInterface {
 	
 	public CompData findCertainAccount(String compAccount) {
 		
+		
 		if(!"".equals(compAccount.trim())) {
 			
 			CompData cd = compDataDAOi.select(compAccount);
@@ -246,11 +247,9 @@ public class CompDataService implements CompDataServiceInterface {
 		System.out.println(cd.getVerify());
 		
 		if("1".equals(cd.getVerify())) {
-//			return "歡迎來到龘虤！　\r\n 恭喜您已完成email驗證，祝您斂財愉快";
 			return "0";
 		}else {
 			
-//			return "歡迎來到龘虤！ \r\n 您的email驗證尚未完成，將無法使用上架功能，是否現在驗證？";
 			return "1";
 		}
 	}

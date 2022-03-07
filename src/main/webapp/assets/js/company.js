@@ -30,7 +30,7 @@ $(function() {
 	});
 	
 	
-	document.querySelector('#product-luanchAndDiscontinue').onclick = () => {
+	document.querySelector('#product-launchAndDiscontinue').onclick = () => {
 		const form = document.querySelector('#getListByCompNo');
 		const button = document.createElement('button');
 		button.type = 'submit';
@@ -53,5 +53,20 @@ $(function() {
 		// form.append(button);
 		form2.submit();
 	};
+
+	$("#launch-btn").on("click",function(){
+		$("#inputValue").val("1");
+		const button2 = document.createElement('button');
+		button5.type = 'submit';
+		("#launchAndDiscontinueForm").submit();
+		
+	})
+
+	$("#discontinue-btn").on("click",function(){
+		$("#inputValue").val("0");
+		const button2 = document.createElement('button');
+		button5.type = 'submit';
+		("#launchAndDiscontinueForm").submit();
+	})
 
 })

@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import web.compdata.entity.CompData;
 import web.compdata.service.CompDataServiceInterface;
 
 @Controller

@@ -19,7 +19,7 @@ public class LogoutController {
 		session.removeAttribute("email");
 		session.removeAttribute("compAccount");
 		session.removeAttribute("compNo");
-		session.removeAttribute("address");
+		session.removeAttribute("compAddress");
 		
 		
 		return "redirect:/front-end/index.jsp";

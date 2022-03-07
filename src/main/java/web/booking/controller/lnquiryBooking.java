@@ -1,7 +1,6 @@
 package web.booking.controller;
 
 import java.text.DateFormat;
-
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;

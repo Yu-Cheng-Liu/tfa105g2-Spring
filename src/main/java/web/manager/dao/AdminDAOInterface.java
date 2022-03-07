@@ -1,6 +1,7 @@
 package web.manager.dao;
 
 import java.util.List;
+
 import web.manager.entity.AdminBean;
 
 public interface AdminDAOInterface {

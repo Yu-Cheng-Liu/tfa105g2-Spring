@@ -2,6 +2,7 @@ package web.compdata.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,15 @@ public class LoginController {
 	private PasswordEncoder passwordEncoder;
 
 	@RequestMapping(value="/secure/login.controller" , method= {RequestMethod.POST})
-	public String compData(String compAccount, String password, Model model, HttpSession session) {
-		
+	public String compData(String rememberMe ,String compAccount, String password, Model model, HttpSession session , HttpServletRequest req) {
+		 
 		
 		CompData cd = service.login(compAccount, password);
 		Map<String, String> errors = service.getErrors();	
 		System.out.println(cd);
-	
+		System.out.println(rememberMe);
+		
+		
 		
 		if (cd==null) {
 				model.addAttribute("errors", errors);
@@ -40,24 +43,45 @@ public class LoginController {
 
 		else {
 			
+			String path = req.getContextPath();
+				
+			
+			session.setAttribute("indexHamburger", "<div class=\"single-settings-block\">\r\n"
+					+ "                                                <h4 class=\"title\">廠商專區 </h4>\r\n"
+					+ "                                                <ul>\r\n"
+					+ "                                                    <li><a href="
+					+ path
+					+ "/front-end/compData/comp-index.jsp>廠商用戶中心</a></li>\r\n"
+					+ "                                                    \r\n"
+					+ "                                                </ul>\r\n"
+					+ "                                            </div>");
+				
+			
 				String status = service.verifiedOrNot(cd);
-				model.addAttribute("status", status);
-				session.setAttribute("verify", status);
+				session.setAttribute("status", status);
+				session.setAttribute("verify", cd.getVerify());
 				session.setAttribute("compName", cd.getCompName());
 				session.setAttribute("chargePerson", cd.getChargePerson());
 				session.setAttribute("compPhone", cd.getCompPhone());
 				session.setAttribute("email", cd.getEmail());
 				session.setAttribute("compAccount", cd.getCompAccount());
 				session.setAttribute("compNo", cd.getCompNO());
-				session.setAttribute("address", cd.getAddress());
+				session.setAttribute("compAddress", cd.getAddress());
 				String classes = "show active";
 				model.addAttribute("classes1",classes);
 				String active = "class=\"active\"";
 				model.addAttribute("attrs2", active);
-				session.setAttribute("type", "comp");
+				
+				if("on".equals(rememberMe)) {
+					session.setMaxInactiveInterval(0);
+				}
+				
 				return "/front-end/compData/comp-index.jsp";
+				
+				
 			
-		}
+			}
+		
 
 	}
 
