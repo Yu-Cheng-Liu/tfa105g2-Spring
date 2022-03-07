@@ -214,7 +214,7 @@
                                                         <button class="btn" data-bs-toggle="collapse"
                                                             data-bs-target="#collapseOne" aria-expanded="true"
                                                             aria-controls="collapseOne">
-                                                            What Shipping Methods are Available? <span> <i
+                                                            請問殯與葬有甚麼不同? <span> <i
                                                                     class="fa fa-chevron-down"></i>
                                                                 <i class="fa fa-chevron-up"></i> </span>
                                                         </button>
@@ -224,10 +224,15 @@
                                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                                     data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <p>Terms know how to pursue pleasure rationally encounter cnces
-                                                            that are extremely painful. Nor again is there anyone who
-                                                            loves or pursues or desires to obtain pain of itself,
-                                                            because.</p>
+                                                        <p>基本上台閩地區喪葬活動是由一系列的儀式所組成，而非單一的典禮。
+                                                            整個過程可分為三個階段：
+                                                            「殮」（淨身入棺）
+                                                            「殯」（停棺祭拜）
+                                                            「葬」（造墳入土）
+                                                            每一階段都具有一些特殊的儀式及陳設，以上三階位進一步說明如下：
+                                                            『殮』主要對死者身體做一番恭敬的處理和掩藏。
+                                                            『殯』主要係停放死者於棺中進行弔唁。
+                                                            『葬』主要以告別及安頓死者最後歸宿為主</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -237,7 +242,7 @@
                                                         <button class="btn collapsed" data-bs-toggle="collapse"
                                                             data-bs-target="#collapseTwo" aria-expanded="false"
                                                             aria-controls="collapseTwo">
-                                                            What Payment Methods are Available? <span> <i
+                                                            請問「百日」、「對年」的日期該如何計算？ <span> <i
                                                                     class="fa fa-chevron-down"></i>
                                                                 <i class="fa fa-chevron-up"></i> </span>
                                                         </button>
@@ -246,10 +251,8 @@
                                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                                     data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <p>Terms know how to pursue pleasure rationally encounter cnces
-                                                            that are extremely painful. Nor again is there anyone who
-                                                            loves or pursues or desires to obtain pain of itself,
-                                                            because.</p>
+                                                        <p>『百日』：一般以亡者過世的當日起算無論國曆、農曆計算第100天。對年』：
+                                                            應以亡者過世當日以農曆計算隔年的同一天。※切記：如遇閏年需提前一個月祭拜</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -259,7 +262,7 @@
                                                         <button class="btn collapsed" data-bs-toggle="collapse"
                                                             data-bs-target="#collapseThree" aria-expanded="false"
                                                             aria-controls="collapseThree">
-                                                            How I Return back my product? <span> <i
+                                                            如家中有人往生，但有婚事，應在何時辦理？ <span> <i
                                                                     class="fa fa-chevron-down"></i>
                                                                 <i class="fa fa-chevron-up"></i> </span>
                                                         </button>
@@ -268,10 +271,7 @@
                                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                                     data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <p>Terms know how to pursue pleasure rationally encounter cnces
-                                                            that are extremely painful. Nor again is there anyone who
-                                                            loves or pursues or desires to obtain pain of itself,
-                                                            because.</p>
+                                                        <p>在百日內要完成-沖喜(男女都一樣)</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -281,7 +281,7 @@
                                                         <button class="btn collapsed" data-bs-toggle="collapse"
                                                             data-bs-target="#collapseFour" aria-expanded="false"
                                                             aria-controls="collapseFour">
-                                                            What is the payment secutiry system? <span> <i
+                                                            對年與合爐是否可以同一天辦理？ <span> <i
                                                                     class="fa fa-chevron-down"></i>
                                                                 <i class="fa fa-chevron-up"></i> </span>
                                                         </button>
@@ -290,10 +290,8 @@
                                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
                                                     data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <p>Terms know how to pursue pleasure rationally encounter cnces
-                                                            that are extremely painful. Nor again is there anyone who
-                                                            loves or pursues or desires to obtain pain of itself,
-                                                            because.</p>
+                                                        <p>南部人禮俗是可以同一天舉辦對年與合爐，但北部人一般禮俗合爐是要擇日擇時。
+                                                            請師父看日子核對子孫的生肖是否適合合爐的日子。</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -303,7 +301,7 @@
                                                         <button class="btn collapsed" data-bs-toggle="collapse"
                                                             data-bs-target="#collapseFive" aria-expanded="false"
                                                             aria-controls="collapseFive">
-                                                            How can I track my order?<span> <i
+                                                            百日、對年、合爐的祭拜供品是否有禁忌<span> <i
                                                                     class="fa fa-chevron-down"></i>
                                                                 <i class="fa fa-chevron-up"></i> </span>
                                                         </button>
@@ -312,10 +310,13 @@
                                                 <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
                                                     data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <p>Terms know how to pursue pleasure rationally encounter cnces
-                                                            that are extremely painful. Nor again is there anyone who
-                                                            loves or pursues or desires to obtain pain of itself,
-                                                            because.</p>
+                                                        <p>在花及供品的部份並無忌諱，
+                                                            但在水果部份請不要祭拜成串的水果如:香蕉、葡萄，
+                                                            「取諧音是不希望亡者會帶走成串(閩南語)的家屬」。
+                                                            此外釋迦也不可以因為像佛祖的頭（怕會有不敬），
+                                                            另外多子的水果也不可以使用（與成串同意），
+                                                            鳳梨也不適合使用，因為葉子像刀片，
+                                                            盡量使用獨立一顆的水果較妥當。</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -325,7 +326,7 @@
                                                         <button class="btn collapsed" data-bs-toggle="collapse"
                                                             data-bs-target="#collapseSix" aria-expanded="false"
                                                             aria-controls="collapseSix">
-                                                            Do I need creat account for buy products?<span> <i
+                                                            請問同輩可以祭拜嗎？<span> <i
                                                                     class="fa fa-chevron-down"></i>
                                                                 <i class="fa fa-chevron-up"></i> </span>
                                                         </button>
@@ -334,10 +335,9 @@
                                                 <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
                                                     data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <p>Terms know how to pursue pleasure rationally encounter cnces
-                                                            that are extremely painful. Nor again is there anyone who
-                                                            loves or pursues or desires to obtain pain of itself,
-                                                            because.</p>
+                                                        <p>只有長輩不可祭拜晚輩是比較有規範的（怕會折壽），
+                                                            而在同輩的部份除非親友之間有疑慮（以前是有平輩不必祭拜及送別的習俗），
+                                                            但以現代人觀念並無此禁忌。</p>
                                                     </div>
                                                 </div>
                                             </div>

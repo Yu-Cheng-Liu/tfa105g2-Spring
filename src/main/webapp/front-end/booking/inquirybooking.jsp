@@ -262,6 +262,8 @@
                                                 <div class="col-md-12 col-12">
                                                     <label>塔位編號*</label>
                                                     <input name="towerNo" type="text" placeholder="towerNo*">
+                                                     <span style="color: red;class="error">${errors.towerNo}</span>
+                                                   <span style="color:red;class="error">${errors.result}</span>
                                                 </div>
                                                 <div class="col-12">
                                                     <label>預約日期*</label>
@@ -270,7 +272,7 @@
                                                
 
                                                 <div class="col-md-12">
-                                                    <button name = "bookingion" type="submit" class="bookingion" value="select">查詢預約</button>
+                                                    <button class="btn btn-outline-danger" name = "bookingion" type="submit" class="bookingion" value="select">查詢預約</button>
                                                 </div>
 
                                             </div>
