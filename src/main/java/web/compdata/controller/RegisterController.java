@@ -74,7 +74,8 @@ public class RegisterController {
 			session.setAttribute("email", cd.getEmail());
 			session.setAttribute("compPhone", cd.getCompPhone());
 			session.setAttribute("compAccount", cd.getCompAccount());
-			session.setAttribute("address", cd.getAddress());
+			session.setAttribute("compAddress", cd.getAddress());
+			session.setAttribute("compNo", cd.getCompNO());
 			session.setAttribute("authCode", AuthCode);
 			session.setAttribute("password", cd.getPassword());
 		

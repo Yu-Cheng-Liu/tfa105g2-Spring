@@ -66,7 +66,7 @@ public class LoginController {
 				session.setAttribute("email", cd.getEmail());
 				session.setAttribute("compAccount", cd.getCompAccount());
 				session.setAttribute("compNo", cd.getCompNO());
-				session.setAttribute("address", cd.getAddress());
+				session.setAttribute("compAddress", cd.getAddress());
 				String classes = "show active";
 				model.addAttribute("classes1",classes);
 				String active = "class=\"active\"";

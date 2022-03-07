@@ -2,6 +2,7 @@ package web.product.controller;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -113,8 +114,17 @@ public class ProductInsertServlet {
 		}
 
 		prodVO = productService.add(prodVO);
+		System.out.println(compNo);
+		
+		List <ProductVO> list = productService.selectProdByCompNo(compNo);
+		model.addAttribute("prods", list);
+		
+		String classes = "show active";
+		model.addAttribute("classes3",classes);
+		String active = "class=\"active\"";
+		model.addAttribute("attrs4", active);
+		return "/front-end/compData/comp-index.jsp";
 
-		return "/front-end/product/AllProduct.jsp";
 	}
 
 }

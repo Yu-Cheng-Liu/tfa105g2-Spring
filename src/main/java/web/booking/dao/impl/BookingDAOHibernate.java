@@ -6,9 +6,6 @@ import java.util.List;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import web.booking.dao.BookingDAO;

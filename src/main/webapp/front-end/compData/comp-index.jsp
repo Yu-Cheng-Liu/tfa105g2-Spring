@@ -1,36 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page import="java.util.*, web.cart.entity.CartVO" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
 <head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Eposi - Multipurpose eCommerce Bootstrap5 Template</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="icon"
-	href="<%=request.getContextPath()%>/assets/img/favicon.ico">
-
-<!-- FontAwesome 連結-->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<!-- BookStrap 連結-->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous"></script>
-
-
+<link rel="icon" href="<%=request.getContextPath()%>/assets/img/favicon.ico">
 <!--=============================================
     =            CSS  files       =
     =============================================-->
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+	rel="stylesheet">
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js"></script>
 
 <!-- Vendor CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/vendors.css"
@@ -38,50 +33,37 @@
 <!-- Main CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/style.css"
 	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-	rel="stylesheet">
-
+	
+<script src="<%=request.getContextPath()%>/assets/js/company.js"></script>
 
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/comp.css">
+	
 
 
+  
+  
 <style>
  *{
     color: black;
  }
 </style>
 
-<style>
-    #preview img.preview_img{
-        width: 100%;
-    }
-    
-    #preview2 img.preview_img2{
-        width: 100%;
-    }
-    
-    #preview3 img.preview_img3{
-        width: 100%;
-    }
-</style>
-
 </head>
 
 <body>
-	<!--====================  header area ====================-->
-	<div class="header-area header-sticky">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
- <!--=======  header wrapper  =======-->
+    <!--====================  header area ====================-->
+    <div class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=======  header wrapper  =======-->
                     <div class="header-wrapper d-none d-lg-flex">
                         <!-- logo -->
                         <div class="logo">
                             <a href="<%=request.getContextPath()%>/front-end/index.jsp">
-                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg" class="img-fluid" alt="">
+                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png" class="img-fluid" alt="">
                             </a>
                         </div>
                         <!-- menu wrapper -->
@@ -90,16 +72,16 @@
                                 <ul>
                                     <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
-                                            <li><a href="${pageContext.request.contextPath}/AllProductServlet?action=selectAll">商品總覽</a></li>
-                                            <li><a href="cart.jsp">購物車</a></li>
+                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
                                         </ul>
                                     </li>
 
                                     <li class="menu-item-has-children"><a href="#">預約服務</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog-post-video-format.jsp">法會直播</a></li>
-                                            <li><a href="blog-post-audio-format.jsp">預約祭祀</a></li>
-                                            <li><a href="menu-item-has-children">線上祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
                                         </ul>
                                     </li>
 
@@ -121,86 +103,58 @@
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
                                             <i class="ion-bag"></i>
-                                            <span class="counter">3</span>
+                                            <span class="counter">${buyListCount}</span>
                                         </a>
                                         <!-- mini cart  -->
+                                        
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
+                                        <%
+                                        	Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+                                        %>
+                                        <%if (buyList != null && (buyList.size() > 0)){ %>
+                                        	<%
+                                            	for(int index =0; index < buyList.size(); index++){
+                                            		CartVO order = buyList.get(index);
+                                            %>
+                                            
                                                 <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
+                                                    
+                                                    <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
+                                                    
                                                     <div class="image">
                                                         <a href="single-product.jsp">
                                                             <img width="80" height="106"
-                                                                src="<%=request.getContextPath()%>/assets/img/products/product-1-80x106.webp"
+                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
                                                                 class="img-fluid" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Cillum
-                                                                dolore furniture</a></p>
-                                                        <p class="count"><span>1 x </span> $402</p>
+                                                    
+                                                        <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
+                                                        <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
                                                     </div>
-                                                </div>
-                                                <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a>
-                                                    <div class="image">
-                                                        <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="<%=request.getContextPath()%>/assets/img/products/product-2-80x106.webp"
-                                                                class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Lorem
-                                                                ipsum furniture</a></p>
-                                                        <p class="count"><span>1 x </span> $500</p>
-                                                    </div>
-                                                </div>
-                                                <div class="single-cart-item">
-                                                    <a href="javascript:void(0)" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a>
-                                                    <div class="image">
-                                                        <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="<%=request.getContextPath()%>/assets/img/products/product-3-80x106.webp"
-                                                                class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="product-title"><a href="single-product.jsp">Cillum
-                                                                dolore tool</a></p>
-                                                        <p class="count"><span>1 x </span> $607</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            	</div>
+                                            	
+                                            <%}%>
+                                            
                                             <div class="cart-calculation">
                                                 <table class="table">
                                                     <tbody>
                                                         <tr>
-                                                            <td class="text-start">Sub-Total :</td>
-                                                            <td class="text-end">$220.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">Eco Tax (-2.00) :</td>
-                                                            <td class="text-end">$6.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">VAT (20%) :</td>
-                                                            <td class="text-end">$44.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-start">Total :</td>
-                                                            <td class="text-end">$270.00</td>
+                                                            <td class="text-start">商品總金額 :</td>
+                                                            <td class="text-end">$${amount}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <%}%>
                                             <div class="cart-buttons">
-                                                <a href="cart.jsp">VIEW CART</a>
-                                                <a href="checkout.jsp">CHECKOUT</a>
+                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
+                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </li>
@@ -217,9 +171,20 @@
 
                                         <!-- settings menu -->
                                         <div class="settings-menu-wrapper" id="settings-menu-wrapper">
-                                        
-                                        	${indexHamburger}
-                                            
+                                            <div class="single-settings-block">
+                                                <h4 class="title">一般用戶 </h4>
+                                                <ul>
+                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
+                                                  
+                                                </ul>
+                                            </div>
+                                            <div class="single-settings-block">
+                                                <h4 class="title">廠商專區 </h4>
+                                                <ul>
+                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
+                                                    
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -227,6 +192,7 @@
                         </div>
                     </div>
                     <!--=======  End of header wrapper  =======-->
+
 					<!--=======  mobile navigation area  =======-->
 
 					<div class="header-mobile-navigation d-block d-lg-none">
@@ -576,7 +542,7 @@
 	
 	                                                           <div class="col-12"> 公司地址
 	                                                                <input id="address" placeholder="公司地址" name="address"
-	                                                                     value="${address}" type="text" disabled>
+	                                                                     value="${compAddress}" type="text" disabled>
 	                                                            </div>
 	                                                            
 	                                                           <div class="col-12"> 公司電話
@@ -640,8 +606,8 @@
     <!--====================  End of page content area  ====================-->
  
     <!--====================  footer area ====================-->
-    <div class="footer-area">
-        <div class="footer-copyright">
+     <div class="footer-area">
+        <div class="footer-">
             <div class="container wide">
                 <div class="row">
                     <div class="col-lg-12">
@@ -650,22 +616,24 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-lg-2 col-md-2">
                                         <div class="footer-logo">
-                                            <a href="#"><img width="100" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v1.jpg"
+                                            <a href="#"><img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
                                                     class="img-fluid" alt=""></a>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-7 col-md-5">
+                                  <div class="col-lg-7 col-md-5">
 
                                         <div class="copyright-text">
-
-                                            Copyright &copy; 2021 <a href="#">Eposi</a>. All Rights Reserved.
+                                            
+                                             <a href="#">龘虤</a>
+                                            <P>104 台北市中山區南京東路三段219號5樓</P>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-5">
                                         <div class="copyright-social-wrapper">
                                             <ul class="copyright-social">
                                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
@@ -1013,6 +981,78 @@
     <script src="<%=request.getContextPath()%>/assets/js/active.js"></script>
 
     <script src="<%=request.getContextPath()%>/assets/js/company.js"></script>
+    
+    <script>
+//  ---------- 圖片1 ----------//
+(function ($) {
+    "use strict";
+    $('#scroll-top').fadeIn();
+var preview_el = document.getElementById("preview");
+var p_file_el = document.getElementById("p_file");
+
+var preview_img = function(file){
+
+var reader =  new FileReader();
+   reader.readAsDataURL(file);
+   reader.addEventListener("load",function(){
+       let img_str = '<img src="' + reader.result + '" class="preview_img">';
+       preview_el.innerHTML = img_str;
+   });
+};
+
+p_file_el.addEventListener("change",function(e){
+   if(this.files.length > 0){
+       preview_img(this.files[0]);
+   }else{
+       preview_el.innerHTML = '<span class="text"></span>';
+   }
+});
+
+   //  ---------- 圖片2 ----------//	
+var preview_e2 = document.getElementById("preview2");
+var p_file_e2 = document.getElementById("p_file2");
+
+var preview_img2 = function(file){
+
+var reader =  new FileReader();
+   reader.readAsDataURL(file);
+   reader.addEventListener("load",function(){
+       let img_str = '<img src="' + reader.result + '" class="preview_img2">';
+       preview_e2.innerHTML = img_str;
+   });
+};
+
+p_file_e2.addEventListener("change",function(e){
+   if(this.files.length > 0){
+       preview_img2(this.files[0]);
+   }else{
+       preview_e2.innerHTML = '<span class="text"></span>';
+   }
+});
+
+    //  ---------- 圖片3 ----------//
+var preview_e3 = document.getElementById("preview3");
+var p_file_e3 = document.getElementById("p_file3");
+
+var preview_img3 = function(file){
+
+var reader =  new FileReader();
+   reader.readAsDataURL(file);
+   reader.addEventListener("load",function(){
+       let img_str = '<img src="' + reader.result + '" class="preview_img3">';
+       preview_e3.innerHTML = img_str;
+   });
+};
+
+p_file_e3.addEventListener("change",function(e){
+   if(this.files.length > 0){
+       preview_img3(this.files[0]);
+   }else{
+       preview_e3.innerHTML = '<span class="text"></span>';
+   }
+});
+})(jQuery);
+</script>
     
     
     <!--=====  End of JS files ======-->

@@ -52,7 +52,7 @@ public class IndexCompLogin {
 			session.setAttribute("email", sessionCD.getEmail());
 			session.setAttribute("compAccount", sessionCD.getCompAccount());
 			session.setAttribute("compNo", sessionCD.getCompNO());
-			session.setAttribute("address", sessionCD.getAddress());
+			session.setAttribute("compAddress", sessionCD.getAddress());
 			String classes = "show active";
 			model.addAttribute("classes1",classes);
 			String active = "class=\"active\"";
