@@ -37,20 +37,17 @@ public class BookingController {
 		Map<String, String> errors = new HashMap<String, String>();
 		MemberDataVO mv= (MemberDataVO)session.getAttribute("user");
 		Integer userNo = mv.getUserno();
-//		MemberOrderVO mov=(MemberOrderVO)session.getAttribute(orderNo);
-//		Integer orderNo= mov.getOrderno();
 		
-//		TowerVO tv=(TowerVO)session.getAttribute("towerVO");
-//		Integer towerNo =  Tservice.selectAllByUserNo(userNo);
-		
-		if(!towerNo.matches(regexNumberOnly)) {
-			errors.put("towerNo", "塔位只接受數字");
-			model.addAttribute("errors", errors);
-		}
 		if ("".equals(towerNo)) {
 			errors.put("towerNo", "塔位不可空白");
 			model.addAttribute("errors", errors);
 		}
+		if(!towerNo.matches(regexNumberOnly)) {
+			errors.put("towerNo", "塔位不可空白");
+			model.addAttribute("errors", errors);
+
+		}
+		
 
 		if(!reserveDate.matches(regexDate)) {
 			errors.put("reserveDate", "只接受yyyy-mm-dd格式");
@@ -66,24 +63,23 @@ public class BookingController {
 		}
 
 		if (errors.size() != 0) {
-		
+			
 			model.addAttribute("userNo", userNo);
 			model.addAttribute("orderNo", orderNo);
 			model.addAttribute("remark", remark);
+			model.addAttribute("errors", errors);
 
 		
-			return "/front-end/booking/error.jsp";
+			return "/front-end/booking/booking.jsp";
 			
 		} else {
 			java.util.Date ReserveDate=null;
 			try {
 				BookingVO bean = new BookingVO();
 				ReserveDate = sFormat.parse(reserveDate);
-				if(userNo==null) {
-					errors.put("userNo", "尚未登入");
-				}else {
+				
 					bean.setUserNo(userNo);
-				}
+				
 				if("".equals(orderNo)) {
 					Integer OrderNo = null;
 					bean.setOrderNo(OrderNo);
@@ -91,13 +87,14 @@ public class BookingController {
 				          bean.setOrderNo(OrderNo);}
 
 				Integer TowerNo = Integer.parseInt(towerNo);
-			
+				
+				
 				bean.setTowerNo(TowerNo);
 			
 				bean.setReserveDate(ReserveDate);
 				bean.setRemark(remark);
-				if (!"".equals(reserveDate)) {
-		
+ 			    if (!"".equals(reserveDate)) {
+
 
 					service.insert(bean);
 
@@ -118,7 +115,8 @@ public class BookingController {
 				e.printStackTrace();
 			}
 		}
-		return "/front-end/booking/error.jsp";
+		model.addAttribute("errors", errors);
+		return "/front-end/booking/booking.jsp";
 		
 		
 		

@@ -1,5 +1,5 @@
 $(function(){   
-	 $(".updateReservation").on("click",function(){
+	 $("#updateReservation").on("click",function(){
         $(".date").removeAttr("disabled");
         $(".remark").removeAttr("disabled");
     })
@@ -14,4 +14,3 @@ $(function(){
 }
 }
 )
-	
