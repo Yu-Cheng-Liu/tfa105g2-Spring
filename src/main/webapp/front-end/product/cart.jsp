@@ -53,7 +53,7 @@
                                     <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
                                              <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
-                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/ViewCart.controller?action=ViewCart">購物車</a></li>
                                         </ul>
                                     </li>
 
@@ -80,18 +80,24 @@
                         <div class="header-icon-wrapper">
                             <ul class="icon-list">
                                 <li>
+                                <%
+                                    Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+                                %>
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
                                             <i class="ion-bag"></i>
+                                            <%if (buyList != null && (buyList.size() > 0)){ %>
                                             <span class="counter">${buyListCount}</span>
+                                            <%} %>
+                                            <%if (buyList == null || (buyList.size() == 0)){ %>
+                                            <span class="counter">0</span>
+                                            <%} %>
                                         </a>
                                         <!-- mini cart  -->
                                         
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
-                                        <%
-                                        	Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
-                                        %>
+                                        
                                         <%if (buyList != null && (buyList.size() > 0)){ %>
                                         	<%
                                             	for(int index =0; index < buyList.size(); index++){
@@ -100,7 +106,7 @@
                                             
                                                 <div class="single-cart-item">
                                                     
-                                                    <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
+                                                    <a href="${pageContext.request.contextPath}/ViewCart.controller?action=Cancel&cancel=<%=index %>" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
                                                     
                                                     <div class="image">
@@ -116,9 +122,7 @@
                                                         <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
                                                     </div>
                                             	</div>
-                                            	
                                             <%}%>
-                                            
                                             <div class="cart-calculation">
                                                 <table class="table">
                                                     <tbody>
@@ -131,8 +135,10 @@
                                             </div>
                                             <%}%>
                                             <div class="cart-buttons">
-                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
+                                                <a href="${pageContext.request.contextPath}/ViewCart.controller?action=ViewCart">檢視購物車</a>
+                                                <%if (buyList != null && (buyList.size() > 0)){ %>
                                                 <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
+                                                <%} %>
                                             </div>
                                             
                                         </div>
@@ -172,89 +178,12 @@
                         </div>
                     </div>
                     <!--=======  End of header wrapper  =======-->
-
-                    <!--=======  mobile navigation area  =======-->
-
-                    <!-- <div class="header-mobile-navigation d-block d-lg-none">
-                        <div class="row align-items-center">
-                            <div class="col-6 col-md-6">
-                                <div class="header-logo">
-                                    <a href="index.html">
-                                        <img width="93" height="25" src="assets/img/logo.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <div class="mobile-navigation text-end">
-                                    <div class="header-icon-wrapper">
-                                        <ul class="icon-list justify-content-end">
-                                            <li>
-                                                <div class="header-cart-icon">
-                                                    <a href="cart.jsp">
-                                                        <i class="ion-bag"></i>
-                                                        <span class="counter">3</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" class="mobile-menu-icon"
-                                                    id="mobile-menu-trigger"><i class="fa fa-bars"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!--=======  End of mobile navigation area  =======-->
-
                 </div>
             </div>
         </div>
     </div>
     <!--====================  End of header area  ====================-->
 
-    <!--=======  mobile navigation area  =======-->
-
-    <!-- <div class="header-mobile-navigation d-block d-lg-none">
-        <div class="row align-items-center">
-            <div class="col-6 col-md-6">
-                <div class="header-logo">
-                    <a href="index.html">
-                        <img width="93" height="25" src="assets/img/logo.webp" class="img-fluid" alt="">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-md-6">
-                <div class="mobile-navigation text-end">
-                    <div class="header-icon-wrapper">
-                        <ul class="icon-list justify-content-end">
-                            <li>
-                                <div class="header-cart-icon">
-                                    <a href="cart.jsp">
-                                        <i class="ion-bag"></i>
-                                        <span class="counter">3</span>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="mobile-menu-icon" id="mobile-menu-trigger"><i
-                                        class="fa fa-bars"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!--=======  End of mobile navigation area  =======-->
-
-    </div>
-    </div>
-    </div>
-    </div>
     <!--====================  End of header area  ====================-->
 
     <!--====================  breadcrumb area ====================-->
@@ -266,11 +195,6 @@
                     <div class="breadcrumb-wrapper breadcrumb-bg">
                         <!--=======  breadcrumb content  =======-->
                         <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Cart</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Cart</li>
-                            </ul>
                         </div>
                         <!--=======  End of breadcrumb content  =======-->
                     </div>
@@ -288,13 +212,10 @@
                     <!--=======  page wrapper  =======-->
                     <div class="page-wrapper">
                         <div class="page-content-wrapper">
-                            <form action="#">
                                 <!--=======  cart table  =======-->
-
+								<%if (buyList != null && (buyList.size() > 0)){ %>
                                 <div class="cart-table table-responsive">
                                     <table class="table">
-                                    
-                                        	
                                         <thead>
                                             <tr>
                                                 <th class="pro-thumbnail">商品圖片</th>
@@ -318,79 +239,29 @@
                                                 <td class="pro-title"><a href="single-product.jsp"><%=order.getProdName()%></a></td>
                                                 <td class="pro-price"><span>$ <%=order.getProdPrice() %></span></td>
                                                 <td class="pro-quantity">
-                                                    <div class="quantity-selection"><input type="number" value="1"
-                                                            min="1"></div>
+                                                	<div class="quantity-selection"><span> <%=order.getProdAmount() %></span></div>
+                                                <%-- <form action="${pageContext.request.contextPath}/ViewCart.controller?action=ChangeAmount" method="get">
+                                                    <div class="quantity-selection"><input type="number" value="<%=order.getProdAmount()%>${prodAmount}" name="prodAmount" 
+                                                            min="1" max="${prodStock}"></div>
+                                                </form> --%>
                                                 </td>
-                                                <td class="pro-subtotal"><span>$${amount}</span></td>
-                                                <td class="pro-remove"><a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}"><i class="fa fa-trash-o"></i></a>
+                                                <td class="pro-subtotal"><span>$<%=order.getProdPrice() * order.getProdAmount() %></span></td>
+                                                <td class="pro-remove"><a href="${pageContext.request.contextPath}/ViewCart.controller?action=Cancel&cancel=<%=index %>"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                         <%}%>
                                     </table>
                                 </div>
-
+								<%}%>
+								<%if (buyList == null || (buyList.size() == 0)){ %>
+									<p><h4>${nothing}</h4>
+								<%}%>
                                 <!--=======  End of cart table  =======-->
-
-
-                            </form>
 
                             <div class="row">
 
                                 <div class="col-lg-6 col-12">
-                                    <!--=======  Calculate Shipping  =======-->
-
-                                    <!-- <div class="calculate-shipping">
-                                        <h4>Calculate Shipping</h4>
-                                        <form action="#">
-                                            <div class="row">
-                                                <div class="col-md-6 col-12">
-                                                    <select class="nice-select">
-                                                        <option>Bangladesh</option>
-                                                        <option>China</option>
-                                                        <option>country</option>
-                                                        <option>India</option>
-                                                        <option>Japan</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <select class="nice-select">
-                                                        <option>Dhaka</option>
-                                                        <option>Barisal</option>
-                                                        <option>Khulna</option>
-                                                        <option>Comilla</option>
-                                                        <option>Chittagong</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <input type="text" placeholder="Postcode / Zip">
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <input type="submit" value="Estimate">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div> -->
-
-                                    <!--=======  End of Calculate Shipping  =======-->
-
-                                    <!--=======  Discount Coupon  =======-->
-
-                                    <!-- <div class="discount-coupon">
-                                        <h4>Discount Coupon Code</h4>
-                                        <form action="#">
-                                            <div class="row">
-                                                <div class="col-md-6 col-12">
-                                                    <input type="text" placeholder="Coupon Code">
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <input type="submit" value="Apply Code">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div> -->
-
-                                    <!--=======  End of Discount Coupon  =======-->
 
                                 </div>
 
@@ -400,21 +271,24 @@
 
                                     <div class="cart-summary">
                                         <div class="cart-summary-wrap">
-                                            <h4>Cart Summary</h4>
-                                            <p>Sub Total <span>$1250.00</span></p>
-                                            <p>Shipping Cost <span>$00.00</span></p>
-                                            <h2>Grand Total <span>$1250.00</span></h2>
+                                            <h4>商品總金額</h4>
+                                            <%if (buyList == null){ %>
+												<h2> <span>$ 0</span></h2>
+											<%}%>
+											<%if (buyList != null){ %>
+												<h2> <span>$ ${amount}</span></h2>
+											<%}%>
+                                            
                                         </div>
                                         <div class="cart-summary-button">
-                                            <button class="checkout-btn">Checkout</button>
-                                            <button class="update-btn">Update Cart</button>
+                                            <button class="update-btn"><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll&buyList=${buyListInt}">繼續購物</a></button>
+                                            <%if (buyList != null && (buyList.size() > 0)){ %>
+                                            <button class="checkout-btn"><a href="${pageContext.request.contextPath}/ViewCart.controller?action=CheckOut">結帳</a></button>
+                                            <%} %>
                                         </div>
                                     </div>
-
                                     <!--=======  End of Cart summery  =======-->
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -424,9 +298,7 @@
         </div>
     </div>
     <!--====================  End of page content area  ====================-->
-    <!--====================  newsletter area ====================-->
-  
-    <!--====================  End of newsletter area  ====================-->
+   
     <!--====================  footer area ====================-->
      <div class="footer-area">
         <div class="footer-">
@@ -471,100 +343,10 @@
         </div>
     </div>
     <!--====================  End of footer area  ====================-->
-    <!--=======  offcanvas mobile menu  =======-->
-
-    <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
-        <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
-            <i class="ion-android-close"></i>
-        </a>
-
-        <div class="offcanvas-wrapper">
-
-            <div class="offcanvas-inner-content">
-                <nav class="offcanvas-navigation">
-                    <ul>
-                       <li class="menu-item-has-children"><a href="#">祭祖商城</a>
-                                        <ul class="sub-menu">
-                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
-                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
-                                        </ul>
-                                    </li>
-                         <li class="menu-item-has-children"><a href="#">預約服務</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
-                                        </ul>
-                                    </li>
-
-
-                        <li class="menu-item-has-children"><a href="#">客服中心</a>
-                            <ul class="sub-menu">
-                                <li><a href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
-                                <li><a href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
-                    </ul>
-                </nav>
-
-                <div class="offcanvas-settings">
-                    <nav class="offcanvas-navigation">
-                        <ul>
-                            <li class="menu-item-has-children"><a href="#">會員登入 </a>
-                                <ul class="sub-menu">
-                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children"><a href="#">廠商登入 </a>
-                                <ul class="sub-menu">
-                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-                <div class="offcanvas-widget-area">
-                    <!--Off Canvas Widget Social Start-->
-                    <div class="off-canvas-widget-social">
-                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                        <a href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#" title="Vimeo"><i class="fa fa-vimeo-square"></i></a>
-                    </div>
-                    <!--Off Canvas Widget Social End-->
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!--=======  End of offcanvas mobile menu  =======-->
-    <!--====================  search overlay ====================-->
-
-    <div class="search-overlay" id="search-overlay">
-        <a href="javascript:void(0)" class="close-search-overlay" id="close-search-overlay">
-            <i class="ion-ios-close-empty"></i>
-        </a>
-
-        <!--=======  search form  =======-->
-
-        <div class="search-form">
-            <form action="#">
-                <input type="search" placeholder="Search entire store here ...">
-                <button type="submit"><i class="ion-android-search"></i></button>
-            </form>
-        </div>
-
-        <!--=======  End of search form  =======-->
-    </div>
-
-    <!--====================  End of search overlay  ====================-->
+    
     <!-- scroll to top  -->
     <div id="scroll-top">
-        <span>線上客服</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
+        <span>回到頂端</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
     </div>
     <!-- end of scroll to top -->
     <!--=============================================
