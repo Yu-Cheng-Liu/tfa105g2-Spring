@@ -30,6 +30,9 @@ public class lnquiryBooking{
 		DateFormat sFormat=new SimpleDateFormat("yyyy-MM-dd");
 		MemberDataVO mv= (MemberDataVO)session.getAttribute("user");
 		Integer userNo = mv.getUserno();
+		if(userNo==null) {
+			return"front-end/memberData/login-register-member.jsp";
+		}else {
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);
 		if ("select".equals(bookingion)) {
@@ -57,16 +60,23 @@ public class lnquiryBooking{
 				
 			}
 			if (errors != null && !errors.isEmpty()) {
-				return "/front-end/booking/errorselect.jsp";
+				model.addAttribute("errors", errors);
+				return "/front-end/booking/inquirybooking.jsp";
 			}
 
 			else {
 				List<BookingVO> result= service.selectAll(towerno);
+				System.out.println(result);
+				if(result.size()==0) {
+					errors.put("result", "你沒有這個塔位");
+					return"/front-end/booking/inquirybooking.jsp";
+				}
 				model.addAttribute("towerNo", towerNo);
 				model.addAttribute("select", result);
 				return ("/front-end/booking/showinquirybooking.jsp");
 			}
 		}
-		return "/front-end/booking/errorselect.jsp";
+		return "/front-end/booking/inquirybooking.jsp";
+		}
 	}
 }

@@ -239,10 +239,9 @@
                     <div class="breadcrumb-wrapper breadcrumb-bg">
                         <!--=======  breadcrumb content  =======-->
                          <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Login - Register</h2>
+                            <h2 class="breadcrumb-content__title">修改預約</h2>
                             <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Login - Register</li>
+                              
                             </ul>
                         </div>
                         <!--=======  End of breadcrumb content  =======-->
@@ -275,6 +274,7 @@
 			</td>
 			<td>
 				<input name="towerNo"  type="text" class ="towerno" value="${bookingVO.towerNo}"readonly >
+				
 			</td>
 			<td>
 				<input name="userNo"   type="text"  class ="userno" value="${bookingVO.userNo}"readonly >
@@ -290,28 +290,20 @@
 			</td>
 			<td>
 				<input type="hidden" name="modifybookingion" value="update"readonly>
-				<input type="submit" value="送出">
+				<input class="btn btn-outline-primary" type="submit" value="送出">
 			</td>
 			</form>
 			<td>
 			  	<FORM METHOD="post" action="modifybooking.controller" style="margin-bottom: 0px;">
-			     	<input type="button"class= "updateReservation" value="修改">
+			     	<input class="btn btn-outline-primary" type="button" id= "updateReservation" value="修改">
 			     		<input type="hidden" name="bookingNo"  value="${bookingVO.bookingNo}">
 			     	<input type="hidden" value="update">
 			     	<input type="hidden" name="towerNo" value="${param.towerNo}">
 			     </FORM>
 			</td>
-<!-- 			<td> -->
-<!-- 			  	<FORM METHOD="post" action="modifybooking.controller" style="margin-bottom: 0px;"> -->
-<!-- 			     	<input type="submit" value="送出"> -->
-<%-- 			     		<input type="hidden" name="bookingNo"  value="${bookingVO.bookingNo}"> --%>
-<!-- 			     	<input type="hidden" name="modifybookingion"	value="update"> -->
-<%-- 			     	<input type="hidden" name="towerNo" value="${param.towerNo}"> --%>
-<!-- 			     </FORM> -->
-<!-- 			</td> -->
-			<td>
+
 			  <FORM METHOD="post" action="cancelbooking.controller" style="margin-bottom: 0px;">
-			     <input type="submit" value="刪除">
+			     <input class="btn btn-outline-primary" type="submit" value="刪除">
 			     <input type="hidden" name="bookingNo"  value="${bookingVO.bookingNo}">
 			     <input type="hidden" name="cancelbookingion" value="delete">
 			     <input type="hidden" name="towerNo" value="${param.towerNo}">
@@ -323,9 +315,7 @@
 </table>
 
 
-<!-- 		<button type="button" class= "updateReservation">更改資訊</button> -->
-<!--         <button name="modifybookingion" type="submit" class="modifybookingion" value="update">送出資料</button>  -->
-   
+
     <!--====================  End of page content area  ====================-->
     
    <!--====================  footer area ====================-->
