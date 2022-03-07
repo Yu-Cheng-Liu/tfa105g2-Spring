@@ -58,7 +58,7 @@ public class LoginController {
 				
 			
 				String status = service.verifiedOrNot(cd);
-				model.addAttribute("status", status);
+				session.setAttribute("status", status);
 				session.setAttribute("verify", status);
 				session.setAttribute("compName", cd.getCompName());
 				session.setAttribute("chargePerson", cd.getChargePerson());

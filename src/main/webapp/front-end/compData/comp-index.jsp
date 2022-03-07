@@ -171,20 +171,7 @@
 
                                         <!-- settings menu -->
                                         <div class="settings-menu-wrapper" id="settings-menu-wrapper">
-                                            <div class="single-settings-block">
-                                                <h4 class="title">一般用戶 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                                  
-                                                </ul>
-                                            </div>
-                                            <div class="single-settings-block">
-                                                <h4 class="title">廠商專區 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                                    
-                                                </ul>
-                                            </div>
+                                            ${indexHamburger}
                                         </div>
                                     </div>
                                 </li>
@@ -307,7 +294,7 @@
                                                 <form id= "verifyForm" action = "<%=request.getContextPath()%>/secure/verifyAgain.controller" method="post">
 		
 	                                                
-                                                	<p id="verifying" class="mb-0">${status == '1' ? "歡迎來到龘虤！ 您的email驗證尚未完成，將無法使用上架功能，是否現在驗證？" : "歡迎來到龘虤！ 恭喜您已完成email驗證，祝您斂財愉快"}</p>
+                                                	<p id="verifying" class="mb-0">${status == '1' ? "歡迎來到龘虤！ 您的email驗證尚未完成，將無法使用商品相關功能，是否現在驗證？" : "歡迎來到龘虤！ 恭喜您已完成email驗證，祝您斂財愉快"}</p>
 	                                                <input type = "hidden" name = "verifyAgain" value="${email}">
 	                                                <input type = "hidden" name = "verifyAgain" value="${chargePerson}">
 	                                                <c:if test="${status  == '1'}">

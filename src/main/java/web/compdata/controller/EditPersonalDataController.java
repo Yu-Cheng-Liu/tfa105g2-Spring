@@ -67,7 +67,7 @@ public class EditPersonalDataController {
 			session.setAttribute("email", attrs.getEmail());
 			session.setAttribute("compAccount", attrs.getCompAccount());
 			session.setAttribute("compNo", attrs.getCompNO());
-			session.setAttribute("address", attrs.getAddress());
+			session.setAttribute("compAddress", attrs.getAddress());
 			model.addAttribute("EditPersonalProfileSucceed", "編輯帳戶資料成功");
 			model.addAttribute("classes6",classes);
 			model.addAttribute("attrs1", active);			
