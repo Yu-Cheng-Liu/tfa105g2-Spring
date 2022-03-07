@@ -40,27 +40,19 @@ public class CartServlet extends HttpServlet {
 	@RequestMapping(value = "/CartServlet.controller", method = { RequestMethod.GET })
     public String Cart(@PathParam("prodNo") Integer prodNo, String prodName, Integer prodPrice, Integer prodStock, @PathParam("prodAmount") Integer prodAmount, Integer userno, String action, HttpServletRequest req, HttpServletResponse res, Model model, HttpSession session) {
 		
-		MemberDataVO memberDataVo = (MemberDataVO) model.getAttribute("user");
+		MemberDataVO memberDataVo = (MemberDataVO) session.getAttribute("user");
 		System.out.println("33333333333");	
 		System.out.println("action=" + action);
-		session = req.getSession();
+//		session = req.getSession();
 		List<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
 		
 		if(!action.equals("CheckOut")) {
 			
-			// 檢視購物車
-			if (action.equals("ViewCart")) {
-				
-
-				return "/front-end/product/cart.jsp";
-
-			}
-		
 			// 刪除購物車商品，要再帶回參數，jsp才吃得到
 			if(action.equals("Delete")) {
 				System.out.println("delete");
 				String del = req.getParameter("del");
-				System.out.println("del:" + del);
+//				System.out.println("del:" + del);
 				int d = Integer.parseInt(del);
 				System.out.println("d:" + d);
 				buyList.remove(d);
@@ -69,8 +61,9 @@ public class CartServlet extends HttpServlet {
 				prodName = pVO.getProdName();
 				prodPrice = pVO.getProdPrice();
 				prodStock = pVO.getProdStock();
+				
 			}
-		
+
 			// 商品加入購物車
 			if(action.equals("AddCart")) {
 				// 取得要新增的商品
@@ -92,26 +85,15 @@ public class CartServlet extends HttpServlet {
 									
 						innerCart.setProdAmount(innerCart.getProdAmount() + cartVo.getProdAmount());
 						
-						// 為什麼進不去這邊？導致相同商品數量無法相加？加入hashcode和equals做判斷
-						// 如果新增相同商品，數量要相加
-		//				if(buyList.contains(cartVo)) {
-		//					// ???以下這樣的寫法為什麼會出現 java.lang.ArrayIndexOutOfBoundsException: Array index out of range: 1??
-		//					// 不能用商品編號來當list的索引值，就會出現超出索引值的錯誤
-		//					Integer inCartAmount = buyList.get(prodNo).getProdAmount();
-		//					System.out.println("inCartAmount:" + inCartAmount);
-		//					Integer newAmount = inCartAmount + prodAmount;
-		//					System.out.println("newAmount:" + newAmount);
-		//				} else {
-		//					buyList.add(cartVo);
-		//				}
 					} else {
 						buyList.add(cartVo);
 					}
 				}
 			}
-		
+			
+			// 計算商品總金額
 			if(buyList != null) {
-				// 計算商品總金額
+				
 				int total = 0;
 				for(int i = 0; i < buyList.size(); i++) {
 					CartVO order = buyList.get(i);
@@ -140,25 +122,19 @@ public class CartServlet extends HttpServlet {
 			model.addAttribute("prodStock", prodStock);
 			session.getAttribute("prodAmount");
 			model.addAttribute("prodAmount", prodAmount);
-		
-			
-			
 		}
 		// 按結帳要判斷是否登入，登入要跳結帳頁面，未登入要跳登入頁面
 		else {
-			if(memberDataVo == null) {
-				return "/front-end/memberData/login-register-member.jsp";
-			}           
-			
+//			if(memberDataVo == null) {
+//				return "/front-end/memberData/login-register-member.jsp";
+//			}           
+			System.out.println(memberDataVo);
 			return "/front-end/product/checkout.jsp";
 			
 		}
 		return "/front-end/product/SingleProduct.jsp";
 		
-		
 	}
-	
-	
 	
 	
 	private CartVO getCart(HttpServletRequest req) {
@@ -181,3 +157,17 @@ public class CartServlet extends HttpServlet {
 	}
 	
 }
+
+//為什麼進不去這邊？導致相同商品數量無法相加？加入hashcode和equals做判斷
+// 如果新增相同商品，數量要相加
+//				if(buyList.contains(cartVo)) {
+//					// ???以下這樣的寫法為什麼會出現 java.lang.ArrayIndexOutOfBoundsException: Array index out of range: 1??
+//					// 不能用商品編號來當list的索引值，就會出現超出索引值的錯誤
+//					Integer inCartAmount = buyList.get(prodNo).getProdAmount();
+//					System.out.println("inCartAmount:" + inCartAmount);
+//					Integer newAmount = inCartAmount + prodAmount;
+//					System.out.println("newAmount:" + newAmount);
+//				} else {
+//					buyList.add(cartVo);
+//				}
+
