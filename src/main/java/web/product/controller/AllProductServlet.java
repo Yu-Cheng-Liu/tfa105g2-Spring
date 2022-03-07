@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +31,10 @@ public class AllProductServlet extends HttpServlet {
 	private ProductTypeServiceInterface productTypeService;
 
 	@RequestMapping(value = "/AllProductServlet.controller", method = { RequestMethod.GET })
-	public String AllProduct(String action, Integer prodTypeCode, Model model, HttpSession session) {
+	public String AllProduct(String action, Integer prodTypeCode, HttpServletRequest req, HttpServletResponse res, Model model, HttpSession session) {
 //		System.out.println("action=" + action);
 
 		if ("selectAll".equals(action)) {
-			
 			
 			// 商品頁出現所有商品
 			List<ProductVO> selectAll = productService.selectAll();
@@ -49,22 +50,13 @@ public class AllProductServlet extends HttpServlet {
 			List<ProductTypeVO> selectAllType = productTypeService.selectAll();
 			model.addAttribute("selectAllType", selectAllType);
 //			System.out.println("selectAllType=" + selectAllType);
-
-			// 顯示商品分類個別數量
-//			List<Integer> typeCount = new ArrayList<>();
-//			for(int i = 1; i <= selectAllType.size();i++) {
-//				Integer typeCount1 = productService.countByProdType(i);
-//				typeCount.add(typeCount1);
-////				System.out.println(typeCount);
-//			}
-//			session.setAttribute("typeCount", typeCount);
+			
 			return "/front-end/product/AllProduct.jsp";
 		}
 		
 		if ("selectByType".equals(action)) {
 			// 商品分類搜尋
 			Integer prodTypeCodeInt = Integer.valueOf(prodTypeCode);
-
 			List<ProductVO> result = productService.selectByProdType(prodTypeCodeInt);
 			model.addAttribute("result", result);
 //			System.out.println("selectByProdType=" + result);
@@ -73,6 +65,14 @@ public class AllProductServlet extends HttpServlet {
 			List<ProductTypeVO> selectAllType = productTypeService.selectAll();
 			model.addAttribute("selectAllType", selectAllType);
 //			System.out.println("selectAllType=" + selectAllType);
+			
+			// 顯示商品分類個別數量
+			prodTypeCode = Integer.parseInt(req.getParameter("prodTypeCode"));
+//			prodTypeCode = (Integer) model.getAttribute("prodTypeCode");
+			System.out.println("prodTypeCode:" + prodTypeCode);
+			Integer typeCount = productService.selectByProdType(prodTypeCode).size();
+			model.addAttribute("typeCount", typeCount);
+			
 
 			return "/front-end/product/CategoryProduct.jsp";
 
@@ -83,37 +83,3 @@ public class AllProductServlet extends HttpServlet {
 	}
 
 }
-
-// 商品頁的商品分類數量
-//		Integer type1 = productService.countByProdType(1);
-//		Integer type2 = productService.countByProdType(2);
-//		Integer type3 = productService.countByProdType(3);
-//		Integer type4 = productService.countByProdType(4);
-//		session.setAttribute("type1", type1);
-//		session.setAttribute("type2", type2);
-//		session.setAttribute("type3", type3);
-//		session.setAttribute("type4", type4);
-
-// 左邊拉霸價格區間
-//		List<ProductVO> selectByPrice = productService.selectByPrice(vo.getProdPrice(), vo.getProdPrice());
-//		session.setAttribute("selectByPrice", selectByPrice);
-//				
-//		Map<String, Integer> getPrice = productService.getPrice();
-//		session.setAttribute("getPrice", getPrice);
-//		
-//		
-
-//		Integer prodTypeCount = vo.getProdTypeCode();
-//		Integer typeCount = productService.countByProdType(prodTypeCount);
-//		session.setAttribute("typeCount", typeCount);
-
-//		String selectTypeDesc = typeVo.getProdTypeDesc();
-//		session.setAttribute("selectTypeDesc", selectTypeDesc);
-
-//		List<ProductVO> prodTypeDesc = productService.selectProdTypeDesc();
-//		session.setAttribute("prodTypeDesc", prodTypeDesc);
-//		
-//		Integer prodType = productService.countByProdType(prodTypeVO);	
-//		session.setAttribute("prodTypeVO", prodType);
-
-//		ProductTypeVO typeVo = new ProductTypeVO();		
