@@ -116,13 +116,22 @@ public class ProductUpdateServlet extends HttpServlet {
 			model.addAttribute("prodDesc", prodDesc);
 			model.addAttribute("prodPrice", prodPrice);
 			model.addAttribute("prodStock", prodStock);
+			
+			String classes = "show active";
+			model.addAttribute("classes7",classes);
+			String active = "class=\"active\"";
+			model.addAttribute("attrs6", active);
 
-			return "/front-end/product/update-product.jsp";
+			return "/front-end/compData/comp-index.jsp";
 		}
 		
 		prodVO = productService.update(prodVO);
 		model.addAttribute("prodVO",prodVO);
-		return "/front-end/product/Allproduct.jsp";
+		String classes = "show active";
+		model.addAttribute("classes7",classes);
+		String active = "class=\"active\"";
+		model.addAttribute("attrs6", active);
+		return "/front-end/compData/comp-index.jsp";
 		
 		
 	}

@@ -44,8 +44,8 @@ public class IndexCompLogin {
 					+ "                                            </div>");
 			
 			String status = service.verifiedOrNot(sessionCD);
-			model.addAttribute("status", status);
-			session.setAttribute("verify", status);
+			session.setAttribute("status", status);
+			session.setAttribute("verify", sessionCD.getVerify());
 			session.setAttribute("compName", sessionCD.getCompName());
 			session.setAttribute("chargePerson", sessionCD.getChargePerson());
 			session.setAttribute("compPhone", sessionCD.getCompPhone());
