@@ -24,6 +24,8 @@ public class CompDataService implements CompDataServiceInterface {
 	private CompDataDAOInterface compDataDAOi;
 	
 	String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
+	String accountRegex = "^[0-9]{8}$";
+	
 	
 	
 
@@ -180,6 +182,9 @@ public class CompDataService implements CompDataServiceInterface {
 			if ("".equals(cd.getCompAccount().trim())) {
 				errors.put("RcompAccount", "帳號不可為空白");
 			}
+			if(!cd.getCompAccount().matches(accountRegex)) {
+				errors.put("RcompAccount", "帳號需符合統編格式");
+			}
 			if ("".equals(cd.getCompName().trim())) {
 				errors.put("RcompName", "廠商名稱不可為空白");
 			}
@@ -192,6 +197,7 @@ public class CompDataService implements CompDataServiceInterface {
 			if (!cd.getPassword().matches(passwordRegex)) {
 				errors.put("Rpassword", "密碼至少8個字,並包含大寫,小寫,數字");
 			}
+			
 			if (errors.size() == 0) {
 				CompData result = compDataDAOi.insert(cd);
 				return result;

@@ -2,6 +2,7 @@ package web.compdata.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class RegisterController {
 						String city,
 						String town,
 						String address,
+						HttpServletRequest req,
 						Model model ,
 						HttpSession session) {
 		
@@ -68,6 +70,19 @@ public class RegisterController {
 			model.addAttribute("Raddress",address);
 			return "/front-end/compData/comp-login-register.jsp";
 		}else {
+			
+			String path = req.getContextPath();
+				
+			
+			session.setAttribute("indexHamburger", "<div class=\"single-settings-block\">\r\n"
+					+ "                                                <h4 class=\"title\">廠商專區 </h4>\r\n"
+					+ "                                                <ul>\r\n"
+					+ "                                                    <li><a href="
+					+ path
+					+ "/front-end/compData/comp-index.jsp>廠商用戶中心</a></li>\r\n"
+					+ "                                                    \r\n"
+					+ "                                                </ul>\r\n"
+					+ "                                            </div>");
 			session.setAttribute("RegisterSucceed", "註冊成功");
 			session.setAttribute("compName",  cd.getCompName());
 			session.setAttribute("chargePerson", cd.getChargePerson());
@@ -78,6 +93,7 @@ public class RegisterController {
 			session.setAttribute("compNo", cd.getCompNO());
 			session.setAttribute("authCode", AuthCode);
 			session.setAttribute("password", cd.getPassword());
+			session.setAttribute("verify", cd.getVerify());
 		
 			
 			SendMail sendMail = new SendMail(cd.getEmail(),"安安 "+cd.getCompName()+" 你好","請在頁面上輸入驗證碼 " + AuthCode + "\n\r" + "此驗證碼將於30分鐘後失效" );

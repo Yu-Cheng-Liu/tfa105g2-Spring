@@ -1,4 +1,4 @@
-package web.compdata.controller;
+package web.product.controller;
 
 import java.util.List;
 
@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
-import web.compdata.dao.CompDataDAOInterface;
-import web.compdata.entity.CompData;
+import web.product.entity.ProductVO;
+import web.product.service.ProductServiceInterface;
 
 @Controller
-public class compSelectAllForBackstage {
+public class productSelectAllForBackstage {
 	
 	@Autowired
-	private CompDataDAOInterface dao;
-
+	private ProductServiceInterface service;
 	
 	@ResponseBody
-	@PostMapping(value = "/backstage/compSelectAll.controller")
-	public String compSelectAll() {
+	@PostMapping(value = "/backstage/productSelectAll.controller")
+	public String productSelectAll() {
+		
 		Gson gson = new Gson();
-		List<CompData> list = dao.selectATon();
+		List<ProductVO> list = service.selectAll();
 		return gson.toJson(list);
+		
 	}
-	
 }

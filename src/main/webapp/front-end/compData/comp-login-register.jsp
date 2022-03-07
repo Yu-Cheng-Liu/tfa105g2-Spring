@@ -355,7 +355,7 @@
 												
 												
 												<div class="col-md-12 mb-20">
-													<label>廠商電話</label> <input name="compPhone" value="${RcompPhone}" type="text" placeholder="廠商電話">
+													<label>廠商電話</label> <input name="compPhone" value="${RcompPhone}" type="number" placeholder="廠商電話">
 												</div>
 												<div class="col-md-6 mb-20">
 													<label>密碼*</label> <input name="password" 

@@ -31,6 +31,7 @@ public class RegisterServlet {
 
 		String Address = city + town + address;
 
+		
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);
 
