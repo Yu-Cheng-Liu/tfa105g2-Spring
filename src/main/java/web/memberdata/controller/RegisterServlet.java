@@ -67,6 +67,8 @@ public class RegisterServlet {
 
 		if (email == null || email.trim().length() == 0) {
 			errors.put("email", "請填寫電子信箱");
+		} else if (service.selectByEmail(email) != null) {
+			errors.put("email", "此email已註冊");
 		}
 
 		java.sql.Date birthday1 = null;

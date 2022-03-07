@@ -41,13 +41,43 @@
 	href="<%=request.getContextPath()%>/assets/css/member.css">
 
 <style>
+.navigation-menu-wrapper nav > ul > li > a {
+font-size: 16px;
+}
+
+.breadcrumb-content__page-map > li > a {
+color: #FAEBD7;
+font-size: 13px;
+}
+
+.breadcrumb-content__page-map li a:hover {
+    color: rgba(255, 153, 0, 0.856);
+}
+
+.breadcrumb-content__page-map li:after {
+color: #FAEBD7;
+}
+
+.breadcrumb-content__page-map li.active {
+    color: rgba(255, 153, 0, 0.856);
+    text-shadow:0.5px 0.5px 0.5px #696969;
+    font-size: 13px;
+}
+
+.breadcrumb-content__title {
+    font-size: 32px;
+    color: #FAEBD7;
+    text-shadow:1.5px 1.5px 1.5px #696969;
+    line-height: 32px;
+}
+
 .page-wrapper {
 	margin-top: -48px;
 }
 
 .breadcrumb-bg {
 	background-image:
-		url("<%=request.getContextPath()%>/assets/img/hero-slider/test4.jpg");
+		url("<%=request.getContextPath()%>/assets/img/hero-slider/test.gif");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -73,8 +103,16 @@
 	border: 1px solid #bbb;
 }
 
+.back-to-index{
+	width:180px;　
+	line-height:50px;　
+	padding:20px;　
+	border:2px blue solid;　
+	margin-right:10px;　
+	float:left;
+}
 .back-to-index a {
-	background-color: #FBD02C;
+	background-color: #333;
 	color: #333;
 	text-decoration: none;
 	display: block;
@@ -84,12 +122,43 @@
 	line-height: 40px;
 	font-size: 14px;
 	font-weight: 600;
+	color: white;
 }
 
 .back-to-index a:hover {
-	background-color: #333;
+	background-color: #ee3333;
 	color: white;
 }
+
+.back-to-membercenter{
+	width:180px;　
+	line-height:50px;　
+	padding:20px;　
+	border:2px blue solid;　
+	margin-right:10px;　
+	float:left;
+}
+
+.back-to-membercenter a {
+	background-color: #ee3333;
+	color: white;
+	text-decoration: none;
+	display: block;
+	width: 150px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	font-weight: 600;
+	color: white;
+}
+
+.back-to-membercenter a:hover {
+	background-color: #333;
+}
+
+
+
 </style>
 
 </head>
@@ -326,10 +395,12 @@
 					<div class="breadcrumb-wrapper breadcrumb-bg">
 						<!--=======  breadcrumb content  =======-->
 						<div class="breadcrumb-content">
-							<h2 class="breadcrumb-content__title">登入 - 註冊</h2>
+							<h2 class="breadcrumb-content__title">驗證成功</h2>
 							<ul class="breadcrumb-content__page-map">
-								<li><a href="index.html">首頁</a></li>
-								<li class="active">登入 - 註冊</li>
+								<li><a href="<%=request.getContextPath()%>/front-end/index.jsp">首頁</a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">登入 - 註冊</a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/memberData/verify-member.jsp">會員驗證</a></li>
+								<li class="active">驗證成功</li>
 							</ul>
 						</div>
 						<!--=======  End of breadcrumb content  =======-->
@@ -354,7 +425,11 @@
 										<h4 class="login-title"">電子信箱已完成驗證!</h4>
 										<div class="row">
 											<div class="back-to-index">
-												<a href="<%=request.getContextPath()%>/front-end/index.jsp">點此回首頁</a>
+												<a href="<%=request.getContextPath()%>/front-end/index.jsp">回首頁</a></div>
+	
+												<div class="back-to-membercenter">
+												<a href="<%=request.getContextPath()%>/front-end/memberData/my-account-member.jsp">會員中心</a>
+											</div>
 											</div>
 										</div>
 									</div>

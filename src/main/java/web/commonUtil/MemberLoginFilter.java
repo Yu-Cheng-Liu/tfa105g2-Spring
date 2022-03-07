@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = {"/front-end/booking/booking.jsp","/front-end/booking/inquirybooking.jsp",
+@WebFilter(urlPatterns = {"/front-end/memberData/my-account-member.jsp","/front-end/booking/booking.jsp","/front-end/booking/inquirybooking.jsp",
 		"/front-end/product/checkout.jsp"})
 public class MemberLoginFilter implements Filter {
 

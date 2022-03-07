@@ -41,13 +41,43 @@
 	href="<%=request.getContextPath()%>/assets/css/member.css">
 
 <style>
+.navigation-menu-wrapper nav > ul > li > a {
+font-size: 16px;
+}
+
+.breadcrumb-content__page-map > li > a {
+color: #FAEBD7;
+font-size: 13px;
+}
+
+.breadcrumb-content__page-map li a:hover {
+    color: rgba(255, 153, 0, 0.856);
+}
+
+.breadcrumb-content__page-map li:after {
+color: #FAEBD7;
+}
+
+.breadcrumb-content__page-map li.active {
+    color: rgba(255, 153, 0, 0.856);
+    text-shadow:0.5px 0.5px 0.5px #696969;
+    font-size: 13px;
+}
+
+.breadcrumb-content__title {
+    font-size: 32px;
+    color: #FAEBD7;
+    text-shadow:1.5px 1.5px 1.5px #696969;
+    line-height: 32px;
+}
+
 .page-wrapper {
 	margin-top: -48px;
 }
 
 .breadcrumb-bg {
 	background-image:
-		url("<%=request.getContextPath()%>/assets/img/hero-slider/test4.jpg");
+		url("<%=request.getContextPath()%>/assets/img/hero-slider/test.gif");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -326,10 +356,11 @@
 					<div class="breadcrumb-wrapper breadcrumb-bg">
 						<!--=======  breadcrumb content  =======-->
 						<div class="breadcrumb-content">
-							<h2 class="breadcrumb-content__title">登入 - 註冊</h2>
+							<h2 class="breadcrumb-content__title">忘記密碼</h2>
 							<ul class="breadcrumb-content__page-map">
-								<li><a href="index.html">首頁</a></li>
-								<li class="active">登入 - 註冊</li>
+								<li><a href="<%=request.getContextPath()%>/front-end/index.jsp">首頁</a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">登入 - 註冊</a></li>
+								<li class="active">忘記密碼</li>
 							</ul>
 						</div>
 						<!--=======  End of breadcrumb content  =======-->

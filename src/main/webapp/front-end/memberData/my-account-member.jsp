@@ -59,12 +59,59 @@
 	href="<%=request.getContextPath()%>/assets/css/typing.css">
 
 <style>
+.navigation-menu-wrapper nav > ul > li > a {
+font-size: 16px;
+}
+
+.breadcrumb-content__page-map > li > a {
+color: #FAEBD7;
+font-size: 13px;
+}
+
+.breadcrumb-content__page-map li a:hover {
+    color: rgba(255, 153, 0, 0.856);
+}
+
+.breadcrumb-content__page-map li:after {
+color: #FAEBD7;
+}
+
+.breadcrumb-content__page-map li.active {
+    color: rgba(255, 153, 0, 0.856);
+    text-shadow:0.5px 0.5px 0.5px #696969;
+    font-size: 13px;
+}
+
+.breadcrumb-content__title {
+    font-size: 32px;
+    color: #FAEBD7;
+    text-shadow:1.5px 1.5px 1.5px #696969;
+    line-height: 32px;
+}
+
+.page-wrapper { 
+ 	margin-top: -50px; 
+ }
+ 
+.myaccount-content{
+	margin-top: 15px;
+} 
+
 .breadcrumb-bg {
 	background-image:
-		url("<%=request.getContextPath()%>/assets/img/hero-slider/test4.jpg");
+		url("<%=request.getContextPath()%>/assets/img/hero-slider/test.gif");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+}
+
+.myaccount-tab-menu a {
+    font-size: 14px;
+   
+}
+
+.myaccount-tab-menu a:hover, .myaccount-tab-menu a.active {
+	background-color:rgba(197, 184, 6, 0.575);
 }
 
 .account-details-form h4 {
@@ -115,6 +162,78 @@
 .profile-wrap {
 	margin-bottom: 7px;
 }
+
+.register-button {
+    font-weight: 500;
+    font-size: 13px;
+}
+
+#changePicBox{
+	margin-bottom: 10px;
+}
+
+.file {
+    position: relative;
+    display: inline-block;
+    background: #004974;
+    border: 1px solid #026199;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #FFEFD5;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+	right: 100;
+    top: 100;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    background: #004974;
+    border: 1px solid #026199;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #FFEFD5;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+	right: 100;
+    top: 100;
+}
+.button  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.button :hover {
+	background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+
+
+
+
+
 </style>
 
 
@@ -344,10 +463,10 @@
 					<div class="breadcrumb-wrapper breadcrumb-bg">
 						<!--=======  breadcrumb content  =======-->
 						<div class="breadcrumb-content">
-							<h2 class="breadcrumb-content__title">My Account</h2>
+							<h2 class="breadcrumb-content__title">會員中心</h2>
 							<ul class="breadcrumb-content__page-map">
-								<li><a href="index.html">Home</a></li>
-								<li class="active">My Account</li>
+								<li><a href="<%=request.getContextPath()%>/front-end/index.jsp">首頁</a></li>
+								<li class="active">會員中心</li>
 							</ul>
 						</div>
 						<!--=======  End of breadcrumb content  =======-->
@@ -379,20 +498,18 @@
 											${active4} data-bs-toggle="tab"><i class="fa fa-user"></i>
 											修改個人資料</a> <a href="#payment-method" ${active5}
 											data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
-											付款方式</a> <a href="#address-edit" ${active6} data-bs-toggle="tab"><i
-											class="fa fa-map-marker"></i> 地址</a>
-										<!-- <a
-											href="/tfa105g2-1/index.jsp"><i class="fa fa-sign-out"></i>
-											登出</a>  -->
+											付款方式</a>
 
-										<form action="<c:url value="/logout-member.controller" />"
-											method="post">
+										<form action="<%=request.getContextPath()%>/logout-member.controller"
+														method="post">
 
 											<div class="col-md-12">
 												<input type="hidden" name="action" value="logout"> <input
 													class="register-button" type="submit" value="登出">
 											</div>
 										</form>
+
+
 
 
 									</div>
@@ -406,20 +523,16 @@
 										<div class="tab-pane fade ${showactive1}" id="dashboad"
 											role="tabpanel">
 											<div class="myaccount-content">
-												<h3>Dashboard</h3>
+												<h3>會員中心</h3>
 
 												<div class="welcome mb-20">
 													<p>
-														Hello, <strong>${user.username}</strong>
-														<!--(If Not <strong>Tuntuni
-															!</strong><a href="login-register.html" class="logout"> Logout</a>)-->
+														<strong>${user.username}</strong>您好
 													</p>
 												</div>
 
-												<p class="mb-0">From your account dashboard. you can
-													easily check &amp; view your recent orders, manage your
-													shipping and billing addresses and edit your password and
-													account details.</p>
+												<p class="mb-0">歡迎光臨龘虤生命事業，您可以在<strong>會員中心</strong>查詢您的訂單資訊、塔位資訊，以及變更您的個人資料、
+																更改密碼、更換大頭貼照片。</p>
 											</div>
 										</div>
 										<!-- Single Tab Content End -->
@@ -523,28 +636,6 @@
 										</div>
 										<!-- Single Tab Content End -->
 
-										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade ${showactive6}" id="address-edit"
-											role="tabpanel">
-											<div class="myaccount-content">
-												<h3>Billing Address</h3>
-
-												<address>
-													<p>
-														<strong>Alex Tuntuni</strong>
-													</p>
-													<p>
-														1355 Market St, Suite 900 <br> San Francisco, CA
-														94103
-													</p>
-													<p>Mobile: (123) 456-7890</p>
-												</address>
-
-												<a href="#" class="btn d-inline-block edit-address-btn"><i
-													class="fa fa-edit"></i>Edit Address</a>
-											</div>
-										</div>
-										<!-- Single Tab Content End -->
 
 										<!-- Single Tab Content Start -->
 										<div class="tab-pane fade ${showactive4}" id="account-info"
@@ -567,70 +658,32 @@
 
 												<div class="profile-wrap">
 													<div class="row">
-
 														<div class="col-md-8 offset-md-2 py-4">
 															<lable>大頭照</lable>
-															<div class="edit-profile-photo text-center">
-
+																<div class="edit-profile-photo text-center">
 																<div id="changePicBox">
-
 																	<img class="rounded-circle me-2 picBox" alt=""
 																		src="<%=request.getContextPath()%>/readerimg.controller?userno=${user.userno}"
 																		width="200">
 																</div>
-																<!-- <button type="button" class="btn btn-primary">點擊</button>
-																<div class="change-photo-btn">
-																	<a href="#" data-toggle="modal" data-target="#avatar" class="rate-review"><i class="ion-log-in"></i>變更圖片</a> -->
-																<!-- modal-start -->
-																<!-- <div class="modal " id="avatar">
-																		<div class="modal-dialog modal-dialog-centered"
-																			role="image">
-																			<div class="picBox"> 
-																			
-																				<div>
-																					<div id="changePic">
-																						<label for="p_file"> <img
-																							src="<%=request.getContextPath()%>/readerimg.controller?userno=${user.userno}" width="200">
-																						</label>
-																					</div>
-																				</div> -->
-
-
-
-
 																<div>
 																	<div class="contact-form__upload-btn xs-left">
 																		<FORM METHOD="post" enctype="multipart/form-data"
 																			ACTION="<%=request.getContextPath()%>/uploadimg.controller">
-
-																			<input type="file" id="p_file" name="photoupload">
-
-																			<!-- style="display: none;" -->
+																			<a href="javascript:;" class="file">選擇圖片
+																			<input type="file" id="p_file"  name="photoupload">
+																			</a>
+																			<a href="javascript:;" class="button">確認變更
 																			<input type="hidden" name="userno"
 																				value="${user.userno}"> <input type="submit"
-																				name="action" value="確認">
+																				name="action" ></a>
 																		</FORM>
 																	</div>
 																</div>
-
-
-																<!-- 
-																			</div>
-																		</div>
-																	</div> -->
-																<!-- modal-ends -->
-
-
-
-
 															</div>
 														</div>
 													</div>
 												</div>
-
-
-
-
 
 												<div class="account-details-form">
 													<form id="verifyForm"
@@ -650,8 +703,7 @@
 													</form>
 													<br> <br>
 
-
-													<form action="<c:url value="/edit.controller" />"
+													<form action="<%=request.getContextPath()%>/edit.controller"
 														method="post">
 														<div class="row">
 															<div class="col-md-6">
@@ -677,8 +729,6 @@
 															</div>
 															<div class="col-lg-6 col-12">
 																<label>性別</label>
-																<!-- <input name="gender" type="text"
-																	value="${user.gender}"> -->
 																<div class="select_style">
 																	<select name="gender">
 																		<option selected disabled>${user.gender}</option>
@@ -696,16 +746,17 @@
 															</div>
 															<div class="col-12">
 																<input type="hidden" name="action" value="edit">
-																<button type="submit" class="register-button">修改個人資料</button>
-
+																<button type="submit" class="register-button"><i
+																	class="fa fa-edit"></i>修改個人資料</button>
+																
 															</div>
 														</div>
 													</form>
 
 
 													<form
-														action="<c:url value="/change-password.controller" />"
-														method="post">
+														action="<%=request.getContextPath()%>/change-password.controller"
+															method="post">
 														<div class="row">
 															<div class="col-12 mb-2">
 																<h4>修改密碼</h4>
@@ -729,7 +780,8 @@
 
 															<div class="col-12">
 																<input type="hidden" name="action" value="changepwd">
-																<button type="submit" class="register-button">修改密碼</button>
+																<button type="submit" class="register-button"><i
+																	class="fa fa-edit"></i>修改密碼</button>
 															</div>
 														</div>
 													</form>
