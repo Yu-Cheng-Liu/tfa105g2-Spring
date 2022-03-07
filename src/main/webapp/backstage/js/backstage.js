@@ -550,9 +550,9 @@ function getAdminRight1() {
 
                 if (permission.includes(element.functionNo)) {
                     var name = element.functionName;
-                    $(".nav-link-a").each(function(index, el) {
-                        if ($(el).text() == name) {
-                            $(el).parent("li").attr("style", "display:block");
+                    $(".main-list li").each(function(index, el) {
+                        if ($(el).attr("id") == name) {
+                            $(el).attr("style", "display:block");
                         }
                     })
                 }
