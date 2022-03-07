@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import web.manager.dao.impl.AdminDAO;
 import web.manager.entity.AdminBean;
 import web.manager.service.AdminServiceInterface;
+import web.memberdata.entity.MemberDataVO;
 
 @Service
 @Transactional
@@ -40,7 +41,7 @@ public class AdminService implements AdminServiceInterface {
 		if (adminBean.getAdminNo() == null) {
 			errorMsgs.put("update", "管理員編號空白");
 		}
-		
+
 		if (adminBean.getPassword() == null || adminBean.getPassword().length() > 8) {
 			errorMsgs.put("update", "管理員密碼空白or格式錯誤");
 		}
@@ -62,16 +63,16 @@ public class AdminService implements AdminServiceInterface {
 		errorMsgs = new HashMap<String, String>();
 		if (adminBean.getAccount() == null) {
 			errorMsgs.put("insert", "帳號空白");
-		}else if(adminDao.select(adminBean) != null) {
+		} else if (adminDao.select(adminBean) != null) {
 			errorMsgs.put("insert", "帳號已存在");
 		}
-		
+
 		if (adminBean.getPassword() == null) {
 			errorMsgs.put("insert", "密碼空白");
-		}else if(adminBean.getPassword().length() > 8) {
+		} else if (adminBean.getPassword().length() > 8) {
 			errorMsgs.put("insert", "密碼過長");
 		}
-		
+
 		if (!errorMsgs.isEmpty()) {
 			return null;
 		}
@@ -91,4 +92,15 @@ public class AdminService implements AdminServiceInterface {
 		}
 		return false;
 	}
+
+	public AdminBean login(AdminBean adminBean) { //
+		AdminBean adminBean1 = adminDao.select(adminBean);
+		if (adminBean1 != null) {
+			if (adminBean.getPassword().equals(adminBean1.getPassword())) {
+				return adminBean1;
+			}
+		}
+		return null;
+	}
 }
+

@@ -13,4 +13,5 @@ public interface AdminServiceInterface {
 	
 	public abstract AdminBean update(AdminBean bean);
 
+	public abstract AdminBean login(AdminBean bean);//
 }
