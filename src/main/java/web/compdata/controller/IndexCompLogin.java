@@ -45,7 +45,7 @@ public class IndexCompLogin {
 			
 			String status = service.verifiedOrNot(sessionCD);
 			session.setAttribute("status", status);
-			session.setAttribute("verify", status);
+			session.setAttribute("verify", sessionCD.getVerify());
 			session.setAttribute("compName", sessionCD.getCompName());
 			session.setAttribute("chargePerson", sessionCD.getChargePerson());
 			session.setAttribute("compPhone", sessionCD.getCompPhone());

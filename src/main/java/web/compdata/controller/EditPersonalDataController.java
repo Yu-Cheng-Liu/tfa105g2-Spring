@@ -31,6 +31,7 @@ public class EditPersonalDataController {
 		String compAccount = (String)session.getAttribute("compAccount");
 //		System.out.println(compAccount);
 		String password    = (String)session.getAttribute("password");
+		String verify      = (String)session.getAttribute("verify");
 //		System.out.println(password);
 		
 		
@@ -42,6 +43,7 @@ public class EditPersonalDataController {
 		attrs.setEmail(email);
 		attrs.setCompPhone(compPhone);
 		attrs.setPassword(password);
+		attrs.setVerify(verify);
 		
 		System.out.println(attrs);
 		boolean succeedOrNot = service.editPersonalProfile(attrs);
@@ -68,6 +70,7 @@ public class EditPersonalDataController {
 			session.setAttribute("compAccount", attrs.getCompAccount());
 			session.setAttribute("compNo", attrs.getCompNO());
 			session.setAttribute("compAddress", attrs.getAddress());
+			session.setAttribute("verify", attrs.getVerify());
 			model.addAttribute("EditPersonalProfileSucceed", "編輯帳戶資料成功");
 			model.addAttribute("classes6",classes);
 			model.addAttribute("attrs1", active);			

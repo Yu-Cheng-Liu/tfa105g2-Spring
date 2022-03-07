@@ -388,6 +388,26 @@ function selectAllMemberData() {
     })
 
 }
+function compDataSelectAll() {
+    $("#comp").empty();
+    let table = `<table id="compTable" class="table table-striped table-bordered nowrap"
+                    style="width:100%;"></table>`;
+    $("#comp").prepend(table);
+    axios.post("./compSelectAll.controller").then(res => {
+        var col = [
+            { data: 'compNO', title: "廠商編號" },
+            { data: 'compAccount', title: "廠商帳號" },
+            { data: 'compName', title: "公司名稱" },
+            { data: 'chargePerson', title: "負責人" },
+            { data: 'compPhone', title: "廠商電話" },
+            { data: 'email', title: "廠商電子郵件", defaultContent: "" },
+            { data: 'address', title: "廠商地址", defaultContent: "" },
+            { data: 'verify', title: "審核狀態" },
+        ]
+        drewTable($("#compTable"), res, col);
+    })
+
+}
 
 function drewTable(table, res, col) {
     new $.fn.dataTable.FixedHeader(

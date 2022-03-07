@@ -41,6 +41,19 @@
 	href="<%=request.getContextPath()%>/assets/css/comp.css">
 	
 
+<style>
+    #preview img.preview_img{
+        width: 100%;
+    }
+    
+    #preview2 img.preview_img2{
+        width: 100%;
+    }
+    
+    #preview3 img.preview_img3{
+        width: 100%;
+    }
+</style>
 
   
   
@@ -264,13 +277,14 @@
                                             
 	                                    <a href="#product-insert" ${attrs5} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
 	                                    商品新增</a>
+	                                    
+                                            
+                                        <a href="#product-update" ${attrs6} data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
+	                                    商品修改</a>     
+
                                         <a id="product-launchAndDiscontinue" href="#product-management" ${attrs4} data-bs-toggle="tab" ><i class="fa fa-cart-arrow-down" ></i>
-                                            商品上架/下架</a>
+                                        商品上架/下架</a>
 
-
-<%--                                         <a href="#address-edit" ${attrs6} data-bs-toggle="tab"><i class="fa fa-map-marker"></i> --%>
-<!--                                             address</a> -->
-<!-- 										<form action = "" method="post"> -->
 										<form action = "<%=request.getContextPath()%>/secure/logout.controller" id="logout" method="POST">
                                         <a id="byebye"><i class="fa fa-sign-out"></i> 登出</a>
                                     	</form>
@@ -489,14 +503,119 @@
  						 </form>
              		</div>
              	</div>
-             	 </div>
-                                        
+             	 </div>                                    
                                         
                                         <!-- Single Tab Content End -->
+                                        
+                                        
+                                        
+                                        
+                                        <!-- Single Tab Content Start --> 
+                                        
+ 			  <div class="tab-pane fade ${classes7} " id="product-update" role="tabpanel">
+ 			  
+ 			  <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+                        <!-- Checkout Form s-->
+                        <form class="checkout-form" METHOD="post" action="<%=request.getContextPath()%>/front-end/product/ProductUpdateServlet.controller" enctype="multipart/form-data">
+                            <div class="row justify-content-around">
+						
+                                <div class="col-lg-7">
+							
+                                    <!-- Billing Address f-->
+                                    <div id="billing-form">
+                                        <h4 class="checkout-title" style="text-align:center;">修改商品</h4>
 
+                                        <div class="row justify-content-around">
+<!-- 											<div class="col-md-7"> -->
+<!-- 											<label>商品類別<font style=color:red>*</font></label>				 -->
+<!-- 											<select id="findType" style="width:130px" name="prodTypeCode"> -->
+<!-- 											<option value="0">請選擇商品類別</option> -->
+<%-- 											<c:forEach items="${selectAllType}" var="prodTypeVO" >											 --%>
+<%-- 											<option value="${prodTypeVO.prodTypeCode}">${prodTypeVO.prodTypeDesc}</option> --%>
+<%-- 											</c:forEach> --%>
+<!-- 											</select> -->
+<%-- 											<font color="red"><c:out value="${errorMsgs['prodTypeCode']}"/></font> --%>
+<!-- 											</div> -->
+											<div class="col-md-7">
+											<label>商品類別<font style=color:red>*</font></label>
+											<select id="findType" style="width:130px" name="prodTypeCode">
+											<option value="0">請選擇商品類別</option>
+											<option value="1">水果</option>
+											<option value="2">鮮花</option>
+											<option value="3">祭祀用品</option>
+											<option value="4">其他</option>
+											</select>
+											<font color="red"><c:out value="${errorMsgs.prodTypeCode}"/></font>
+                                            </div>
+                                            
+                                            <div class="col-md-7">
+                                                <label>商品名稱<font style=color:red>*</font></label>
+                                                <font color="red"><c:out value="${errorMsgs['prodName']}"/></font>
+                                                <input type="text" placeholder="請輸入商品名稱" name="prodName" value="${prodName}" />                                                                              
+                                            </div>
 
- 
+                                            <div class="col-md-7">
+                                                <label>商品價格<font style=color:red>*</font></label>
+                                                <font color="red"><c:out value="${errorMsgs['prodPrice']}"/></font>
+                                                <input type="number" min="0" placeholder="請輸入商品價格" name="prodPrice" value="${prodPrice}" />
+                                            </div>
 
+                                            <div class="col-md-7">
+                                                <label>商品說明</label>
+                                                <input type="text" placeholder="請輸入商品說明內容" name="prodDesc" value="${prodDesc}" />
+                                            </div>
+
+                                            <div class="col-md-7">
+                                                <label>商品庫存量<font style=color:red>*</font></label>
+                                                <font color="red"><c:out value="${errorMsgs['prodStock']}"/></font>
+                                                <input type="number" min="0" placeholder="請輸入數量" name="prodStock" value="${prodStock}"/>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <label>商品圖片-1 <font style=color:red>*</font></label>
+                                                <font color="red"><c:out value="${errorMsgs['prodImg1']}"/></font>
+                                                <input type="file" id="p_file" name="prodImg" />
+                                                <div id="preview"><span class="text"></span></div>
+                                                <br>
+                                                <label>商品圖片-2</label>
+                                                <input type="file" id="p_file2" name="prodImg" />
+                                                <div id="preview2"><span class="text"></span></div>
+                                                <br>
+                                                <label>商品圖片-3</label>
+                                                <input type="file" id="p_file3" name="prodImg" />
+                                                <div id="preview3"><span class="text"></span></div>
+                                            </div>
+
+                                            <div class="col-7">
+<!--                                             <input type="hidden" name="action" value="insert"> -->
+                                            <button type="submit" class="register-button mt-0">確認送出</button>
+                                            </div>
+                                           
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+ 						 </form>
+             		</div>
+             	</div>
+ 			  
+ 			  
+ 			  
+ 			  
+ 			  
+ 			  
+ 			  
+ 			  
+ 			  
+              </div>                          
+ 										<!-- Single Tab Content End -->
+ 										
+ 										
+ 										
+ 										
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade ${classes6}" id="account-info" role="tabpanel">
                     					                              

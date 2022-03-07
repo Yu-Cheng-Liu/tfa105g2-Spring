@@ -59,7 +59,7 @@ public class LoginController {
 			
 				String status = service.verifiedOrNot(cd);
 				session.setAttribute("status", status);
-				session.setAttribute("verify", status);
+				session.setAttribute("verify", cd.getVerify());
 				session.setAttribute("compName", cd.getCompName());
 				session.setAttribute("chargePerson", cd.getChargePerson());
 				session.setAttribute("compPhone", cd.getCompPhone());
