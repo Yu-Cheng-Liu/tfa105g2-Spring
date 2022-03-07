@@ -526,11 +526,14 @@ margin-top: 7px;
 
 												<div class="profile-wrap">
 													<div class="row">
+													
 														<div class="col-md-8 offset-md-2 py-4">
+														<lable>大頭照</lable>
 															<div class="edit-profile-photo text-center">
 				
 																<div id="changePicBox">
-																	<img class="picBox" alt="" 
+																
+																	<img class="rounded-circle me-2 picBox" alt="" 
 																		src="<%=request.getContextPath()%>/readerimg.controller?userno=${user.userno}" width="200">
 																</div>
 																<!-- <button type="button" class="btn btn-primary">點擊</button>

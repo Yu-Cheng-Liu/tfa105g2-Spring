@@ -51,23 +51,23 @@
                 </div>
                 <!-- List 列表 -->
                 <ul class="list-unstyled">
-                    <li>
+                    <li id="會員管理" style="display: none;">
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#member"
                             aria-selected="false" onclick="selectAllMemberData();">會員管理<i class="fas fa-user"></i></a>
                     </li>
-                    <li>
+                    <li id="廠商管理" style="display: none;">
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#comp"
                             aria-selected="false" onclick="compDataSelectAll()"> 廠商管理<i class="fas fa-edit"></i></a>
                     </li>
-                    <li>
+                    <li id="訂單查詢" style="display: none;">
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#order"
                             aria-selected="false">訂單查詢<i class="fas fa-receipt"></i></a>
                     </li>
-                    <li>
+                    <li id="商品管理" style="display: none;">
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#product"
-                            aria-selected="false">商品管理<i class="fas fa-th"></i></a>
+                            aria-selected="false" onclick="productSelectAll()">商品管理<i class="fas fa-th"></i></a>
                     </li>
-                    <li>
+                    <li id="客服中心" style="display: none;">
                         <a href="#sublist" data-bs-toggle="collapse">客服中心<i class="far fa-comments"></i></a>
                         <!-- 子連結列表 -->
                         <ul id="sublist" class="list-unstyled collapse">
@@ -82,58 +82,61 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li id="塔位管理" style="display: none;">
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#tower"
                             aria-selected="false" onclick="SelectAllTowerData();">塔位管理<i class="fas fa-table"></i></a>
                     </li>
-                    <li>
+                    <li id="財務報表" style="display: none;">
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#finance"
                             aria-selected="false">財務報表<i class="fas fa-file-invoice-dollar"></i></a>
                     </li>
-                    <li>
+                    <li id="管理員權限管理" style="display: none;">
                         <a href="#" class="nav-link-a" data-bs-toggle="tab" data-bs-target="#adminManager"
-                            aria-selected="false" onclick="selectAllAdmin();">管理員權限管理<i
-                                class="fas fa-file-invoice-dollar"></i></a>
+                            aria-selected="false" onclick="selectAllAdmin();">管理員權限管理<i class="fas fa-lock"></i></a>
                     </li>
                 </ul>
                 <!-- List 列表 END -->
-
+               
             </nav>
             <!-- 導覽列 END -->
 
         </div>
         <!-- 左邊 END -->
 
-        <!-- 右邊 -->
-        <div class="container-right">
-            <div class="contain-fluid">
-                <!-- <h1>後台管理中心</h1> -->
-                <!-- Header -->
-                <header class="container-fluid text-center">
-                    <div class="inner">
-                        <p><i class="fas fa-cog"> 龘虤　後台管理中心</i></p>
-                    </div>
-                    <!-- 管理員登入按鈕 -->
-                    <div class="login">
-                        <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-user">
-                                管理員登入</i></a>
-                    </div>
-                    <!-- 管理員頭像 -->
-                    <!-- <div class="manager dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="" width="50" height="50"
-                                class="rounded-circle me-2">
-                            <strong>黃宏成台灣阿成世界偉人財神總統</strong>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                            <li><a class="dropdown-item" href="#">登出</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                        </ul>
-                    </div> -->
-                </header>
+ <!-- 右邊 -->
+ <div class="container-right">
+    <div class="contain-fluid">
+        <!-- <h1>後台管理中心</h1> -->
+        <!-- Header -->
+        <header class="container-fluid text-center">
+            <div class="inner" id="inner">
+                <p><i class="fas fa-cog"> 龘虤　後台管理中心</i></p>
+            </div>
+            <!-- 管理員登入按鈕 -->
+            <div class="login" id="login">
+                <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-user">
+                        管理員登入</i></a>
+            </div>
+            <!-- 管理員頭像 -->
+            <div class="manager_dropdown" id="manager_dropdown" style="display: none;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="" width="50" height="50"
+                        class="rounded-circle me-2">
+                    <strong id="account">黃宏成台灣阿成世界偉人財神總統</strong>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                    <li><button type="button" class="dropdown-item" id="logout">登出</button></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <button type="button" class="dropdown-item" id="logout">登出</button>  -->
+            <!-- <li><a class="dropdown-item" id="logout" href="#">登出</a></li> -->
+            
+        </header>
                 <!-- 頁籤 -->
                 <div class="tab-content">
                     <div class="tab-pane fade" id="member" role="tabpanel"></div>
@@ -145,10 +148,7 @@
                         <h3>測試3</h3>
                         <img src="img/Rick.png" alt="">
                     </div>
-                    <div class="tab-pane fade" id="product" role="tabpanel">
-                        <h3>測試4</h3>
-                        <img src="img/Rick.png" alt="">
-                    </div>
+                    <div class="tab-pane fade" id="product" role="tabpanel"></div>
                     <div class="tab-pane fade" id="service" role="tabpanel"></div>
                     <div class="tab-pane fade" id="chat" role="tabpanel">
                         <h3>測試6</h3>
@@ -181,18 +181,18 @@
                 </div>
                 <!-- Body -->
                 <div class="modal-body">
-                    <form action="">
+                    <form onsubmit="loginAdmin(); return false;">
                         <!-- Account -->
                         <div class="form-group">
-                            <input type="text" class="account form-control" placeholder="帳號">
+                            <input type="text" class="account form-control" id="login_account" placeholder="帳號">
                         </div>
                         <!-- Password -->
                         <div class="form-group">
-                            <input type="password" class="password form-control" placeholder="密碼">
+                            <input type="password" class="password form-control" id="login_password" placeholder="密碼">
                         </div>
                         <!-- Checkbox -->
                         <div class="form-group">
-                            <button type="submit" class="btn btn-info">登入</button>
+                            <button type="submit" class="btn btn-info" id="login_button" data-bs-dismiss="modal">登入</button>
                         </div>
                     </form>
 
