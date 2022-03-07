@@ -409,6 +409,29 @@ function compDataSelectAll() {
 
 }
 
+function productSelectAll() {
+    $("#product").empty();
+    let table = `<table id="productTable" class="table table-striped table-bordered nowrap"
+                    style="width:100%;"></table>`;
+    $("#product").prepend(table);
+    axios.post("./productSelectAll.controller").then(res => {
+        var col = [
+            { data: 'prodNo', title: "商品編號" },
+            { data: 'compNo', title: "廠商編號" },
+            { data: 'prodTypeCode', title: "商品類別代號" },
+            { data: 'prodName', title: "商品名稱" },
+            { data: 'prodDesc', title: "商品描述" },
+            { data: 'prodPrice', title: "商品價格", defaultContent: "" },
+            { data: 'prodStock', title: "商品庫存", defaultContent: "" },
+            { data: 'prodVerify', title: "審核狀態" },
+        ]
+        drewTable($("#productTable"), res, col);
+    })
+
+}
+
+
+
 function drewTable(table, res, col) {
     new $.fn.dataTable.FixedHeader(
         table.DataTable({

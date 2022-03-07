@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class ProductUpdateServlet extends HttpServlet {
 	
 	@RequestMapping(value = "/front-end/product/ProductUpdateServlet.controller", method = {RequestMethod.POST})
 	public String prodUpdate(Integer prodNo,Integer prodTypeNo ,String prodName, Integer prodPrice, Integer prodStock, Integer prodTypeCode,
-			String prodDesc, Model model, HttpSession session,@RequestParam("prodImg") MultipartFile[] prodImg) throws IOException {
+			String prodDesc, Model model, HttpServletRequest req , HttpSession session,@RequestParam("prodImg") MultipartFile[] prodImg) throws IOException {
 		
 		
 		Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
@@ -116,13 +117,22 @@ public class ProductUpdateServlet extends HttpServlet {
 			model.addAttribute("prodDesc", prodDesc);
 			model.addAttribute("prodPrice", prodPrice);
 			model.addAttribute("prodStock", prodStock);
+			model.addAttribute("errorMsgs", errorMsgs);
+			String path = req.getContextPath();
+				
 			
-			String classes = "show active";
-			model.addAttribute("classes7",classes);
-			String active = "class=\"active\"";
-			model.addAttribute("attrs6", active);
-
-			return "/front-end/compData/comp-index.jsp";
+			session.setAttribute("indexHamburger", "<div class=\"single-settings-block\">\r\n"
+					+ "                                                <h4 class=\"title\">廠商專區 </h4>\r\n"
+					+ "                                                <ul>\r\n"
+					+ "                                                    <li><a href="
+					+ path
+					+ "/front-end/compData/comp-index.jsp>廠商用戶中心</a></li>\r\n"
+					+ "                                                    \r\n"
+					+ "                                                </ul>\r\n"
+					+ "                                            </div>");
+			
+			
+			return "/front-end/product/update-product.jsp";
 		}
 		
 		prodVO = productService.update(prodVO);
@@ -131,7 +141,7 @@ public class ProductUpdateServlet extends HttpServlet {
 		model.addAttribute("classes7",classes);
 		String active = "class=\"active\"";
 		model.addAttribute("attrs6", active);
-		return "/front-end/compData/comp-index.jsp";
+		return "/front-end/compData/comp-indexjsp";
 		
 		
 	}

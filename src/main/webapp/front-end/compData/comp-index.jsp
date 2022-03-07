@@ -312,7 +312,7 @@
 	                                                <input type = "hidden" name = "verifyAgain" value="${email}">
 	                                                <input type = "hidden" name = "verifyAgain" value="${chargePerson}">
 	                                                <c:if test="${status  == '1'}">
-		                                                <button type ="submit">我要驗證email</button>
+		                                                <button class= "btn btn-outline-primary" type ="submit">我要驗證email</button>
 	                                                
 	                                                </c:if>
 	                                                
@@ -402,8 +402,8 @@
                                                     </table>		
                                                     
                                                     				<input id="inputValue" type = "hidden" name = "setProductStatus"  >
-                                                       				<button id="launch-btn" type="submit">上架</button>
-                                                       				<button id="discontinue-btn" type="submit" >下架</button>
+                                                       				<button class="btn btn-outline-primary" id="launch-btn" type="submit">上架</button>
+                                                       				<button class="btn btn-outline-primary" id="discontinue-btn" type="submit" >下架</button>
                                                         		</form>
                                                     	<form id="getListByCompNo" action="<%=request.getContextPath()%>/secure/productManagement.controller" method="POST">
                                                     			<input name="getListByCompNo"type="hidden" value="getListByCompNo"></input>	
