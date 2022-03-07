@@ -1,4 +1,4 @@
-package web.memberorder.contorller;
+package web.memberorder.controller;
 
 import java.util.HashMap;
 import java.util.List;

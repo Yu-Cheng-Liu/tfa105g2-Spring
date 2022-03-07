@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*" %>
+<%@ page import="web.cart.entity.CartVO" %>
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -289,7 +290,7 @@
                     <div class="page-wrapper">
                         <div class="page-content-wrapper">
                             <!-- Checkout Form s-->
-                            <form class="checkout-form" METHOD="post" action="<%=request.getContextPath()%>/MemberOrderServlet" name="form1">
+                            <form class="checkout-form" METHOD="post" action="<%=request.getContextPath()%>/front-end/memberorder/CheckOrder.controller" name="form1">
                                 <div class="row row-40">
 
                                     <div class="col-lg-7">
@@ -302,31 +303,25 @@
 
                                                 <div class="col-12">
                                                     <label>姓名<font style=color:red>*</font></label>
-                                                    <font color="red"><c:out value="${errorMsgs['userName']}" /></font>
-                                                    <input type="text"  placeholder="請填入姓名" name="userName" value="<%= request.getParameter("userName")==null?"":request.getParameter("userName")%>">
+                                                    <font color="red"><c:out value="${errorMsgs.memberName}" /></font>
+                                                    <input type="text"  placeholder="請填入姓名" name="memberName" value="${memberName}">
                                                 </div>
-<!--                                                 <div class="col-12"> -->
-<!--                                                     <label>聯絡電話<font style=color:red>*</font></label> -->
-<!--                                                     <input type="text" placeholder="請輸入電話號碼" > -->
-<!--                                                 </div> -->
+                                                <div class="col-12">
+                                                    <label>聯絡電話<font style=color:red>*</font></label>
+                                                    <font color="red"><c:out value="${errorMsgs.memberPhone}" /></font>
+                                                    <input type="text" placeholder="請輸入電話號碼" name="memberPhone" value="${memberPhone}" maxlength="10">
+                                                </div>
 
 <!--                                                 <div class="col-12"> -->
 <!--                                                     <label>Email<font style=color:red>*</font></label> -->
 <!--                                                     <input type="email" placeholder="請輸入Email" name=""> -->
 <!--                                                 </div> -->
                                                 
-                                                <div>
-                                                <br>
-                                                <label>愛心捐贈<font style=color:red>*</font></label>
-                                                <font color="red"><c:out value="${errorMsgs['donate']}" /></font>
-                                                <label><input type="checkbox" name="donate" value="yes" onclick="return chk(this);">是，我想捐出商品　　　  
-                                                	   <input type="checkbox" name="donate" value="no" onclick="return chk(this);">否，將商品送至收貨地址</label>
-                                                </div>
                                                            
                                                 <div class="col-12">
                                                     <label>收貨地址<font style=color:red>*</font></label>
-                                                    <font color="red"><c:out value="${errorMsgs['deliveryAddress']}" /></font>
-                                                    <input type="text" placeholder="請輸入地址" name="deliveryAddress" value="<%= request.getParameter("deliveryAddress")==null?"":request.getParameter("deliveryAddress")%>">
+                                                    <font color="red"><c:out value="${errorMsgs.deliveryAddress}" /></font>
+                                                    <input type="text" placeholder="請輸入地址" name="deliveryAddress" value="${deliveryAddress}">
                                                 </div>
                                                        
                                                 
@@ -409,6 +404,8 @@
                                             <div class="col-12">
 
                                                 <h4 class="checkout-title">購物車總覽</h4>
+                                                
+                                                
 
                                                 <div class="checkout-cart-total">
 
@@ -416,16 +413,13 @@
 
                                                     <ul>
                                                         <li>Cillum dolore tortor nisl X 01 <span>$25.00</span></li>
-                                                        <li>Auctor gravida pellentesque X 02 <span>$50.00</span></li>
-                                                        <li>Condimentum posuere consectetur X 01 <span>$29.00</span>
-                                                        </li>
-                                                        <li>Habitasse dictumst elementum X 01 <span>$10.00</span></li>
+                                                        
                                                     </ul>
 
-                                                    <p>商品總金額<span>$104.00</span></p>
-                                                    <p>運費<span>$00.00</span></p>
+                                                    <p>商品總金額<span>$ ${amount}</span></p>
+                                                    <p>運費<span>$200</span></p>
 
-                                                    <h4>總金額<span>$104.00</span></h4>
+                                                    <h4>總金額<span>$${total + 200}</span></h4>
 
                                                 </div>
 
@@ -433,7 +427,7 @@
 
                                             <!-- Payment Method -->
 												<div class="col-12">
-												<input type="hidden" name="action" value="checkorder">
+<!-- 												<input type="hidden" name="action" value="checkorder"> -->
                                                 <button type="submit" class="place-order">確認結帳</button>
 												</div>
                                             </div>
