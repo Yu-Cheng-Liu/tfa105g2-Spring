@@ -295,20 +295,21 @@
                                             <div class="about-content col-lg-6">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <h1>WELCOME TO <span>Eposi.</span></h1>
-                                                        <p class="mb-3">Eposi provide how all this mistaken idea of
-                                                            denouncing pleasure and sing pain was born an will give you
-                                                            a complete account of the system, and expound the actual
-                                                            teachings of the eat explorer of the truth, the mer of
-                                                            human.</p>
+                                                        <h1>歡迎蒞臨<span>龘虤</span></h1>
+                                                        <p class="mb-3">
+                                                            新冠病毒肆虐全球2年,
+                                                            一場突如其來的疫情,
+                                                            給我們的生活帶來了許多變化…
+                                                            
+                                                            我們發現以往習慣的祭祖模式必須有些替代方案,
+                                                            為了讓祖先們感受到我們無遠弗屆的孝心,
+                                                            因此想到了藉由線上方式為祖先進行盛大的祭祖活動!
+                                                            </p>
                                                     </div>
 
                                                     <div class="col-12">
-                                                        <h4>WIN BEST ONLINE SHOP AT 2019</h4>
-                                                        <p>Eposi provide how all this mistaken idea of denouncing
-                                                            pleasure and sing pain was born an will give you a complete
-                                                            account of the system, and expound the actual teachings of
-                                                            the eat explorer of the truth, the mer of human.</p>
+                                                        <h4>龘虤理念</h4>
+                                                        <p>龘虤以始終秉持著「不只要做到第一，更要成為唯一」的精神帶領生命產業改革與創新。</p>
                                                     </div>
 
                                                 </div>
@@ -325,19 +326,19 @@
                                 <!-- Banner -->
                                 <div class="col-md-4">
                                     <div class="single-banner">
-                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/banner7.webp"
+                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/04.jpg"
                                                 class="img-fluid" alt="Banner"></a>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="single-banner">
-                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/banner8.webp"
+                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/07.jpg"
                                                 class="img-fluid" alt="Banner"></a>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="single-banner">
-                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/banner9.webp"
+                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/113.jpg"
                                                 class="img-fluid" alt="Banner"></a>
                                     </div>
 
@@ -349,7 +350,7 @@
                             <div class="about-mission-vission-goal row row-20">
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <h3>OUR VISSION</h3>
+                                    <h3>劉淯誠</h3>
                                     <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
                                         born an will give you a ete account of the system, and expound the actual teangs
                                         the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
@@ -357,7 +358,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <h3>OUR MISSION</h3>
+                                    <h3>王晟峻</h3>
                                     <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
                                         born an will give you a ete account of the system, and expound the actual teangs
                                         the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
@@ -365,7 +366,61 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <h3>OUR GOAL</h3>
+                                    <h3>翁翊淇</h3>
+                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
+                                        born an will give you a ete account of the system, and expound the actual teangs
+                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
+                                        repellend</p>
+                                </div>
+
+                            </div>
+
+                            < <div class="row row-10">
+
+                                <!-- Banner -->
+                                <div class="col-md-4">
+                                    <div class="single-banner">
+                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/14.jpg"
+                                                class="img-fluid" alt="Banner"></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="single-banner">
+                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/21.jpg"
+                                                class="img-fluid" alt="Banner"></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="single-banner">
+                                        <a href="#"><img width="550" height="260" src="<%=request.getContextPath()%>/assets/img/banners/202.jpg"
+                                                class="img-fluid" alt="Banner"></a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Mission, Vission & Goal -->
+                            <div class="about-mission-vission-goal row row-20">
+
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <h3>廖郁涵</h3>
+                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
+                                        born an will give you a ete account of the system, and expound the actual teangs
+                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
+                                        repellend</p>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <h3>黃琳鈺</h3>
+                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
+                                        born an will give you a ete account of the system, and expound the actual teangs
+                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
+                                        repellend</p>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <h3>廖于瑩</h3>
                                     <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
                                         born an will give you a ete account of the system, and expound the actual teangs
                                         the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
@@ -376,77 +431,6 @@
 
                             <div class="row">
 
-                                <!-- About Section Title -->
-                                <div class="about-section-title col-12">
-                                    <h3>YOU CAN CHOOSE US BECAUSE <br>WE ALWAYS PROVIDE IMPORTANCE...</h3>
-                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
-                                        born will give you a complete account of the system, and expound the actual</p>
-                                </div>
-
-                                <!-- About Feature -->
-                                <div class="about-feature col-md-7 col-12 mb-sm-30">
-                                    <div class="row">
-
-                                        <div class="col-md-6 col-12">
-                                            <h4>FAST DELIVERY</h4>
-                                            <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <h4>QUALITY PRODUCT</h4>
-                                            <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <h4>SECURE PAYMENT</h4>
-                                            <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <h4>MONEY BACK GUARNTEE</h4>
-                                            <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <h4>EASY ORDER TRACKING</h4>
-                                            <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <h4>FREE RETURN</h4>
-                                            <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <h4>24/7 SUPPORT</h4>
-                                            <p class="mb-md-0">Eposi provide how all this mistaken dea of denouncing
-                                                pleasure and sing </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <!-- About Feature Banner -->
-                                <div class="about-feature-banner col-md-5 col-12">
-                                    <div class="single-banner mb-0"><a href="#"><img width="432" height="694"
-                                                src="<%=request.getContextPath()%>/assets/img/banners/slider-banner2.webp" class="img-fluid"
-                                                alt="Banner"></a></div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!--=======  End of page wrapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
     <!--====================  End of page content area  ====================-->
  <!--====================  footer area ====================-->
   <div class="footer-area">
