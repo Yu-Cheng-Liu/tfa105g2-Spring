@@ -128,7 +128,7 @@
       <label for="card-ccv">安全碼</label>
       <input type="text" id="card-ccv" maxlength="3" />
     </fieldset>
-    <button class="btn"><i class="fa fa-lock"></i>確認結帳</a></button>
+    <button class="btn"><i class="fa fa-lock"></i>確認結帳</button>
   </form>
 </div>
   

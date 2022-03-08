@@ -23,8 +23,6 @@ public class MemberOrderVO {
 	Integer deliveryStatusCode;
 	@Column(name = "delivery_type_code")
 	Integer deliveryTypeCode;
-	@Column(name = "donate")
-	String donate;
 	@Column(name = "pay_type")
 	String payType;
     @Column(name = "delivery_address")
@@ -33,14 +31,12 @@ public class MemberOrderVO {
 	Integer total;
 	@Column(name = "order_date")
 	LocalDateTime orderDate = LocalDateTime.now();
+	@Column(name = "member_name")
+	String memberName;
+	@Column(name = "member_phone")
+	String memberPhone;
 	
 	
-	@Override
-	public String toString() {
-		return "MemberOrderVO [orderNo=" + orderNo + ", userNo=" + userNo + ", deliveryStatusCode=" + deliveryStatusCode
-				+ ", deliveryTypeCode=" + deliveryTypeCode + ", donate=" + donate + ", payType=" + payType
-				+ ", deliveryAddress=" + deliveryAddress + ", total=" + total + ", orderDate=" + orderDate + "]";
-	}
 
 
 	public Integer getOrderNo() {
@@ -83,13 +79,24 @@ public class MemberOrderVO {
 	}
 
 
-	public String getDonate() {
-		return donate;
+
+	public String getMemberName() {
+		return memberName;
 	}
 
 
-	public void setDonate(String donate) {
-		this.donate = donate;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+
+
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
 
 

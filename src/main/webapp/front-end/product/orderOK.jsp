@@ -241,7 +241,7 @@
 	<div class="center">
 	<span><button class="update-btn"><a href="<%=request.getContextPath()%>/front-end/index.jsp">回首頁</a></button></span>　
 	
-	<span><button class="checkout-btn"><a href="<%=request.getContextPath()%>/front-end/memberData/my-account-member.jsp">會員中心</a></button></span>
+<%-- 	<span><button class="checkout-btn"><a href="<%=request.getContextPath()%>/front-end/memberData/my-account-member.jsp">會員中心</a></button></span> --%>
 	</div>
 	
 

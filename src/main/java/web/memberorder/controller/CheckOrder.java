@@ -96,11 +96,9 @@ public class CheckOrder extends HttpServlet {
 		}
 		
 		MemberOrderVO newOrderVO = memberorderservice.addOrder(vo);
+		System.out.println("newOrderVO="+newOrderVO);
 		
 		session.setAttribute("orderNo", newOrderVO.getOrderNo());
-		
-		
-		
 		
 		Integer prodNo = (Integer) session.getAttribute("prodNo");
 		Integer compNo = (Integer) session.getAttribute("compNo");
@@ -113,8 +111,8 @@ public class CheckOrder extends HttpServlet {
 		detailVO.setProdName(prodName);
 		detailVO.setProdAmount(prodAmount);
 		detailVO.setProdPrice(prodPrice);
-		
-		
+	
+		detailService.addOrderDetail(detailVO);
 
 		return "/front-end/product/credit.jsp";
 	}
