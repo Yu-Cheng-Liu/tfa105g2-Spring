@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Eposi - Multipurpose eCommerce Bootstrap5 Template</title>
+    <title>個別商品 | 龘虤</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -159,30 +159,49 @@
 
                                         <!-- settings menu -->
                                         <div class="settings-menu-wrapper" id="settings-menu-wrapper">
-                                            <div class="single-settings-block">
-                                                <h4 class="title">一般用戶 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                                  
-                                                </ul>
-                                            </div>
-                                            <div class="single-settings-block">
-                                                <h4 class="title">廠商專區 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                                    
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+											<c:if test="${user == null && compAccount == null}">
+												<div class="single-settings-block">
+													<h4 class="title">一般用戶</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
+													</ul>
+												</div>
+												<div class="single-settings-block">
+													<h4 class="title">廠商專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/secure/loginFromSession.controller">註冊/登入</a></li>
+													</ul>
+												</div>
+											</c:if>
+
+											<c:if test="${user != null}">
+												<div class="single-settings-block">
+													<h4 class="title">會員專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/memberData/my-account-member.jsp">會員中心</a></li>
+													</ul>
+												</div>
+											</c:if>
+
+											<c:if test="${compAccount != null}">
+												<div class="single-settings-block">
+													<h4 class="title">廠商專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/compData/comp-index.jsp">廠商用戶中心</a></li>
+													</ul>
+												</div>
+											</c:if>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
     <!--====================  End of header area  ====================-->
 
     <!--====================  breadcrumb area ====================-->
@@ -322,6 +341,7 @@
                                                 	<input type="hidden" name="prodName" value="${prodName}">
                                                 	<input type="hidden" name="prodPrice" value="${prodPrice}">
                                                 	<input type="hidden" name="prodStock" value="${prodStock}">
+                                                	<input type="hidden" name="compNo" value="${compNo}">
                                                 	<input type="hidden" name="action" value="AddCart">
                                                 	<button class="cart-btn" type="submit">加入購物車</button>
                                                 </div>

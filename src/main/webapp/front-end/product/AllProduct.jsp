@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Eposi - Multipurpose eCommerce Bootstrap5 Template</title>
+    <title>商品總覽 | 龘虤</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -159,31 +159,50 @@
                                         </a>
 
                                         <!-- settings menu -->
-                                        <div class="settings-menu-wrapper" id="settings-menu-wrapper">
-                                            <div class="single-settings-block">
-                                                <h4 class="title">一般用戶 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                                  
-                                                </ul>
-                                            </div>
-                                            <div class="single-settings-block">
-                                                <h4 class="title">廠商專區 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                                    
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+										<div class="settings-menu-wrapper" id="settings-menu-wrapper">
+
+											<c:if test="${user == null && compAccount == null}">
+												<div class="single-settings-block">
+													<h4 class="title">一般用戶</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
+													</ul>
+												</div>
+												<div class="single-settings-block">
+													<h4 class="title">廠商專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/secure/loginFromSession.controller">註冊/登入</a></li>
+													</ul>
+												</div>
+											</c:if>
+
+											<c:if test="${user != null}">
+												<div class="single-settings-block">
+													<h4 class="title">會員專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/memberData/my-account-member.jsp">會員中心</a></li>
+													</ul>
+												</div>
+											</c:if>
+
+											<c:if test="${compAccount != null}">
+												<div class="single-settings-block">
+													<h4 class="title">廠商專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/compData/comp-index.jsp">廠商用戶中心</a></li>
+													</ul>
+												</div>
+											</c:if>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
     <!--====================  End of header area  ====================-->
 
     <!--====================  breadcrumb area ====================-->
@@ -268,9 +287,9 @@
                                                     <div
                                                         class="single-grid-product__image single-grid-product--list-view__image">
                                                         
-                                                        <a href="${pageContext.request.contextPath}/SingleProductServlet.controller?prodNo=${prodVO.prodNo}">
+                                                        <a href="${pageContext.request.contextPath}/SingleProductServlet.controller?prodNo=${prodVO.prodNo}&compNo=${prodVO.compNo}">
                                                             <img width="600" height="800"
-                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=${prodVO.prodNo}&prodImg=1"
+                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=${prodVO.prodNo}&compNo=${prodVO.compNo}&prodImg=1"
                                                                 class="img-fluid" alt="">
                                                         </a>
 
@@ -281,7 +300,7 @@
                                                         
                                                         <h3
                                                             class="single-grid-product__title single-grid-product--list-view__title">
-                                                            <a href="${pageContext.request.contextPath}/SingleProductServlet.controller?prodNo=${prodVO.prodNo}">${prodVO.prodName}</a>
+                                                            <a href="${pageContext.request.contextPath}/SingleProductServlet.controller?prodNo=${prodVO.prodNo}&compNo=${prodVO.compNo}">${prodVO.prodName}</a>
 
                                                         </h3>
                                                         

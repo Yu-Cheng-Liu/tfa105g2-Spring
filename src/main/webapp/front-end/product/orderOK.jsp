@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>購物車 | 龘虤</title>
+    <title>訂單已成立</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -28,8 +28,11 @@
     <link href="${pageContext.request.contextPath}/assets/css/vendors.css" rel="stylesheet">
     <!-- Main CSS -->
     <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
-
-
+<style>
+.center{
+ text-align: center;
+}
+</style>
 </head>
 
 <body>
@@ -117,7 +120,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="content">
-                                                    	
+                                                    
                                                         <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
                                                         <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
                                                     </div>
@@ -228,99 +231,20 @@
     </div>
     <!--====================  End of breadcrumb area  ====================-->
     <!--====================  page content area ====================-->
-    <div class="page-content-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  page wrapper  =======-->
-                    <div class="page-wrapper">
-                        <div class="page-content-wrapper">
-                                <!--=======  cart table  =======-->
-								<%if (buyList != null && (buyList.size() > 0)){ %>
-                                <div class="cart-table table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="pro-thumbnail">商品圖片</th>
-                                                <th class="pro-title">商品名稱</th>
-                                                <th class="pro-price">價格</th>
-                                                <th class="pro-quantity">數量</th>
-                                                <th class="pro-subtotal">商品金額</th>
-                                                <th class="pro-remove">移除</th>
-                                            </tr>
-                                        </thead>
-                                        
-                                        <%
-                                            for(int index =0; index < buyList.size(); index++){
-                                            	CartVO order = buyList.get(index);
-                                        %>
-                                        <tbody>
-                                            <tr>
-                                                <td class="pro-thumbnail"><a href="single-product.jsp"><img width="600"
-                                                            height="800" src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
-                                                            class="img-fluid" alt="Product"></a></td>
-                                                <td class="pro-title"><a href="single-product.jsp"><%=order.getProdName()%></a></td>
-                                                <td class="pro-price"><span>$ <%=order.getProdPrice() %></span></td>
-                                                <td class="pro-quantity">
-                                                	<div class="quantity-selection"><span> <%=order.getProdAmount() %></span></div>
-                                                <%-- <form action="${pageContext.request.contextPath}/ViewCart.controller?action=ChangeAmount" method="get">
-                                                    <div class="quantity-selection"><input type="number" value="<%=order.getProdAmount()%>${prodAmount}" name="prodAmount" 
-                                                            min="1" max="${prodStock}"></div>
-                                                </form> --%>
-                                                </td>
-                                                <%=order.getCompNo() %>
-                                                <td class="pro-subtotal"><span>$<%=order.getProdPrice() * order.getProdAmount() %></span></td>
-                                                <td class="pro-remove"><a href="${pageContext.request.contextPath}/ViewCart.controller?action=Cancel&cancel=<%=index %>"><i class="fa fa-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <%}%>
-                                    </table>
-                                </div>
-								<%}%>
-								<%if (buyList == null || (buyList.size() == 0)){ %>
-									<p><h4>${nothing}</h4>
-								<%}%>
-                                <!--=======  End of cart table  =======-->
 
-                            <div class="row">
+	<div class="center">
+	
+	<h1><p>訂單已成立</p></h1>
+	</div>
+	<br>
+	<br>
+	<div class="center">
+	<span><button class="update-btn"><a href="<%=request.getContextPath()%>/front-end/index.jsp">回首頁</a></button></span>　
+	
+	<span><button class="checkout-btn"><a href="<%=request.getContextPath()%>/front-end/memberData/my-account-member.jsp">會員中心</a></button></span>
+	</div>
+	
 
-                                <div class="col-lg-6 col-12">
-
-                                </div>
-
-
-                                <div class="col-lg-6 col-12 d-flex">
-                                    <!--=======  Cart summery  =======-->
-
-                                    <div class="cart-summary">
-                                        <div class="cart-summary-wrap">
-                                            <h4>商品總金額</h4>
-                                            <%if (buyList == null){ %>
-												<h2> <span>$ 0</span></h2>
-											<%}%>
-											<%if (buyList != null){ %>
-												<h2> <span>$ ${amount}</span></h2>
-											<%}%>
-                                            
-                                        </div>
-                                        <div class="cart-summary-button">
-                                            <button class="update-btn"><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll&buyList=${buyListInt}">繼續購物</a></button>
-                                            <%if (buyList != null && (buyList.size() > 0)){ %>
-                                            <button class="checkout-btn"><a href="${pageContext.request.contextPath}/ViewCart.controller?action=CheckOut">結帳</a></button>
-                                            <%} %>
-                                        </div>
-                                    </div>
-                                    <!--=======  End of Cart summery  =======-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--=======  End of page wrapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
     <!--====================  End of page content area  ====================-->
    
     <!--====================  footer area ====================-->
@@ -384,6 +308,8 @@
     <script src="${pageContext.request.contextPath}/assets/js/active.js"></script>
 
     <!--=====  End of JS files ======-->
+    
+
 
 </body>
 
