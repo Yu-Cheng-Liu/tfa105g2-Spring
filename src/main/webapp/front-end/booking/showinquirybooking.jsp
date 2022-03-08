@@ -301,7 +301,7 @@
 			     	<input type="hidden" name="towerNo" value="${param.towerNo}">
 			     </FORM>
 			</td>
-
+			 <td>
 			  <FORM METHOD="post" action="cancelbooking.controller" style="margin-bottom: 0px;">
 			     <input class="btn btn-outline-primary" type="submit" value="刪除">
 			     <input type="hidden" name="bookingNo"  value="${bookingVO.bookingNo}">

@@ -325,7 +325,7 @@
 														<label>預約日期*</label> 
 														<input name="reserveDate" type="date" placeholder="reserveDate*">
                                                       
-                                                        <span style="color: red; class="error">${errors.reserveDate}</span>
+                                                        <span style="color: red; class ="error">${errors.reserveDate}</span>
 													</div>
 
 
