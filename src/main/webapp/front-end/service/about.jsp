@@ -61,7 +61,7 @@
                                     <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
                                              <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
-                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/ViewCart.controller?action=ViewCart">購物車</a></li>
                                         </ul>
                                     </li>
 
@@ -88,18 +88,24 @@
                         <div class="header-icon-wrapper">
                             <ul class="icon-list">
                                 <li>
+                                <%
+                                       Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+                                %>
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
                                             <i class="ion-bag"></i>
+                                            <%if (buyList != null && (buyList.size() > 0)){ %>
                                             <span class="counter">${buyListCount}</span>
+                                            <%} %>
+                                            <%if (buyList == null || (buyList.size() == 0)){ %>
+                                            <span class="counter">0</span>
+                                            <%} %>
                                         </a>
                                         <!-- mini cart  -->
                                         
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
-                                        <%
-                                        	Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
-                                        %>
+                                        
                                         <%if (buyList != null && (buyList.size() > 0)){ %>
                                         	<%
                                             	for(int index =0; index < buyList.size(); index++){
@@ -108,7 +114,7 @@
                                             
                                                 <div class="single-cart-item">
                                                     
-                                                    <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
+                                                    <a href="${pageContext.request.contextPath}/ViewCart.controller?action=Cancel&cancel=<%=index %>" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
                                                     
                                                     <div class="image">
@@ -125,7 +131,7 @@
                                                     </div>
                                             	</div>
                                             	
-                                            <%}%>
+                                            	<%}%>
                                             
                                             <div class="cart-calculation">
                                                 <table class="table">
@@ -139,10 +145,12 @@
                                             </div>
                                             <%}%>
                                             <div class="cart-buttons">
-                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
+                                                <a href="${pageContext.request.contextPath}/ViewCart.controller?action=ViewCart">檢視購物車</a>
+                                                <%if (buyList != null && (buyList.size() > 0)){ %>
                                                 <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
+                                                <%} %>
                                             </div>
-                                            
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
