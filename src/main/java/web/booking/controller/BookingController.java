@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import web.booking.entity.BookingVO;
 import web.booking.service.BookingService;
 import web.memberdata.entity.MemberDataVO;
-import web.tower.entity.TowerVO;
 import web.tower.service.TowerService;
 
 @Controller

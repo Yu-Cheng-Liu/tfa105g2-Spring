@@ -72,6 +72,8 @@ $(window).ready(function () {
             };
         }).catch((error) => console.log(error));
     })
+
+
 })
 
 function sendMail() {
@@ -381,13 +383,64 @@ function selectAllMemberData() {
             { data: 'email', title: "信箱" },
             { data: 'address', title: "地址", defaultContent: "" },
             { data: 'gender', title: "性別", defaultContent: "" },
-            { data: 'birthday', title: "生日", defaultContent: "" },
+            {
+                data: 'birthday', title: "生日", defaultContent: "",
+                render: function (data) {
+                    if (data != null) {
+                        var date = data.replace(/\s/g, "").split(/[,月]/);
+                        return date[2] + "-" + date[0] + "-" + date[1];
+                    }
+                    return "";
+                }
+            },
             { data: 'verifystatus', title: "審核狀態" },
         ]
         drewTable($("#memTable"), res, col);
     })
 
 }
+function compDataSelectAll() {
+    $("#comp").empty();
+    let table = `<table id="compTable" class="table table-striped table-bordered nowrap"
+                    style="width:100%;"></table>`;
+    $("#comp").prepend(table);
+    axios.post("./compSelectAll.controller").then(res => {
+        var col = [
+            { data: 'compNO', title: "廠商編號" },
+            { data: 'compAccount', title: "廠商帳號" },
+            { data: 'compName', title: "公司名稱" },
+            { data: 'chargePerson', title: "負責人" },
+            { data: 'compPhone', title: "廠商電話" },
+            { data: 'email', title: "廠商電子郵件", defaultContent: "" },
+            { data: 'address', title: "廠商地址", defaultContent: "" },
+            { data: 'verify', title: "審核狀態" },
+        ]
+        drewTable($("#compTable"), res, col);
+    })
+
+}
+
+function productSelectAll() {
+    $("#product").empty();
+    let table = `<table id="productTable" class="table table-striped table-bordered nowrap"
+                    style="width:100%;"></table>`;
+    $("#product").prepend(table);
+    axios.post("./productSelectAll.controller").then(res => {
+        var col = [
+            { data: 'prodNo', title: "商品編號" },
+            { data: 'compNo', title: "廠商編號" },
+            { data: 'prodTypeCode', title: "商品類別代號" },
+            { data: 'prodName', title: "商品名稱" },
+            { data: 'prodDesc', title: "商品描述" },
+            { data: 'prodPrice', title: "商品價格", defaultContent: "" },
+            { data: 'prodStock', title: "商品庫存", defaultContent: "" },
+            { data: 'prodVerify', title: "審核狀態" },
+        ]
+        drewTable($("#productTable"), res, col);
+    })
+
+}
+
 
 function drewTable(table, res, col) {
     new $.fn.dataTable.FixedHeader(
@@ -416,3 +469,125 @@ function drewTable(table, res, col) {
     )
 }
 // new end
+
+function loginAdmin() {
+    const form = {
+        "account": $('#login_account').val(),
+        "password": $('#login_password').val()
+    }
+    console.log(form);
+    $("#login_account").val("");
+    $("#login_password").val("");
+    const requestBody = JSON.stringify(form);
+    console.log(requestBody);
+    axios({
+        method: "post",
+        url: "./AdminSelectOne.controller",
+        data: requestBody,
+        headers: { "Content-Type": "application/json" }
+    }).then(res => {
+        if (res.data != null) {
+            alert('登入成功');
+
+            //save user data to session or local storage
+            //save data to session storage
+            var manager_obj = {
+                login_account: res.data.account,
+                login_adminNo: res.data.adminNo
+            };
+            localStorage.setItem("store_data", JSON.stringify(manager_obj));
+            getAdminRight1(); //取得管理員權限顯示畫面
+            // function change relative
+            var manager_account = JSON.parse(localStorage.getItem("store_data")).login_account;
+
+            document.getElementById('manager_dropdown').style.display = "block";
+            document.getElementById('account').innerHTML = manager_account;
+            document.getElementById("login").style.display = "none";
+
+            // 登出後清空 localStorage 裡的資料
+            var the_clear_el = document.getElementById("logout");
+            console.log(the_clear_el);
+            the_clear_el.addEventListener("click", function () {
+                localStorage.clear();
+
+                if (JSON.parse(localStorage.getItem("store_data")) == null) {
+
+                    $(".nav-link-a").each(function() {
+                        $(this).parent("li").attr("style", "display:none");
+                    })
+
+                    document.getElementById("login").style.display = "block";
+                    document.getElementById("manager_dropdown").style.display = "none";
+                }
+            });
+
+
+        } else {
+            alert('登入失敗');
+        }
+    }).catch((error) => console.log(error));
+}
+
+function getAdminRight1() {
+
+    var manager_adminNo = JSON.parse(localStorage.getItem("store_data")).login_adminNo;  
+    const form = {
+        "adminNo": manager_adminNo
+    }
+    const requestBody = JSON.stringify(form);
+    axios.post("./FunctionSelectAll.controller").then(resAll => {
+        axios({
+            method: "post",
+            url: "./AdminRightSelect.controller",
+            data: requestBody,
+            headers: { "Content-Type": "application/json" }
+        }).then(resAdmin => {
+            var permission = [];
+            resAdmin.data.forEach(element => {
+                permission.push(element.functionNo);
+            })
+            resAll.data.forEach(element => {
+
+                if (permission.includes(element.functionNo)) {
+                    var name = element.functionName;
+                    $(".nav-link-a").each(function(index, el) {
+                        if ($(el).text() == name) {
+                            $(el).parent("li").attr("style", "display:block");
+                        }
+                    })
+                }
+            })
+        })
+    }).catch((error) => console.log(error));
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // function check user is login from session storage
+    var manager_account = JSON.parse(localStorage.getItem("store_data")).login_account;
+    if (manager_account != null) {
+        getAdminRight1();
+        // function change relative
+        document.getElementById('manager_dropdown').style.display = "block";
+        document.getElementById('account').innerHTML = manager_account;
+        document.getElementById("login").style.display = "none";
+
+        // 清空 localStorage 裡的資料
+        var the_clear_el = document.getElementById("logout");
+        console.log(the_clear_el);
+        the_clear_el.addEventListener("click", function () {
+            localStorage.clear();
+
+            if (JSON.parse(localStorage.getItem("store_data")) == null) {
+                $(".nav-link-a").each(function() {
+                    $(this).parent("li").attr("style", "display:none");
+                })
+                document.getElementById("login").style.display = "block";
+                document.getElementById("manager_dropdown").style.display = "none";
+
+            }
+        });
+    }
+
+});

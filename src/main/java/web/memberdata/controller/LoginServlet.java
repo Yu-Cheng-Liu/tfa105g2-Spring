@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 import web.memberdata.entity.MemberDataVO;
 import web.memberdata.service.MemberDataServiceInterface;
 
@@ -51,7 +50,6 @@ public class LoginServlet {
 			return "/front-end/memberData/login-register-member.jsp";
 		} else {
 			session.setAttribute("user", memberDataVO);
-//			session.setAttribute("type", "member");
 			
 			
 			// 新建Cookie
@@ -75,11 +73,11 @@ public class LoginServlet {
 				if (location != null) {
 					session.removeAttribute("location");
 					return "redirect:" + location;
-				}
+				} 
 			} catch (Exception ignored) {
 			}
 
-			return "redirect:/front-end/memberData/my-account-member.jsp"; // 要改首頁
+			return "redirect:/front-end/index.jsp"; // 要改首頁
 		}
 
 	}

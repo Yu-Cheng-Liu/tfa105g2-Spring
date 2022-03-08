@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.*, web.cart.entity.CartVO" %>
+<%@ page import="java.util.*, web.cart.entity.CartVO"%>
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -53,16 +53,11 @@
 	background-position: center center;
 }
 
-
-
-
-
 .login-title {
 	font-size: 17px;
 	line-height: 0px;
 	text-decoration: none;
 }
-
 
 .login-form label {
 	margin-bottom: 5px;
@@ -75,153 +70,191 @@
 	font-size: 12px;
 	margin-bottom: 13px;
 	border-radius: 5px;
-	border:1px solid #bbb;
+	border: 1px solid #bbb;
 }
-
-
 </style>
 
 </head>
 
 <body>
 	<!--====================  header area ====================-->
-   <div class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  header wrapper  =======-->
-                    <div class="header-wrapper d-none d-lg-flex">
-                        <!-- logo -->
-                        <div class="logo">
-                            <a href="<%=request.getContextPath()%>/front-end/index.jsp">
-                                <img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png" class="img-fluid" alt="">
-                            </a>
-                        </div>
-                        <!-- menu wrapper -->
-                        <div class="navigation-menu-wrapper">
-                            <nav>
-                                <ul>
-                                    <li class="menu-item-has-children"><a href="#">祭祖商城</a>
-                                        <ul class="sub-menu">
-                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
-                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
-                                        </ul>
-                                    </li>
+	<div class="header-area header-sticky">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<!--=======  header wrapper  =======-->
+					<div class="header-wrapper d-none d-lg-flex">
+						<!-- logo -->
+						<div class="logo">
+							<a href="<%=request.getContextPath()%>/front-end/index.jsp">
+								<img width="150" height="50"
+								src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
+								class="img-fluid" alt="">
+							</a>
+						</div>
+						<!-- menu wrapper -->
+						<div class="navigation-menu-wrapper">
+							<nav>
+								<ul>
+									<li class="menu-item-has-children"><a href="#">祭祖商城</a>
+										<ul class="sub-menu">
+											<li><a
+												href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+											<li><a
+												href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+										</ul></li>
 
-                                    <li class="menu-item-has-children"><a href="#">預約服務</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
-                                        </ul>
-                                    </li>
+									<li class="menu-item-has-children"><a href="#">預約服務</a>
+										<ul class="sub-menu">
+											<li><a
+												href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
+											<li><a
+												href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+											<li><a
+												href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
+										</ul></li>
 
-                                    <li class="menu-item-has-children"><a href="#">客服中心</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
-                                        </ul>
-                                    </li>
+									<li class="menu-item-has-children"><a href="#">客服中心</a>
+										<ul class="sub-menu">
+											<li><a
+												href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
+											<li><a
+												href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
+										</ul></li>
 
-                                    <li><a href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- header icon -->
-                        <div class="header-icon-wrapper">
-                            <ul class="icon-list">
-                                <li>
-                                    <div class="header-cart-icon">
-                                        <a href="#" id="minicart-trigger">
-                                            <i class="ion-bag"></i>
-                                            <span class="counter">${buyListCount}</span>
-                                        </a>
-                                        <!-- mini cart  -->
-                                        
-                                        <div class="mini-cart" id="mini-cart">
-                                            <div class="cart-items-wrapper ps-scroll">
-                                        <%
-                                        	Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
-                                        %>
-                                        <%if (buyList != null && (buyList.size() > 0)){ %>
-                                        	<%
-                                            	for(int index =0; index < buyList.size(); index++){
-                                            		CartVO order = buyList.get(index);
-                                            %>
-                                            
-                                                <div class="single-cart-item">
-                                                    
-                                                    <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a>
-                                                    
-                                                    <div class="image">
-                                                        <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
-                                                                class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                    
-                                                        <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
-                                                        <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
-                                                    </div>
-                                            	</div>
-                                            	
-                                            <%}%>
-                                            
-                                            <div class="cart-calculation">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="text-start">商品總金額 :</td>
-                                                            <td class="text-end">$${amount}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <%}%>
-                                            <div class="cart-buttons">
-                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
-                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="header-settings-icon">
-                                        <a href="javascript:void(0)" class="header-settings-trigger"
-                                            id="header-settings-trigger">
-                                            <div class="setting-button">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </div>
-                                        </a>
+									<li><a
+										href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- header icon -->
+						<div class="header-icon-wrapper">
+							<ul class="icon-list">
+								<li>
+									<div class="header-cart-icon">
+										<a href="#" id="minicart-trigger"> <i class="ion-bag"></i>
+											<span class="counter">${buyListCount}</span>
+										</a>
+										<!-- mini cart  -->
 
-                                        <!-- settings menu -->
-                                        <div class="settings-menu-wrapper" id="settings-menu-wrapper">
-                                            <div class="single-settings-block">
-                                                <h4 class="title">一般用戶 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                                  
-                                                </ul>
-                                            </div>
-                                            <div class="single-settings-block">
-                                                <h4 class="title">廠商專區 </h4>
-                                                <ul>
-                                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                                    
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+										<div class="mini-cart" id="mini-cart">
+											<div class="cart-items-wrapper ps-scroll">
+												<%
+												Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+												%>
+												<%
+												if (buyList != null && (buyList.size() > 0)) {
+												%>
+												<%
+												for (int index = 0; index < buyList.size(); index++) {
+													CartVO order = buyList.get(index);
+												%>
+
+												<div class="single-cart-item">
+
+													<a
+														href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}"
+														class="remove-icon"><i class="ion-android-close"></i></a>
+
+													<div class="image">
+														<a href="single-product.jsp"> <img width="80"
+															height="106"
+															src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
+															class="img-fluid" alt="">
+														</a>
+													</div>
+													<div class="content">
+
+														<p class="product-title">
+															<a href="single-product.jsp"><%=order.getProdName()%></a>
+														</p>
+														<p class="count">
+															<span><%=order.getProdAmount()%> x </span> $
+															<%=order.getProdPrice()%></p>
+													</div>
+												</div>
+
+												<%
+												}
+												%>
+
+												<div class="cart-calculation">
+													<table class="table">
+														<tbody>
+															<tr>
+																<td class="text-start">商品總金額 :</td>
+																<td class="text-end">$${amount}</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<%
+												}
+												%>
+												<div class="cart-buttons">
+													<a
+														href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
+													<a
+														href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
+												</div>
+
+											</div>
+										</div>
+								</li>
+								<li>
+									<div class="header-settings-icon">
+										<a href="javascript:void(0)" class="header-settings-trigger"
+											id="header-settings-trigger">
+											<div class="setting-button">
+												<span></span> <span></span> <span></span>
+											</div>
+										</a>
+
+										<!-- settings menu -->
+										<div class="settings-menu-wrapper" id="settings-menu-wrapper">
+
+											<c:if test="${user == null && compAccount == null}">
+												<div class="single-settings-block">
+													<h4 class="title">一般用戶</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
+													</ul>
+												</div>
+												<div class="single-settings-block">
+													<h4 class="title">廠商專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/secure/loginFromSession.controller">註冊/登入</a></li>
+													</ul>
+												</div>
+											</c:if>
+
+											<c:if test="${user != null}">
+												<div class="single-settings-block">
+													<h4 class="title">會員專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/memberData/my-account-member.jsp">會員中心</a></li>
+													</ul>
+												</div>
+											</c:if>
+
+											<c:if test="${compAccount != null}">
+												<div class="single-settings-block">
+													<h4 class="title">廠商專區</h4>
+													<ul>
+														<li><a
+															href="<%=request.getContextPath()%>/front-end/compData/comp-index.jsp">廠商用戶中心</a></li>
+													</ul>
+												</div>
+											</c:if>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
 					<!--=======  End of header wrapper  =======-->
 
 
@@ -298,7 +331,7 @@
 					<div class="page-wrapper">
 						<div class="page-content-wrapper">
 							<div class="row">
-							
+
 								<c:if test="${not empty insert}">
 									<span
 										style="font-size: 28px; font-weight: 650; text-align: center;">註冊成功，歡迎光臨!</span>
@@ -306,19 +339,18 @@
 								<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
 
 									<form
-										action="<%=request.getContextPath()%>/first-verify-email.controller" 
+										action="<%=request.getContextPath()%>/first-verify-email.controller"
 										method="post">
 
 										<div class="login-form">
-											<h4 class="login-titlerrors.inputerrore" ">請至您的電子信箱收取驗證信</h4>
+											<h4 class="login-titlerrors.inputerrore"">請至您的電子信箱收取驗證信</h4>
 
 											<div class="row">
 												<div class="col-md-12 col-12">
-													<label>請輸入驗證碼</label> <input type="text" name="verify"
-														> <span
-														style="color: red">${errors.inputerror}</span>
+													<label>請輸入驗證碼</label> <input type="text" name="verify">
+													<span style="color: red">${errors.inputerror}</span>
 												</div>
-										
+
 												<div class="col-md-12">
 													<button type="submit" class="register-button mt-3">確認送出</button>
 												</div>
@@ -328,7 +360,7 @@
 
 									</form>
 								</div>
-							
+
 							</div>
 						</div>
 					</div>
@@ -339,122 +371,129 @@
 	</div>
 	<!--====================  End of page content area  ====================-->
 	<!--====================  newsletter area ====================-->
-	
+
 	<!--====================  End of newsletter area  ====================-->
 	<!--====================  footer area ====================-->
-	   <div class="footer-area">
-        <div class="footer-">
-            <div class="container wide">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
-                            <div class="container">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-lg-2 col-md-2">
-                                        <div class="footer-logo">
-                                            <a href="#"><img width="150" height="50" src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
-                                                    class="img-fluid" alt=""></a>
-                                        </div>
-                                    </div>
+	<div class="footer-area">
+		<div class="footer-">
+			<div class="container wide">
+				<div class="row">
+					<div class="col-lg-12">
+						<div
+							class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
+							<div class="container">
+								<div class="row align-items-center no-gutters">
+									<div class="col-lg-2 col-md-2">
+										<div class="footer-logo">
+											<a href="#"><img width="150" height="50"
+												src="<%=request.getContextPath()%>/assets/img/logo_v2.png"
+												class="img-fluid" alt=""></a>
+										</div>
+									</div>
 
-                                  <div class="col-lg-7 col-md-5">
+									<div class="col-lg-7 col-md-5">
 
-                                        <div class="copyright-text">
-                                            
-                                             <a href="#">龘虤</a>
-                                            <P>104 台北市中山區南京東路三段219號5樓</P>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-5">
-                                        <div class="copyright-social-wrapper">
-                                            <ul class="copyright-social">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<div class="copyright-text">
 
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--====================  End of footer area  ====================-->
-    <!--=======  offcanvas mobile menu  =======-->
+											<a href="#">龘虤</a>
+											<P>104 台北市中山區南京東路三段219號5樓</P>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-5">
+										<div class="copyright-social-wrapper">
+											<ul class="copyright-social">
+												<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 
-    <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
-        <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
-            <i class="ion-android-close"></i>
-        </a>
+												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+												<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+												<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--====================  End of footer area  ====================-->
+	<!--=======  offcanvas mobile menu  =======-->
 
-        <div class="offcanvas-wrapper">
+	<div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
+		<a href="javascript:void(0)" class="offcanvas-menu-close"
+			id="offcanvas-menu-close-trigger"> <i class="ion-android-close"></i>
+		</a>
 
-            <div class="offcanvas-inner-content">
-                <nav class="offcanvas-navigation">
-                    <ul>
-                       <li class="menu-item-has-children"><a href="#">祭祖商城</a>
-                                        <ul class="sub-menu">
-                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
-                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
-                                        </ul>
-                                    </li>
-                         <li class="menu-item-has-children"><a href="#">預約服務</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
-                                        </ul>
-                                    </li>
+		<div class="offcanvas-wrapper">
+
+			<div class="offcanvas-inner-content">
+				<nav class="offcanvas-navigation">
+					<ul>
+						<li class="menu-item-has-children"><a href="#">祭祖商城</a>
+							<ul class="sub-menu">
+								<li><a
+									href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+							</ul></li>
+						<li class="menu-item-has-children"><a href="#">預約服務</a>
+							<ul class="sub-menu">
+								<li><a
+									href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
+								<li><a
+									href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
+								<li><a
+									href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
+							</ul></li>
 
 
-                        <li class="menu-item-has-children"><a href="#">客服中心</a>
-                            <ul class="sub-menu">
-                                <li><a href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
-                                <li><a href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
-                            </ul>
-                        </li>
+						<li class="menu-item-has-children"><a href="#">客服中心</a>
+							<ul class="sub-menu">
+								<li><a
+									href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
+								<li><a
+									href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
+							</ul></li>
 
-                        <li><a href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
-                    </ul>
-                </nav>
+						<li><a
+							href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
+					</ul>
+				</nav>
 
-                <div class="offcanvas-settings">
-                    <nav class="offcanvas-navigation">
-                        <ul>
-                            <li class="menu-item-has-children"><a href="#">會員登入 </a>
-                                <ul class="sub-menu">
-                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children"><a href="#">廠商登入 </a>
-                                <ul class="sub-menu">
-                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+				<div class="offcanvas-settings">
+					<nav class="offcanvas-navigation">
+						<ul>
+							<li class="menu-item-has-children"><a href="#">會員登入 </a>
+								<ul class="sub-menu">
+									<li><a
+										href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
+								</ul></li>
+							<li class="menu-item-has-children"><a href="#">廠商登入 </a>
+								<ul class="sub-menu">
+									<li><a
+										href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
+								</ul></li>
+						</ul>
+					</nav>
+				</div>
 
-                <div class="offcanvas-widget-area">
-                    <!--Off Canvas Widget Social Start-->
-                    <div class="off-canvas-widget-social">
-                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                        <a href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#" title="Vimeo"><i class="fa fa-vimeo-square"></i></a>
-                    </div>
-                    <!--Off Canvas Widget Social End-->
-                </div>
-            </div>
-        </div>
+				<div class="offcanvas-widget-area">
+					<!--Off Canvas Widget Social Start-->
+					<div class="off-canvas-widget-social">
+						<a href="#" title="Facebook"><i class="fa fa-facebook"></i></a> <a
+							href="#" title="Twitter"><i class="fa fa-twitter"></i></a> <a
+							href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a> <a
+							href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a> <a
+							href="#" title="Vimeo"><i class="fa fa-vimeo-square"></i></a>
+					</div>
+					<!--Off Canvas Widget Social End-->
+				</div>
+			</div>
+		</div>
 
-    </div>
+	</div>
 
 	<!--=======  End of offcanvas mobile menu  =======-->
 	<!--====================  search overlay ====================-->

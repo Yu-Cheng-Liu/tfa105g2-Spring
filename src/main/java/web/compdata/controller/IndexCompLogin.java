@@ -44,15 +44,15 @@ public class IndexCompLogin {
 					+ "                                            </div>");
 			
 			String status = service.verifiedOrNot(sessionCD);
-			model.addAttribute("status", status);
-			session.setAttribute("verify", status);
+			session.setAttribute("status", status);
+			session.setAttribute("verify", sessionCD.getVerify());
 			session.setAttribute("compName", sessionCD.getCompName());
 			session.setAttribute("chargePerson", sessionCD.getChargePerson());
 			session.setAttribute("compPhone", sessionCD.getCompPhone());
 			session.setAttribute("email", sessionCD.getEmail());
 			session.setAttribute("compAccount", sessionCD.getCompAccount());
 			session.setAttribute("compNo", sessionCD.getCompNO());
-			session.setAttribute("address", sessionCD.getAddress());
+			session.setAttribute("compAddress", sessionCD.getAddress());
 			String classes = "show active";
 			model.addAttribute("classes1",classes);
 			String active = "class=\"active\"";

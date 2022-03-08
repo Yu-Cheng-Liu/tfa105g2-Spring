@@ -1,17 +1,14 @@
 package web.cart.dao.impl;
 
-import java.util.*;
+import java.util.List;
 
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import web.cart.dao.CartDAOInterface;
 import web.cart.entity.CartVO;
-import web.product.entity.ProductVO;
 
 @Repository
 public class CartDAO  implements CartDAOInterface{

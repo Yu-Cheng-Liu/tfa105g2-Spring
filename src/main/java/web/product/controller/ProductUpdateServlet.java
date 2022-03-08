@@ -2,9 +2,10 @@ package web.product.controller;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,33 +19,39 @@ import org.springframework.web.multipart.MultipartFile;
 import web.product.entity.ProductVO;
 import web.product.service.ProductServiceInterface;
 
+
 @Controller
-//@MultipartConfig
-public class ProductInsertServlet {
+public class ProductUpdateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private ProductServiceInterface productService;
-
-	@RequestMapping(value = "/front-end/product/ProductInsertServlet.controller", method = { RequestMethod.POST })
-	public String prodInsert(String action, String prodName, Integer prodPrice, Integer prodStock, Integer prodTypeCode,
-			String prodDesc, Model model, HttpSession session, @RequestParam("prodImg") MultipartFile[] prodImg)
-			throws IOException {
-//		for (MultipartFile file : prodImg) {
-//			String name = file.getOriginalFilename();
-//			byte[] bytes = file.getBytes();
-//			System.out.println(name);
-//			System.out.println(bytes);
-//		}
-
-		Integer compNo = (Integer)session.getAttribute("compNo");
+	
+	@RequestMapping(value = "/front-end/product/ProductUpdateServlet.controller", method = {RequestMethod.POST})
+	public String prodUpdate(Integer prodNo,Integer prodTypeNo ,String prodName, Integer prodPrice, Integer prodStock, Integer prodTypeCode,
+			String prodDesc, Model model, HttpServletRequest req , HttpSession session,@RequestParam("prodImg") MultipartFile[] prodImg) throws IOException {
+		
+		
 		Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
+		model.addAttribute("errorMsgs",errorMsgs);
+		
+		
+//		productService.selectByProdNo(prodNo);
+		prodNo = (Integer) session.getAttribute("prodNo");
+//		prodTypeNo = (Integer) session.getAttribute("prodTypeNo");
+		prodName = (String) session.getAttribute(prodName);
+		prodPrice = (Integer) session.getAttribute("prodPrice");
+		prodStock = (Integer) session.getAttribute("prodStock");
+		
+		
 
 		// 商品名稱
-		String prodNameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,15}$";
+		String prodNameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{1,15}$";
 		if (prodName == null || prodName.trim().length() == 0) {
 			errorMsgs.put("prodName", "請輸入商品名稱！");
 			model.addAttribute("errorMsgs", errorMsgs);
 		} else if (!prodName.trim().matches(prodNameReg)) {
-			errorMsgs.put("prodName", "商品名稱只能是中文、英文、數字和_，且長度需在2到15之間");
+			errorMsgs.put("prodName", "商品名稱只能是中文、英文、數字和_，且長度需在1到15之間");
 			model.addAttribute("errorMsgs", errorMsgs);
 		}
 
@@ -93,7 +100,8 @@ public class ProductInsertServlet {
 
 
 		ProductVO prodVO = new ProductVO();
-		prodVO.setCompNo(compNo);
+		prodVO.setProdNo(prodNo);
+//		prodVO.setCompNo(1);
 		prodVO.setProdName(prodName);
 		prodVO.setProdDesc(prodDesc);
 		prodVO.setProdPrice(prodPrice);
@@ -109,22 +117,32 @@ public class ProductInsertServlet {
 			model.addAttribute("prodDesc", prodDesc);
 			model.addAttribute("prodPrice", prodPrice);
 			model.addAttribute("prodStock", prodStock);
-
-			return "/front-end/product/add-product.jsp";
+			model.addAttribute("errorMsgs", errorMsgs);
+			String path = req.getContextPath();
+				
+			
+			session.setAttribute("indexHamburger", "<div class=\"single-settings-block\">\r\n"
+					+ "                                                <h4 class=\"title\">廠商專區 </h4>\r\n"
+					+ "                                                <ul>\r\n"
+					+ "                                                    <li><a href="
+					+ path
+					+ "/front-end/compData/comp-index.jsp>廠商用戶中心</a></li>\r\n"
+					+ "                                                    \r\n"
+					+ "                                                </ul>\r\n"
+					+ "                                            </div>");
+			
+			
+			return "/front-end/product/update-product.jsp";
 		}
-
-		prodVO = productService.add(prodVO);
-		System.out.println(compNo);
 		
-		List <ProductVO> list = productService.selectProdByCompNo(compNo);
-		model.addAttribute("prods", list);
-		
+		prodVO = productService.update(prodVO);
+		model.addAttribute("prodVO",prodVO);
 		String classes = "show active";
-		model.addAttribute("classes3",classes);
+		model.addAttribute("classes7",classes);
 		String active = "class=\"active\"";
-		model.addAttribute("attrs4", active);
-		return "/front-end/compData/comp-index.jsp";
-
+		model.addAttribute("attrs6", active);
+		return "/front-end/compData/comp-indexjsp";
+		
+		
 	}
-
 }

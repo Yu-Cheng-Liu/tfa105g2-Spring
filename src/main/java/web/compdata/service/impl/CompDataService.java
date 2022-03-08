@@ -24,6 +24,10 @@ public class CompDataService implements CompDataServiceInterface {
 	private CompDataDAOInterface compDataDAOi;
 	
 	String passwordRegex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
+	String accountRegex = "^[0-9]{8}$";
+	
+	
+	
 
 	public Map<String, String> getErrors() {
 		return errors;
@@ -55,8 +59,6 @@ public class CompDataService implements CompDataServiceInterface {
 			errors.put("password", "登入失敗請檢查輸入內容");
 			return null;
 		}
-//		System.out.println(cd);
-//		System.out.println(errors);
 		return null;
 
 	}
@@ -180,6 +182,9 @@ public class CompDataService implements CompDataServiceInterface {
 			if ("".equals(cd.getCompAccount().trim())) {
 				errors.put("RcompAccount", "帳號不可為空白");
 			}
+			if(!cd.getCompAccount().matches(accountRegex)) {
+				errors.put("RcompAccount", "帳號需符合統編格式");
+			}
 			if ("".equals(cd.getCompName().trim())) {
 				errors.put("RcompName", "廠商名稱不可為空白");
 			}
@@ -192,6 +197,7 @@ public class CompDataService implements CompDataServiceInterface {
 			if (!cd.getPassword().matches(passwordRegex)) {
 				errors.put("Rpassword", "密碼至少8個字,並包含大寫,小寫,數字");
 			}
+			
 			if (errors.size() == 0) {
 				CompData result = compDataDAOi.insert(cd);
 				return result;
@@ -247,11 +253,9 @@ public class CompDataService implements CompDataServiceInterface {
 		System.out.println(cd.getVerify());
 		
 		if("1".equals(cd.getVerify())) {
-//			return "歡迎來到龘虤！　\r\n 恭喜您已完成email驗證，祝您斂財愉快";
 			return "0";
 		}else {
 			
-//			return "歡迎來到龘虤！ \r\n 您的email驗證尚未完成，將無法使用上架功能，是否現在驗證？";
 			return "1";
 		}
 	}

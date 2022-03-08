@@ -2,8 +2,6 @@ package web.tools.impl;
 
 import java.util.Random;
 
-import org.springframework.stereotype.Component;
-
 public class AuthCode {
 		int leftLimit = 48; 
 	    int rightLimit = 122;

@@ -1,6 +1,7 @@
 package web.manager.service;
 
 import java.util.List;
+
 import web.manager.entity.FunctionBean;
 
 public interface FunctionServiceInterface {

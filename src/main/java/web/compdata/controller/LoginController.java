@@ -58,15 +58,15 @@ public class LoginController {
 				
 			
 				String status = service.verifiedOrNot(cd);
-				model.addAttribute("status", status);
-				session.setAttribute("verify", status);
+				session.setAttribute("status", status);
+				session.setAttribute("verify", cd.getVerify());
 				session.setAttribute("compName", cd.getCompName());
 				session.setAttribute("chargePerson", cd.getChargePerson());
 				session.setAttribute("compPhone", cd.getCompPhone());
 				session.setAttribute("email", cd.getEmail());
 				session.setAttribute("compAccount", cd.getCompAccount());
 				session.setAttribute("compNo", cd.getCompNO());
-				session.setAttribute("address", cd.getAddress());
+				session.setAttribute("compAddress", cd.getAddress());
 				String classes = "show active";
 				model.addAttribute("classes1",classes);
 				String active = "class=\"active\"";

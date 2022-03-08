@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import web.contact.dao.ServiceDAOInterface;
 import web.contact.entity.impl.ServiceBean;
-import web.tools.SendMail;
 import web.contact.service.ServServiceInterface;
+import web.tools.SendMail;
 
 @Service
 @Transactional
