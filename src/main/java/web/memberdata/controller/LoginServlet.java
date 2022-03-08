@@ -77,7 +77,7 @@ public class LoginServlet {
 			} catch (Exception ignored) {
 			}
 
-			return "redirect:/front-end/index.jsp"; // 要改首頁
+			return "redirect:/front-end/index.jsp";
 		}
 
 	}

@@ -36,15 +36,9 @@ public class ImgReaderServlet extends HttpServlet {
 		ServletOutputStream out = res.getOutputStream();
 
 		try {
-			/*************************** 1.接收請求參數 *****************************************/
-			
 			Integer userno1 = Integer.valueOf(req.getParameter("userno"));
-			
-			/*************************** 2.開始查詢資料 *****************************************/
-			
 			MemberDataVO memberDataVO = service.selectByUserNo(userno1);
 			
-			/*************************** 3.查詢完成,準備轉交(Send the Success view) **************/
 			byte[] buf = memberDataVO.getPicture();
 			System.out.println(buf);
 			out.write(buf);

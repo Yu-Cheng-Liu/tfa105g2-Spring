@@ -28,13 +28,14 @@ public class CartServlet extends HttpServlet {
 	private ProductServiceInterface productServiceInterface;
 	
 	@RequestMapping(value = "/CartServlet.controller", method = { RequestMethod.GET })
-    public String Cart(@PathParam("prodNo") Integer prodNo, String prodName, Integer prodPrice, Integer prodStock, @PathParam("prodAmount") Integer prodAmount, Integer userno, String action, HttpServletRequest req, HttpServletResponse res, Model model, HttpSession session) {
+    public String Cart(@PathParam("prodNo") Integer prodNo, String prodName, Integer prodPrice, Integer prodStock, @PathParam("prodAmount") Integer prodAmount, Integer compNo, String action, HttpServletRequest req, HttpServletResponse res, Model model, HttpSession session) {
 		
 		MemberDataVO memberDataVo = (MemberDataVO) session.getAttribute("user");
 		System.out.println("33333333333");	
 		System.out.println("action=" + action);
 //		session = req.getSession();
 		List<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+		System.out.println("buyList="+ buyList);
 		
 		if(!action.equals("CheckOut")) {
 			
@@ -57,6 +58,7 @@ public class CartServlet extends HttpServlet {
 			if(action.equals("AddCart")) {
 				// 取得要新增的商品
 				CartVO cartVo = getCart(req);
+				System.out.println("cartVo=" + cartVo);
 							
 				if (buyList == null) {
 					buyList = new Vector<CartVO>();
@@ -111,6 +113,9 @@ public class CartServlet extends HttpServlet {
 			model.addAttribute("prodStock", prodStock);
 			session.getAttribute("prodAmount");
 			model.addAttribute("prodAmount", prodAmount);
+			session.getAttribute("compNo");
+			model.addAttribute("compNo", compNo);
+			
 		}
 		else {
 			// 結帳
@@ -126,16 +131,19 @@ public class CartServlet extends HttpServlet {
 		String cprodName = req.getParameter("prodName");
 		Integer cprodPrice = Integer.valueOf(req.getParameter("prodPrice"));
 		Integer cprodAmount = Integer.valueOf(req.getParameter("prodAmount"));
+		Integer compNo = Integer.valueOf(req.getParameter("compNo"));
 //		System.out.println("prodNo:" + cprodNo);
 //		System.out.println("prodName:" + cprodName);
 //		System.out.println("prodPrice:" + cprodPrice);
 //		System.out.println("prodAmount:" + cprodAmount);
+		System.out.println("compNo:" + compNo);
 		
 		CartVO cartVo = new CartVO();
 		cartVo.setProdNo(cprodNo);
 		cartVo.setProdName(cprodName);
 		cartVo.setProdPrice(cprodPrice);
 		cartVo.setProdAmount(cprodAmount);
+		cartVo.setCompNo(compNo);
 		return cartVo;
 	}
 	

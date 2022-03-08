@@ -230,9 +230,10 @@ color: #FAEBD7;
     text-decoration: none;
 }
 
-
-
-
+h3{
+font-weight:500;
+text-shadow:0.2px 0.2px 0.2px #696969; 
+}
 
 </style>
 
@@ -596,6 +597,7 @@ color: #FAEBD7;
 										<div class="tab-pane fade ${showactive3}" id="tower"
 											role="tabpanel">
 											<div class="myaccount-content">
+											<h3>會員塔位</h3>
 												<form id="selectTower"
 													action="<%=request.getContextPath() %>/towerforuser.controller"
 													method="POST">
