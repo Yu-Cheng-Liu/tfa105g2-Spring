@@ -149,6 +149,12 @@ public class CompDataService implements CompDataServiceInterface {
 			if ("".equals(cd.getEmail().trim())) {
 				errors.put("email", "電子郵件不可為空白");
 			}
+			
+			if(compDataDAOi.selectByEmail(cd.getEmail())!=null) {
+				if(compDataDAOi.selectByEmail(cd.getEmail()).getCompNO()!=cd.getCompNO()) {
+					errors.put("email", "此email已被使用");
+				}
+			}
 
 			if (errors.size() == 0) {
 				edit.setCompName(cd.getCompName());
@@ -170,7 +176,7 @@ public class CompDataService implements CompDataServiceInterface {
 	}
 
 //==================================================Register=========================================================	
-	public CompData Register(CompData cd) {
+	public CompData Register(CompData cd , String confirmPassword) {
 		
 		
 		errors= new HashMap<String, String>();
@@ -197,8 +203,15 @@ public class CompDataService implements CompDataServiceInterface {
 			if (!cd.getPassword().matches(passwordRegex)) {
 				errors.put("Rpassword", "密碼至少8個字,並包含大寫,小寫,數字");
 			}
+			if(!cd.getPassword().equals(confirmPassword)) {
+				errors.put("Rpassword", "兩次密碼輸入不相同");
+			}
 			
 			if (errors.size() == 0) {
+				String password = passwordEncoder.encode(cd.getPassword()) ;
+				
+				cd.setPassword(password);
+				
 				CompData result = compDataDAOi.insert(cd);
 				return result;
 			} else {
@@ -250,7 +263,6 @@ public class CompDataService implements CompDataServiceInterface {
 		
 		System.out.println(cd);
 		
-		System.out.println(cd.getVerify());
 		
 		if("1".equals(cd.getVerify())) {
 			return "0";

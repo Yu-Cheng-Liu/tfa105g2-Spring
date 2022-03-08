@@ -53,6 +53,7 @@ public class IndexCompLogin {
 			session.setAttribute("compAccount", sessionCD.getCompAccount());
 			session.setAttribute("compNo", sessionCD.getCompNO());
 			session.setAttribute("compAddress", sessionCD.getAddress());
+			session.setMaxInactiveInterval(86400);
 			String classes = "show active";
 			model.addAttribute("classes1",classes);
 			String active = "class=\"active\"";
