@@ -35,8 +35,7 @@ public class MemberOrder extends HttpServlet {
 		List<CartVO> buyList = (Vector<CartVO>)session.getAttribute("myCart");
 		
 		Integer orderNo = (Integer) session.getAttribute("orderNo");
-		
-		
+		System.out.println("orderNo=" + orderNo);
 		
 		for(int i = 0 ; i < buyList.size(); i++) {
 			Integer prodNo = buyList.get(i).getProdNo();
@@ -61,19 +60,18 @@ public class MemberOrder extends HttpServlet {
 			System.out.println("detailVO="+detailVO);
 			
 			
-			
 		}
 		
 		Map<String,String>errors = detailService.getErrors();
 		
 		
-		if(errors.size()==0) {
+//		if(errors.size()==0) {
 			return "/front-end/product/orderOK.jsp";
-		}else {
-			
-			
-			return "/front-end/product/checkout.jsp";
-		}
+//		}else {
+//			
+//			
+//			return "/front-end/product/checkout.jsp";
+//		}
 		
 	}
 		

@@ -50,7 +50,6 @@ public class MemberOrderDAO implements MemberOrderDAOInterface {
 				temp.setDeliveryAddress(vo.getDeliveryAddress());
 				temp.setDeliveryStatusCode(vo.getDeliveryTypeCode());
 				temp.setDeliveryTypeCode(vo.getDeliveryTypeCode());
-				temp.setDonate(vo.getDonate());
 				temp.setTotal(vo.getTotal());
 				return temp;
 			}

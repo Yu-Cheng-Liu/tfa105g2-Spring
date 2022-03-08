@@ -52,7 +52,6 @@ public class MemberOrderService implements MemberOrderServiceInterface{
 	public MemberOrderVO updateOrder(MemberOrderVO vo) {
 		if(vo!=null && vo.getOrderNo()!=null) {
 			vo.setDeliveryAddress(vo.getDeliveryAddress());
-			vo.setDonate(vo.getDonate());
 			memberOrderDAOInterface.update(vo);
 			return vo;
 		}
