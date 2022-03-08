@@ -22,8 +22,10 @@ import web.chatbot.entity.ChatMessage;
 import web.chatbot.entity.State;
 import web.chatbot.jedis.JedisHandleMessage;
 
-@ServerEndpoint("/FriendWS/{userName}")
+
+@ServerEndpoint("/DoraChat/{userName}")
 public class Customer {
+
 	private static Map<String, Session> sessionsMap = new ConcurrentHashMap<>();
 	Gson gson = new Gson();
 
@@ -41,10 +43,7 @@ public class Customer {
 				session.getAsyncRemote().sendText(stateMessageJson);
 			}
 		}
-
-		String text = String.format("Session ID = %s, connected; userName = %s%nusers: %s", userSession.getId(),
-				userName, userNames);
-		System.out.println(text);
+		System.out.println(userSession.getId() + ": 已連線");
 	}
 
 	@OnMessage
@@ -52,7 +51,7 @@ public class Customer {
 		ChatMessage chatMessage = gson.fromJson(message, ChatMessage.class);
 		String sender = chatMessage.getSender();
 		String receiver = chatMessage.getReceiver();
-		
+		// 撈取歷史紀錄
 		if ("history".equals(chatMessage.getType())) {
 			List<String> historyData = JedisHandleMessage.getHistoryMsg(sender, receiver);
 			String historyMsg = gson.toJson(historyData);
@@ -64,7 +63,7 @@ public class Customer {
 			}
 		}
 		
-		
+		// 記錄訊息
 		Session receiverSession = sessionsMap.get(receiver);
 		if (receiverSession != null && receiverSession.isOpen()) {
 			receiverSession.getAsyncRemote().sendText(message);
@@ -90,7 +89,7 @@ public class Customer {
 				break;
 			}
 		}
-
+		
 		if (userNameClose != null) {
 			State stateMessage = new State("close", userNameClose, userNames);
 			String stateMessageJson = gson.toJson(stateMessage);
@@ -99,9 +98,6 @@ public class Customer {
 				session.getAsyncRemote().sendText(stateMessageJson);
 			}
 		}
-
-		String text = String.format("session ID = %s, disconnected; close code = %d%nusers: %s", userSession.getId(),
-				reason.getCloseCode().getCode(), userNames);
-		System.out.println(text);
+		System.out.println(userSession.getId() + ": 已離線");
 	}
 }
