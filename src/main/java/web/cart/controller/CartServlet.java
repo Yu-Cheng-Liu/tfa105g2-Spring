@@ -52,6 +52,7 @@ public class CartServlet extends HttpServlet {
 				prodName = pVO.getProdName();
 				prodPrice = pVO.getProdPrice();
 				prodStock = pVO.getProdStock();
+				compNo = pVO.getCompNo();
 			}
 
 			// 商品加入購物車
