@@ -125,73 +125,7 @@
 						<!-- header icon -->
 						<div class="header-icon-wrapper">
                             <ul class="icon-list">
-                                <li>
-                                <%
-                                       Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
-                                %>
-                                    <div class="header-cart-icon">
-                                        <a href="#" id="minicart-trigger">
-                                            <i class="ion-bag"></i>
-                                            <%if (buyList != null && (buyList.size() > 0)){ %>
-                                            <span class="counter">${buyListCount}</span>
-                                            <%} %>
-                                            <%if (buyList == null || (buyList.size() == 0)){ %>
-                                            <span class="counter">0</span>
-                                            <%} %>
-                                        </a>
-                                        <!-- mini cart  -->
-                                        
-                                        <div class="mini-cart" id="mini-cart">
-                                            <div class="cart-items-wrapper ps-scroll">
-                                        
-                                        <%if (buyList != null && (buyList.size() > 0)){ %>
-                                        	<%
-                                            	for(int index =0; index < buyList.size(); index++){
-                                            		CartVO order = buyList.get(index);
-                                            %>
-                                            
-                                                <div class="single-cart-item">
-                                                    
-                                                    <a href="${pageContext.request.contextPath}/ViewCart.controller?action=Cancel&cancel=<%=index %>" class="remove-icon"><i
-                                                            class="ion-android-close"></i></a>
-                                                    
-                                                    <div class="image">
-                                                        <a href="single-product.jsp">
-                                                            <img width="80" height="106"
-                                                                src="${pageContext.request.contextPath}/pictureServlet.controller?prodNo=<%=order.getProdNo()%>&prodImg=1"
-                                                                class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                    
-                                                        <p class="product-title"><a href="single-product.jsp"><%=order.getProdName()%></a></p>
-                                                        <p class="count"><span><%=order.getProdAmount()%> x </span> $ <%=order.getProdPrice() %></p>
-                                                    </div>
-                                            	</div>
-                                            	
-                                            	<%}%>
-                                            
-                                            <div class="cart-calculation">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="text-start">商品總金額 :</td>
-                                                            <td class="text-end">$${amount}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <%}%>
-                                            <div class="cart-buttons">
-                                                <a href="${pageContext.request.contextPath}/ViewCart.controller?action=ViewCart">檢視購物車</a>
-                                                <%if (buyList != null && (buyList.size() > 0)){ %>
-                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
-                                                <%} %>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                               
                                 <li>
                                     <div class="header-settings-icon">
                                         <a href="javascript:void(0)" class="header-settings-trigger"
