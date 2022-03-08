@@ -9,7 +9,7 @@
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Eposi - Multipurpose eCommerce Bootstrap5 Template</title>
+<title>廠商登入/註冊 | 龘虤</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
