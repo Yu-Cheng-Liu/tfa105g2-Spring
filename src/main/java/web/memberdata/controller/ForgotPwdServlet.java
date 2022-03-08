@@ -40,8 +40,8 @@ public class ForgotPwdServlet {
 			System.out.println("tempwdmember:"+tempwdmember);
 
 			SendMail sendMail = new SendMail(email, "[龘虤]會員忘記密碼通知信",
-					"親愛的會員您好:\n\r您的帳號:" + tempwdmember.getUseraccount() + "申請忘記密碼通知，" + "系統發送新密碼為" + temporarypwd + ",\n\r"
-							+ "請使用新密碼登入，並至會員中心重新修改密碼。\n\r\n\r\n\r龘虤會員中心 敬上");
+					"親愛的顧客您好:\n\r我們收到您申請重置密碼的請求，系統發送新密碼為" + temporarypwd + 
+					",\n\r請使用新密碼登入，並至會員中心重新修改密碼。\n\r\n\r\n\r謝謝您!\n\r龘虤團隊上");
 			sendMail.send();
 
 			return "/front-end/memberData/send-newpwd-member.jsp";
