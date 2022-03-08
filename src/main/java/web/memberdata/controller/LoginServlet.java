@@ -55,7 +55,7 @@ public class LoginServlet {
 			// 新建Cookie
 			Cookie uaccountCookie = new Cookie("useraccount", useraccount);
 			Cookie pwdCookie = new Cookie("password", password);
-			//設置Cookie有效期限
+			// 設置Cookie有效期限
 			if(remember!=null) {
 				uaccountCookie.setMaxAge(60*60*24);
 				pwdCookie.setMaxAge(60*60*24);

@@ -501,9 +501,7 @@ text-shadow:0.2px 0.2px 0.2px #696969;
 											href="#tower" ${active3} data-bs-toggle="tab"><i
 											class="fa fa-calendar"></i>塔位資訊</a> <a href="#account-info"
 											${active4} data-bs-toggle="tab"><i class="fa fa-user"></i>
-											修改個人資料</a> <a href="#payment-method" ${active5}
-											data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
-											付款方式</a>
+											修改個人資料</a> 
 
 										<form action="<%=request.getContextPath()%>/logout-member.controller"
 														method="post">
@@ -629,19 +627,6 @@ text-shadow:0.2px 0.2px 0.2px #696969;
 
 										</div>
 										<!-- Single Tab Content End -->
-
-										<!-- Single Tab Content Start -->
-										<div class="tab-pane fade ${showactive5}" id="payment-method"
-											role="tabpanel">
-											<div class="myaccount-content">
-												<h3>Payment Method</h3>
-
-												<p class="saved-message">You Can't Saved Your Payment
-													Method yet.</p>
-											</div>
-										</div>
-										<!-- Single Tab Content End -->
-
 
 										<!-- Single Tab Content Start -->
 										<div class="tab-pane fade ${showactive4}" id="account-info"
