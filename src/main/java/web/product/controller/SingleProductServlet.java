@@ -50,6 +50,8 @@ public class SingleProductServlet extends HttpServlet {
 		}
 		String prodDesc = result.getProdDesc();
 		model.addAttribute("prodDesc", prodDesc);
+		Integer compNo = result.getCompNo();
+		model.addAttribute("compNo", compNo);
 		
 		return "/front-end/product/SingleProduct.jsp";
 
