@@ -26,7 +26,7 @@ public class GetAllOrdersController {
 			Integer attribute = (Integer) session.getAttribute("compNo");
 			System.out.println(attribute);
 			
-			String classes = "show active";
+			
 //			Integer compNo = Integer.parseInt(attribute);
 
 			List<OrderDetail> selects = (List<OrderDetail>) odsi.selectWithCompNo(attribute);
@@ -36,12 +36,14 @@ public class GetAllOrdersController {
 
 			if (errors.size() != 0) {
 				model.addAttribute("errors", errors);
+				String classes = "show active";
 				model.addAttribute("classes2",classes);
 				String active = "class=\"active\"";
 				model.addAttribute("attrs3", active);
 				return "/front-end/compData/comp-index.jsp";
 			} else {
 				model.addAttribute("list", selects);
+				String classes = "show active";
 				model.addAttribute("classes2",classes);
 				String active = "class=\"active\"";
 				model.addAttribute("attrs3", active);
@@ -49,7 +51,10 @@ public class GetAllOrdersController {
 			}
 
 		}
-		
+		String classes = "show active";
+		model.addAttribute("classes2",classes);
+		String active = "class=\"active\"";
+		model.addAttribute("attrs3", active);
 		return "/front-end/compData/comp-index.jsp";
 	}
 

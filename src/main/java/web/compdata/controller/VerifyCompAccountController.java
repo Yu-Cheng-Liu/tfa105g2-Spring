@@ -30,11 +30,33 @@ public class VerifyCompAccountController {
 		
 		CompData cd = service.findCertainAccount(compAccount);
 		String authentication = (String) session.getAttribute("authCode");
-		
+		System.out.println(verify);
+		System.out.println(authentication);
 		if(verify.equals(authentication)) {
+			
+			
+			
 			
 			cd.setVerify("1");
 			service.editPersonalProfile(cd);
+			
+			String status = service.verifiedOrNot(cd);
+			session.setAttribute("status", status);
+			session.setAttribute("verify", cd.getVerify());
+			session.setAttribute("compName", cd.getCompName());
+			session.setAttribute("chargePerson", cd.getChargePerson());
+			session.setAttribute("compPhone", cd.getCompPhone());
+			session.setAttribute("email", cd.getEmail());
+			session.setAttribute("compAccount", cd.getCompAccount());
+			session.setAttribute("compNo", cd.getCompNO());
+			session.setAttribute("compAddress", cd.getAddress());
+			
+			
+			String classes = "show active";
+			model.addAttribute("classes1",classes);
+			String active = "class=\"active\"";
+			model.addAttribute("attrs2", active);
+			
 			
 			return "redirect:/front-end/compData/comp-index.jsp";
 			

@@ -49,10 +49,10 @@ public class RegisterController {
 		attrs.setCompName(compName);
 		attrs.setCompPhone(compPhone);
 		attrs.setEmail(email);
-		attrs.setPassword(passwordEncoder.encode(password));
+		attrs.setPassword(password);
 		attrs.setVerify("0");
 		
-		CompData cd = service.Register(attrs);
+		CompData cd = service.Register(attrs , confirmPassword);
 		Map<String , String > errors = service.getErrors();
 		AuthCode authCode = new AuthCode();
 		authCode.setTargetStringLength(6);
@@ -94,6 +94,7 @@ public class RegisterController {
 			session.setAttribute("authCode", AuthCode);
 			session.setAttribute("password", cd.getPassword());
 			session.setAttribute("verify", cd.getVerify());
+			session.setMaxInactiveInterval(86400);
 		
 			
 			SendMail sendMail = new SendMail(cd.getEmail(),"安安 "+cd.getCompName()+" 你好","請在頁面上輸入驗證碼 " + AuthCode + "\n\r" + "此驗證碼將於30分鐘後失效" );

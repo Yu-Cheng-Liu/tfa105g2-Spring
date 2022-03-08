@@ -67,6 +67,7 @@ public class LoginController {
 				session.setAttribute("compAccount", cd.getCompAccount());
 				session.setAttribute("compNo", cd.getCompNO());
 				session.setAttribute("compAddress", cd.getAddress());
+				session.setMaxInactiveInterval(86400);
 				String classes = "show active";
 				model.addAttribute("classes1",classes);
 				String active = "class=\"active\"";

@@ -1,6 +1,14 @@
 
 
-
+$(document).ready(function(){
+	console.log($("#lockCertainTab").val());
+	    if($("#lockCertainTab").val()=="1"){
+	
+			$(".ifVerifiedThenShow").remove();
+	    
+	    	
+	    }
+    });
 
 
 $(function() {
@@ -29,6 +37,15 @@ $(function() {
 		}
 	});
 	
+	document.querySelector('#byebye').onclick = () => {
+		const form2 = document.querySelector('#logout');
+		const button2 = document.createElement('button');
+		button2.type = 'submit';
+		// form.append(button);
+		form2.submit();
+	};
+	
+	
 	
 	document.querySelector('#product-launchAndDiscontinue').onclick = () => {
 		const form = document.querySelector('#getListByCompNo');
@@ -46,14 +63,7 @@ $(function() {
 		form1.submit();
 	};
 	
-	document.querySelector('#byebye').onclick = () => {
-		const form2 = document.querySelector('#logout');
-		const button2 = document.createElement('button');
-		button2.type = 'submit';
-		// form.append(button);
-		form2.submit();
-	};
-
+	
 	$("#launch-btn").on("click",function(){
 		$("#inputValue").val("1");
 		const button2 = document.createElement('button');
@@ -68,7 +78,15 @@ $(function() {
 		button5.type = 'submit';
 		("#launchAndDiscontinueForm").submit();
 	})
+	
+	
+	$('#allProductsSelect').click(function () {    
+    $('.thisProduct').prop('checked', this.checked);    
+    
+   
+});
 
+ 
 
 	
 

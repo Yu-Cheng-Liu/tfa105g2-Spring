@@ -12,7 +12,7 @@ public interface CompDataServiceInterface {
 	
 	public abstract boolean editPersonalProfile(CompData cd);
 	
-	public abstract CompData Register(CompData cd);
+	public abstract CompData Register(CompData cd, String confirmPassword);
 
 	public Map<String, String> getErrors();
 	

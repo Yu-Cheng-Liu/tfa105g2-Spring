@@ -254,7 +254,7 @@
 										method="POST">
 
 										<div class="login-form">
-											<h4 class="login-title">哈哈傻逼再亂設密碼啊</h4>
+											<h4 class="login-title">忘記密碼</h4>
 
 											<div class="row">
 												<div class="col-md-12 col-12">

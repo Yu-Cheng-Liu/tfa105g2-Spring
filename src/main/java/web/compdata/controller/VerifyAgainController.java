@@ -31,6 +31,7 @@ public class VerifyAgainController {
 		SendMail sendMail = new SendMail(email,"安安 "+ chargePerson +" 你好","請在頁面上輸入驗證碼 " + AuthCode + "\n\r" + "此驗證碼將於30分鐘後失效" );
 		System.out.println(email);
 		sendMail.send();
+		session.setAttribute("authCode", AuthCode);
 		return "/front-end/compData/comp-verify.jsp";
 	}
 
