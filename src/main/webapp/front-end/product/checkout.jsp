@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.*" %>
 <%@ page import="java.util.*, web.cart.entity.CartVO" %>
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -32,19 +33,6 @@
 
 
 </head>
-<!-- <script>
-  function chk(input)
-  {
-    for(var i=0;i<document.form1.donate.length;i++)
-    {
-      document.form1.donate[i].checked = false;
-    }
-    
-    input.checked = true;
-    return true;
-  }
-  </script> -->
-
 
 <body>
     <!--====================  header area ====================-->
@@ -67,7 +55,7 @@
                                     <li class="menu-item-has-children"><a href="#">祭祖商城</a>
                                         <ul class="sub-menu">
                                              <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
-                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
+                                           <li> <a href="${pageContext.request.contextPath}/ViewCart.controller?action=ViewCart">購物車</a></li>
                                         </ul>
                                     </li>
 
@@ -94,18 +82,24 @@
                         <div class="header-icon-wrapper">
                             <ul class="icon-list">
                                 <li>
+                                <%
+                                       Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
+                                %>
                                     <div class="header-cart-icon">
                                         <a href="#" id="minicart-trigger">
                                             <i class="ion-bag"></i>
+                                            <%if (buyList != null && (buyList.size() > 0)){ %>
                                             <span class="counter">${buyListCount}</span>
+                                            <%} %>
+                                            <%if (buyList == null || (buyList.size() == 0)){ %>
+                                            <span class="counter">0</span>
+                                            <%} %>
                                         </a>
                                         <!-- mini cart  -->
                                         
                                         <div class="mini-cart" id="mini-cart">
                                             <div class="cart-items-wrapper ps-scroll">
-                                        <%
-                                        	Vector<CartVO> buyList = (Vector<CartVO>) session.getAttribute("myCart");
-                                        %>
+                                        
                                         <%if (buyList != null && (buyList.size() > 0)){ %>
                                         	<%
                                             	for(int index =0; index < buyList.size(); index++){
@@ -114,7 +108,7 @@
                                             
                                                 <div class="single-cart-item">
                                                     
-                                                    <a href="${pageContext.request.contextPath}/CartServlet.controller?action=Delete&del=<%= index %>&prodNo=${prodNo}" class="remove-icon"><i
+                                                    <a href="${pageContext.request.contextPath}/ViewCart.controller?action=Cancel&cancel=<%=index %>" class="remove-icon"><i
                                                             class="ion-android-close"></i></a>
                                                     
                                                     <div class="image">
@@ -131,7 +125,7 @@
                                                     </div>
                                             	</div>
                                             	
-                                            <%}%>
+                                            	<%}%>
                                             
                                             <div class="cart-calculation">
                                                 <table class="table">
@@ -145,10 +139,12 @@
                                             </div>
                                             <%}%>
                                             <div class="cart-buttons">
-                                                <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">檢視購物車</a>
+                                                <a href="${pageContext.request.contextPath}/ViewCart.controller?action=ViewCart">檢視購物車</a>
+                                                <%if (buyList != null && (buyList.size() > 0)){ %>
                                                 <a href="${pageContext.request.contextPath}/CartServlet.controller?action=CheckOut">結帳</a>
+                                                <%} %>
                                             </div>
-                                            
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -185,48 +181,11 @@
                             </ul>
                         </div>
                     </div>
-                    <!--=======  End of header wrapper  =======-->
-
-                    <!--=======  mobile navigation area  =======-->
-
-                    <div class="header-mobile-navigation d-block d-lg-none">
-                        <div class="row align-items-center">
-                            <div class="col-6 col-md-6">
-                                <div class="header-logo">
-                                    <a href="index.html">
-                                        <img width="93" height="25" src="${pageContext.request.contextPath}/assets/img/logo.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <div class="mobile-navigation text-end">
-                                    <div class="header-icon-wrapper">
-                                        <ul class="icon-list justify-content-end">
-                                            <li>
-                                                <div class="header-cart-icon">
-                                                    <a href="cart.jsp">
-                                                        <i class="ion-bag"></i>
-                                                        <span class="counter">3</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" class="mobile-menu-icon"
-                                                    id="mobile-menu-trigger"><i class="fa fa-bars"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--=======  End of mobile navigation area  =======-->
-
                 </div>
             </div>
         </div>
     </div>
+                   
     <!--====================  End of header area  ====================-->
 
     <!--====================  breadcrumb area ====================-->
@@ -238,11 +197,6 @@
                     <div class="breadcrumb-wrapper breadcrumb-bg">
                         <!--=======  breadcrumb content  =======-->
                         <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Checkout</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Checkout</li>
-                            </ul>
                         </div>
                         <!--=======  End of breadcrumb content  =======-->
                     </div>
@@ -261,7 +215,7 @@
                     <div class="page-wrapper">
                         <div class="page-content-wrapper">
                             <!-- Checkout Form s-->
-                            <form class="checkout-form" METHOD="post" action="<%=request.getContextPath()%>/MemberOrderServlet" name="form1">
+                            <form class="checkout-form" METHOD="post" action="<%=request.getContextPath()%>/front-end/memberorder/CheckOrder.controller" name="form1">
                                 <div class="row row-40">
 
                                     <div class="col-lg-7">
@@ -274,35 +228,26 @@
 
                                                 <div class="col-12">
                                                     <label>姓名<font style=color:red>*</font></label>
-                                                    <font color="red"><c:out value="${errorMsgs['userName']}" /></font>
-                                                    <input type="text"  placeholder="請填入姓名" name="userName" value="<%= request.getParameter("userName")==null?"":request.getParameter("userName")%>">
+                                                    <font color="red"><c:out value="${errorMsgs.memberName}" /></font>
+                                                    <input type="text"  placeholder="請填入姓名" name="memberName" value="${memberName}">
                                                 </div>
-<!--                                                 <div class="col-12"> -->
-<!--                                                     <label>聯絡電話<font style=color:red>*</font></label> -->
-<!--                                                     <input type="text" placeholder="請輸入電話號碼" > -->
-<!--                                                 </div> -->
+                                                <div class="col-12">
+                                                    <label>聯絡電話<font style=color:red>*</font></label>
+                                                    <font color="red"><c:out value="${errorMsgs.memberPhone}" /></font>
+                                                    <input type="text" placeholder="請輸入電話號碼" name="memberPhone" value="${memberPhone}" maxlength="10">
+                                                </div>
 
 <!--                                                 <div class="col-12"> -->
 <!--                                                     <label>Email<font style=color:red>*</font></label> -->
 <!--                                                     <input type="email" placeholder="請輸入Email" name=""> -->
 <!--                                                 </div> -->
                                                 
-                                                <div>
-                                                <br>
-                                                <label>愛心捐贈<font style=color:red>*</font></label>
-                                                <font color="red"><c:out value="${errorMsgs['donate']}" /></font>
-                                                <label><input type="checkbox" name="donate" value="yes" onclick="return chk(this);">是，我想捐出商品　　　  
-                                                	   <input type="checkbox" name="donate" value="no" onclick="return chk(this);">否，將商品送至收貨地址</label>
-                                                </div>
                                                            
                                                 <div class="col-12">
                                                     <label>收貨地址<font style=color:red>*</font></label>
-                                                    <font color="red"><c:out value="${errorMsgs['deliveryAddress']}" /></font>
-                                                    <input type="text" placeholder="請輸入地址" name="deliveryAddress" value="<%= request.getParameter("deliveryAddress")==null?"":request.getParameter("deliveryAddress")%>">
+                                                    <font color="red"><c:out value="${errorMsgs.deliveryAddress}" /></font>
+                                                    <input type="text" placeholder="請輸入地址" name="deliveryAddress" value="${deliveryAddress}">
                                                 </div>
-                                                       
-                                                
-
                                         </div>
 
                                         <!-- Shipping Address -->
@@ -381,31 +326,33 @@
                                             <div class="col-12">
 
                                                 <h4 class="checkout-title">購物車總覽</h4>
-
+                                                
                                                 <div class="checkout-cart-total">
 
                                                     <h4>商品 <span>金額</span></h4>
+                                                    
 
                                                     <ul>
-                                                        <li>Cillum dolore tortor nisl X 01 <span>$25.00</span></li>
-                                                        <li>Auctor gravida pellentesque X 02 <span>$50.00</span></li>
-                                                        <li>Condimentum posuere consectetur X 01 <span>$29.00</span>
-                                                        </li>
-                                                        <li>Habitasse dictumst elementum X 01 <span>$10.00</span></li>
+                                                    <%
+                                            			for(int index =0; index < buyList.size(); index++){
+                                            				CartVO order = buyList.get(index);
+                                            		%>
+                                                        <li><%=order.getProdName()%> X <%=order.getProdAmount()%> <span>$ <%=order.getProdPrice() * order.getProdAmount() %></span></li>
+                                                    <%}%> 
                                                     </ul>
+													
+                                                    <p>商品總金額<span>$ ${amount}</span></p>
+                                                    <p>運費<span>$200</span></p>
 
-                                                    <p>商品總金額<span>$104.00</span></p>
-                                                    <p>運費<span>$00.00</span></p>
-
-                                                    <h4>總金額<span>$104.00</span></h4>
+                                                    <h4>總金額<span>$${amount + 200}</span></h4>
 
                                                 </div>
 
                                             </div>
 
                                             <!-- Payment Method -->
-												<div class="col-12">
-												<input type="hidden" name="action" value="checkorder">
+												<div class="col-12" >
+<!-- 												<input type="hidden" name="action" value="checkorder"> -->
                                                 <button type="submit" class="place-order">確認結帳</button>
 												</div>
                                             </div>
@@ -421,37 +368,7 @@
             </div>
         </div>
     <!--====================  End of page content area  ====================-->
-    <!--====================  newsletter area ====================-->
-    <!-- <div class="newsletter-area section-space--inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="newsletter-wrapper">
-                        <p class="small-text">Special Ofers For Subscribers</p>
-                        <h3 class="title">Ten Percent Member Discount</h3>
-                        <p class="short-desc">Subscribe to our newsletters now and stay up to date with new collections,
-                            the latest lookbooks and exclusive offers.</p>
-
-                        <div class="newsletter-form">
-                            <form id="mc-form" class="mc-form">
-                                <input type="email" placeholder="Enter Your Email Address Here..." required>
-                                <button type="submit" value="submit">SUBSCRIBE</button>
-                            </form>
-
-                        </div>  -->
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div>
-                        <!-- mailchimp-alerts end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--====================  End of newsletter area  ====================-->
+    
     <!--====================  footer area ====================-->
      <div class="footer-area">
         <div class="footer-">
@@ -496,98 +413,7 @@
         </div>
     </div>
     <!--====================  End of footer area  ====================-->
-    <!--=======  offcanvas mobile menu  =======-->
-
-    <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
-        <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
-            <i class="ion-android-close"></i>
-        </a>
-
-        <div class="offcanvas-wrapper">
-
-            <div class="offcanvas-inner-content">
-                <nav class="offcanvas-navigation">
-                    <ul>
-                       <li class="menu-item-has-children"><a href="#">祭祖商城</a>
-                                        <ul class="sub-menu">
-                                             <li><a href="${pageContext.request.contextPath}/AllProductServlet.controller?action=selectAll">商品總覽</a></li>
-                                           <li> <a href="${pageContext.request.contextPath}/CartServlet.controller?action=ViewCart">購物車</a></li>
-                                        </ul>
-                                    </li>
-                         <li class="menu-item-has-children"><a href="#">預約服務</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/bookingvideo.jsp">法會直播</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/booking.jsp">預約祭祀</a></li>
-                                            <li><a href="<%=request.getContextPath()%>/front-end/booking/inquirybooking.jsp">查詢祭祀</a></li>
-                                        </ul>
-                                    </li>
-
-
-                        <li class="menu-item-has-children"><a href="#">客服中心</a>
-                            <ul class="sub-menu">
-                                <li><a href="<%=request.getContextPath()%>/front-end/service/contact.jsp">聯絡我們</a></li>
-                                <li><a href="<%=request.getContextPath()%>/front-end/service/about.jsp">關於我們</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="<%=request.getContextPath()%>/front-end/service/faq.jsp">常見問題</a></li>
-                    </ul>
-                </nav>
-
-                <div class="offcanvas-settings">
-                    <nav class="offcanvas-navigation">
-                        <ul>
-                            <li class="menu-item-has-children"><a href="#">會員登入 </a>
-                                <ul class="sub-menu">
-                                    <li><a href="<%=request.getContextPath()%>/front-end/memberData/login-register-member.jsp">註冊/登入</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children"><a href="#">廠商登入 </a>
-                                <ul class="sub-menu">
-                                    <li><a href="<%=request.getContextPath()%>/front-end/compData/comp-login-register.jsp">註冊/登入</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-                <div class="offcanvas-widget-area">
-                    <!--Off Canvas Widget Social Start-->
-                    <div class="off-canvas-widget-social">
-                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                        <a href="#" title="Youtube"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#" title="Vimeo"><i class="fa fa-vimeo-square"></i></a>
-                    </div>
-                    <!--Off Canvas Widget Social End-->
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!--=======  End of offcanvas mobile menu  =======-->
-    <!--====================  search overlay ====================-->
-
-    <div class="search-overlay" id="search-overlay">
-        <a href="javascript:void(0)" class="close-search-overlay" id="close-search-overlay">
-            <i class="ion-ios-close-empty"></i>
-        </a>
-
-        <!--=======  search form  =======-->
-
-        <div class="search-form">
-            <form action="#">
-                <input type="search" placeholder="Search entire store here ...">
-                <button type="submit"><i class="ion-android-search"></i></button>
-            </form>
-        </div>
-
-        <!--=======  End of search form  =======-->
-    </div>
-
-    <!--====================  End of search overlay  ====================-->
+    
     <!-- scroll to top  -->
     <div id="scroll-top">
         <span>線上客服</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
