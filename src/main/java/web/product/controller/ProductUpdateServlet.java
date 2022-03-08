@@ -2,6 +2,7 @@ package web.product.controller;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
@@ -132,11 +133,30 @@ public class ProductUpdateServlet extends HttpServlet {
 					+ "                                            </div>");
 			
 			
-			return "/front-end/product/update-product.jsp";
+			return "/front-end/compData/comp-index.jsp";
 		}
 		
+		
+		String path = req.getContextPath();
+		
+		
+		session.setAttribute("indexHamburger", "<div class=\"single-settings-block\">\r\n"
+				+ "                                                <h4 class=\"title\">廠商專區 </h4>\r\n"
+				+ "                                                <ul>\r\n"
+				+ "                                                    <li><a href="
+				+ path
+				+ "/front-end/compData/comp-index.jsp>廠商用戶中心</a></li>\r\n"
+				+ "                                                    \r\n"
+				+ "                                                </ul>\r\n"
+				+ "                                            </div>");
+		
+		
 		prodVO = productService.update(prodVO);
-		model.addAttribute("prodVO",prodVO);
+		Integer compNo = (Integer) session.getAttribute("compNo");
+		
+		List <ProductVO> list = productService.selectProdByCompNo(compNo);
+		model.addAttribute("prods", list);
+		
 		String classes = "show active";
 		model.addAttribute("classes7",classes);
 		String active = "class=\"active\"";
