@@ -723,7 +723,7 @@ font {
 	<!--====================  End of search overlay  ====================-->
 	<!-- scroll to top  -->
 	<div id="scroll-top">
-		<span>線上客服</span><i class="ion-chevron-right"></i><i
+		<span>top</span><i class="ion-chevron-right"></i><i
 			class="ion-chevron-right"></i>
 	</div>
 
