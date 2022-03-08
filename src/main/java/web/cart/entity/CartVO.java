@@ -16,8 +16,8 @@ public class CartVO implements java.io.Serializable{
 	private Integer cartNo;
 	@Column(name = "prod_no")
 	private Integer prodNo;
-	@Column(name = "user_no")
-	private Integer userNo;
+	@Column(name = "comp_no")
+	private Integer compNo;
 	@Column(name = "prod_amount")
 	private Integer prodAmount;
 	@Column(name = "prod_price")
@@ -55,7 +55,7 @@ public class CartVO implements java.io.Serializable{
 	public CartVO() {
 		cartNo = 0;
 		prodNo = 0;
-		userNo = 0;
+		compNo = 0;
 		prodAmount = 0;
 		prodPrice = 0;
 		prodName = "";
@@ -63,7 +63,7 @@ public class CartVO implements java.io.Serializable{
 	
 	@Override
 	public String toString() {
-		return "CartVO [cartNo=" + cartNo + ", prodNo=" + prodNo + ", userNo=" + userNo + ", prodAmount=" + prodAmount
+		return "CartVO [cartNo=" + cartNo + ", prodNo=" + prodNo + ", compNo=" + compNo + ", prodAmount=" + prodAmount
 				+ ", prodPrice=" + prodPrice + ", prodName=" + prodName + "]";
 	}
 
@@ -83,12 +83,12 @@ public class CartVO implements java.io.Serializable{
 		this.prodNo = prodNo;
 	}
 
-	public Integer getUserNo() {
-		return userNo;
+	public Integer getCompNo() {
+		return compNo;
 	}
 
-	public void setUserNo(Integer userNo) {
-		this.userNo = userNo;
+	public void setCompNo(Integer compNo) {
+		this.compNo = compNo;
 	}
 
 	public Integer getProdAmount() {
@@ -114,27 +114,6 @@ public class CartVO implements java.io.Serializable{
 	public void setProdName(String prodName) {
 		this.prodName = prodName;
 	}
-	
-	
-
-//	@Column(name = "last_update_datetime")
-//	private java.util.Date lastUpdateDatetime;
-	
-	
-//	@Override
-//	public String toString() {
-//		return "CartVO [cartNo=" + cartNo + ", prodNo=" + prodNo + ", userNo=" + userNo + ", prodAmount=" + prodAmount
-//				+ ", prodPrice=" + prodPrice + ", lastUpdateDatetime=" + lastUpdateDatetime + "]";
-//	}
-	
-//	public java.util.Date getLastUpdateDatetime() {
-//		return lastUpdateDatetime;
-//	}
-//
-//
-//	public void setLastUpdateDatetime(java.util.Date lastUpdateDatetime) {
-//		this.lastUpdateDatetime = lastUpdateDatetime;
-//	}
 	
 	
 }

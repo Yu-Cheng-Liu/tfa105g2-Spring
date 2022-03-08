@@ -268,7 +268,6 @@
                                                             min="1" max="${prodStock}"></div>
                                                 </form> --%>
                                                 </td>
-                                                <%=order.getCompNo() %>
                                                 <td class="pro-subtotal"><span>$<%=order.getProdPrice() * order.getProdAmount() %></span></td>
                                                 <td class="pro-remove"><a href="${pageContext.request.contextPath}/ViewCart.controller?action=Cancel&cancel=<%=index %>"><i class="fa fa-trash-o"></i></a>
                                                 </td>
