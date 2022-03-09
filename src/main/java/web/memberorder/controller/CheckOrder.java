@@ -34,7 +34,7 @@ public class CheckOrder extends HttpServlet {
 	private OrderDetailServiceInterface detailService;
 
 	@RequestMapping(value = "/front-end/memberorder/CheckOrder.controller", method = { RequestMethod.POST })
-	public String Checkout(MemberOrderVO vo, OrderDetail detailVO,Model model, HttpSession session,HttpServletRequest req, HttpServletResponse res) {
+	public String Checkout(MemberOrderVO vo, OrderDetail detailVO, Model model, HttpSession session,HttpServletRequest req, HttpServletResponse res) {
 
 		Map<String, String> errorMsgs = new HashMap<String, String>();
 
@@ -67,25 +67,28 @@ public class CheckOrder extends HttpServlet {
 		  List<CartVO> buyList = (List<CartVO>) session.getAttribute("myCart");
 		
 		// 計算商品總金額
-	    int total = 0;
+	    int prodtotal = 0;
 	    for(int i = 0; i < buyList.size(); i++) {
 	     CartVO order = buyList.get(i);
 	     System.out.println("compNO " +order.getCompNo() );
 	     System.out.println("order:" + order);
 	     Integer price = order.getProdPrice();
 	     Integer quantity = order.getProdAmount();
-	     total += (price * quantity);
+	     prodtotal += (price * quantity);
 	       
 	    }
-	    String amount = String.valueOf(total);
+	    Integer amount = Integer.valueOf(prodtotal);
 	    System.out.println("amount:" + amount);
 	    session.setAttribute("amount", amount);
+	    
+	    
+	    Integer total = amount+200;
 	    
 		vo.setPayType("信用卡");
 		vo.setUserNo(1);
 		vo.setDeliveryStatusCode(1);
 		vo.setDeliveryTypeCode(1);
-		vo.setTotal(200);
+		vo.setTotal(total);
 		
 
 		if (!errorMsgs.isEmpty()) {

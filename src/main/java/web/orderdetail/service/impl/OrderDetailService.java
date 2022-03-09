@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import web.memberorder.entity.OrderViewVO;
 import web.orderdetail.dao.OrderDetailDAOInterface;
 import web.orderdetail.entity.OrderDetail;
 import web.orderdetail.service.OrderDetailServiceInterface;
@@ -144,7 +145,24 @@ public class OrderDetailService implements OrderDetailServiceInterface {
 		}
 	
 	}
-//====================================================Update Order Detail====================================================================
+//====================================================Select By UserNo====================================================================
+
+	@Override
+	public List<OrderViewVO> selectByUserNo(Integer userNo) {
+		if(userNo == null) {
+			errors.put("userNo", "查無資料");
+			return null;
+		}
+		
+		List<OrderViewVO> viewList = oddaoi.selectByUserNo(userNo);
+		
+		if(viewList .size()==0) {
+			errors.put("userNo", "查無資料");
+			return null;
+		}else {
+			return viewList;			
+		}
+	}
 	
 	
 	
