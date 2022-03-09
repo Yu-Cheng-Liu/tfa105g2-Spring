@@ -125,13 +125,15 @@ function selectAllServiceData() {
                 }
             },
             {
-                data: 'replyDateTime', title: "回覆時間",
-                render: function (data) {
-                    if (data == null || data == "") {
-                        return ""
+                data: null, title: "回覆時間",
+                render: function (data, type, row) {
+                    var date = row.replyDateTime;
+                    if (date == null || date == "") {
+                        date = "－";
                     } else {
-                        return moment(data).locale("zh-tw").format('YYYY-MM-DD HH:mm');
+                        date = moment(date).locale("zh-tw").format('YYYY-MM-DD HH:mm');
                     }
+                    return `<h5>${date}</h5>`
                 }
             },
             {
@@ -512,15 +514,15 @@ function loginAdmin() {
 
                 if (JSON.parse(localStorage.getItem("store_data")) == null) {
 
-                    $(".nav-link-a").each(function () {
-                        $(this).parent("li").attr("style", "display:none");
+                    $(".main-list li").each(function () {
+                        $(this).attr("style", "display:none");
                     })
 
                     document.getElementById("login").style.display = "block";
                     document.getElementById("manager_dropdown").style.display = "none";
+                    window.location.reload();
                 }
             });
-
 
         } else {
             alert('登入失敗');
@@ -585,6 +587,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 document.getElementById("login").style.display = "block";
                 document.getElementById("manager_dropdown").style.display = "none";
+                window.location.reload();
 
             }
         });
