@@ -311,6 +311,49 @@ td {
     vertical-align:middle;
 }
 
+#chatSelect {
+    float: left;
+    height: 520px;
+    width: 30%;
+    padding: 0px;
+    font-size: 24px;
+}
+
+#chatSelect option {
+    height: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.chatbox__messages {
+    background-color: #fff;
+}
+
+#messagesArea {
+    height: 400px;
+    width: 100%;
+    float: left;
+}
+
+.chatbox__footer {
+    width: 70%;
+    height: 100px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#chat {
+    background-color: #fff;
+}
+
+.chatbox__footer {
+    margin-top: 23px;
+}
+
+.chatbox__footer textarea#message {
+    width: 90%;
+}
+
 @media (max-width:700px) {
     #sidebar {
         margin-left: 0px;

@@ -29,10 +29,16 @@
     <!-- Main CSS -->
     <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
 
+    <!-- JQuery 連結-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+            rel="stylesheet">
 
+    <%-- 聊天室 --%>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/chat.css">
 </head>
 
-<body>
+<body onunload="disconnect();">
     <!--====================  header area ====================-->
      <div class="header-area header-sticky">
         <div class="container">
@@ -367,11 +373,38 @@
     </div>
     <!--====================  End of footer area  ====================-->
     
-    <!-- scroll to top  -->
-    <div id="scroll-top">
-        <span>回到頂端</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
+    <%-- ChatBot --%>
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header">
+                        <img src="https://s.yimg.com/ny/api/res/1.2/wxWUiWDLgDlYZCUwkMFfFw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtjZj13ZWJw/https://s.yimg.com/os/creatr-uploaded-images/2022-01/23b5caf0-7f3a-11ec-8e67-0aced8de185c" alt="image" width="50" height="50"
+                            class="rounded-circle me-2">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header" id="statusOutput">manager</h4>
+                        <p class="chatbox__description--header">我要代替月亮懲罰你</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                    <div id="messagesArea"></div>
+                </div>
+                <!-- 輸入對話框 -->
+                <div class="chatbox__footer">
+                    <textarea name="message" id="message" placeholder="請輸入訊息"></textarea>
+                    <button class="chatbox__send--footer" onclick="sendMessage();">傳送</button>
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button id="connect" onclick="connect();">button</button>
+                                <input id="cus_name" type="hidden">
+            </div>
+        </div>
     </div>
-    <!-- end of scroll to top -->
+    <script src="<%=request.getContextPath()%>/assets/js/Chat.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/app.js"></script>
+    <%-- ChatBot End --%>
     <!--=============================================
     =            JS files        =
     =============================================-->

@@ -512,7 +512,7 @@ function loginAdmin() {
 
                 if (JSON.parse(localStorage.getItem("store_data")) == null) {
 
-                    $(".nav-link-a").each(function() {
+                    $(".nav-link-a").each(function () {
                         $(this).parent("li").attr("style", "display:none");
                     })
 
@@ -530,7 +530,7 @@ function loginAdmin() {
 
 function getAdminRight1() {
 
-    var manager_adminNo = JSON.parse(localStorage.getItem("store_data")).login_adminNo;  
+    var manager_adminNo = JSON.parse(localStorage.getItem("store_data")).login_adminNo;
     const form = {
         "adminNo": manager_adminNo
     }
@@ -550,7 +550,7 @@ function getAdminRight1() {
 
                 if (permission.includes(element.functionNo)) {
                     var name = element.functionName;
-                    $(".main-list li").each(function(index, el) {
+                    $(".main-list li").each(function (index, el) {
                         if ($(el).attr("id") == name) {
                             $(el).attr("style", "display:block");
                         }
@@ -580,7 +580,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.clear();
 
             if (JSON.parse(localStorage.getItem("store_data")) == null) {
-                $(".nav-link-a").each(function() {
+                $(".nav-link-a").each(function () {
                     $(this).parent("li").attr("style", "display:none");
                 })
                 document.getElementById("login").style.display = "block";
@@ -591,3 +591,109 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+// 聊天室
+var webSocket;
+var self = "manager";
+
+function connect() {
+    var messagesArea = document.getElementById("messagesArea");
+    var webCtx = window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1));
+    var endPointURL = "ws://" + window.location.host + webCtx + `/DoraChat/${self}`;
+    // create a websocket
+    webSocket = new WebSocket(endPointURL);
+
+    webSocket.onopen = function (event) {
+        console.log("Connect Success!");
+    };
+
+    webSocket.onmessage = function (event) {
+        var jsonObj = JSON.parse(event.data);
+        if ("open" === jsonObj.type) {
+            refreshFriendList(jsonObj);
+        } else if ("history" === jsonObj.type) {
+            messagesArea.innerHTML = '';
+            // 這行的jsonObj.message是從redis撈出跟好友的歷史訊息，再parse成JSON格式處理
+            var messages = JSON.parse(jsonObj.message);
+            for (var i = 0; i < messages.length; i++) {
+                var historyData = JSON.parse(messages[i]);
+                var message = historyData.message;
+                var type;
+                // 根據發送者是自己還是對方來給予不同的class名, 以達到訊息左右區分
+                historyData.sender === self ? type = "operator" : type = "visitor";
+                $(messagesArea).append(`<div class="messages__item messages__item--${type}">${message}</div>`);
+            }
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        } else if ("chat" === jsonObj.type) {
+            var type;
+            var message = jsonObj.message;
+            jsonObj.sender === self ? type = "operator" : type = "visitor";
+            $(messagesArea).append(`<div class="messages__item messages__item--${type}">${message}</div>`);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        } else if ("close" === jsonObj.type) {
+            refreshFriendList(jsonObj);
+        }
+
+    };
+
+    webSocket.onclose = function (event) {
+        console.log("Disconnected!");
+    };
+}
+
+function sendMessage() {
+    var inputMessage = document.getElementById("message");
+    var friend = $("#statusOutput").val();
+    var message = inputMessage.value.trim();
+
+    if (message === "") {
+        alert("Input a message");
+        inputMessage.focus();
+    } else if (friend === "") {
+        alert("Choose a friend");
+    } else {
+        var jsonObj = {
+            "type": "chat",
+            "sender": self,
+            "receiver": friend,
+            "message": message
+        };
+        webSocket.send(JSON.stringify(jsonObj));
+        inputMessage.value = "";
+        inputMessage.focus();
+    }
+}
+
+// 有好友上線或離線就更新列表
+function refreshFriendList(jsonObj) {
+    var friends = jsonObj.users;
+    var row = document.getElementById("chatSelect");
+    row.innerHTML = '';
+    for (var i = 0; i < friends.length; i++) {
+        if (friends[i] === self) { continue; }
+        row.innerHTML += '<option id=' + i + ' class="column" name="friendName" value=' + friends[i] + ' >' + friends[i] + '</option>';
+    }
+    addListener();
+}
+// 註冊列表點擊事件並抓取好友名字以取得歷史訊息
+function addListener() {
+    $("#chatSelect option").on('click', function (e) {
+        var friend = $(this).text();
+        updateFriendName(friend);
+        var jsonObj = {
+            "type": "history",
+            "sender": self,
+            "receiver": friend,
+            "message": ""
+        };
+        webSocket.send(JSON.stringify(jsonObj));
+    })
+}
+
+function disconnect() {
+    webSocket.close();
+}
+
+function updateFriendName(name) {
+    $("#statusOutput").val(name);
+}
