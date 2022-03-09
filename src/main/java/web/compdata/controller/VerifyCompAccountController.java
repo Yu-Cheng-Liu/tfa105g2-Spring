@@ -58,9 +58,11 @@ public class VerifyCompAccountController {
 			model.addAttribute("attrs2", active);
 			
 			
-			return "redirect:/front-end/compData/comp-index.jsp";
+			return "/front-end/compData/comp-index.jsp";
 			
 		}else {
+			String status = service.verifiedOrNot(cd);
+			session.setAttribute("status", status);
 			
 			errors.put("WrongToken", "驗證碼錯誤 , 請再試一次");
 			model.addAttribute("errors",errors);
