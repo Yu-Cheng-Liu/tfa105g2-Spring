@@ -490,7 +490,7 @@ text-shadow:0.2px 0.2px 0.2px #696969;
 								<div class="col-lg-3 col-12">
 									<div class="myaccount-tab-menu nav" role="tablist">
 										<a href="#dashboad" ${active1} data-bs-toggle="tab"><i
-											class="fa fa-dashboard"></i> 會員中心</a> <a href="#orders"
+											class="fa fa-dashboard"></i> 會員中心</a> <a id="getOrders" href="#orders"
 											${active2} data-bs-toggle="tab"><i
 											class="fa fa-cart-arrow-down"></i> 訂單查詢</a> <a id="tower"
 											href="#tower" ${active3} data-bs-toggle="tab"><i
@@ -539,48 +539,44 @@ text-shadow:0.2px 0.2px 0.2px #696969;
 										<div class="tab-pane fade ${showactive2}" id="orders"
 											role="tabpanel">
 											<div class="myaccount-content">
-												<h3>Orders</h3>
+												<h3>訂單明細</h3>
 
 												<div class="myaccount-table table-responsive text-center">
 													<table class="table table-bordered">
-														<thead class="thead-light">
-															<tr>
-																<th>No</th>
-																<th>Name</th>
-																<th>Date</th>
-																<th>Status</th>
-																<th>Total</th>
-																<th>Action</th>
-															</tr>
-														</thead>
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th>訂單編號</th>
+                                                                            <th>會員姓名</th>
+                                                                            <th>手機號碼</th>
+                                                                            <th>產品名稱</th>
+                                                                            <th>產品數量</th>
+                                                                            <th>訂單金額</th>
+                                                                            <th>會員地址</th>
+                                                                            <th>訂購日期</th>
+                                                                        </tr>
+                                                                    </thead>
 
-														<tbody>
-															<tr>
-																<td>1</td>
-																<td>Mostarizing Oil</td>
-																<td>Aug 22, 2018</td>
-																<td>Pending</td>
-																<td>$45</td>
-																<td><a href="cart.html" class="btn">View</a></td>
-															</tr>
-															<tr>
-																<td>2</td>
-																<td>Katopeno Altuni</td>
-																<td>July 22, 2018</td>
-																<td>Approved</td>
-																<td>$100</td>
-																<td><a href="cart.html" class="btn">View</a></td>
-															</tr>
-															<tr>
-																<td>3</td>
-																<td>Murikhete Paris</td>
-																<td>June 12, 2017</td>
-																<td>On Hold</td>
-																<td>$99</td>
-																<td><a href="cart.html" class="btn">View</a></td>
-															</tr>
-														</tbody>
-													</table>
+                                                                    <c:forEach var="OrderViewVO" items="${list}">
+                                                                        <tbody>
+                                                                            <td>${OrderViewVO.orderNo}</td>
+                                                                            <td>${OrderViewVO.memberName}</td>
+                                                                            <td>${OrderViewVO.memberPhone}</td>
+                                                                            <td>${OrderViewVO.prodName}</td>
+                                                                            <td>${OrderViewVO.prodAmount}</td>
+                                                                            <td>${OrderViewVO.total}</td>
+                                                                            <td>${OrderViewVO.deliveryAddress}</td>
+                                                                            <td>${OrderViewVO.orderDate}</td>
+
+                                                                        </tbody>
+                                                                    </c:forEach>
+
+                                                                </table>
+                                                                <form id="getAllOrders"
+                                                                    action="<%=request.getContextPath()%>/front-end/memberorder/GetMemberOrder.controller"
+                                                                    method="POST">
+                                                                    <input name="getListByUserNo" type="hidden"
+                                                                        value="getListByUserNo" />
+                                                                </form>
 												</div>
 											</div>
 										</div>

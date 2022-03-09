@@ -3,6 +3,7 @@ package web.orderdetail.service;
 import java.util.List;
 import java.util.Map;
 
+import web.memberorder.entity.OrderViewVO;
 import web.orderdetail.entity.OrderDetail;
 
 public interface OrderDetailServiceInterface {
@@ -16,5 +17,7 @@ public interface OrderDetailServiceInterface {
 	public abstract List <OrderDetail> selectByProdNo(Integer prodNo);
 	
 	public abstract OrderDetail addOrderDetail(OrderDetail od);
+	
+	public abstract List<OrderViewVO> selectByUserNo(Integer userNo);
 
 }

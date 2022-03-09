@@ -26,3 +26,12 @@
 //        $("#avatar").modal();
 //    });
 //});
+
+	document.querySelector('#getOrders').onclick = () => {
+		const formabc = document.querySelector('#getAllOrders');
+		const button = document.createElement('button');
+		button.type = 'submit';
+		// form.append(button);
+		formabc.submit();
+	};
+

@@ -2,6 +2,7 @@ package web.orderdetail.dao;
 
 import java.util.List;
 
+import web.memberorder.entity.OrderViewVO;
 import web.orderdetail.entity.OrderDetail;
 
 
@@ -21,7 +22,7 @@ public interface OrderDetailDAOInterface {
 	 
 		public abstract boolean update(OrderDetail orderDetail);
 		
-		
+		public abstract List<OrderViewVO> selectByUserNo(Integer userNo);
 		
 	
 }
