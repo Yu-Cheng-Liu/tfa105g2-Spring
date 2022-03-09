@@ -27,12 +27,11 @@ public class BookingController {
 	private BookingService service;
 	@Autowired
 	private TowerService Tservice;
-	@Autowired
-	private MemberOrderDAOInterface Mservive;
+	
 	
 	
 	@RequestMapping(value = "/front-end/booking/booking.controller" , method = {RequestMethod.POST})
-	public String booking(String towerNo , String reserveDate , String remark ,Model model , HttpSession session) {
+	public String booking(String towerNo ,String orderNo, String reserveDate , String remark ,Model model , HttpSession session) {
 		
 		DateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String regexNumberOnly = "[0-9]+";
@@ -40,8 +39,8 @@ public class BookingController {
 		Map<String, String> errors = new HashMap<String, String>();
 		MemberDataVO mv= (MemberDataVO)session.getAttribute("user");
 		Integer userNo = mv.getUserno();
-		MemberOrderVO mov= Mservive.selectOrderByUser(userNo);
-		Integer orderNo = mov.getOrderNo();
+//		MemberOrderVO mov= Mservive.selectOrderByUser(userNo);
+//		Integer orderNo = mov.getOrderNo();
 		if ("".equals(towerNo)) {
 			errors.put("towerNo", "塔位不可空白");
 			model.addAttribute("errors", errors);
@@ -84,11 +83,11 @@ public class BookingController {
 				
 					bean.setUserNo(userNo);
 				
-//				if("".equals(orderNo)) {
-//					Integer OrderNo = null;
-//					bean.setOrderNo(OrderNo);
-//				}else {Integer OrderNo=Integer.parseInt(orderNo);
-//				          bean.setOrderNo(OrderNo);}
+				if("".equals(orderNo)) {
+					Integer OrderNo = null;
+					bean.setOrderNo(OrderNo);
+				}else {Integer OrderNo=Integer.parseInt(orderNo);
+				          bean.setOrderNo(OrderNo);}
 
 				Integer TowerNo = Integer.parseInt(towerNo);
 				
