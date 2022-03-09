@@ -351,26 +351,61 @@
 
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <h3>劉淯誠</h3>
-                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
-                                        born an will give you a ete account of the system, and expound the actual teangs
-                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
-                                        repellend</p>
+                                    <p>
+									<b>➤前置規劃</b><br>
+									網站地圖、流程規劃、wireframe繪製
+									ER-MODEL規劃與建置、MYSQL資料庫表格建置及整合<br>
+									<b>➤網頁及功能</b><br>
+									前台 (廠商) :<br>
+									● 登入 / Filter /忘記密碼 / 記住我<br>
+									● 註冊/密碼加密/驗證信 <br>
+									● 公司資訊變更/修改密碼/產品銷售圖表<br>
+									● 訂單明細查詢/商品上架/下架<br>
+									後台 :<br>
+									● 廠商查詢<br>
+									● 商品查詢<br>
+									<b>➤整合</b><br>
+									專案及MySQL資料庫 / 簡報製作/
+									GCP環境建置
+									</p>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <h3>王晟峻</h3>
-                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
-                                        born an will give you a ete account of the system, and expound the actual teangs
-                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
-                                        repellend</p>
+                                    <p>
+                                    <b>➤前置規劃</b><br>
+									網站地圖、流程規劃、wireframe繪製
+									ER-MODEL規劃與建置、MYSQL資料庫表格建置及整合<br>
+									<b>➤網頁及功能</b><br>
+									前台 :<br>
+									● 客服小天使(線上一對一聊天)/客服中心<br>
+									● 關於我們/常見問題<br>
+									後台 :<br>
+									● 客服表單回覆<br>
+									● 後台功能管理/管理員新增.刪除/權限設定/修改密碼<br>
+									● 後台整合<br>
+									<b>➤整合</b><br>
+									專案及MySQL資料庫<br> 
+									<b>➤技術指導</b></p>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <h3>翁翊淇</h3>
-                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
-                                        born an will give you a ete account of the system, and expound the actual teangs
-                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
-                                        repellend</p>
+                                    <p>
+                                    <b>➤前置規劃</b><br>
+										網站地圖、流程規劃、wireframe繪製
+										ER-MODEL規劃與建置、MYSQL資料庫表格建置及整合<br>
+										<b>➤網頁及功能</b><br>
+										前台 (會員) :<br>
+										● 首頁  / header footer<br>
+										● 法會直播<br>
+										● 法會預約/查詢/修改/刪除<br>
+										● 會員塔位查詢<br>
+										後台 :<br>
+										● 塔位新增/查詢<br>
+										<b>➤整合</b><br>
+										專案及MySQL資料庫
+                                    </p>
                                 </div>
 
                             </div>
@@ -405,26 +440,50 @@
 
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <h3>廖郁涵</h3>
-                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
-                                        born an will give you a ete account of the system, and expound the actual teangs
-                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
-                                        repellend</p>
+                                    <p> <b>➤前置規劃</b><br>
+									網站地圖、流程規劃、wireframe繪製
+									ER-MODEL規劃與建置、MYSQL資料庫表格建置及整合<br>
+									<b>➤網頁及功能</b><br>
+									前台 (會員) :<br>
+									● 主視覺 /會員中心<br>
+									● 登入 / Filter /忘記密碼 / 記住我<br>
+									● 註冊/密碼加密/驗證信<br> 
+									● 更換大頭貼/更新個人資料/修改密碼<br>
+									後台 :<br>
+									● 會員管理查詢<br>
+									● 管理員登入<br>
+									<b>➤整合</b><br>
+									專案及MySQL資料庫 / 簡報製作
+									</p>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <h3>黃琳鈺</h3>
-                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
-                                        born an will give you a ete account of the system, and expound the actual teangs
-                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
-                                        repellend</p>
+                                    <p><b>➤前置規劃</b><br>
+										網站地圖、流程規劃、wireframe繪製
+										ER-MODEL規劃與建置、MYSQL資料庫表格建置及整合<br>
+										<b>➤網頁及功能</b><br>
+										前台 :<br>
+										● 商品新增/修改<br>
+										● 結帳<br>
+										● 訂單查詢<br>
+										<b>➤整合</b><br>
+										專案及MySQL資料庫</p>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <h3>廖于瑩</h3>
-                                    <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was
-                                        born an will give you a ete account of the system, and expound the actual teangs
-                                        the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor
-                                        repellend</p>
+                                     <p><b>➤前置規劃</b><br>
+										網站地圖、流程規劃、wireframe繪製
+										ER-MODEL規劃與建置、MYSQL資料庫表格建置及整合<br>
+										<b>➤網頁及功能</b><br>
+										前台 :<br>
+										● 商品總覽/商品分類查詢<br>
+										● 購物車<br>
+										後台 :<br>
+										● 訂單管理<br>
+										<b>➤整合</b><br>
+										專案及MySQL資料庫</p>
                                 </div>
 
                             </div>
