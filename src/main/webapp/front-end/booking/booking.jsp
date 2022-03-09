@@ -329,10 +329,10 @@
 													</script>
 													<span style="color: red;class="error">${errors.towerNo}</span>
 							                   
-													<div class="col-md-12 mb-20">
-														<label>訂單編號</label> 
-														<input name="orderNo" type="text" placeholder="orderNo" value="${orderNo}">
-													</div>
+<!-- 													<div class="col-md-12 mb-20"> -->
+<!-- 														<label>訂單編號</label>  -->
+<%-- 														<input name="orderNo" type="text" placeholder="orderNo" value="${orderNo}"> --%>
+<!-- 													</div> -->
 													<div class="chargePerson">
 														<label>評論</label> 
 															<input name="remark" type="text" placeholder="remark" value="${remark}">
