@@ -206,7 +206,11 @@ public class CompDataService implements CompDataServiceInterface {
 			if(!cd.getPassword().equals(confirmPassword)) {
 				errors.put("Rpassword", "兩次密碼輸入不相同");
 			}
-			
+			if(compDataDAOi.selectByEmail(cd.getEmail())!=null) {
+				if(compDataDAOi.selectByEmail(cd.getEmail()).getCompNO()!=cd.getCompNO()) {
+					errors.put("Remail", "此email已被使用");
+				}
+			}
 			if (errors.size() == 0) {
 				String password = passwordEncoder.encode(cd.getPassword()) ;
 				

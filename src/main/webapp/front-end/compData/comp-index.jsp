@@ -583,7 +583,7 @@
                                                                                                                             <label>商品編號*</label>
                                                                                                                             <select
                                                                                                                                 id="ProdSel"
-                                                                                                                                name="prodName"
+                                                                                                                                name="prodNo"
                                                                                                                                 class="form-select"
                                                                                                                                 aria-label="Default select example">
                                                                                                                                 <option
@@ -592,6 +592,7 @@
                                                                                                                             </select>
                                                                                                                             <script>
                                                                                                                                 function getProdName() {
+                                                                                                                                   
                                                                                                                                     var sel = $("#ProdSel");
                                                                                                                                     axios.post("./getProductName.controller").then(res => {
                                                                                                                                         for (let i = 0; i < res.data.length; i++) {
