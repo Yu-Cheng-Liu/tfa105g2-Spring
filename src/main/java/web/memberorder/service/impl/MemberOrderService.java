@@ -31,12 +31,8 @@ public class MemberOrderService implements MemberOrderServiceInterface{
 	}
 	
 	@Override
-	public List<MemberOrderVO> selectAll(MemberOrderVO vo) {
-		List<MemberOrderVO> result = null;
-		if(vo!=null) {
-			result = memberOrderDAOInterface.selectAll();
-		}
-		return result;
+	public List<MemberOrderVO> selectAll() {
+		return memberOrderDAOInterface.selectAll();
 	}
 	
 	@Override

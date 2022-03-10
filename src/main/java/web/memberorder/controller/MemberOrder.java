@@ -64,6 +64,7 @@ public class MemberOrder extends HttpServlet {
 		
 		Map<String,String>errors = detailService.getErrors();
 		
+		session.invalidate();
 		
 //		if(errors.size()==0) {
 			return "/front-end/product/orderOK.jsp";

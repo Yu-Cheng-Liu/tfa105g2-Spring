@@ -9,7 +9,7 @@ public interface MemberOrderServiceInterface {
 
 	
 	public abstract MemberOrderVO addOrder(MemberOrderVO vo);
-	public abstract List<MemberOrderVO> selectAll(MemberOrderVO vo);
+	public abstract List<MemberOrderVO> selectAll();
 	public abstract MemberOrderVO selectOne(Integer orderNo);
 	public abstract MemberOrderVO selectOrderByUser(Integer userNo);
 	public abstract MemberOrderVO updateOrder(MemberOrderVO vo);

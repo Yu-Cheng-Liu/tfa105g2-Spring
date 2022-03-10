@@ -442,6 +442,32 @@ function productSelectAll() {
     })
 
 }
+var dateString;
+function orderSelectAll() {
+    $("#order").empty();
+    let table = `<table id="orderTable" class="table table-striped table-bordered nowrap"
+                    style="width:100%;"></table>`;
+    $("#order").prepend(table);
+    axios.post("./orderSelectAll.controller").then(res => {
+        var col = [
+            { data: 'orderNo', title: "訂單編號" },
+            { data: 'userNo', title: "會員編號" },
+            { data: 'memberName', title: "姓名" },
+            { data: 'memberPhone', title: "電話" },
+            { data: 'deliveryAddress', title: "送貨地址" },
+            { data: 'deliveryStatusCode', title: "配送狀態碼" },
+            { data: 'deliveryTypeCode', title: "送貨方式代號" },
+            { data: 'payType', title: "付款方式" },
+            { data: 'total', title: "總金額" },
+            { data: 'dateString', title: "訂購日期" },
+	       
+	        
+            
+        ]
+        drewTable($("#orderTable"), res, col);
+    })
+
+}
 
 
 function drewTable(table, res, col) {
