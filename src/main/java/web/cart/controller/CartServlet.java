@@ -28,7 +28,7 @@ public class CartServlet extends HttpServlet {
 	private ProductServiceInterface productServiceInterface;
 	
 	@RequestMapping(value = "/CartServlet.controller", method = { RequestMethod.GET })
-    public String Cart(@PathParam("prodNo") Integer prodNo, String prodName, Integer prodPrice, Integer prodStock, @PathParam("prodAmount") Integer prodAmount, Integer compNo, String action, HttpServletRequest req, HttpServletResponse res, Model model, HttpSession session) {
+    public String Cart(@PathParam("prodNo") Integer prodNo, String prodName, Integer prodPrice, Integer prodStock, @PathParam("prodAmount") Integer prodAmount, Integer compNo, String prodDesc, String action, HttpServletRequest req, HttpServletResponse res, Model model, HttpSession session) {
 		
 		MemberDataVO memberDataVo = (MemberDataVO) session.getAttribute("user");
 		System.out.println("33333333333");	
@@ -53,6 +53,7 @@ public class CartServlet extends HttpServlet {
 				prodPrice = pVO.getProdPrice();
 				prodStock = pVO.getProdStock();
 				compNo = pVO.getCompNo();
+				prodDesc = pVO.getProdDesc();
 			}
 
 			// 商品加入購物車
@@ -116,6 +117,8 @@ public class CartServlet extends HttpServlet {
 			model.addAttribute("prodAmount", prodAmount);
 			session.getAttribute("compNo");
 			model.addAttribute("compNo", compNo);
+			session.getAttribute("prodDesc");
+			model.addAttribute("prodDesc", prodDesc);
 			
 		}
 		else {

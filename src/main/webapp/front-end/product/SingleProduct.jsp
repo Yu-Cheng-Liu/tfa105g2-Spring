@@ -348,6 +348,7 @@
                                                 	<input type="hidden" name="prodPrice" value="${prodPrice}">
                                                 	<input type="hidden" name="prodStock" value="${prodStock}">
                                                 	<input type="hidden" name="compNo" value="${compNo}">
+                                                	<input type="hidden" name="prodDesc" value="${prodDesc}">
                                                 	<input type="hidden" name="action" value="AddCart">
                                                 	<button class="cart-btn" type="submit">加入購物車</button>
                                                 </div>

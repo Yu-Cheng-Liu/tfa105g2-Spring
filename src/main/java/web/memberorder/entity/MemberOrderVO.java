@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "member_order")
@@ -36,7 +37,20 @@ public class MemberOrderVO {
 	@Column(name = "member_phone")
 	String memberPhone;
 	
+	@Transient
+	String dateString;
 	
+	
+	
+
+	public String getDateString() {
+		return dateString;
+	}
+
+
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
+	}
 
 
 	public Integer getOrderNo() {
