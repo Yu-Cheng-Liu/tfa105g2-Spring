@@ -20,6 +20,7 @@ public class CompDataService implements CompDataServiceInterface {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	
 	@Autowired
 	private CompDataDAOInterface compDataDAOi;
 	
@@ -182,9 +183,10 @@ public class CompDataService implements CompDataServiceInterface {
 		errors= new HashMap<String, String>();
 
 		CompData check = compDataDAOi.select(cd.getCompAccount());
-		if (check != null) {
-			errors.put("RcompAccount", "帳號已被使用");
-		}else {
+			if (check != null) {
+				errors.put("RcompAccount", "帳號已被使用");
+			}
+			
 			if ("".equals(cd.getCompAccount().trim())) {
 				errors.put("RcompAccount", "帳號不可為空白");
 			}
@@ -220,9 +222,7 @@ public class CompDataService implements CompDataServiceInterface {
 				return result;
 			} else {
 				return null;
-			}
 		}
-		return null;
 	}
 //=============================================== find certain email ===================================================
 	
